@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/img/logo.png";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Container from "@/app/shared/Container/Container";

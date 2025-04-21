@@ -1,8 +1,8 @@
 // import Container from "@/app/shared/Container/Container";
 // import Image from "next/image";
 // import React from "react";
-// import img from "../../../assets/cup.png";
-// import img2 from "../../../assets/outline.png";
+// import img from "../../../assets/img/cup.png";
+// import img2 from "../../../assets/img/outline.png";
 
 // const CourseStory = () => {
 //   return (
@@ -43,7 +43,7 @@
 // import shape1 from "@/assets/shape (2).png";
 // import shape2 from "@/assets/shape (1).png";
 // import Container from "@/app/shared/Container/Container";
-// import img from "../../../assets/destination.png";
+// import img from "../../../assets/img/destination.png";
 
 // const CourseStory = () => {
 //   return (

@@ -2,10 +2,10 @@
 import Image from "next/image";
 import React from "react";
 import { FaCheck } from "react-icons/fa";
-import shape1 from "@/assets/shape (2).png";
-import shape2 from "@/assets/shape (1).png";
+import shape1 from "../../../assets/img/shape (2).png";
+import shape2 from "../../../assets/img/shape (1).png";
 import Container from "@/app/shared/Container/Container";
-import img from "../../../assets/destination.png";
+import img from "../../../assets/img/destination.png";
 
 const CourseOutline = () => {
   return (

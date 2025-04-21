@@ -7,7 +7,7 @@ import {
   FaYoutube,
   FaTelegramPlane,
 } from "react-icons/fa";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/img/logo.png";
 import Image from "next/image";
 import Container from "../Container/Container";
 

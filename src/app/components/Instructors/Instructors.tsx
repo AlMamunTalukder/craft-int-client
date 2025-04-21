@@ -1,4 +1,4 @@
-import img4 from "../../../assets/it.png";
+import img4 from "../../../assets/img/it.png";
 import Image from "next/image";
 import Container from "@/app/shared/Container/Container";
 import { TbBrandOffice } from "react-icons/tb";
