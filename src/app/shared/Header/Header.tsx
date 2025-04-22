@@ -24,14 +24,14 @@ const Header = () => {
             >
               <Link href="/">Home</Link>
             </li>
-            <li
+            {/* <li
               className={`lg:text-base text-sm font-semibold ${
                 pathname === "#admission" ? 
                 "text-[#4F0187]" : "text-gray-600"
               }`}
             >
               <Link href="#admission">Admission</Link>
-            </li>
+            </li> */}
             <li className="lg:text-base text-sm font-semibold text-gray-600">
               <Link href="#reviews">Reviews</Link>
             </li>
