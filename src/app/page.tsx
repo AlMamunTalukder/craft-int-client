@@ -27,8 +27,8 @@ export default function Home() {
       <SubHeader />
       <Banner />
       <CourseFeatures />
-      <WhyCourse />
-      <CourseOutline />
+      {/* <WhyCourse /> */}
+      {/* <CourseOutline /> */}
       <CourseStory />
       <ClassDescription />
       <SoftHardSkill />

@@ -73,7 +73,7 @@ const CourseFeatures = () => {
   
   return (
     <Container>
-      <div className="mt-20">
+      <div className="my-20">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-[#4F0187] mb-8">
           আমাদের কারিকুলাম
         </h2>
