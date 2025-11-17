@@ -10,7 +10,7 @@ import PhotoGallery from "../components/PhotoGallery/PhotoGallery";
 import ClassRoutine from "../components/Consultancy/Consultancy";
 import CourseFeatures from "../components/CourseFeatures/CourseFeatures";
 import ComparisonTable from "../components/ComparisonTable/ComparisonTable";
-import Instructors from "../components/Instructors/Instructors";
+import Instructors from "../components/ITSkills/ITSkills";
 import TrainerSection from "../components/TrainerSection/TrainerSection";
 import CourseReviews from "../components/CourseReviews/CourseReviews";
 import Testimonials from "../components/Testimonials/Testimonials";

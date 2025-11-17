@@ -1,5 +1,5 @@
 import React from "react";
-import bg from "../../../assets/img/bg.jpg";
+import bg from "../../../../public/img/bg.webp";
 import Container from "@/app/shared/Container/Container";
 
 const Banner = () => {

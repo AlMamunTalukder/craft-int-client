@@ -5,7 +5,7 @@
 // import img2 from "../../assets/img/testi_3_2.jpg";
 // import img3 from "../../assets/img/testi_3_3.jpg";
 // import img4 from "../../assets/img/testi_3_4.jpg";
-import quote from "../../assets/img/quote.svg";
+import quote from "../../../../public/img/quote.svg";
 import { FaStar } from "react-icons/fa";
 import Container from "@/app/shared/Container/Container";
 

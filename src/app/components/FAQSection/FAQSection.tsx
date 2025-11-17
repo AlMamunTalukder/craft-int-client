@@ -3,9 +3,8 @@ import Container from "@/app/shared/Container/Container";
 import Image from "next/image";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import img from "../../../assets/img/business.png";
-import bg from "../../../assets/img/bg.png";
-
+import img from "../../../../public/img/business.png";
+import bg from "../../../../public/img/bg.png";
 
 interface FAQ {
   question: string;

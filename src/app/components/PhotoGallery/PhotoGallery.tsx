@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import Container from "@/app/shared/Container/Container";
 import Image from "next/image";
-import img1 from "../../../assets/img/img1.jpeg";
-import img2 from "../../../assets/img/img2.jpeg";
-import img3 from "../../../assets/img/img3.jpeg";
-import img4 from "../../../assets/img/img4.jpeg";
+import img1 from "../../../../public/img/img1.jpeg";
+import img2 from "../../../../public/img/img2.jpeg";
+import img3 from "../../../../public/img/img3.jpeg";
+import img4 from "../../../../public/img/img4.jpeg";
 
 const images = [
   { src: img1, alt: "Image 1", title: "Studio" },

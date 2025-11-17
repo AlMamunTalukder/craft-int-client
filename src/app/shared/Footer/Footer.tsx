@@ -7,19 +7,29 @@ import {
   FaYoutube,
   FaTelegramPlane,
 } from "react-icons/fa";
-import logo from "../../../assets/img/logo.png";
+import logo from "../../../../public/img/logo.png";
+import bg from "../../../../public/img/bg.webp";
 import Image from "next/image";
 import Container from "../Container/Container";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-20">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-          {/* Logo */}
-          <div>
-            <Image src={logo} alt="Craft Institute Logo" className="w-28" />
-          </div>
+    <footer
+  className="relative lg:py-32"
+  style={{
+    backgroundImage: `url(${bg.src})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  <div className="absolute inset-0 bg-black bg-opacity-50 z-0" />
+
+  <Container>
+    <div className="relative z-10 grid grid-cols-1 lg:grid-cols-4 gap-10 text-white">
+      {/* Logo */}
+      <div>
+        <Image src={logo} alt="Craft Institute Logo" className="w-28" />
+      </div>
 
           {/* Contact Info */}
           <div className="flex-1 space-y-2 text-sm">
@@ -55,7 +65,7 @@ const Footer = () => {
             <p>আবাসিক এলাকা, ২ নম্বর রোড চিটাগাং রোড,</p>
             <p>সিদ্ধিরগঞ্জ, নারায়ণগঞ্জ।</p>
           </div>
-        </div>
+        </div> 
       </Container>
     </footer>
   );

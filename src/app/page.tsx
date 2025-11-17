@@ -6,7 +6,7 @@ import CourseFeatures from "./components/CourseFeatures/CourseFeatures";
 // import CourseReviews from "./components/CourseReviews/CourseReviews";
 import CourseStory from "./components/CourseStory/CourseStory";
 import FAQSection from "./components/FAQSection/FAQSection";
-import Instructors from "./components/Instructors/Instructors";
+import Instructors from "./components/ITSkills/ITSkills";
 import OurActivities from "./components/OurActivities/OurActivities";
 // import Contact from "./components/Contact/Contact";
 // import Testimonials from "./components/Testimonials/Testimonials";
@@ -19,6 +19,8 @@ import SubHeader from "./shared/SubHeader/SubHeader";
 import Map from "./components/Map/Map";
 import Consultancy from "./components/Consultancy/Consultancy";
 import SoftHardSkill from "./components/SoftHardSkill/SoftHardSkill";
+import DepartmentSection from "./components/DepartmentSection/DepartmentSection";
+
 
 export default function Home() {
   return (
@@ -26,7 +28,9 @@ export default function Home() {
       <Header />
       <SubHeader />
       <Banner />
+      <DepartmentSection/>
       <CourseFeatures />
+     
       {/* <WhyCourse /> */}
       {/* <CourseOutline /> */}
       <CourseStory />
@@ -38,9 +42,6 @@ export default function Home() {
       <PhotoGallery />
       <OurActivities />
       <Map />
-
-
-      
       {/* <ComparisonTable />
       <TrainerSection />
       <CourseReviews />

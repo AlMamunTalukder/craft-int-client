@@ -1,8 +1,8 @@
 import Container from "@/app/shared/Container/Container";
 import Image from "next/image";
 import React from "react";
-import img from "../../../assets/img/banner-logo-left.png";
-import bg from "../../../assets/img/bg.jpg";
+import img from "../../../../public/img/banner-logo-left.png";
+import bg from "../../../../public/img/bg.jpg";
 import { MdArrowForward } from "react-icons/md";
 import Link from "next/link";
 
