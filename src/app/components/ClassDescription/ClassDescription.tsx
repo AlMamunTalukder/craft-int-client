@@ -1,8 +1,7 @@
 import React from 'react';
 // Required icons for the video player and curriculum cards
-import { FaPlay, FaBook, FaLanguage, FaLightbulb, FaBriefcase } from 'react-icons/fa';
-import { IoBookSharp } from 'react-icons/io5';
-import { MdOutlineComputer } from 'react-icons/md'; 
+import { FaPlay} from 'react-icons/fa';
+
 
 
 const IslamicKnowledgeIcon = () => (
@@ -38,7 +37,7 @@ const ClassDescription = () => {
     // Primary Purple Color and Gradient
     const primaryPurple = "#4F0187";
     const lightPurple = "#8A2BE2";
-    const darkGradient = `linear-gradient(145deg, ${lightPurple}, ${primaryPurple})`;
+    // const darkGradient = `linear-gradient(145deg, ${lightPurple}, ${primaryPurple})`;
     
     return (
         <div 
