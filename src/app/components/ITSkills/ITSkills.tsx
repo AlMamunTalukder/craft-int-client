@@ -1,15 +1,11 @@
 import React from 'react';
 import Image from "next/image";
 import Container from "@/app/shared/Container/Container";
-
-// Icons used for the list items
 import { TbBrandOffice } from "react-icons/tb";
 import { LuSparkles } from "react-icons/lu"; 
 import { FaPalette, FaVideo, FaCube, FaVolumeUp, FaCamera, FaCode, FaMobileAlt, FaTools, FaMicrophone } from 'react-icons/fa';
-// Import your local image assets
 import img2 from "../../../../public/img/computer.png"; 
 
-// --- Full List of Skills from the uploaded image (image_f249be.png) ---
 const allSkills = [
     { icon: <FaPalette size={18} />, label: "Graphic Design", color: "text-red-500" },
     { icon: <FaVideo size={18} />, label: "Video Editing", color: "text-yellow-500" },
@@ -45,52 +41,42 @@ const ITSkills = () => {
     return (
         <Container>
             <div className="flex justify-center items-center py-10 md:py-20">
-                {/* --- Outer Card Container (Matches image_f249be.png) --- */}
                 <div 
-                    className={`relative w-full max-w-[700px]  pt-16 pb-8 px-6 shadow-2xl min-h-[600px]`}
+                className="relative w-full max-w-[700px] pt-16 pb-8 px-6 shadow-2xl min-h-[600px] flex flex-col items-center justify-center"                 
                     style={{ 
-                        borderRadius: '2rem',
+                        borderRadius: '8rem',
                         background: `linear-gradient(145deg, ${lightPurple}, ${primaryPurple})`
                     }}
                 >
-          
-
-
-                    {/* --- Absolute Header Cutout --- */}
+                  
                     <div 
-                        className={`absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-16 flex items-center justify-center z-20`}
+                        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-16 flex items-center justify-center z-20"
                        
                     >
                         <div className="flex flex-col items-center justify-center -translate-y-1">
-                            {/* 🌟 UPDATED: Using Next.js Image component with your imported img2 🌟 */}
                             <Image
                                 src={img2}
                                 alt="IT Skills Icon"
-                                // Adjust these dimensions to fit the header tab nicely
                                 width={130} 
                                 height={130}
                                 className="object-contain" 
                             />
-                            <span className="text-xs font-bold text-gray-800 tracking-wider mt-1">
+                            <span className="text-xs font-bold text-gray-800 tracking-wider -mt-6 pl-2">
                                 IT SKILLS
                             </span>
                         </div>
                     </div>
 
-                    {/* --- Decorative Elements (X and Arrows) --- */}
-                    {/* Close/X Icon */}
-                    <span className="absolute top-4 left-4 text-white text-xl font-thin cursor-pointer z-10">
-                        &times;
-                    </span>
+                    
                     {/* Forward Arrows >> */}
-                    <span className="absolute top-4 right-4 text-white text-xl font-bold z-10">
+                    <span className="absolute top-20 right-10 text-white text-4xl font-bold z-10 ">
                         &raquo;&raquo;
                     </span>
 
                     {/* --- Skills List --- */}
-                    <div className="space-y-4 pt-10">
+                    <div className="space-y-4 pt-10 ">
                         {allSkills.map((skill, index) => (
-                            <div key={index} className="flex items-start space-x-4 text-white">
+                            <div key={index} className="flex items-center space-x-4 text-white">
                                 <div 
                                     className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-white/20`}
                                     style={{ color: skill.color }}
