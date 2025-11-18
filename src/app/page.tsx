@@ -4,8 +4,8 @@ import ClassDescription from "./components/ClassDescription/ClassDescription";
 import CourseFeatures from "./components/CourseFeatures/CourseFeatures";
 // import CourseOutline from "./components/CourseOutline/CourseOutline";
 // import CourseReviews from "./components/CourseReviews/CourseReviews";
-import CourseStory from "./components/CourseStory/CourseStory";
-import FAQSection from "./components/FAQSection/FAQSection";
+import OurSpecialty from "./components/OurSpecialty/OurSpecialty";
+import BusinessSkills from "./components/BusinessSkills/BusinessSkills";
 import Instructors from "./components/ITSkills/ITSkills";
 import OurActivities from "./components/OurActivities/OurActivities";
 // import Contact from "./components/Contact/Contact";
@@ -30,14 +30,13 @@ export default function Home() {
       <Banner />
       <DepartmentSection/>
       <CourseFeatures />
-     
       {/* <WhyCourse /> */}
       {/* <CourseOutline /> */}
-      <CourseStory />
+      <OurSpecialty />
       <ClassDescription />
       <SoftHardSkill />
       <Instructors />
-      <FAQSection />
+      <BusinessSkills />
       <Consultancy/>
       <PhotoGallery />
       <OurActivities />

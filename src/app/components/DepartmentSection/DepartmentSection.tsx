@@ -19,15 +19,16 @@ const DepartmentSection = () => {
 
                         {/* PERFECT LEFT BRACKET */}
                         <svg
-                            className="absolute -left-20 top-1/2 -translate-y-1/2 hidden md:block"
-                            width="50"
-                            height="160"
-                            viewBox="0 0 50 160"
+                            className="absolute -left-10 top-[90px] -translate-y-1/2 hidden md:block"
+                            width="100"
+                            height="170"
+                            viewBox="5 10 50 160"
                             fill="none"
                             stroke="#8A2BE2"
                             strokeWidth="12"
                         >
                             <path
+                           
                                 d="M40 10 C10 40 10 120 40 150"
                                 strokeLinecap="round"
                             />

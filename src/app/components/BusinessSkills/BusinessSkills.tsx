@@ -76,7 +76,7 @@ const faqsRight: FAQ[] = [
 
 ];
 
-const FAQSection = () => {
+const BusinessSkills = () => {
   const [activeIndexLeft, setActiveIndexLeft] = useState<number | null>(null);
   const [activeIndexRight, setActiveIndexRight] = useState<number | null>(null);
 
@@ -186,4 +186,4 @@ const FAQSection = () => {
   );
 };
 
-export default FAQSection;
+export default BusinessSkills;

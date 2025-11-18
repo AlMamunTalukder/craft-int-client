@@ -35,6 +35,9 @@ const Header = () => {
             <li className="lg:text-base text-sm font-semibold text-gray-600">
               <Link href="#reviews">Reviews</Link>
             </li>
+            <li className="lg:text-base text-sm font-semibold text-gray-600">
+              <Link href="/contact">Contact</Link>
+            </li>
           </ul>
         </div>
       </Container>

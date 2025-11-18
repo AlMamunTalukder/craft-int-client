@@ -7,7 +7,7 @@ import shape2 from "../../../../public/img/shape (1).png";
 import Container from "@/app/shared/Container/Container";
 import img from "../../../../public/img/destination.png";
 
-const CourseOutline = () => {
+const OurGoals = () => {
   return (
     <div className="bg-[#EFFBF5]">
       <Container>
@@ -63,4 +63,4 @@ const CourseOutline = () => {
   );
 };
 
-export default CourseOutline;
+export default OurGoals;
