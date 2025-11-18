@@ -27,8 +27,8 @@ const Footer = () => {
   <Container>
     <div className="relative z-10 grid grid-cols-1 lg:grid-cols-4 gap-10 text-white">
       {/* Logo */}
-      <div>
-        <Image src={logo} alt="Craft Institute Logo" className="w-28" />
+      <div className="flex flex-col justify-center items-center lg:items-start ">
+        <Image src={logo} alt="Craft Institute Logo" className="w-28 mt-10 md:mt-0" />
       </div>
 
           {/* Contact Info */}
