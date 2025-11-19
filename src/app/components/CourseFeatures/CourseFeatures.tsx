@@ -1,14 +1,13 @@
-
 import React from "react";
-// Import all your SVG icons from the provided code
+
+// --- SVG Icons (Provided by you) ---
 const IslamicKnowledgeIcon = () => (
-    < svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" fill="currentColor" data- name="Layer 2" viewBox="0 0 67.42 88.39" > <g id="Layer_1-2" data-name="Layer 1"><g><path d="m63.95,0c.58.3,1.2.53,1.72.91,1.11.81,1.69,1.93,1.74,3.32,0,.2,0,.4,0,.6,0,20.23,0,40.46,0,60.7,0,2.4-1.14,4.09-3.2,4.65-.52.14-1.08.18-1.62.18-16.32,0-32.64,0-48.96,0-1.6,0-2.03-.45-2.03-2.06,0-22.1,0-44.21-.01-66.31,0-.9.25-1.56,1.05-1.99,17.1,0,34.2,0,51.3,0Zm-24.46,61.19c2.2-.58,3.77-1.94,4.78-3.99.38-.78,1.09-1.12,1.95-1.24,2.96-.41,4.95-2.01,5.82-4.9.13-.44.33-.64.78-.75,3.32-.8,5.4-3.39,5.41-6.77.02-5.32.02-10.65,0-15.97-.01-3.34-2.11-5.98-5.34-6.75-.52-.12-.73-.33-.89-.84-.87-2.75-2.74-4.4-5.62-4.78-1.1-.15-1.85-.65-2.34-1.65-.74-1.5-1.88-2.65-3.46-3.2-.9-.31-1.27-.69-1.19-1.68.07-.88-.62-1.47-1.46-1.45-.8.01-1.38.57-1.44,1.42-.03.42,0,.85,0,1.28-2.23.6-3.8,1.89-4.77,3.89-.43.89-1.21,1.23-2.15,1.37-2.89.43-4.82,2.03-5.68,4.84-.15.47-.34.67-.83.79-3.24.76-5.35,3.4-5.37,6.73-.03,5.35-.03,10.7,0,16.05.02,3.33,2.13,5.93,5.38,6.71.48.12.68.33.83.81.86,2.76,2.74,4.41,5.6,4.82,1.11.16,1.77.69,2.38,1.6.68,1,1.53,1.92,2.45,2.71.58.5,1.41.71,2.12,1.05.12,2.01.46,2.62,1.49,2.63,1.01.01,1.32-.53,1.55-2.72Z"></path><path d="m.01,42.31c0-11.14,0-22.28,0-33.42C.02,4.77,2.5,1.41,6.25.35c1.65-.47,2.42.11,2.42,1.82,0,12.18,0,24.35,0,36.53,0,9.87,0,19.75,0,29.62,0,1.65-.13,1.84-1.68,2.34-2.64.85-4.26,3.31-4,6.05.25,2.63,2.37,4.73,5.1,5.05.03,0,.06,0,.09,0,1.92,0,1.7.23,1.72,2.03,0,.65-.31.93-.94.97-4.44.3-8.75-3.57-8.91-8.08-.08-2.13-.03-4.26-.03-6.39,0-9.33,0-18.65,0-27.98Z"></path><path d="m35.5,73.32c8.75,0,17.5,0,26.25,0,1.79,0,2.19.4,2.19,2.17,0,.58.01,1.15,0,1.73-.03,1.01-.54,1.54-1.53,1.62-.26.02-.52,0-.78,0-9.67,0-19.34,0-29.01,0q-1.47,0-1.63-1.42c-.09-.76-.51-1.22-1.26-1.31-.79-.09-1.34.28-1.57,1.04-.09.3-.1.62-.1.94,0,2.1,0,4.2,0,6.3-.02,2.92-2.13,4.54-4.96,3.81-.06-.01-.11-.03-.16-.05-1.64-.68-3.25-.54-4.94-.04-3.07.92-5.16-.75-5.16-3.95,0-2.1,0-4.2,0-6.3,0-1.11-.55-1.76-1.45-1.76-.91,0-1.46.59-1.48,1.73-.01.76-.37,1.02-1.07,1.01-1.64-.02-2.93-1.23-2.93-2.78,0-1.61,1.2-2.74,3-2.74,8.35-.01,16.69,0,25.04,0,.52,0,1.04,0,1.55,0Z"></path><path d="m48.66,81.8c5.27,0,10.53,0,15.8,0,.32,0,.64,0,.95.03.76.09,1.2.57,1.27,1.31.07.75-.32,1.28-1.04,1.49-.32.1-.68.11-1.02.11-10.76,0-21.52.01-32.29-.02-.42,0-1.15-.26-1.2-.5-.12-.7-.04-1.46.13-2.16.04-.16.71-.25,1.09-.25,5.44-.02,10.88-.01,16.32-.01Z"></path><path d="m45.89,42.6c-11.28,9.2-24.53-4.05-15.35-15.39,11.17-7.88,23.27,4.22,15.35,15.39Z"></path></g></g>  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" fill="currentColor" data-name="Layer 2" viewBox="0 0 67.42 88.39"> <g id="Layer_1-2" data-name="Layer 1"><g><path d="m63.95,0c.58.3,1.2.53,1.72.91,1.11.81,1.69,1.93,1.74,3.32,0,.2,0,.4,0,.6,0,20.23,0,40.46,0,60.7,0,2.4-1.14,4.09-3.2,4.65-.52.14-1.08.18-1.62.18-16.32,0-32.64,0-48.96,0-1.6,0-2.03-.45-2.03-2.06,0-22.1,0-44.21-.01-66.31,0-.9.25-1.56,1.05-1.99,17.1,0,34.2,0,51.3,0Zm-24.46,61.19c2.2-.58,3.77-1.94,4.78-3.99.38-.78,1.09-1.12,1.95-1.24,2.96-.41,4.95-2.01,5.82-4.9.13-.44.33-.64.78-.75,3.32-.8,5.4-3.39,5.41-6.77.02-5.32.02-10.65,0-15.97-.01-3.34-2.11-5.98-5.34-6.75-.52-.12-.73-.33-.89-.84-.87-2.75-2.74-4.4-5.62-4.78-1.1-.15-1.85-.65-2.34-1.65-.74-1.5-1.88-2.65-3.46-3.2-.9-.31-1.27-.69-1.19-1.68.07-.88-.62-1.47-1.46-1.45-.8.01-1.38.57-1.44,1.42-.03.42,0,.85,0,1.28-2.23.6-3.8,1.89-4.77,3.89-.43.89-1.21,1.23-2.15,1.37-2.89.43-4.82,2.03-5.68,4.84-.15.47-.34.67-.83.79-3.24.76-5.35,3.4-5.37,6.73-.03,5.35-.03,10.7,0,16.05.02,3.33,2.13,5.93,5.38,6.71.48.12.68.33.83.81.86,2.76,2.74,4.41,5.6,4.82,1.11.16,1.77.69,2.38,1.6.68,1,1.53,1.92,2.45,2.71.58.5,1.41.71,2.12,1.05.12,2.01.46,2.62,1.49,2.63,1.01.01,1.32-.53,1.55-2.72Z"></path><path d="m.01,42.31c0-11.14,0-22.28,0-33.42C.02,4.77,2.5,1.41,6.25.35c1.65-.47,2.42.11,2.42,1.82,0,12.18,0,24.35,0,36.53,0,9.87,0,19.75,0,29.62,0,1.65-.13,1.84-1.68,2.34-2.64.85-4.26,3.31-4,6.05.25,2.63,2.37,4.73,5.1,5.05.03,0,.06,0,.09,0,1.92,0,1.7.23,1.72,2.03,0,.65-.31.93-.94.97-4.44.3-8.75-3.57-8.91-8.08-.08-2.13-.03-4.26-.03-6.39,0-9.33,0-18.65,0-27.98Z"></path><path d="m35.5,73.32c8.75,0,17.5,0,26.25,0,1.79,0,2.19.4,2.19,2.17,0,.58.01,1.15,0,1.73-.03,1.01-.54,1.54-1.53,1.62-.26.02-.52,0-.78,0-9.67,0-19.34,0-29.01,0q-1.47,0-1.63-1.42c-.09-.76-.51-1.22-1.26-1.31-.79-.09-1.34.28-1.57,1.04-.09.3-.1.62-.1.94,0,2.1,0,4.2,0,6.3-.02,2.92-2.13,4.54-4.96,3.81-.06-.01-.11-.03-.16-.05-1.64-.68-3.25-.54-4.94-.04-3.07.92-5.16-.75-5.16-3.95,0-2.1,0-4.2,0-6.3,0-1.11-.55-1.76-1.45-1.76-.91,0-1.46.59-1.48,1.73-.01.76-.37,1.02-1.07,1.01-1.64-.02-2.93-1.23-2.93-2.78,0-1.61,1.2-2.74,3-2.74,8.35-.01,16.69,0,25.04,0,.52,0,1.04,0,1.55,0Z"></path><path d="m48.66,81.8c5.27,0,10.53,0,15.8,0,.32,0,.64,0,.95.03.76.09,1.2.57,1.27,1.31.07.75-.32,1.28-1.04,1.49-.32.1-.68.11-1.02.11-10.76,0-21.52.01-32.29-.02-.42,0-1.15-.26-1.2-.5-.12-.7-.04-1.46.13-2.16.04-.16.71-.25,1.09-.25,5.44-.02,10.88-.01,16.32-.01Z"></path><path d="m45.89,42.6c-11.28,9.2-24.53-4.05-15.35-15.39,11.17-7.88,23.27,4.22,15.35,15.39Z"></path></g></g> </svg>
 );
 
 const Academicicon = () => (<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" fill="currentColor" data-name="Layer 2" viewBox="0 0 91.32 91.32"><g id="Layer_1-2" data-name="Layer 1"><g><path d="m91.32,84.18c-.59.39-1.13.98-1.78,1.15-7.21,1.97-14.44,3.88-21.66,5.8-1.47.39-2.11.03-2.5-1.42-.57-2.14-1.12-4.29-1.7-6.5,8.61-2.29,17.14-4.57,25.77-6.87.52,1.96,1.01,3.87,1.52,5.78.09.33.23.65.35.98v1.07Z"></path><path d="m46.02,0c.89.37,1.19,1.07,1.18,2-.02,1.33,0,2.66,0,4.04h-19.74c0-1.6-.08-3.17.05-4.73.04-.46.67-.87,1.04-1.31,5.83,0,11.65,0,17.48,0Z"></path><path d="m49.43,28.57c-.69-2.61-1.36-5.15-2.03-7.69l-.2.02v52.11h-19.74V16.8h19.71v2.05c.84-.3,1.61-.64,2.41-.86,6.96-1.88,13.93-3.73,20.9-5.59,1.67-.45,2.25-.11,2.7,1.59.66,2.52,1.32,5.05,2.02,7.7-8.58,2.29-17.11,4.57-25.76,6.88Z"></path><path d="m.04,72.99V22.88h24.27v50.1H.04Zm12.1-30.36c1.87,0,3.74,0,5.62,0,1.51,0,2.04-.53,2.04-2.05,0-3.71,0-7.43,0-11.14,0-1.48-.51-2.02-1.96-2.02-3.77-.01-7.55-.01-11.32,0-1.42,0-1.93.51-1.93,1.94-.01,3.77-.01,7.55,0,11.32,0,1.42.54,1.94,1.94,1.95,1.87,0,3.74,0,5.62,0Z"></path><path d="m86.28,64.2c-8.61,2.3-17.14,4.58-25.77,6.88-2.92-11.17-5.81-22.27-8.74-33.48,8.59-2.29,17.12-4.57,25.78-6.87,2.91,11.16,5.81,22.28,8.74,33.48Z"></path><path d="m0,82.23h24.27c.03.23.08.42.08.62,0,2.17.02,4.33,0,6.5-.01,1.42-.55,1.96-1.94,1.96-6.83,0-13.66,0-20.49,0-1.36,0-1.92-.55-1.93-1.87-.01-2.37,0-4.74,0-7.21Z"></path><path d="m0,19.76C0,17.71-.01,15.75.02,13.79c.01-.95.54-1.47,1.47-1.6.26-.04.53-.03.8-.03,6.59,0,13.19,0,19.78,0,1.83,0,2.29.45,2.29,2.25,0,1.77,0,3.55,0,5.35H0Z"></path><path d="m27.41,82.25h19.78c0,1.76,0,3.48,0,5.19,0,.71.02,1.43-.01,2.14-.06,1.19-.61,1.72-1.8,1.73-1.96.02-3.92,0-5.88,0-3.36,0-6.71,0-10.07,0-1.49,0-2.01-.5-2.02-1.95-.01-2.34,0-4.69,0-7.12Z"></path><path d="m87.05,67.15c.56,2.14,1.09,4.16,1.63,6.25-8.61,2.3-17.14,4.57-25.77,6.87-.55-2.08-1.08-4.1-1.64-6.25,8.58-2.29,17.11-4.56,25.77-6.87Z"></path><path d="m27.46,13.68v-4.48h19.65v4.48h-19.65Z"></path><path d="m75.96,24.65c.28,1.06.53,2.06.81,3.12-8.59,2.29-17.1,4.56-25.74,6.87-.28-1.03-.55-2.03-.84-3.12,8.64-2.3,17.16-4.58,25.77-6.87Z"></path><path d="m.03,79.11v-2.93h24.27v2.93H.03Z"></path><path d="m27.46,79.11v-2.94h19.67v2.94h-19.67Z"></path></g></g></svg>);
 
 const Businessicon = () => (
-
     <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" fill="currentColor" data-name="Layer 2" viewBox="0 0 87.52 76.93"><g id="Layer_1-2" data-name="Layer 1"><g><path d="m30.81,46.14q.5,5.13,5.5,5.13c5.41,0,10.82,0,16.24,0,3.41,0,3.89-.48,4.02-3.95.01-.33.07-.65.13-1.17,1.37,0,2.66,0,3.96,0,3.13,0,6.27.01,9.4,0,4.63-.03,7.08-1.79,8.53-6.13,2.31-6.9,4.59-13.81,6.9-20.71.57-1.7,1.15-3.39,2.03-5.02,0,.54,0,1.09,0,1.63,0,17.37,0,34.74,0,52.12,0,5.84-2.98,8.88-8.8,8.88-23.3.01-46.6.01-69.9,0C2.99,76.91,0,73.88,0,68.04,0,50.67,0,33.3,0,15.93v-1.65c.09-.02.18-.04.26-.06.23.61.48,1.21.69,1.82,2.65,7.93,5.28,15.86,7.93,23.79,1.53,4.59,3.88,6.29,8.73,6.31,3.76.01,7.52,0,11.28,0,.61,0,1.22,0,1.92,0Z"></path><path d="m4.4,10.25h21.26c.09-1.18.14-2.24.24-3.29.38-3.77,3.09-6.7,6.88-6.8,7.17-.19,14.35-.21,21.52-.05,4.27.1,6.98,3.02,7.34,7.28.07.85.08,1.7.14,2.81h21.33c-1.17,3.53-2.24,6.74-3.31,9.96-1.99,5.99-3.98,11.97-5.98,17.96-.85,2.57-1.33,2.91-4.07,2.92-4.32,0-8.63,0-13.21,0,0-.95.03-1.72,0-2.5-.09-1.62-.96-2.58-2.58-2.59-6.78-.04-13.55-.05-20.33,0-1.75.01-2.55.92-2.66,2.69-.05.72,0,1.45,0,2.4-2.91,0-5.62,0-8.34,0-1.94,0-3.87,0-5.81-.01-1.32-.01-2.33-.57-2.76-1.87-3.19-9.53-6.36-19.06-9.65-28.91Zm26.55-.1h25.37c.77-3.76-.19-4.99-3.78-5-1.65,0-3.3,0-4.95,0-4.49,0-8.99-.02-13.48.01-2.28.02-3.08.85-3.15,3.09-.02.56,0,1.13,0,1.9Z"></path><path d="m36.12,46.02v-4.86h15.22v4.86h-15.22Z"></path></g></g></svg>
 );
 
@@ -22,7 +21,7 @@ const SoftSkillIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2
 const features = [
     {
         icon: IslamicKnowledgeIcon,
-        title: "ISLAMIC KNOWLEDGE", // Corrected typo: KNOWLWDGE -> KNOWLEDGE
+        title: "ISLAMIC KNOWLEDGE",
     },
     {
         icon: Academicicon,
@@ -34,7 +33,7 @@ const features = [
     },
     {
         icon: ITicon,
-        title: "IT SKILLS", // Corrected typo: SKILSS -> SKILLS
+        title: "IT SKILLS",
     },
     {
         icon: SoftSkillIcon,
@@ -47,61 +46,76 @@ const features = [
 ];
 
 const CourseFeatures = () => {
-
     return (
-       <div className="min-h-screen bg-gradient-to-br from-[#4F0187] via-[#8A2BE2] via-[#A020F0] to-[#4B0082] flex flex-col justify-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative min-h-screen bg-gradient-to-br from-[#2E0249] via-[#570A8F] to-[#2E0249] flex items-center justify-center overflow-hidden py-20">
+            
+            {/* Background Decorative Elements */}
+            <div className="absolute top-0 left-0 w-96 h-96 bg-[#A020F0] opacity-20 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#4F0187] opacity-30 rounded-full blur-[150px] pointer-events-none"></div>
+
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                 {/* Title Section */}
-                <h2 className="text-3xl md:text-5xl font-extrabold text-white text-center mb-16 tracking-wider">
-                    OUR CURRICULUM
-                </h2>
+                <div className="text-center mb-16">
+                    <span className="text-white/60 text-sm tracking-[0.3em] uppercase font-semibold">Why Choose Us</span>
+                    <h2 className="mt-4 text-4xl md:text-6xl font-extrabold text-white tracking-wide drop-shadow-lg">
+                        OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#fff]">CURRICULUM</span>
+                    </h2>
+                    <div className="w-24 h-1.5 mx-auto bg-gradient-to-r from-[#A020F0] to-[#fff] rounded-full mt-6 shadow-lg shadow-purple-500/50"></div>
+                </div>
 
                 {/* Grid for Curriculum Features */}
-                {/* Setting grid to 3 columns on medium screens and up, centered within the container */}
-                <div className="flex justify-center">
-                    <div className="grid gap-3 md:gap-12 grid-cols-2 md:grid-cols-3 w-full max-w-4xl">
-                        {features.map((feature, index) => {
-                            const Icon = feature.icon;
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {features.map((feature, index) => {
+                        const Icon = feature.icon;
+                        return (
+                            <div
+                                key={index}
+                                className="
+                                    group relative 
+                                    bg-white/90 backdrop-blur-xl 
+                                    rounded-3xl p-8 
+                                    flex flex-col items-center text-center 
+                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+                                    hover:shadow-[0_20px_50px_rgba(160,32,240,0.4)]
+                                    border border-white/50
+                                    transition-all duration-500 ease-out
+                                    hover:-translate-y-3
+                                "
+                            >
+                                {/* Card Inner Glow */}
+                                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
-                            return (
-                                <div
-                                    key={index}
-                                    className=" bg-white rounded-[25px] p-2 md:p-8 flex flex-col items-center text-center shadow-xl         "
-                                    style={{
-                                        // Specific box shadow for a lift effect, similar to the image
-                                        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
-                                    }}
-                                >
-                                    {/* Icon Container - larger, white background, black icon */}
-                                    {/* The icon itself uses 'currentColor', so setting a class on the wrapper will color it */}
-                                    <div className="
-                                        md:mb-4 
-                                        w-20 
-                                        h-20 
-                                        p-4 
-                                        bg-white 
-                                        rounded-full 
-                                        text-[#4F0187] 
-                                        flex 
-                                        items-center 
-                                        justify-center
-                                    ">
-                                        <div className="w-full h-full">
-                                            <Icon />
-                                        </div>
+                                {/* Icon Container */}
+                                <div className="
+                                    relative
+                                    w-24 h-24 mb-6
+                                    bg-gradient-to-br from-[#F3E7FF] to-[#fff]
+                                    rounded-full 
+                                    flex items-center justify-center
+                                    shadow-inner
+                                    group-hover:scale-110 transition-transform duration-500
+                                    border border-purple-100
+                                ">
+                                    <div className="w-12 h-12 text-[#4F0187] group-hover:text-[#8A2BE2] transition-colors duration-300">
+                                        <Icon />
                                     </div>
                                     
-                                    {/* Feature Title - all caps, smaller font, similar color to icon/dark text */}
-                                    <p className="text-sm font-semibold text-[#4F0187] mt-2 tracking-widest">
-                                        {feature.title}
-                                    </p>
+                                    {/* Spinning ring effect on hover */}
+                                    <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-t-[#A020F0] group-hover:border-r-[#A020F0]/50 opacity-0 group-hover:opacity-100 transition-all duration-700 animate-spin-slow"></div>
                                 </div>
-                            );
-                        })}
-                    </div>
+
+                                {/* Feature Title */}
+                                <h3 className="text-lg md:text-xl font-bold text-gray-900 tracking-wide group-hover:text-[#4F0187] transition-colors duration-300">
+                                    {feature.title}
+                                </h3>
+
+                                {/* Optional decorative line */}
+                                <div className="w-12 h-1 bg-gray-200 mt-4 rounded-full group-hover:w-24 group-hover:bg-[#A020F0] transition-all duration-500"></div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
-            {/* Optional: Add the arrow design on the bottom-left/right if needed, but this requires more custom positioning. */}
         </div>
     );
 };

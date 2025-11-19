@@ -50,7 +50,30 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-purple-100 text-sm uppercase tracking-wide">ফোন</h4>
-                  <p className="text-white font-medium">+৮৮০ ১৭১১-XXXXXX</p>
+                  <div>
+                    <a
+                      href="tel:01604858100"
+                      className="text-white font-semibold block hover:text-purple-300 transition-colors duration-300"
+                    >
+                      01604-858100 (ভর্তির জন্য)
+                    </a>
+
+                    {/* Phone Number 2 */}
+                    <a
+                      href="tel:01830678383"
+                      className="text-white font-semibold block hover:text-purple-300 transition-colors duration-300"
+                    >
+                      01830678383 (অফিসিয়াল)
+                    </a>
+
+                    {/* Phone Number 3 */}
+                    <a
+                      href="tel:01310726000"
+                      className="text-white font-semibold block hover:text-purple-300 transition-colors duration-300"
+                    >
+                      01310726000
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -60,7 +83,12 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-purple-100 text-sm uppercase tracking-wide">ইমেইল</h4>
-                  <p className="text-white font-medium">info@craftinstitute.com</p>
+             <a
+                      href="mailto:craftinstitutebd@gmail.com"
+                      className="text-white font-semibold hover:text-purple-300 transition-colors duration-300"
+                    >
+                      craftinstitutebd@gmail.com
+                    </a>
                 </div>
               </div>
 
@@ -70,7 +98,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-purple-100 text-sm uppercase tracking-wide">ঠিকানা</h4>
-                  <p className="text-white font-medium">নিমাইকাশারী, সিদ্ধিরগঞ্জ, নারায়ণগঞ্জ-১৪৩০</p>
+                  <p className="text-white font-medium">ঢাকা চট্টগ্রাম মহাসড়ক (চিটাগাং রোড) সংলগ্ন মাদানি নগর মাদরাসা রোড, নিমাইকাশারী বাজার, কুয়েত টাওয়ার (স্বপ্ন সুপার শপ বিল্ডিং - ৫ম তলা), সিদ্ধিরগঞ্জ, নারায়ণগঞ্জ - ১৪৩০</p>
                 </div>
               </div>
             </div>
@@ -80,8 +108,8 @@ const ContactPage = () => {
           <div className="relative z-10 mt-12">
              <p className="text-purple-200 text-sm mb-4">সোশ্যাল মিডিয়া</p>
              <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 rounded-full border border-purple-400 flex items-center justify-center hover:bg-white hover:text-[#4F0187] transition-all duration-300"><FaFacebookF /></a>
-                <a href="#" className="w-10 h-10 rounded-full border border-purple-400 flex items-center justify-center hover:bg-white hover:text-[#4F0187] transition-all duration-300"><FaWhatsapp /></a>
+                <a href="https://www.facebook.com/ciibd25/" className="w-10 h-10 rounded-full border border-purple-400 flex items-center justify-center hover:bg-white hover:text-[#4F0187] transition-all duration-300"><FaFacebookF /></a>
+                <a href="https://www.youtube.com/@CII1216/videos" className="w-10 h-10 rounded-full border border-purple-400 flex items-center justify-center hover:bg-white hover:text-[#4F0187] transition-all duration-300"><FaWhatsapp /></a>
                 <a href="#" className="w-10 h-10 rounded-full border border-purple-400 flex items-center justify-center hover:bg-white hover:text-[#4F0187] transition-all duration-300"><FaYoutube /></a>
              </div>
           </div>
@@ -154,14 +182,15 @@ const ContactPage = () => {
       {/* --- Map Section (Simple & Clean) --- */}
       <div className="max-w-6xl w-full mt-12 rounded-3xl overflow-hidden shadow-lg h-[500px] border-4 border-white">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15596.226322142955!2d90.49229850304327!3d23.69518535429834!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b77e13f12695%3A0x83546d61ef6169e8!2sShwapno(Nimai%20kashari%20Bazar)!5e1!3m2!1sen!2sbd!4v1745154645391!5m2!1sen!2sbd"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3991.112853300191!2d90.4977701!3d23.698595100000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b77e13f12695%3A0x83546d61ef6169e8!2sShwapno(Nimai%20kashari%20Bazar)!5e1!3m2!1sen!2sbd!4v1763564013931!5m2!1sen!2sbd"
           width="100%" 
           height="100%" 
           style={{ border: 0 }} 
           allowFullScreen={true} 
           loading="lazy" 
           className=" transition-all duration-700"
-        ></iframe>
+        />
+     
       </div>
 
     </div>

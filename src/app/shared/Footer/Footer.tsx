@@ -16,7 +16,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Imports from your structure
-import logo from "../../../../public/img/logo.png";
+import logo from "../../../../public/img/Asset1.png";
 import bg from "../../../../public/img/bg.webp";
 import Container from "../Container/Container";
 
@@ -26,7 +26,7 @@ const Footer = () => {
   return (
     <footer className="relative text-gray-300">
       {/* --- Background Image & Overlay --- */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url(${bg.src})`,
@@ -42,27 +42,27 @@ const Footer = () => {
       <div className="relative z-10 pt-20 pb-10">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-            
+
             {/* --- Column 1: Brand & About --- */}
             <div className="space-y-6 text-center lg:text-left">
               <div className="flex justify-center lg:justify-start">
                 <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm inline-block">
-                   <Image 
-                     src={logo} 
-                     alt="Craft Institute Logo" 
-                     className="w-32 h-auto object-contain brightness-110" 
-                   />
+                  <Image
+                    src={logo}
+                    alt="Craft Institute Logo"
+                    className="w-[150px] h-auto object-contain brightness-110"
+                  />
                 </div>
               </div>
               <p className="text-sm leading-relaxed text-gray-400">
                 আমরা উন্নত মানের শিক্ষা এবং নৈতিক মূল্যবোধ গঠনে প্রতিশ্রুতিবদ্ধ। আধুনিক প্রযুক্তি ও ইসলামী শিক্ষার সমন্বয়ে আমরা গড়ে তুলছি আগামীর ভবিষ্যৎ।
               </p>
-              
+
               {/* Social Media Icons (Moved here for better balance) */}
               <div className="flex justify-center lg:justify-start gap-3 pt-2">
-                <SocialIcon icon={<FaFacebookF />} href="#" />
-                <SocialIcon icon={<FaWhatsapp />} href="#" />
-                <SocialIcon icon={<FaYoutube />} href="#" />
+                <SocialIcon icon={<FaFacebookF />} href="https://www.facebook.com/ciibd25/" />
+                <SocialIcon icon={<FaWhatsapp />} href="01604-858100" />
+                <SocialIcon icon={<FaYoutube />} href="https://www.youtube.com/@CII1216/videos" />
                 <SocialIcon icon={<FaTelegramPlane />} href="#" />
                 <SocialIcon icon={<FaUsers />} href="#" />
               </div>
@@ -77,7 +77,7 @@ const Footer = () => {
                 <FooterLink text="হোম" href="/" />
                 <FooterLink text="ভর্তি তথ্য" href="/admission" />
                 <FooterLink text="যাচাইকরণ" href="/verification" />
-                <FooterLink text="আমাদের সম্পর্কে" href="/about" />
+                <FooterLink text="আমাদের সম্পর্কে" href="/about-us" />
                 <FooterLink text="যোগাযোগ" href="/contact" />
               </ul>
             </div>
@@ -93,9 +93,28 @@ const Footer = () => {
                     <FaPhoneAlt size={14} />
                   </div>
                   <div>
-                    <p className="text-gray-400 text-xs">হটলাইন</p>
-                    <p className="text-white font-semibold">01310-726000</p>
-                    <p className="text-white font-semibold">01700-999093</p>
+                    <a
+                      href="tel:01604858100"
+                      className="text-white font-semibold block hover:text-purple-300 transition-colors duration-300"
+                    >
+                      01604-858100 (ভর্তির জন্য)
+                    </a>
+
+                    {/* Phone Number 2 */}
+                    <a
+                      href="tel:01830678383"
+                      className="text-white font-semibold block hover:text-purple-300 transition-colors duration-300"
+                    >
+                      01830678383 (অফিসিয়াল)
+                    </a>
+
+                    {/* Phone Number 3 */}
+                    <a
+                      href="tel:01310726000"
+                      className="text-white font-semibold block hover:text-purple-300 transition-colors duration-300"
+                    >
+                      01310726000
+                    </a>
                   </div>
                 </div>
 
@@ -105,7 +124,12 @@ const Footer = () => {
                   </div>
                   <div>
                     <p className="text-gray-400 text-xs">ইমেইল</p>
-                    <p className="text-white font-semibold">craftinstitutebd@gmail.com</p>
+                    <a
+                      href="mailto:craftinstitutebd@gmail.com"
+                      className="text-white font-semibold hover:text-purple-300 transition-colors duration-300"
+                    >
+                      craftinstitutebd@gmail.com
+                    </a>
                   </div>
                 </div>
               </div>
@@ -118,12 +142,12 @@ const Footer = () => {
               </h3>
               <div className="flex flex-col lg:flex-row items-center lg:items-start gap-3">
                 <div className="mt-1 text-[#4F0187]">
-                    <FaMapMarkerAlt size={24} />
+                  <FaMapMarkerAlt size={24} />
                 </div>
                 <div className="text-sm leading-loose text-gray-300">
-                  <p>আদর্শ নগর, আধারমানিক,</p>
-                  <p>সঞ্চল নূরবাগ আবাসিক এলাকা,</p>
-                  <p>২ নম্বর রোড, চিটাগাং রোড,</p>
+                  <p>ঢাকা চট্টগ্রাম মহাসড়ক (চিটাগাং রোড) সংলগ্ন মাদানি নগর মাদরাসা রোড, নিমাইকাশারী বাজার, </p>
+                  <p></p>
+                  <p>কুয়েত টাওয়ার (স্বপ্ন সুপার শপ বিল্ডিং - ৫ম তলা)</p>
                   <p>সিদ্ধিরগঞ্জ, নারায়ণগঞ্জ।</p>
                 </div>
               </div>

@@ -28,90 +28,56 @@ const skillsRight: Skill[] = [
   { id: 13, title: "Business communication - ব্যবসায়িক যোগাযোগ।" },
 ];
 
-const SkillCard = ({ item, index }: { item: Skill; index: number }) => (
-  <div className="group relative bg-white rounded-2xl p-2 md:p-5 shadow-lg transition-all duration-300 border border-purple-400/30 hover:border-white overflow-hidden transform hover:-translate-y-1">
-    
-    {/* Watermark Number */}
-    <span className="absolute -right-2 -bottom-4 text-6xl font-black text-black/10 group-hover:text-white/10 transition-colors duration-300 select-none z-0">
-      {index < 9 ? `0${index + 1}` : index + 1}
-    </span>
-
-    <div className="relative z-10 flex items-start gap-4">
-      {/* Icon Badge */}
-      <div className="shrink-0 mt-1">
-        <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center shadow-md text-[#4F0187]">
-          <FaCheck className="text-[10px]" />
-        </div>
-      </div>
-
-      {/* Content */}
-      <div>
-        <h4 className="font-bold text-lg group-hover:text-pink-200 transition-colors duration-300">
-           {item.title.split(' - ')[0]}
-        </h4>
-        <p className="text-gray-400 text-sm mt-1 font-medium group-hover:text-white">
-           {item.title.split(' - ')[1] ? `- ${item.title.split(' - ')[1]}` : ''}
-        </p>
-      </div>
+const SkillCard = ({ item }: { item: Skill }) => (
+  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-5 flex items-start gap-4 shadow-md hover:shadow-lg transition-all duration-300">
+    <div className="flex-shrink-0 mt-1 w-9 h-9 rounded-full bg-purple-500 flex items-center justify-center text-white shadow">
+      <FaCheck className="text-sm" />
+    </div>
+    <div>
+      <h4 className="text-black font-semibold text-lg">{item.title.split(" - ")[0]}</h4>
+      <p className="text-purple-500 text-sm mt-1">{item.title.split(" - ")[1]}</p>
     </div>
   </div>
 );
 
 const BusinessSkills = () => {
   return (
-    // 1. Outer Background is WHITE
-    <section className="bg-white py-24 overflow-visible">
+    <section className="relative py-24 bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 overflow-visible">
       <Container>
-        <div className="relative max-w-6xl mx-auto mt-12">
+        {/* Floating Image */}
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20">
+          <div className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] rounded-full bg-purple-500/20 flex items-center justify-center shadow-2xl">
+            <Image src={img} alt="Business Icon" className="w-3/4 h-3/4 object-contain" />
+          </div>
+        </div>
 
-            {/* 2. Floating Icon (Top Center) */}
-            <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20">
-                <div className="w-[150px] h-[150px]  rounded-full flex items-center justify-center p-5">
-                    <Image 
-                        src={img} 
-                        alt="Business Icon" 
-                        className="w-full h-full "
-                    />
-                </div>
-            </div>
+        {/* Section Title */}
+        <div className="text-center mb-16 mt-24">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-md">
+            Business Skills
+          </h2>
+          <div className="mt-2 h-1.5 w-24 bg-purple-200 rounded-full mx-auto"></div>
+        </div>
 
-            {/* 3. Main Colored Content Box */}
-            <div className="relative bg-[linear-gradient(180deg,_#7F0FF2_0%,_#3705AB_100%)] rounded-[70px] md:rounded-[10rem] shadow-2xl px-4 md:px-12 pt-24 pb-12">
-                
-                {/* Title Section */}
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-2 tracking-wide drop-shadow-md">
-                        Business Skills
-                    </h2>
-                    
-                    <div className="h-1.5 w-20 bg-white/80 mx-auto rounded-full"></div>
-                </div>
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="flex flex-col gap-4">
+            {skillsLeft.map((skill) => (
+              <SkillCard key={skill.id} item={skill} />
+            ))}
+          </div>
+          <div className="flex flex-col gap-4">
+            {skillsRight.map((skill) => (
+              <SkillCard key={skill.id} item={skill} />
+            ))}
+          </div>
+        </div>
 
-                {/* Grid Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-                    {/* Left Column */}
-                    <div className="flex flex-col gap-4">
-                        {skillsLeft.map((skill, idx) => (
-                        <SkillCard key={skill.id} item={skill} index={idx} />
-                        ))}
-                    </div>
-
-                    {/* Right Column */}
-                    <div className="flex flex-col gap-4">
-                        {skillsRight.map((skill, idx) => (
-                        <SkillCard key={skill.id} item={skill} index={idx + 7} />
-                        ))}
-                    </div>
-                </div>
-
-                {/* Footer Note (Dashed Box) */}
-                <div className="border-2 border-dashed border-white/30 bg-black/10 rounded-xl p-4 text-center mx-auto max-w-3xl hover:border-white/60 transition-colors duration-300">
-                    <p className="text-white text-sm md:text-base font-medium leading-relaxed">
-                        [ বিঃদ্রঃ- উল্লেখিত দক্ষতাগুলো (Soft & hard Skills, IT Skills, Business Skills) শ্রেণি ও বয়স অনুযায়ী সিলেবাসভুক্ত হবে। ]
-                    </p>
-                </div>
-
-            </div>
+        {/* Footer Note */}
+        <div className="mt-16 text-center max-w-3xl mx-auto p-6 bg-purple-800/30 backdrop-blur-md rounded-3xl border border-purple-500/40 shadow-lg">
+          <p className="text-white text-sm md:text-base font-medium leading-relaxed">
+            [ বিঃদ্রঃ- উল্লেখিত দক্ষতাগুলো (Soft & hard Skills, IT Skills, Business Skills) শ্রেণি ও বয়স অনুযায়ী সিলেবাসভুক্ত হবে। ]
+          </p>
         </div>
       </Container>
     </section>
