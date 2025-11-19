@@ -37,6 +37,7 @@ const Header = () => {
     { name: "Contact", href: "/contact" },
     { name: "About Us", href: "/about-us" },
     { name: "Verification", href: "/verification" },
+    { name: "Fees", href: "/fees" },
   ];
 
   const activeColor = "#4F0187";
