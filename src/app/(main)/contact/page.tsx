@@ -152,9 +152,9 @@ const ContactPage = () => {
       </div>
 
       {/* --- Map Section (Simple & Clean) --- */}
-      <div className="max-w-6xl w-full mt-12 rounded-3xl overflow-hidden shadow-lg h-[300px] border-4 border-white">
+      <div className="max-w-6xl w-full mt-12 rounded-3xl overflow-hidden shadow-lg h-[500px] border-4 border-white">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.65823456789!2d90.5!3d23.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQyJzAwLjAiTiA5MMKwMzAnMDAuMCJF!5e0!3m2!1sen!2sbd!4v1234567890" 
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15596.226322142955!2d90.49229850304327!3d23.69518535429834!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b77e13f12695%3A0x83546d61ef6169e8!2sShwapno(Nimai%20kashari%20Bazar)!5e1!3m2!1sen!2sbd!4v1745154645391!5m2!1sen!2sbd"
           width="100%" 
           height="100%" 
           style={{ border: 0 }} 

@@ -7,6 +7,7 @@ import img1 from "../../../../public/img/img1.jpeg";
 import img2 from "../../../../public/img/img2.jpeg";
 import img3 from "../../../../public/img/img3.jpeg";
 import img4 from "../../../../public/img/img4.jpeg";
+import { FaArrowRight } from "react-icons/fa";
 
 const images = [
   { src: img1, alt: "Image 1", title: "Studio" },
@@ -25,7 +26,7 @@ const PhotoGallery = () => {
           <h1 className="text-3xl md:text-4xl font-bold text-[#4F0187]">ফটো গ্যালারি</h1>
         </div> 
 
-        <div className="flex h-[400px] w-full overflow-hidden rounded-xl shadow-lg">
+        <div className="flex h-[150px] md:h-[400px] w-full overflow-hidden rounded-xl shadow-lg">
           {images.map((img, index) => (
             <div
               key={index}
@@ -52,6 +53,15 @@ const PhotoGallery = () => {
             </div>
           ))}
         </div>
+        <div className="flex justify-end mt-2">
+        <button
+             
+              className="flex items-center gap-2 p-3 rounded-full bg-gradient-to-r from-[#D323F7] to-[#4F0187] text-white transition-all duration-300 hover:bg-blue-700 "
+              aria-label="Back to Top"
+            >
+              See More <FaArrowRight className="h-5 w-5" />
+            </button>
+            </div>
       </div>
     </Container>
   );

@@ -20,7 +20,7 @@ const allSkills = [
         label: (
             <span>
                 Microsoft Office
-                <ul className="list-disc pl-5 mt-1 text-xs font-normal text-gray-200/90">
+                <ul className="list-disc pl-5 mt-1 text-xs md:text-base font-normal text-gray-200/90">
                     <li>Microsoft Word</li>
                     <li>Microsoft Excel</li>
                     <li>Microsoft PowerPoint</li>
@@ -42,15 +42,15 @@ const ITSkills = () => {
         <Container>
             <div className="flex justify-center items-center py-10 md:py-20">
                 <div 
-                className="relative w-full max-w-[700px] pt-16 pb-8 px-6 shadow-2xl min-h-[600px] flex flex-col items-center justify-center"                 
+                className="relative w-full max-w-[1400px] mx-auto pt-16 pb-8 px-6 shadow-2xl min-h-[600px] flex flex-col items-center justify-center rounded-[70px] md:rounded-[8rem]"                 
                     style={{ 
-                        borderRadius: '8rem',
+                        
                         background: `linear-gradient(145deg, ${lightPurple}, ${primaryPurple})`
                     }}
                 >
                   
                     <div 
-                        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-16 flex items-center justify-center z-20"
+                        className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-32 h-16 flex items-center justify-center z-20"
                        
                     >
                         <div className="flex flex-col items-center justify-center -translate-y-1">
@@ -78,12 +78,12 @@ const ITSkills = () => {
                         {allSkills.map((skill, index) => (
                             <div key={index} className="flex items-center space-x-4 text-white">
                                 <div 
-                                    className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-white/20`}
+                                    className={`flex-shrink-0 w-8 md:w-12 h-8 md:h-12 flex items-center justify-center rounded-full bg-white/20`}
                                     style={{ color: skill.color }}
                                 >
                                     {skill.icon}
                                 </div>
-                                <div className="text-sm font-medium pt-1">
+                                <div className="text-sm md:text-2xl font-medium pt-1">
                                     {skill.label}
                                 </div>
                             </div>

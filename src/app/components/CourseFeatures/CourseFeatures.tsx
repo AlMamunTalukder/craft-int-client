@@ -59,23 +59,14 @@ const CourseFeatures = () => {
                 {/* Grid for Curriculum Features */}
                 {/* Setting grid to 3 columns on medium screens and up, centered within the container */}
                 <div className="flex justify-center">
-                    <div className="grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full max-w-4xl">
+                    <div className="grid gap-3 md:gap-12 grid-cols-2 md:grid-cols-3 w-full max-w-4xl">
                         {features.map((feature, index) => {
                             const Icon = feature.icon;
 
                             return (
                                 <div
                                     key={index}
-                                    className="
-                                        bg-white 
-                                        rounded-[25px] 
-                                        p-8 
-                                        flex 
-                                        flex-col 
-                                        items-center 
-                                        text-center 
-                                        shadow-xl
-                                    "
+                                    className=" bg-white rounded-[25px] p-2 md:p-8 flex flex-col items-center text-center shadow-xl         "
                                     style={{
                                         // Specific box shadow for a lift effect, similar to the image
                                         boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
@@ -84,7 +75,7 @@ const CourseFeatures = () => {
                                     {/* Icon Container - larger, white background, black icon */}
                                     {/* The icon itself uses 'currentColor', so setting a class on the wrapper will color it */}
                                     <div className="
-                                        mb-4 
+                                        md:mb-4 
                                         w-20 
                                         h-20 
                                         p-4 

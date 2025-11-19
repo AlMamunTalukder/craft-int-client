@@ -30,7 +30,7 @@ const Consultancy = () => {
   
    
   return (
-    <section className="py-16 bg-white relative z-10 overflow-hidden">
+    <section className="py-16 bg-white relative z-10 overflow-hidden"> 
       <Container>
         
 
