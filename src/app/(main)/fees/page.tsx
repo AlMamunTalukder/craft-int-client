@@ -67,7 +67,7 @@ const feeData = [
             { label: "মাসিক আবাসিক ফি (খাবার সহ)", amount: "৮,০০০/-", icon: Home },
             { label: "এককালীন আবাসন ফি", amount: "১,৫০০/-", icon: Coins },
         ],
-        total: "১৩,৫০০/-",
+        total: "৩,০০০০/-",
         isResidential: true
     }
 ];
