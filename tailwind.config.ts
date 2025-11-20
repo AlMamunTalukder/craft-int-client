@@ -12,6 +12,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        bangla: ["var(--font-bangla)"],   // Bangla font
+        sans: ["Inter", "sans-serif"],   // English font (default)
+      }
     },
   },
   plugins: [],

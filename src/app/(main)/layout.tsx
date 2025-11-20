@@ -8,7 +8,7 @@ import Footer from "../shared/Footer/Footer";
 
 const siliguri = Hind_Siliguri({
   weight: "400",
-  subsets: ["latin"],
+  subsets: ["bengali"],
 });
 
 

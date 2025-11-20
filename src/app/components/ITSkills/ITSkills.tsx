@@ -96,7 +96,7 @@ const allSkills = [
 
 const ITSkills = () => {
     return (
-        <section className="relative min-h-screen py-20 overflow-hidden bg-[#4F0187] flex items-center justify-center font-sans">
+        <section className="relative min-h-screen py-10 md:py-20 overflow-hidden bg-[#4F0187] flex items-center justify-center font-sans">
             
             {/* Modern Abstract Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -109,7 +109,7 @@ const ITSkills = () => {
             <div className="relative z-10 w-full max-w-6xl px-4">
                 
                 {/* Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-9 lg:mb-16">
                     <div className="inline-block px-4 py-1 rounded-full border border-[#8A2BE2]/30 bg-[#8A2BE2]/10 mb-4">
                         <span className="text-[#D8B4FE] text-sm font-medium tracking-widest uppercase">Technical Expertise</span>
                     </div>
@@ -120,14 +120,14 @@ const ITSkills = () => {
                 </div>
 
                 {/* Bento Grid Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {allSkills.map((skill, idx) => {
                         const Icon = skill.icon;
                         return (
                             <div 
                                 key={idx}
                                 className={`
-                                    group relative p-6 
+                                    group relative p-3 md:p-6 
                                     rounded-2xl 
                                     bg-[#1A0B2E]/60 backdrop-blur-md
                                     border border-white/5
@@ -137,7 +137,8 @@ const ITSkills = () => {
                                     ${skill.border} hover:border-opacity-50
                                 `}
                             >
-                                <div className="flex items-center gap-5">
+                                <div className="flex flex-col sm:flex-row md:items-start items-center gap-4">
+
                                     {/* Icon Box */}
                                     <div className={`
                                         w-14 h-14 rounded-xl flex items-center justify-center shrink-0
@@ -149,11 +150,11 @@ const ITSkills = () => {
 
                                     {/* Text Content */}
                                     <div>
-                                        <h3 className="text-lg font-semibold text-white/90 group-hover:text-white transition-colors">
+                                        <h3 className="text-center md:text-start md:text-lg font-semibold text-white/90 group-hover:text-white transition-colors">
                                             {skill.label}
                                         </h3>
                                         {skill.sub && (
-                                            <p className="text-xs text-white/50 mt-1 font-medium">
+                                            <p className="text-center text-xs text-white/50 mt-1 font-medium">
                                                 {skill.sub}
                                             </p>
                                         )}
