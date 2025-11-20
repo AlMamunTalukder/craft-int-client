@@ -24,8 +24,8 @@ export default function SubHeader() {
         <div className="lg:flex justify-between items-center lg:space-y-0 space-y-3">
           <div className="flex lg:justify-start justify-center gap-2">
             <div className="text-center">
-              <p>ভর্তি হতে যোগাযোগ করুন   </p>
-              <p>01310726000</p>
+              <p>অগ্রিম ভর্তিতে ২৫% ছাড়...!</p>
+              
             </div>
           </div>
 {/* 

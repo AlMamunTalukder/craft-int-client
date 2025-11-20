@@ -95,10 +95,10 @@ const FeeStructure = () => {
                 <div className="text-center mb-20">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
                         <Banknote size={16} className="text-[#D8B4FE]" />
-                        <span className="text-gray-300 text-sm font-medium tracking-wider">ACADEMIC YEAR 2025</span>
+                        <span className="text-gray-300 text-sm font-medium tracking-wider">একাডেমিক ফি তালিকা </span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
-                        একাডেমিক <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]">ফি তালিকা</span>
+                        অগ্রিম ভর্তিতে ২৫% <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]"> ছাড়...!</span>
                     </h1>
                     <p className="text-gray-400 max-w-2xl mx-auto text-lg">
                         ক্রাফট ইন্টারন্যাশনাল ইনস্টিটিউট এর বিভিন্ন শ্রেণির ভর্তি এবং মাসিক বেতনের বিস্তারিত তালিকা নিচে দেওয়া হলো।
@@ -124,7 +124,7 @@ const FeeStructure = () => {
                                 </span>
                             </div>
 
-                            <div className="bg-[#0A0112]/80 rounded-[20px] p-3 md:p-6 h-full flex flex-col relative z-10">
+                            <div className="bg-[#2f0950] rounded-[20px] p-3 md:p-6 h-full flex flex-col relative z-10">
                                 
                                 {/* Card Header */}
                                 <div className="mb-8 border-b border-white/5 pb-6 mt-3 md:mt-0">

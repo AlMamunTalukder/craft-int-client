@@ -1,214 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// import React from 'react';
-// import { HiAcademicCap } from "react-icons/hi2";
-// import { IoBookOutline } from "react-icons/io5";
-
-// const DepartmentSection = () => {
-//     return (
-//         <div className="relative bg-white overflow-hidden flex flex-col items-center justify-center p-4">
-
-//             {/* Main Content Area */}
-//             <div className="flex flex-col items-center justify-center md:w-full md:max-w-6xl py-20">
-//                 <h2 className="text-3xl font-bold text-gray-800 mb-20 tracking-wider">
-//                     OUR DEPARTMENT
-//                 </h2>
-
-//                 {/* ALWAYS ROW — RESPONSIVE SCROLL FOR SMALL DEVICES */}
-//                 <div className="flex justify-center md:w-full md:px-4 gap-8">
-
-//                     {/* Academic Department */}
-//                     <div className="relative flex flex-col items-center flex-shrink-0">
-
-//                         {/* LEFT BRACKET */}
-//                         <svg
-//                             className="absolute -left-[40px] md:-left-[55px] top-[70px] md:top-[95px] -translate-y-1/2"
-//                             width="100"
-//                             height="170"
-//                             viewBox="15 10 50 160"
-//                             fill="none"
-//                             stroke="#8A2BE2"
-//                             strokeWidth="12"
-//                         >
-//                             <path d="M40 10 C10 50 10 120 40 150" strokeLinecap="round" />
-//                         </svg>
-
-//                         <div className="w-28 h-28 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-[#8A2BE2] to-[#4F0187] flex items-center justify-center shadow-lg relative z-10 border-[10px] md:border-[13px] border-gray-200">
-//                             <HiAcademicCap className="text-white w-16 h-16 md:w-20 md:h-20" />
-//                         </div>
-
-//                         <p className="mt-6 text-base md:text-lg font-semibold text-gray-700 tracking-wide text-center">
-//                             ACADEMIC <br/> DEPARTMENT
-//                         </p>
-//                     </div>
-
-//                     {/* Hifz Quran Department */}
-//                     <div className="relative flex flex-col items-center flex-shrink-0">
-
-//                         {/* RIGHT BRACKET */}
-//                         <svg
-//                             className="absolute -right-[60px] md:-right-20 top-[75px] md:top-[105px] -translate-y-1/2"
-//                             width="100"
-//                             height="180"
-//                             viewBox="5 25 50 160"
-//                             fill="none"
-//                             stroke="#8A2BE2"
-//                             strokeWidth="12"
-//                         >
-//                             <path d="M10 20 C40 50 40 120 10 150" strokeLinecap="round" />
-//                         </svg>
-
-//                         <div className="w-28 h-28 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-[#8A2BE2] to-[#4F0187] flex items-center justify-center shadow-lg relative z-10 border-[10px] md:border-[13px] border-gray-200">
-//                             <IoBookOutline className="text-white w-16 h-16 md:w-20 md:h-20" />
-//                         </div>
-
-//                         <p className="mt-6 text-base md:text-lg font-semibold text-gray-700 tracking-wide text-center">
-//                             HIFZ QURAN
-//                         </p>
-//                     </div>
-
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default DepartmentSection;
-
-
-// import React from 'react';
-// import { GraduationCap, BookOpen, Sparkles } from "lucide-react";
-
-// const departments = [
-//     {
-//         id: 1,
-//         title: "ACADEMIC",
-//         subtitle: "DEPARTMENT",
-//         icon: GraduationCap,
-//         description: "General Education & Modern Science",
-//         color: "text-cyan-400",
-//         bg: "group-hover:shadow-cyan-500/50",
-//         border: "group-hover:border-cyan-400/50",
-//         gradient: "from-cyan-500/20 to-blue-500/5"
-//     },
-//     {
-//         id: 2,
-//         title: "HIFZ QURAN",
-//         subtitle: "DEPARTMENT",
-//         icon: BookOpen,
-//         description: "Tahfizul Quran & Islamic Studies",
-//         color: "text-fuchsia-400",
-//         bg: "group-hover:shadow-fuchsia-500/50",
-//         border: "group-hover:border-fuchsia-400/50",
-//         gradient: "from-fuchsia-500/20 to-purple-500/5"
-//     }
-// ];
-
-// const DepartmentSection = () => {
-//     return (
-//         <section className="relative py-24 bg-[#0B001A] overflow-hidden font-sans">
-            
-//             {/* Background Decorative Elements */}
-//             <div className="absolute inset-0 pointer-events-none">
-//                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#4F0187] opacity-20 blur-[120px]"></div>
-//                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-900/20 blur-[100px]"></div>
-//                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-900/20 blur-[100px]"></div>
-//             </div>
-
-//             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-//                 {/* Header */}
-//                 <div className="text-center mb-20">
-//                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 mb-4">
-//                         <Sparkles size={14} className="text-purple-300" />
-//                         <span className="text-xs font-bold tracking-[0.2em] text-purple-200 uppercase">
-//                             Core Faculties
-//                         </span>
-//                     </div>
-//                     <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
-//                         OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]">DEPARTMENTS</span>
-//                     </h2>
-//                     <div className="w-24 h-1.5 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] mx-auto rounded-full mt-6 shadow-lg shadow-purple-500/30"></div>
-//                 </div>
-
-//                 {/* Cards Container */}
-//                 <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 items-stretch">
-                    
-//                     {departments.map((dept) => {
-//                         const Icon = dept.icon;
-//                         return (
-//                             <div 
-//                                 key={dept.id}
-//                                 className={`
-//                                     group relative w-full md:w-[400px]
-//                                     bg-[#1A0B2E]/40 backdrop-blur-xl
-//                                     border border-white/10 rounded-[40px]
-//                                     p-8 md:p-12
-//                                     flex flex-col items-center text-center
-//                                     transition-all duration-500 ease-out
-//                                     hover:-translate-y-4
-//                                     ${dept.border}
-//                                     hover:shadow-2xl ${dept.bg}
-//                                 `}
-//                             >
-//                                 {/* Inner Gradient Overlay */}
-//                                 <div className={`absolute inset-0 rounded-[40px] bg-gradient-to-b ${dept.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
-                                
-//                                 {/* Icon Circle with "Bracket" effect */}
-//                                 <div className="relative mb-8">
-//                                     {/* Modern Abstract Brackets (Rotating Rings) */}
-//                                     <div className="absolute inset-0 -m-4 border-2 border-dashed border-white/10 rounded-full animate-[spin_10s_linear_infinite] group-hover:border-white/30 transition-colors"></div>
-//                                     <div className="absolute inset-0 -m-4 border-2 border-white/5 rounded-full"></div>
-
-//                                     <div className="relative w-24 h-24 md:w-32 md:h-32 bg-white/5 rounded-full flex items-center justify-center border border-white/10 shadow-inner group-hover:scale-110 transition-transform duration-500">
-//                                         <Icon size={48} className={`${dept.color} drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]`} />
-//                                     </div>
-//                                 </div>
-
-//                                 {/* Content */}
-//                                 <div className="relative z-10">
-//                                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:tracking-wide transition-all duration-300">
-//                                         {dept.title}
-//                                     </h3>
-//                                     <p className="text-sm md:text-base font-medium text-white/60 uppercase tracking-widest mb-4">
-//                                         {dept.subtitle}
-//                                     </p>
-                                    
-//                                     {/* Divider */}
-//                                     <div className="w-12 h-0.5 bg-white/20 mx-auto mb-4 group-hover:w-full group-hover:bg-white/40 transition-all duration-500"></div>
-                                    
-//                                     <p className="text-gray-400 text-sm font-light leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
-//                                         {dept.description}
-//                                     </p>
-//                                 </div>
-
-//                                 {/* Bottom Glow Spot */}
-//                                 <div className={`absolute -bottom-10 left-1/2 -translate-x-1/2 w-32 h-32 ${dept.color.replace('text-', 'bg-')}/20 blur-3xl rounded-full group-hover:opacity-100 opacity-0 transition-opacity duration-500`}></div>
-//                             </div>
-//                         );
-//                     })}
-
-//                 </div>
-//             </div>
-//         </section>
-//     );
-// };
-
-// export default DepartmentSection;
-
+"use client"
 import React from 'react';
-import { GraduationCap, Sparkles } from "lucide-react";
+import { 
+    GraduationCap, 
+    Sparkles, 
+    BookOpen, 
+    Atom, 
+    Microscope, 
+    Calculator, 
+    Moon, 
+    Scroll,
+    PenTool 
+} from "lucide-react";
 
-// Custom Quran on Rehal Icon Component (Solid Style like reference)
-const QuranIcon = ({ size = 24, className}:any ) => (
-    <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 67.42 88.39" 
-        width={size} 
-        height={size} 
-        fill="currentColor" 
+// --- 1. Custom Quran Icon (Kept as is) ---
+const QuranIcon = ({ size = 24, className }: any) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 67.42 88.39"
+        width={size}
+        height={size}
+        fill="currentColor"
         className={className}
-    > 
+    >
         <g id="Layer_1-2" data-name="Layer 1">
             <g>
                 <path d="m63.95,0c.58.3,1.2.53,1.72.91,1.11.81,1.69,1.93,1.74,3.32,0,.2,0,.4,0,.6,0,20.23,0,40.46,0,60.7,0,2.4-1.14,4.09-3.2,4.65-.52.14-1.08.18-1.62.18-16.32,0-32.64,0-48.96,0-1.6,0-2.03-.45-2.03-2.06,0-22.1,0-44.21-.01-66.31,0-.9.25-1.56,1.05-1.99,17.1,0,34.2,0,51.3,0Zm-24.46,61.19c2.2-.58,3.77-1.94,4.78-3.99.38-.78,1.09-1.12,1.95-1.24,2.96-.41,4.95-2.01,5.82-4.9.13-.44.33-.64.78-.75,3.32-.8,5.4-3.39,5.41-6.77.02-5.32.02-10.65,0-15.97-.01-3.34-2.11-5.98-5.34-6.75-.52-.12-.73-.33-.89-.84-.87-2.75-2.74-4.4-5.62-4.78-1.1-.15-1.85-.65-2.34-1.65-.74-1.5-1.88-2.65-3.46-3.2-.9-.31-1.27-.69-1.19-1.68.07-.88-.62-1.47-1.46-1.45-.8.01-1.38.57-1.44,1.42-.03.42,0,.85,0,1.28-2.23.6-3.8,1.89-4.77,3.89-.43.89-1.21,1.23-2.15,1.37-2.89.43-4.82,2.03-5.68,4.84-.15.47-.34.67-.83.79-3.24.76-5.35,3.4-5.37,6.73-.03,5.35-.03,10.7,0,16.05.02,3.33,2.13,5.93,5.38,6.71.48.12.68.33.83.81.86,2.76,2.74,4.41,5.6,4.82,1.11.16,1.77.69,2.38,1.6.68,1,1.53,1.92,2.45,2.71.58.5,1.41.71,2.12,1.05.12,2.01.46,2.62,1.49,2.63,1.01.01,1.32-.53,1.55-2.72Z"></path>
@@ -221,6 +35,7 @@ const QuranIcon = ({ size = 24, className}:any ) => (
     </svg>
 );
 
+// --- 2. Configuration Data ---
 const departments = [
     {
         id: 1,
@@ -228,7 +43,7 @@ const departments = [
         subtitle: "DEPARTMENT",
         icon: GraduationCap,
         description: "General Education & Modern Science",
-        color: "text-cyan-400",
+        color: "text-cyan-300",
         bg: "group-hover:shadow-cyan-500/50",
         border: "group-hover:border-cyan-400/50",
         gradient: "from-cyan-500/20 to-blue-500/5"
@@ -237,102 +52,160 @@ const departments = [
         id: 2,
         title: "HIFZ QURAN",
         subtitle: "DEPARTMENT",
-        icon: QuranIcon, 
+        icon: QuranIcon,
         description: "Tahfizul Quran & Islamic Studies",
-        color: "text-fuchsia-400",
+        color: "text-fuchsia-300",
         bg: "group-hover:shadow-fuchsia-500/50",
         border: "group-hover:border-fuchsia-400/50",
         gradient: "from-fuchsia-500/20 to-purple-500/5"
     }
 ];
 
+// --- 3. Background Floating Icons Configuration ---
+const floatingIcons = [
+    { Icon: BookOpen, top: '10%', left: '10%', size: 40, delay: '0s', duration: '6s', color: 'text-cyan-200/20' }, // General
+    { Icon: Atom, top: '15%', right: '15%', size: 48, delay: '1s', duration: '8s', color: 'text-purple-200/20' }, // Science
+    { Icon: Moon, top: '40%', left: '5%', size: 32, delay: '2s', duration: '7s', color: 'text-fuchsia-200/20' }, // Islamic
+    { Icon: Microscope, bottom: '20%', left: '15%', size: 44, delay: '3s', duration: '9s', color: 'text-blue-200/20' }, // Science
+    { Icon: Scroll, bottom: '15%', right: '10%', size: 40, delay: '1.5s', duration: '7.5s', color: 'text-amber-100/20' }, // History/Islamic
+    { Icon: Calculator, top: '50%', right: '5%', size: 30, delay: '4s', duration: '6.5s', color: 'text-indigo-200/20' }, // Math
+    { Icon: PenTool, bottom: '40%', right: '45%', size: 28, delay: '0.5s', duration: '5s', color: 'text-white/10' }, // Writing
+];
+
 const DepartmentSection = () => {
     return (
-        <section className="relative py-12 md:py-24 bg-[#0B001A] overflow-hidden font-sans">
-            
-            {/* Background Decorative Elements */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#4F0187] opacity-20 blur-[120px]"></div>
-                <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-900/20 blur-[100px]"></div>
-                <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-900/20 blur-[100px]"></div>
+        <section className="relative py-12 md:py-24 bg-[#11031d] overflow-hidden font-sans">
+
+            {/* --- LUMINOUS ANIMATED BACKGROUND --- */}
+            <div className="absolute inset-0 w-full h-full overflow-hidden">
+
+                {/* Base Gradient - No Black */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#3b0764] via-[#581c87] to-[#330953] opacity-100"></div>
+
+                {/* Massive Glowing Light Orbs */}
+                <div className="absolute top-[-30%] left-[-20%] w-[1000px] h-[1000px] bg-[#A855F7] opacity-30 rounded-full blur-[150px] animate-pulse"></div>
+                <div className="absolute bottom-[-30%] right-[-20%] w-[1000px] h-[1000px] bg-[#E879F9] opacity-30 rounded-full blur-[150px] animate-pulse delay-1000"></div>
+                <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-indigo-500/20 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2"></div>
+
+                {/* Subtle Pattern Overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+
+                {/* --- NEW: Educational Floating Icons --- */}
+                {floatingIcons.map((item, index) => (
+                    <div
+                        key={index}
+                        className={`absolute animate-float ${item.color}`}
+                        style={{
+                            top: item.top,
+                            left: item.left,
+                            right: item.right,
+                            bottom: item.bottom,
+                            animationDelay: item.delay,
+                            animationDuration: item.duration,
+                        }}
+                    >
+                        <item.Icon size={item.size} strokeWidth={1.5} />
+                    </div>
+                ))}
+
+                {/* Original Floating Particles/Stars (Kept for extra magic) */}
+                <div className="absolute top-1/4 left-1/4 w-1.5 h-1.5 bg-white rounded-full animate-[ping_3s_infinite] shadow-[0_0_10px_white]"></div>
+                <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-purple-200 rounded-full animate-[ping_5s_infinite] shadow-[0_0_10px_#E879F9] delay-1000"></div>
+                <div className="absolute bottom-10 left-1/2 w-1 h-1 bg-cyan-200 rounded-full animate-[ping_4s_infinite] delay-500"></div>
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
+
                 {/* Header */}
                 <div className="text-center mb-10 md:mb-20">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 mb-3 md:mb-4">
-                        <Sparkles className="text-purple-300 w-3 h-3 md:w-4 md:h-4" />
-                        <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-purple-200 uppercase">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-purple-300/40 bg-white/10 mb-3 md:mb-4 backdrop-blur-xl shadow-[0_0_20px_rgba(232,121,249,0.4)]">
+                        <Sparkles className="text-[#E879F9] w-3 h-3 md:w-4 md:h-4 animate-pulse" />
+                        <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-purple-100 uppercase">
                             Core Faculties
                         </span>
                     </div>
-                    <h2 className="text-3xl md:text-6xl font-extrabold text-white tracking-tight">
-                        OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]">DEPARTMENTS</span>
+                    <h2 className="text-3xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-[0_0_25px_rgba(168,85,247,0.5)]">
+                        OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E879F9] via-white to-[#A855F7]">DEPARTMENTS</span>
                     </h2>
-                    <div className="w-16 md:w-24 h-1 md:h-1.5 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] mx-auto rounded-full mt-4 md:mt-6 shadow-lg shadow-purple-500/30"></div>
+                    <div className="w-24 h-1.5 bg-gradient-to-r from-[#A855F7] to-[#E879F9] mx-auto rounded-full mt-6 shadow-[0_0_20px_rgba(232,121,249,0.8)]"></div>
                 </div>
 
-                {/* Cards Container - Grid Layout for Side-by-Side View */}
+                {/* Cards Container */}
                 <div className="grid grid-cols-2 gap-3 md:gap-16 max-w-5xl mx-auto">
-                    
+
                     {departments.map((dept) => {
                         const Icon = dept.icon;
                         return (
-                            <div 
+                            <div
                                 key={dept.id}
                                 className={`
                                     group relative w-full
-                                    bg-[#1A0B2E]/40 backdrop-blur-xl
-                                    border border-white/10 
+                                    bg-[#4c1d95]/40 backdrop-blur-2xl
+                                    border border-white/20 
                                     rounded-[24px] md:rounded-[40px]
                                     p-4 md:p-12
                                     flex flex-col items-center text-center
                                     transition-all duration-500 ease-out
                                     hover:-translate-y-2 md:hover:-translate-y-4
                                     ${dept.border}
-                                    hover:shadow-2xl ${dept.bg}
+                                    hover:shadow-[0_20px_60px_-15px_rgba(168,85,247,0.4)] ${dept.bg}
+                                    overflow-hidden
                                 `}
                             >
                                 {/* Inner Gradient Overlay */}
                                 <div className={`absolute inset-0 rounded-[24px] md:rounded-[40px] bg-gradient-to-b ${dept.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
-                                
+
                                 {/* Icon Circle with "Bracket" effect */}
                                 <div className="relative mb-4 md:mb-8">
-                                    {/* Modern Abstract Brackets (Rotating Rings) */}
-                                    <div className="absolute inset-0 -m-2 md:-m-4 border-2 border-dashed border-white/10 rounded-full animate-[spin_10s_linear_infinite] group-hover:border-white/30 transition-colors"></div>
-                                    <div className="absolute inset-0 -m-2 md:-m-4 border-2 border-white/5 rounded-full"></div>
+                                    {/* Rotating Bright Rings */}
+                                    <div className="absolute inset-0 -m-2 md:-m-4 border-2 border-dashed border-white/20 rounded-full animate-[spin_15s_linear_infinite] group-hover:border-white/50 transition-colors"></div>
+                                    <div className="absolute inset-0 -m-2 md:-m-4 border-2 border-white/10 rounded-full"></div>
 
-                                    <div className="relative w-14 h-14 md:w-32 md:h-32 bg-white/5 rounded-full flex items-center justify-center border border-white/10 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                                        <Icon className={`${dept.color} w-7 h-7 md:w-14 md:h-14 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]`} />
+                                    <div className="relative w-14 h-14 md:w-32 md:h-32 bg-gradient-to-br from-[#581c87] to-[#3b0764] rounded-full flex items-center justify-center border border-white/20 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] group-hover:scale-110 transition-transform duration-500">
+                                        <Icon className={`${dept.color} w-7 h-7 md:w-14 md:h-14 drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]`} />
                                     </div>
                                 </div>
 
                                 {/* Content */}
                                 <div className="relative z-10 w-full">
-                                    <h3 className="text-sm md:text-3xl font-bold text-white mb-1 md:mb-2 group-hover:tracking-wide transition-all duration-300">
+                                    <h3 className="text-sm md:text-3xl font-bold text-white mb-1 md:mb-2 group-hover:tracking-wide transition-all duration-300 drop-shadow-md">
                                         {dept.title}
                                     </h3>
-                                    <p className="text-[10px] md:text-base font-medium text-white/60 uppercase tracking-widest mb-3 md:mb-4">
+                                    <p className="text-[10px] md:text-base font-medium text-purple-200 uppercase tracking-widest mb-3 md:mb-4 group-hover:text-white">
                                         {dept.subtitle}
                                     </p>
-                                    
+
                                     {/* Divider */}
-                                    <div className="w-8 md:w-12 h-0.5 bg-white/20 mx-auto mb-3 md:mb-4 group-hover:w-full group-hover:bg-white/40 transition-all duration-500"></div>
-                                    
-                                    <p className="text-gray-400 text-[10px] md:text-sm font-light leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+                                    <div className="w-8 md:w-12 h-0.5 bg-white/30 mx-auto mb-3 md:mb-4 group-hover:w-full group-hover:bg-white/70 transition-all duration-500"></div>
+
+                                    <p className="text-purple-100 text-[10px] md:text-sm font-light leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity">
                                         {dept.description}
                                     </p>
                                 </div>
 
                                 {/* Bottom Glow Spot */}
-                                <div className={`absolute -bottom-10 left-1/2 -translate-x-1/2 w-20 h-20 md:w-32 md:h-32 ${dept.color.replace('text-', 'bg-')}/20 blur-2xl md:blur-3xl rounded-full group-hover:opacity-100 opacity-0 transition-opacity duration-500`}></div>
+                                <div className={`absolute -bottom-10 left-1/2 -translate-x-1/2 w-24 h-24 md:w-40 md:h-40 ${dept.color.replace('text-', 'bg-')}/40 blur-[60px] rounded-full group-hover:opacity-100 opacity-0 transition-opacity duration-500`}></div>
                             </div>
                         );
                     })}
 
                 </div>
             </div>
+
+            <style jsx global>{`
+                .animate-float {
+                    animation: float 6s ease-in-out infinite;
+                }
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px); }
+                    50% { transform: translateY(-20px); }
+                }
+                /* Existing spin animation */
+                @keyframes spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+            `}</style>
         </section>
     );
 };

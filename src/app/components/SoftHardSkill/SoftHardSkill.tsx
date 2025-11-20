@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { Check, Lightbulb, BrainCircuit, Zap, ArrowRight } from "lucide-react";
+import { Check, Lightbulb, Zap, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import soft from "../../../../public/img/Asset4.png";
+
+
 
 const skillsLeft = [
   { id: 1, title: "Communication Skill - যোগাযোগের দক্ষতা।" },
@@ -23,7 +27,7 @@ const SkillRow = ({ item, index }:any) => (
     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
     {/* Serial Number Badge */}
-    <div className="relative shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#0B001A] border border-white/10 flex items-center justify-center group-hover:border-purple-500/50 transition-colors">
+    <div className="relative shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#ffffff] border border-purple-500 flex items-center justify-center group-hover:border-purple-500/50 transition-colors">
       <span className="text-gray-500 font-mono font-bold text-sm md:text-base group-hover:text-purple-400">
         {index + 1 < 10 ? `0${index + 1}` : index + 1}
       </span>
@@ -52,7 +56,7 @@ const SkillRow = ({ item, index }:any) => (
 
 const SoftSkills = () => {
   return (
-    <section className="relative py-24 bg-[#0B001A] overflow-hidden ">
+    <section className="relative py-24 bg-[#2c154c] overflow-hidden ">
       
       {/* Background Effects (Matching other pages) */}
       <div className="absolute inset-0 pointer-events-none">
@@ -68,12 +72,19 @@ const SoftSkills = () => {
           
           {/* Header Section */}
           <div className="text-center mb-16 md:mb-20">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 mb-4 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
-                 <BrainCircuit size={16} className="text-purple-300" />
-                 <span className="text-xs font-bold tracking-[0.2em] text-purple-200 uppercase">
-                   Personal Growth
-                 </span>
-              </div>
+             <div className="flex justify-center mb-6">
+            <div className="w-32 h-32 m-5 text-[#E0B0FF] group-hover:text-white transition-colors duration-300 drop-shadow-[0_0_15px_rgba(224,176,255,0.6)] ">
+            
+              <Image 
+                src={soft} 
+                alt="Business Icon" 
+                className="w-full h-full object-contain"
+                width={100}
+                height={100}
+              />
+            </div>
+          </div>
+              
               <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">
                   SOFT <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] via-white to-[#A855F7]">SKILLS</span>
               </h2>

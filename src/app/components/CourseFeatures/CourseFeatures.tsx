@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 
 // --- SVG Icons (Provided by you) ---
@@ -17,6 +18,10 @@ const ITicon = () => (<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" fill=
 
 
 const SoftSkillIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" fill="currentColor" data-name="Layer 2" viewBox="0 0 94.08 116.2"><g id="Layer_1-2" data-name="Layer 1"><g><path d="m62.36,87.76h-30.54c-.29-1.57-.5-3.19-.9-4.76-1.2-4.77-3.71-8.77-7.24-12.19-5.19-5.04-8.33-11.2-9.56-18.32-2.63-15.13,6.01-30.59,20.25-36.3,19.5-7.82,40.97,3.45,45.26,24.02,2.43,11.65-.73,21.96-9.12,30.45-4.12,4.16-6.9,8.9-7.84,14.69-.07.4-.1.81-.15,1.22-.05.4-.11.81-.16,1.2Zm-30.81-54.25c-.31.25-.84.51-1.11.94-.79,1.24-1.49,2.54-2.22,3.82-1.02,1.79-1.1,1.92.54,3.14,1.67,1.24,2.62,2.61,1.98,4.75-.09.31-.12.67-.04.98.72,2.69-.24,4.63-2.55,6.06-.74.46-.76,1.19-.32,1.94.9,1.52,1.77,3.04,2.65,4.57.41.71.96.97,1.75.67.38-.15.8-.22,1.16-.4,1.61-.82,3.1-.91,4.44.55.29.32.72.61,1.13.71,2.74.7,3.83,2.57,3.94,5.25.04.86.62,1.27,1.52,1.25,1.23-.03,2.46,0,3.69,0,2.95,0,2.9.29,3.36-2.85.23-1.53.77-2.6,2.37-2.99.58-.14,1.2-.44,1.62-.85,1.9-1.9,3.94-1.93,6.2-.73.94.5,1.62.07,2.11-.82.69-1.26,1.43-2.48,2.15-3.73.95-1.65,1-1.88-.56-3.05-1.64-1.23-2.71-2.55-2.04-4.72.09-.3.11-.67.03-.98-.65-2.67.23-4.64,2.56-6.06.8-.49.8-1.26.34-2.05-.87-1.48-1.73-2.97-2.58-4.47-.43-.75-1.02-1.02-1.85-.68-.42.17-.87.25-1.27.45-1.54.76-2.95.78-4.22-.58-.35-.37-.86-.7-1.35-.83-2.67-.69-3.66-2.54-3.77-5.11-.04-.92-.63-1.35-1.58-1.33-1.48.03-2.95,0-4.43,0-2.01,0-2.04.02-2.43,1.94-.13.64-.3,1.28-.37,1.93-.09.83-.54,1.26-1.28,1.63-1.45.74-2.81,1.67-4.27,2.4-.59.29-1.37.44-2.01.33-1.04-.18-2.02-.64-3.28-1.06Z"></path><path d="m62.18,99.78c.8.99,1.82,1.84,2.28,2.92,1.19,2.77-.91,5.72-4.02,5.84-1.55.06-3.11.01-4.73.01-1.18,4.98-4.11,8-9.41,7.62-4.52-.32-6.95-3.24-7.9-7.62-1.39,0-2.78,0-4.16,0-2.52-.01-4.2-1.15-4.79-3.23-.58-2.04.3-3.83,2.52-5.16.06-.03.08-.12.1-.15-.62-.53-1.33-.97-1.83-1.58-1.06-1.32-1.25-2.84-.56-4.39.75-1.7,2.15-2.56,3.98-2.62,1.97-.06,3.93-.02,5.9-.02,6.8,0,13.61,0,20.41,0,2.46,0,4.17,1.24,4.71,3.34.51,1.98-.37,3.78-2.43,5-.1.06-.17.15-.05.04Z"></path><path d="m48.86,3.69c0,.65.05,1.31-.01,1.96-.1,1.05-.77,1.66-1.78,1.67-1.02.01-1.75-.57-1.82-1.62-.09-1.34-.09-2.7,0-4.04.06-1.03.71-1.62,1.78-1.65,1.03-.03,1.73.61,1.84,1.73.06.65.01,1.31.01,1.96,0,0,0,0,0,0Z"></path><path d="m3.55,48.85c-.65,0-1.31.07-1.96-.01C.56,48.71-.01,48.07,0,47.01c.01-1,.56-1.68,1.54-1.74,1.38-.1,2.78-.1,4.16-.01,1.05.06,1.63.8,1.61,1.82-.02,1.02-.63,1.68-1.68,1.78-.69.06-1.39.01-2.08.01,0,0,0,0,0-.01Z"></path><path d="m90.36,48.93c-.69-.03-1.39,0-2.08-.11-.99-.15-1.52-.83-1.52-1.79,0-.96.54-1.7,1.53-1.77,1.42-.09,2.86-.1,4.28,0,.98.07,1.51.78,1.5,1.77,0,1-.54,1.64-1.52,1.77-.72.09-1.47.02-2.2.02,0,.03,0,.06,0,.1Z"></path><path d="m24.74,6.01c.27.2.91.47,1.25.96.7,1,1.29,2.08,1.85,3.17.51.98.24,1.93-.6,2.47-.87.55-1.94.33-2.56-.63-.66-1.03-1.28-2.09-1.83-3.19-.66-1.32.16-2.73,1.89-2.78Z"></path><path d="m71.87,7.93c-1.12,1.67-2.08,3.26-3.24,4.68-.24.3-1.45.2-1.86-.15-.45-.38-.86-1.4-.66-1.88.59-1.42,1.39-2.78,2.34-3.99.31-.4,1.38-.51,1.96-.32.52.17.85.93,1.46,1.65Z"></path><path d="m12.87,25.96c0,1.61-1.28,2.55-2.47,2-1.25-.58-2.45-1.31-3.61-2.07-.82-.54-1-1.4-.56-2.28.44-.89,1.3-1.29,2.16-.89,1.36.63,2.65,1.44,3.91,2.26.35.23.47.8.57.98Z"></path><path d="m88.07,24.74c-.2.27-.47.91-.95,1.25-1,.71-2.08,1.29-3.17,1.85-1.02.53-2.03.21-2.54-.7-.47-.85-.23-1.87.68-2.45,1.12-.58,2.29-1.14,3.25-1.94.48-.4.83-1.36.72-1.97-.11-.59-.89-1.06-1.3-1.49Z"></path><path d="m7.9,71.86c-.7-.62-1.51-1-1.65-1.54-.16-.61.06-1.66.51-2.02,1.1-.89,2.37-1.63,3.69-2.14.54-.21,1.59.14,2,.6.36.41.44,1.69.12,1.95-1.39,1.14-2.97,2.04-4.66,3.15Z"></path><path d="m86.59,71.62c-.65-.18-.99-.22-1.27-.37-1.11-.61-2.23-1.21-3.29-1.9-.9-.58-1.09-1.63-.58-2.47.52-.86,1.48-1.16,2.45-.65,1.12.58,2.29,1.14,3.25,1.94.48.4.83,1.36.72,1.97-.11.59-.89,1.06-1.3,1.49Z"></path><path d="m47,54.39c-4.02-.02-7.35-3.37-7.32-7.38.02-4.02,3.38-7.34,7.39-7.32,4.02.02,7.34,3.37,7.33,7.38-.01,4.01-3.38,7.34-7.39,7.32Z"></path></g></g></svg>);
+
+
+
+
 
 const features = [
     {
@@ -47,24 +52,34 @@ const features = [
 
 const CourseFeatures = () => {
     return (
-        <div className="relative min-h-screen bg-gradient-to-br from-[#2E0249] via-[#570A8F] to-[#2E0249] flex items-center justify-center overflow-hidden py-20">
+        <section className="relative  bg-[#13002b] overflow-hidden font-sans py-24">
             
-            {/* Background Decorative Elements */}
-            <div className="absolute top-0 left-0 w-96 h-96 bg-[#A020F0] opacity-20 rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#4F0187] opacity-30 rounded-full blur-[150px] pointer-events-none"></div>
+            {/* --- ENHANCED LIGHTER BACKGROUND --- */}
+            <div className="absolute inset-0 w-full h-full">
+                {/* Base Lighter Deep Purple Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#2e1065] opacity-90"></div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                {/* Large Ambient Light Orbs (Glows) */}
+                <div className="absolute top-[-30%] left-[-20%] w-[1000px] h-[1000px] bg-purple-500/40 rounded-full blur-[150px] animate-pulse"></div>
+                <div className="absolute bottom-[-30%] right-[-20%] w-[1000px] h-[1000px] bg-fuchsia-500/30 rounded-full blur-[150px] animate-pulse delay-1000"></div>
+                
+                {/* Subtle Cyber Grid Overlay (Light) */}
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_90%)]"></div>
+            </div>
+
+            <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                
                 {/* Title Section */}
-                <div className="text-center mb-16">
-                    <span className="text-white/60 text-sm tracking-[0.3em] uppercase font-semibold">Why Choose Us</span>
-                    <h2 className="mt-4 text-4xl md:text-6xl font-extrabold text-white tracking-wide drop-shadow-lg">
-                        OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d8b4fe] to-[#fff]">CURRICULUM</span>
+                <div className="text-center mb-20">
+                    <span className="text-purple-200 text-sm tracking-[0.3em] uppercase font-bold shadow-black drop-shadow-md">Why Choose Us</span>
+                    <h2 className="mt-4 text-4xl md:text-6xl font-extrabold text-white tracking-wide drop-shadow-[0_5px_5px_rgba(0,0,0,0.3)]">
+                        OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E0B0FF] to-white">CURRICULUM</span>
                     </h2>
-                    <div className="w-24 h-1.5 mx-auto bg-gradient-to-r from-[#A020F0] to-[#fff] rounded-full mt-6 shadow-lg shadow-purple-500/50"></div>
+                    <div className="w-32 h-1.5 mx-auto bg-gradient-to-r from-[#A855F7] to-[#F300E7] rounded-full mt-6 shadow-[0_0_25px_rgba(243,0,231,0.6)]"></div>
                 </div>
 
                 {/* Grid for Curriculum Features */}
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                     {features.map((feature, index) => {
                         const Icon = feature.icon;
                         return (
@@ -72,51 +87,66 @@ const CourseFeatures = () => {
                                 key={index}
                                 className="
                                     group relative 
-                                    bg-white/90 backdrop-blur-xl 
-                                    rounded-3xl p-4 md:p-8 
+                                    bg-white/10 backdrop-blur-md 
+                                    rounded-3xl p-6 md:p-10 
                                     flex flex-col items-center text-center 
-                                    shadow-[0_8px_30px_rgb(0,0,0,0.12)]
-                                    hover:shadow-[0_20px_50px_rgba(160,32,240,0.4)]
-                                    border border-white/50
+                                    border border-white/20
+                                    shadow-[0_8px_32px_rgba(0,0,0,0.2)]
+                                    hover:shadow-[0_20px_50px_-10px_rgba(160,32,240,0.5)]
+                                    hover:bg-white/15 hover:border-purple-300/40
                                     transition-all duration-500 ease-out
                                     hover:-translate-y-3
+                                    cursor-pointer
+                                    overflow-hidden
                                 "
                             >
-                                {/* Card Inner Glow */}
-                                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                                {/* Top Neon Border Line on Hover */}
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#F300E7] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-center"></div>
 
-                                {/* Icon Container */}
+                                {/* Icon Container with Glow */}
                                 <div className="
                                     relative
-                                    w-16 h-16 md:w-24 md:h-24 mb-4 md:mb-6
-                                    bg-gradient-to-br from-[#F3E7FF] to-[#fff]
+                                    w-20 h-20 md:w-28 md:h-28 mb-6 md:mb-8
+                                    bg-gradient-to-br from-[#4c1d95] to-[#2e1065]
                                     rounded-full 
                                     flex items-center justify-center
-                                    shadow-inner
+                                    shadow-[inset_0_4px_15px_rgba(0,0,0,0.3)]
+                                    border border-white/20
                                     group-hover:scale-110 transition-transform duration-500
-                                    border border-purple-100
+                                    group-hover:border-purple-400/60
                                 ">
-                                    <div className="w-8 h-8 md:w-12 md:h-12 text-[#4F0187] group-hover:text-[#8A2BE2] transition-colors duration-300">
+                                    <div className="w-10 h-10 md:w-14 md:h-14 text-[#E0B0FF] group-hover:text-white transition-colors duration-300 drop-shadow-[0_0_15px_rgba(224,176,255,0.6)]">
                                         <Icon />
                                     </div>
                                     
-                                    {/* Spinning ring effect on hover */}
-                                    <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-t-[#A020F0] group-hover:border-r-[#A020F0]/50 opacity-0 group-hover:opacity-100 transition-all duration-700 animate-spin-slow"></div>
+                                    {/* Spinning Ring */}
+                                    <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-t-[#F300E7] group-hover:border-l-[#A855F7]/50 opacity-0 group-hover:opacity-100 transition-all duration-700 animate-spin-slow"></div>
                                 </div>
 
                                 {/* Feature Title */}
-                                <h3 className="text-sm md:text-xl font-bold text-gray-900 tracking-wide group-hover:text-[#4F0187] transition-colors duration-300">
+                                <h3 className="text-sm md:text-xl font-bold text-white tracking-widest group-hover:text-[#F300E7] transition-colors duration-300 uppercase drop-shadow-md">
                                     {feature.title}
                                 </h3>
 
-                                {/* Optional decorative line */}
-                                <div className="w-8 h-1 bg-gray-200 mt-2 md:mt-4 rounded-full group-hover:w-16 md:group-hover:w-24 group-hover:bg-[#A020F0] transition-all duration-500"></div>
+                                {/* Bottom Glow */}
+                                <div className="absolute bottom-[-20px] left-1/2 -translate-x-1/2 w-24 h-12 bg-purple-500/40 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
                         );
                     })}
                 </div>
             </div>
-        </div>
+
+            {/* --- Custom Keyframes --- */}
+            <style jsx global>{`
+                .animate-spin-slow {
+                    animation: spin 4s linear infinite;
+                }
+                @keyframes spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+            `}</style>
+        </section>
     );
 };
 

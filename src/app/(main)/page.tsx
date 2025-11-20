@@ -6,7 +6,7 @@ import CourseFeatures from "../components/CourseFeatures/CourseFeatures";
 import DepartmentSection from "../components/DepartmentSection/DepartmentSection";
 import ITSkills from "../components/ITSkills/ITSkills";
 // import OurActivities from "../components/OurActivities/OurActivities";
-import OurSpecialty from "../components/OurSpecialty/OurSpecialty";
+// import OurSpecialty from "../components/OurSpecialty/OurSpecialty";
 import PhotoGallery from "../components/PhotoGallery/PhotoGallery";
 import SoftHardSkill from "../components/SoftHardSkill/SoftHardSkill";
 
@@ -16,7 +16,7 @@ export default function Home() {
       <Banner />
       <DepartmentSection/>
       <CourseFeatures />
-      <OurSpecialty />
+      {/* <OurSpecialty /> */}
       <ClassDescription />
       <ITSkills/>
       <SoftHardSkill />

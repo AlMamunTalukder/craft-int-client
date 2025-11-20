@@ -10,8 +10,14 @@ import {
     Smartphone, 
     FileText, 
     Settings, 
-    Mic 
+    Mic, 
+    Bot
 } from "lucide-react";
+
+import Image from "next/image";
+import itskills from "../../../../public/img/itskills.png";
+
+
 
 const allSkills = [
     { 
@@ -79,7 +85,7 @@ const allSkills = [
         border: "group-hover:border-yellow-400/50"
     },
     { 
-        icon: Settings, 
+        icon: Settings,  
         label: "Studio Setup (Audio & Video)", 
         color: "text-gray-300",
         bg: "bg-gray-400/10",
@@ -88,6 +94,13 @@ const allSkills = [
     { 
         icon: Mic, 
         label: "Content Creation & Filmmaking", 
+        color: "text-rose-400",
+        bg: "bg-rose-400/10",
+        border: "group-hover:border-rose-400/50"
+    },
+    { 
+        icon: Bot, 
+        label: "Robotics", 
         color: "text-rose-400",
         bg: "bg-rose-400/10",
         border: "group-hover:border-rose-400/50"
@@ -110,9 +123,21 @@ const ITSkills = () => {
                 
                 {/* Header */}
                 <div className="text-center mb-9 lg:mb-16">
-                    <div className="inline-block px-4 py-1 rounded-full border border-[#8A2BE2]/30 bg-[#8A2BE2]/10 mb-4">
+                     <div className="flex justify-center mb-6">
+            <div className="w-32 h-32 m-5 text-[#E0B0FF] group-hover:text-white transition-colors duration-300 drop-shadow-[0_0_15px_rgba(224,176,255,0.6)] ">
+              {/* <SoftSkillIcon/> */}
+              <Image 
+                src={itskills} 
+                alt="Business Icon" 
+                className="w-full h-full object-contain"
+                width={100}
+                height={100}
+              />
+            </div>
+          </div>
+                    {/* <div className="inline-block px-4 py-1 rounded-full border border-[#8A2BE2]/30 bg-[#8A2BE2]/10 mb-4">
                         <span className="text-[#D8B4FE] text-sm font-medium tracking-widest uppercase">Technical Expertise</span>
-                    </div>
+                    </div> */}
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
                         Master Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]">IT Skills</span>
                     </h2>

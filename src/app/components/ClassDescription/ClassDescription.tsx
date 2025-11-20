@@ -16,9 +16,9 @@ export default function CategoriesSection() {
     <div className="w-full flex flex-col items-center gap-10 p-10">
 
       {/* --- Top Video Placeholder --- */}
-      <div className="w-full max-w-4xl aspect-video bg-gradient-to-br from-purple-600 to-purple-400 rounded-3xl flex items-center justify-center">
+      {/* <div className="w-full max-w-4xl aspect-video bg-gradient-to-br from-purple-600 to-purple-400 rounded-3xl flex items-center justify-center">
         <div className="w-20 h-20 border-l-[35px] border-l-white border-y-[25px] border-y-transparent border-r-0" />
-      </div>
+      </div> */}
 
       {/* --- Bottom Boxes --- */}
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-6">
