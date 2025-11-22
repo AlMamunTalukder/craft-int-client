@@ -46,7 +46,7 @@ const Footer = () => {
             {/* --- Column 1: Brand & About --- */}
             <div className="space-y-6 text-center lg:text-left">
               <div className="flex justify-center lg:justify-start">
-                <div className="bg-white/10 p-3 rounded-lg backdrop-blur-sm inline-block">
+                <div className=" p-3 rounded-lg backdrop-blur-sm inline-block">
                   <Image
                     src={logo}
                     alt="Craft Institute Logo"

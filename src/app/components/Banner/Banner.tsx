@@ -120,6 +120,8 @@ import {
 } from "lucide-react";
 
 import bg from "../../../../public/img/bg.webp";
+import img1 from "../../../../public/img/website-icon-admission.png";
+import Image from "next/image";
 
 const Banner = () => {
   return (
@@ -136,7 +138,7 @@ const Banner = () => {
         }}
       >
         {/* Deep Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050011] via-[#1A0B2E]/95 to-[#4F0187]/50 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f012f] via-[#1A0B2E]/95 to-[#4F0187]/70 z-10" />
       </div>
 
       {/* --- Floating Animated Icons (Education Theme) --- */}
@@ -178,7 +180,7 @@ const Banner = () => {
 
       {/* --- Main Content --- */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-5">
 
           {/* Text Content */}
           <div className="w-full md:w-3/4 text-center md:text-left space-y-8">
@@ -214,18 +216,18 @@ const Banner = () => {
               </h2>
             </div>
 
-            <p className="text-yellow-200 text-base md:text-md leading-relaxed font-light animate-[slideUp_0.8s_ease-out_0.8s_both]">অগ্রিম ভর্তিতে ২৫% ছাড়...!</p>
-            {/* Description */}
+            {/* <p className="text-yellow-200 text-base md:text-md leading-relaxed font-light animate-[slideUp_0.8s_ease-out_0.8s_both]">অগ্রিম ভর্তিতে ২৫% ছাড়...!</p>
+         
             <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-2xl mx-auto md:mx-0 animate-[slideUp_0.8s_ease-out_0.8s_both] font-light">
               প্রি ওয়ান থেকে সেভেন পর্যন্ত এবং নুরানি, নাজেরা হিফয বিভাগে (আবাসিক ও অনাবাসিক) -এ ভর্তি চলছে। 
-            </p>
+            </p> */}
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-5 pt-8 justify-center md:justify-start animate-[slideUp_0.8s_ease-out_1s_both]">
               <a href="/verification" className="group relative px-8 py-4 bg-gradient-to-r from-[#F300E7] to-[#A855F7] rounded-full text-white font-bold shadow-[0_10px_20px_rgba(243,0,231,0.3)] hover:shadow-[0_15px_30px_rgba(243,0,231,0.5)] transition-all hover:-translate-y-1 overflow-hidden">
                 <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-500 ease-out -skew-x-12 origin-left" />
-                <span className="relative flex items-center gap-3 text-lg">
-                  ভর্তি যাচাই ফর্ম <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <span className="relative flex items-center gap-3 text-lg text-center md:text-start">
+                  ভর্তি ফর্ম <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </span>
               </a>
 
@@ -234,6 +236,9 @@ const Banner = () => {
                 যোগাযোগ করুন
               </a>
             </div>
+          </div>
+          <div className="animate-[float_6s_ease-in-out_infinite]">
+            <Image src={img1} height={400} width={500} alt="academic"/>
           </div>
         </div>
       </div>

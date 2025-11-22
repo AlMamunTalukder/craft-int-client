@@ -67,10 +67,10 @@ const feeData = [
     className: "আবাসিক",
     category: "স্পেশাল ডিপার্টমেন্ট",
     fees: [
-      { label: "আবাসন", main: "৫,০০০/-", amount: "৩০০০/-", icon: Home },
+      { label: "আবাসন", main: "", amount: "৩০০০/-", icon: Home },
       { label: "খাবার", amount: "৫,০০০/-", icon: Hamburger },
       { label: "বাৎসরিক সার্ভিস চার্জ (একাডেমিক)", amount: "২,০০০/-", icon: CircleDollarSign },
-      { label: "এককালীন আবাসন ফি", amount: "১,৫০০/-", icon: Coins },
+      { label: "বাৎসরিক সার্ভিস চার্জ (হিফয)", amount: "১,৫০০/-", icon: Coins },
     ],
     total: "৩,০০০০/-",
     isResidential: true,
@@ -98,7 +98,7 @@ const FeeStructure = () => {
         <div className="text-center mb-10 md:mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
             <Banknote size={16} className="text-[#D8B4FE]" />
-            <span className="text-gray-300 text-sm font-medium tracking-wider">একাডেমিক ফি তালিকা </span>
+            <span className="text-gray-300 text-sm font-medium tracking-wider">ফি তালিকা </span>
           </div>
           <h1 className="text-3xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
             অগ্রিম ভর্তিতে ২৫%{" "}
@@ -140,7 +140,7 @@ const FeeStructure = () => {
                   <h3 className="text-center text-2xl md:text-4xl font-bold bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent group-hover:from-[#D8B4FE] group-hover:via-white group-hover:to-[#D8B4FE] transition-all duration-300 mb-2 pt-2">
                     {item.className}
                   </h3>
-                  <p className="text-gray-400 text-sm text-center">ভর্তিকালীন এবং মাসিক খরচের বিবরণ</p>
+                  {/* <p className="text-gray-400 text-sm text-center">ভর্তিকালীন এবং মাসিক খরচের বিবরণ</p> */}
                 </div>
 
                 {/* Fee Items List */}
