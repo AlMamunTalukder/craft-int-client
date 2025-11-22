@@ -217,7 +217,7 @@ const Banner = () => {
             <p className="text-yellow-200 text-base md:text-md leading-relaxed font-light animate-[slideUp_0.8s_ease-out_0.8s_both]">অগ্রিম ভর্তিতে ২৫% ছাড়...!</p>
             {/* Description */}
             <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-2xl mx-auto md:mx-0 animate-[slideUp_0.8s_ease-out_0.8s_both] font-light">
-              প্রি ওয়ান থেকে ৭ম শ্রেণি পর্যন্ত এবং নুরানি, নাজেরা হিফয বিভাগে (আবাসিক ও অনাবাসিক) -এ ভর্তি চলছে। আপনার সন্তানের উজ্জ্বল ভবিষ্যৎ গড়তে আজই যোগাযোগ করুন।
+              প্রি ওয়ান থেকে সেভেন পর্যন্ত এবং নুরানি, নাজেরা হিফয বিভাগে (আবাসিক ও অনাবাসিক) -এ ভর্তি চলছে। 
             </p>
 
             {/* Action Buttons */}

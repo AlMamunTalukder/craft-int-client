@@ -9,13 +9,13 @@ import {
 } from "react-icons/fa";
 import Container from "../Container/Container";
 
-// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
 // import Link from "next/link";
 
-// const CountdownTimer = dynamic(
-//   () => import("@/app/components/CountdownTimer/CountdownTimer"),
-//   { ssr: false }
-// );
+const CountdownTimer = dynamic(
+  () => import("@/app/components/CountdownTimer/CountdownTimer"),
+  { ssr: false }
+);
 
 export default function SubHeader() {
   return (
@@ -28,12 +28,12 @@ export default function SubHeader() {
               
             </div>
           </div>
-{/* 
+
           <div className="flex lg:justify-start justify-center">
             <CountdownTimer />
           </div>
 
-          <div className="flex lg:justify-start justify-center">
+          {/* <div className="flex lg:justify-start justify-center">
             <Link href="#contact">
               <button className="flex items-center gap-2 bg-gradient-to-r from-[#DC25FF] to-[#3C016F] border border-white px-4 py-2 rounded text-white">
                 <FaHandPointRight className="text-lg" />
