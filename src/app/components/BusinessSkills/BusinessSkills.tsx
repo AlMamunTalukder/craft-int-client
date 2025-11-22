@@ -1,5 +1,6 @@
-import React from "react";
-import { CheckCircle, ArrowRight } from "lucide-react";
+"use client"
+import React, { useState } from "react";
+import { CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import img from "../../../../public/img/business.png";
 
@@ -20,8 +21,10 @@ const businessSkillsData = [
 ];
 
 const BusinessSkills = () => {
-  // Only take the first 6 items for the home page display
-  const displayItems = businessSkillsData.slice(0, 6);
+  const [showAll, setShowAll] = useState(false);
+
+  // Show only 6 items initially, show all when expanded
+  const displayItems = showAll ? businessSkillsData : businessSkillsData.slice(0, 6);
 
   return (
     <section className="relative py-20 bg-[#361664] overflow-hidden">
@@ -36,7 +39,6 @@ const BusinessSkills = () => {
         
         {/* Heading */}
         <div className="text-center mb-16">
-          
           
           {/* Floating Image */}
           <div className="flex justify-center mb-6">
@@ -100,6 +102,25 @@ const BusinessSkills = () => {
           ))}
         </div>
 
+
+          {/* Show More/Less Button */}
+        <div className="mt-8 text-center">
+          <button 
+            onClick={() => setShowAll(!showAll)}
+            className="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-200 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full hover:shadow-lg hover:shadow-purple-500/40 focus:outline-none ring-offset-2 focus:ring-2 ring-purple-400"
+          >
+            <span>{showAll ? 'কম দেখুন' : 'আরও দেখুন'}</span>
+            {showAll ? (
+              <ChevronUp className="w-5 h-5 ml-2 group-hover:-translate-y-0.5 transition-transform" />
+            ) : (
+              <ChevronDown className="w-5 h-5 ml-2 group-hover:translate-y-0.5 transition-transform" />
+            )}
+            
+            {/* Button Glow Effect */}
+            <div className="absolute inset-0 rounded-full bg-white/20 group-hover:bg-white/0 transition-colors"></div>
+          </button>
+        </div>
+
         {/* Footer Note */}
         <div className="mt-12 text-center">
           <div className="inline-block p-[1px] rounded-full bg-gradient-to-r from-white/5 via-[#D8B4FE]/30 to-white/5 mb-8">
@@ -111,17 +132,7 @@ const BusinessSkills = () => {
           </div>
         </div>
 
-        {/* See More Button */}
-        <div className="mt-8 text-center">
-          <button className="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-200 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full hover:shadow-lg hover:shadow-purple-500/40 focus:outline-none ring-offset-2 focus:ring-2 ring-purple-400">
-            <span>আরও দেখুন</span>
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            
-            {/* Button Glow Effect */}
-            <div className="absolute inset-0 rounded-full bg-white/20 group-hover:bg-white/0 transition-colors"></div>
-          </button>
-        </div>
-
+      
       </div>
     </section>
   );

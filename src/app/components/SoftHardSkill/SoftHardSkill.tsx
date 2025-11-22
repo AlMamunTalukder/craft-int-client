@@ -1,26 +1,48 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
-import { Check, Lightbulb, Zap, ArrowRight } from "lucide-react";
+"use client"
+
+import React, { useState } from "react";
+import { Check, Lightbulb, Zap, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import soft from "../../../../public/img/Asset4.png";
-
-
 
 const skillsLeft = [
   { id: 1, title: "Communication Skill - যোগাযোগের দক্ষতা।" },
   { id: 2, title: "Public Speaking & Presentation Skill - জনসম্মুখে কথা বলা ও উপস্থাপনাশৈলীর দক্ষতা।" },
   { id: 3, title: "Debating Skill - বিতর্কের দক্ষতা।" },
- 
+  { id: 4, title: "Personal Development & Productivity - ব্যক্তিগত উন্নয়ন ও নিজেকে গঠন করার দক্ষতা।" },
+  { id: 5, title: "Time Management & Multitasking - সময় ব্যবস্থাপনা ও একসাথে একাধিক কাজ করার দক্ষতা।" },
+  { id: 6, title: "Leadership Skill - নেতৃত্বের দক্ষতা।" },
+  { id: 7, title: "Teamwork & Management - দলগত ‍ও সাংগঠনিক কাজ এবং ব্যবস্থাপনার দক্ষতা।" },
+  { id: 8, title: "Problem Solving & Conflict Management - সমস্যা সমাধান ও দ্বন্দ্ব নিরসনের দক্ষতা।" },
+  { id: 9, title: "Networking Skill - বিভিন্ন মানুষের সাথে সম্পর্ক গড়ে তোলার দক্ষতা।" },
+  { id: 10, title: "Motivational Skill - নিজেকে এবং অন্যকে প্রেরণা যোগানোর দক্ষতা।" },
+  { id: 11, title: "Mind Training & Stress Management – মনঃশক্তি বৃদ্ধি ও মানসিক চাপ নিয়ন্ত্রণের দক্ষতা।" },
+  { id: 12, title: "Emotional Intelligence – বুদ্ধিমত্তার সাথে আবেগ নিয়ন্ত্রণের দক্ষতা।" },
+  { id: 13, title: "Critical Thinking & Decision Making – কঠিন মুহূর্তে সঠিক সিদ্ধান্ত গ্রহণের দক্ষতা।" },
+  { id: 14, title: "Active Listening - মনোযোগ দিয়ে শোনা ও সূক্ষ্ম বিষয়ের প্রতি সচেতনতা।" },
+  { id: 15, title: "Manner & Ethics Skills - আচরণ ও নৈতিকতার দক্ষতা।" }
 ];
 
 const skillsRight = [
-  { id: 4, title: "Social Skills - সামাজিক আচরণ ও রীতিনীতির দক্ষতা।" },
-  { id: 5, title: "Innovation & Research Skills - সৃজনশীল উদ্ভাবন ও গবেষণার দক্ষতা।" },
-  { id: 6, title: "Technical Skills – কারিগরি দক্ষতা।" },
-  
+  { id: 16, title: "Social Skills - সামাজিক আচরণ ও রীতিনীতির দক্ষতা।" },
+  { id: 17, title: "Innovation & Research Skills - সৃজনশীল উদ্ভাবন ও গবেষণার দক্ষতা।" },
+  { id: 18, title: "Technical Skills – কারিগরি দক্ষতা।" },
+  { id: 19, title: "Martial Arts / Self-Defense - মার্শাল আর্ট বা আত্মরক্ষা কৌশলের দক্ষতা।" },
+  { id: 20, title: "Mental Arithmetic (Abacus) - অ্যাবাকাসের মাধ্যমে মনে মনে অঙ্ক করার কৌশল।" },
+  { id: 21, title: "General Knowledge - সাধারণ জ্ঞানের দক্ষতা।" },
+  { id: 22, title: "General Science Knowledge - সাধারণ বিজ্ঞানের দক্ষতা।" },
+  { id: 23, title: "Primary Health Care - প্রাথমিক চিকিৎসা সেবার দক্ষতা।" },
+  { id: 24, title: "Handwriting Skill – হাতের লেখা সুন্দর করার দক্ষতা।" },
+  { id: 25, title: "Art and Calligraphy - চিত্রাঙ্কন ও ক্যালিগ্রাফির দক্ষতা।" },
+  { id: 26, title: "Cultural Skill - বিনোদন ও সাংস্কৃতিক দক্ষতা।" },
+  { id: 27, title: "Voice Over Skill – বিভিন্ন কন্টেন্টে কণ্ঠ দেয়ার দক্ষতা।" },
+  { id: 28, title: "Swimming Skill - সাঁতারের দক্ষতা।" },
+  { id: 29, title: "Driving Skill – যান চালানোর দক্ষতা।" },
+  { id: 30, title: "Cooking Skill - রান্নার দক্ষতা।" },
 ];
 
-const SkillRow = ({ item, index }:any) => (
+const SkillRow = ({ item, index }: any) => (
   <div className="group relative flex items-center gap-4 p-4 rounded-2xl bg-[#1A0B2E]/40 border border-white/5 hover:bg-[#2D1B4E]/60 hover:border-purple-500/30 transition-all duration-300 hover:-translate-x-[-5px] overflow-hidden">
     
     {/* Hover Gradient Glow */}
@@ -55,6 +77,12 @@ const SkillRow = ({ item, index }:any) => (
 );
 
 const SoftSkills = () => {
+  const [showAll, setShowAll] = useState(false);
+
+  // Show only 5 items from each column initially, show all when expanded
+  const leftSkillsToShow = showAll ? skillsLeft : skillsLeft.slice(0, 5);
+  const rightSkillsToShow = showAll ? skillsRight : skillsRight.slice(0, 5);
+
   return (
     <section className="relative py-24 bg-[#2c154c] overflow-hidden ">
       
@@ -109,7 +137,7 @@ const SoftSkills = () => {
                   </div>
 
                   <div className="flex flex-col gap-3">
-                      {skillsLeft.map((skill, idx) => (
+                      {leftSkillsToShow.map((skill, idx) => (
                         <SkillRow key={skill.id} item={skill} index={idx} />
                       ))}
                   </div>
@@ -126,25 +154,32 @@ const SoftSkills = () => {
                   </div>
 
                   <div className="flex flex-col gap-3">
-                      {skillsRight.map((skill, idx) => (
-                        <SkillRow key={skill.id} item={skill} index={idx+3} />
+                      {rightSkillsToShow.map((skill, idx) => (
+                        <SkillRow key={skill.id} item={skill} index={idx + leftSkillsToShow.length} />
                       ))}
                   </div>
               </div>
           </div>
 
-           <div className="mt-12 text-center">
-            {/* Replaced Link with a tag to fix the error */}
-            <a href="/soft-skills">
-                <button className="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-200 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full hover:shadow-lg hover:shadow-purple-500/40 focus:outline-none ring-offset-2 focus:ring-2 ring-purple-400">
-                    <span>আরও দেখুন</span>
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    
-                    {/* Button Glow Effect */}
-                    <div className="absolute inset-0 rounded-full bg-white/20 group-hover:bg-white/0 transition-colors"></div>
-                </button>
-            </a>
-        </div>
+          {/* Show More/Less Button */}
+          <div className="mt-12 text-center">
+            <button 
+              onClick={() => setShowAll(!showAll)}
+              className="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-200 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full hover:shadow-lg hover:shadow-purple-500/40 focus:outline-none ring-offset-2 focus:ring-2 ring-purple-400"
+            >
+              <span>{showAll ? 'কম দেখুন' : 'আরও দেখুন'}</span>
+              {showAll ? (
+                <ChevronUp className="w-5 h-5 ml-2 group-hover:-translate-y-0.5 transition-transform" />
+              ) : (
+                <ChevronDown className="w-5 h-5 ml-2 group-hover:translate-y-0.5 transition-transform" />
+              )}
+              
+              {/* Button Glow Effect */}
+              <div className="absolute inset-0 rounded-full bg-white/20 group-hover:bg-white/0 transition-colors"></div>
+            </button>
+          </div>
+
+          
       </div>
     </section>
   );
