@@ -53,12 +53,12 @@ const CountdownTimer: React.FC = () => {
   }, []);
 
   return (
-    <div className="text-sm bg-[#3C016F] px-5 py-2">
-      <div className="flex gap-3 justify-center font-mono">
+    <div className="text-sm bg-[#3C016F] px-3 py-1 rounded-lg">
+      <div className="flex gap-1 justify-center font-mono">
         <span>{timeLeft.days}</span> :<span>{timeLeft.hours}</span> :
         <span>{timeLeft.minutes}</span> :<span>{timeLeft.seconds}</span>
       </div>
-      <div className="text-xs flex gap-5 justify-center mt-1">
+      <div className="text-[10px] flex gap-3 justify-center ">
         <span>DAYS</span>
         <span>HRS</span>
         <span>MINS</span>
