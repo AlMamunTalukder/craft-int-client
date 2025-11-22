@@ -115,7 +115,7 @@ const CourseFeatures = () => {
                                     group-hover:scale-110 transition-transform duration-500
                                     group-hover:border-purple-400/60
                                 ">
-                                    <div className="w-10 h-10 md:w-14 md:h-14 text-[#E0B0FF] group-hover:text-white transition-colors duration-300 drop-shadow-[0_0_15px_rgba(224,176,255,0.6)]">
+                                    <div className="w-10 h-10 md:w-14 md:h-14 text-[#ffffff] group-hover:text-white transition-colors duration-300 drop-shadow-[0_0_15px_rgba(224,176,255,0.6)]">
                                         <Icon />
                                     </div>
                                     

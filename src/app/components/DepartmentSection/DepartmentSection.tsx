@@ -35,6 +35,9 @@ const QuranIcon = ({ size = 24, className }: any) => (
     </svg>
 );
 
+
+
+
 // --- 2. Configuration Data ---
 const departments = [
     {
@@ -54,7 +57,7 @@ const departments = [
         subtitle: "DEPARTMENT",
         icon: QuranIcon,
         description: "Tahfizul Quran & Islamic Studies",
-        color: "text-fuchsia-300",
+        color: "text-white",
         bg: "group-hover:shadow-fuchsia-500/50",
         border: "group-hover:border-fuchsia-400/50",
         gradient: "from-fuchsia-500/20 to-purple-500/5"
@@ -80,11 +83,11 @@ const DepartmentSection = () => {
             <div className="absolute inset-0 w-full h-full overflow-hidden">
 
                 {/* Base Gradient - No Black */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#3b0764] via-[#581c87] to-[#330953] opacity-100"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#3b0764] via-[#280a3f] to-[#330953] opacity-100"></div>
 
                 {/* Massive Glowing Light Orbs */}
-                <div className="absolute top-[-30%] left-[-20%] w-[1000px] h-[1000px] bg-[#A855F7] opacity-30 rounded-full blur-[150px] animate-pulse"></div>
-                <div className="absolute bottom-[-30%] right-[-20%] w-[1000px] h-[1000px] bg-[#E879F9] opacity-30 rounded-full blur-[150px] animate-pulse delay-1000"></div>
+                <div className="absolute top-[-30%] left-[-20%] w-[1000px] h-[1000px] bg-[#340d58] opacity-30 rounded-full blur-[150px] animate-pulse"></div>
+                <div className="absolute bottom-[-30%] right-[-20%] w-[1000px] h-[1000px] bg-[#420e4a] opacity-30 rounded-full blur-[150px] animate-pulse delay-1000"></div>
                 <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-indigo-500/20 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2"></div>
 
                 {/* Subtle Pattern Overlay */}

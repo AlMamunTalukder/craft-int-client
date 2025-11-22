@@ -86,7 +86,7 @@ const SoftSkills = () => {
           </div>
               
               <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">
-                  SOFT <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] via-white to-[#A855F7]">SKILLS</span>
+                  SOFT <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] via-white to-[#A855F7]">& HARD</span> SKILLS
               </h2>
               <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed">
                   আমাদের শিক্ষার্থীদের জন্য প্রয়োজনীয় জীবনমুখী দক্ষতা ও নৈতিক শিক্ষার এক অনন্য সমন্বয়, যা তাদের ভবিষ্যৎ জীবনের প্রতিটি পদক্ষেপে এগিয়ে রাখবে।
@@ -127,7 +127,7 @@ const SoftSkills = () => {
 
                   <div className="flex flex-col gap-3">
                       {skillsRight.map((skill, idx) => (
-                        <SkillRow key={skill.id} item={skill} index={idx+4} />
+                        <SkillRow key={skill.id} item={skill} index={idx+3} />
                       ))}
                   </div>
               </div>
