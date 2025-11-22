@@ -114,27 +114,66 @@ const AdmissionForm = () => {
   );
 
   // --- Modern Selectable Card (Radio) Component ---
+  // const RadioGroup = ({ label, name, options }: any) => (
+  //   <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
+  //     <label className="block text-sm font-bold text-gray-800 mb-4 pb-2 border-b border-dashed border-gray-200 flex items-center gap-2">
+  //       <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+  //       {label}
+  //     </label>
+  //     <div className="flex flex-wrap gap-3">
+  //       {options.map((opt: any) => (
+  //         <label key={opt.val} className="cursor-pointer relative flex-grow md:flex-grow-0">
+  //           <input type="radio" name={name} value={opt.val} className="peer sr-only" />
+  //           <div className="
+  //             px-5 py-2.5 rounded-full text-sm font-medium text-center transition-all duration-200 border border-gray-200 bg-gray-50 text-gray-600
+  //             peer-checked:bg-purple-600 peer-checked:text-white peer-checked:border-purple-600 peer-checked:shadow-lg peer-checked:scale-105
+  //             hover:bg-purple-50 hover:border-purple-200
+  //           ">
+  //             {opt.text}
+  //           </div>
+  //         </label>
+  //       ))}
+  //     </div>
+  //   </div>
+  // );
+
+
   const RadioGroup = ({ label, name, options }: any) => (
-    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-      <label className="block text-sm font-bold text-gray-800 mb-4 pb-2 border-b border-dashed border-gray-200 flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+
+    <div className="bg-white p-4 rounded-xl border border-gray-100 hover:border-purple-200 hover:shadow-md transition-all duration-300">
+
+      <label className="block text-sm font-bold text-gray-800 mb-3 border-b border-dashed border-gray-200 pb-2">
+
         {label}
+
       </label>
+
       <div className="flex flex-wrap gap-3">
+
         {options.map((opt: any) => (
-          <label key={opt.val} className="cursor-pointer relative flex-grow md:flex-grow-0">
+
+          <label key={opt.val} className="relative cursor-pointer group">
+
             <input type="radio" name={name} value={opt.val} className="peer sr-only" />
-            <div className="
-              px-5 py-2.5 rounded-full text-sm font-medium text-center transition-all duration-200 border border-gray-200 bg-gray-50 text-gray-600
-              peer-checked:bg-purple-600 peer-checked:text-white peer-checked:border-purple-600 peer-checked:shadow-lg peer-checked:scale-105
-              hover:bg-purple-50 hover:border-purple-200
-            ">
+
+            <div className="px-4 py-2 rounded-full border border-gray-200 bg-gray-50 text-gray-600 text-sm font-medium transition-all
+
+              peer-checked:bg-purple-600 peer-checked:text-white peer-checked:border-purple-600 peer-checked:shadow-lg
+
+              group-hover:border-purple-300">
+
               {opt.text}
+
             </div>
+
           </label>
+
         ))}
+
       </div>
+
     </div>
+
   );
 
   return (
