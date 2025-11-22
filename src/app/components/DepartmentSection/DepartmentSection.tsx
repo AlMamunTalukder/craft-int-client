@@ -55,7 +55,7 @@ const departments = [
         subtitle: "DEPARTMENT",
         icon: QuranIcon,
         description: "Tahfizul Quran & Islamic Studies",
-        color: "text-fuchsia-100",
+        color: "text-fuchsia-400",
         glow: "shadow-fuchsia-500/50",
         borderColor: "group-hover/card:border-fuchsia-400/50",
         bgGradient: "from-fuchsia-900/40 to-purple-900/10",
