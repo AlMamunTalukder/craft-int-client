@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client"
-import React from 'react';
-import { 
-    GraduationCap, 
-    Sparkles, 
-    BookOpen, 
-    Atom, 
-    Microscope, 
-    Calculator, 
-    Moon, 
+"use client";
+import React from "react";
+import {
+    GraduationCap,
+    Sparkles,
+    BookOpen,
+    Atom,
+    Microscope,
+    Calculator,
+    Moon,
     Scroll,
-    PenTool 
+    PenTool,
 } from "lucide-react";
 
 // --- 1. Custom Quran Icon (Kept as is) ---
-const QuranIcon = ({ size = 24, className }: any) => (
+const QuranIcon = ({ size = 32, className }: any) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 67.42 88.39"
@@ -35,9 +35,6 @@ const QuranIcon = ({ size = 24, className }: any) => (
     </svg>
 );
 
-
-
-
 // --- 2. Configuration Data ---
 const departments = [
     {
@@ -47,9 +44,10 @@ const departments = [
         icon: GraduationCap,
         description: "General Education & Modern Science",
         color: "text-cyan-300",
-        bg: "group-hover:shadow-cyan-500/50",
-        border: "group-hover:border-cyan-400/50",
-        gradient: "from-cyan-500/20 to-blue-500/5"
+        glow: "shadow-cyan-500/50",
+        borderColor: "group-hover/card:border-cyan-400/50",
+        bgGradient: "from-cyan-900/40 to-blue-900/10",
+        accent: "bg-cyan-400",
     },
     {
         id: 2,
@@ -57,43 +55,96 @@ const departments = [
         subtitle: "DEPARTMENT",
         icon: QuranIcon,
         description: "Tahfizul Quran & Islamic Studies",
-        color: "text-white",
-        bg: "group-hover:shadow-fuchsia-500/50",
-        border: "group-hover:border-fuchsia-400/50",
-        gradient: "from-fuchsia-500/20 to-purple-500/5"
-    }
+        color: "text-fuchsia-100",
+        glow: "shadow-fuchsia-500/50",
+        borderColor: "group-hover/card:border-fuchsia-400/50",
+        bgGradient: "from-fuchsia-900/40 to-purple-900/10",
+        accent: "bg-fuchsia-400",
+    },
 ];
 
 // --- 3. Background Floating Icons Configuration ---
 const floatingIcons = [
-    { Icon: BookOpen, top: '10%', left: '10%', size: 40, delay: '0s', duration: '6s', color: 'text-cyan-200/20' }, // General
-    { Icon: Atom, top: '15%', right: '15%', size: 48, delay: '1s', duration: '8s', color: 'text-purple-200/20' }, // Science
-    { Icon: Moon, top: '40%', left: '5%', size: 32, delay: '2s', duration: '7s', color: 'text-fuchsia-200/20' }, // Islamic
-    { Icon: Microscope, bottom: '20%', left: '15%', size: 44, delay: '3s', duration: '9s', color: 'text-blue-200/20' }, // Science
-    { Icon: Scroll, bottom: '15%', right: '10%', size: 40, delay: '1.5s', duration: '7.5s', color: 'text-amber-100/20' }, // History/Islamic
-    { Icon: Calculator, top: '50%', right: '5%', size: 30, delay: '4s', duration: '6.5s', color: 'text-indigo-200/20' }, // Math
-    { Icon: PenTool, bottom: '40%', right: '45%', size: 28, delay: '0.5s', duration: '5s', color: 'text-white/10' }, // Writing
+    {
+        Icon: BookOpen,
+        top: "10%",
+        left: "10%",
+        size: 40,
+        delay: "0s",
+        duration: "6s",
+        color: "text-cyan-200/20",
+    }, // General
+    {
+        Icon: Atom,
+        top: "15%",
+        right: "15%",
+        size: 48,
+        delay: "1s",
+        duration: "8s",
+        color: "text-purple-200/20",
+    }, // Science
+    {
+        Icon: Moon,
+        top: "40%",
+        left: "5%",
+        size: 32,
+        delay: "2s",
+        duration: "7s",
+        color: "text-fuchsia-200/20",
+    }, // Islamic
+    {
+        Icon: Microscope,
+        bottom: "20%",
+        left: "15%",
+        size: 44,
+        delay: "3s",
+        duration: "9s",
+        color: "text-blue-200/20",
+    }, // Science
+    {
+        Icon: Scroll,
+        bottom: "15%",
+        right: "10%",
+        size: 40,
+        delay: "1.5s",
+        duration: "7.5s",
+        color: "text-amber-100/20",
+    }, // History/Islamic
+    {
+        Icon: Calculator,
+        top: "50%",
+        right: "5%",
+        size: 30,
+        delay: "4s",
+        duration: "6.5s",
+        color: "text-indigo-200/20",
+    }, // Math
+    {
+        Icon: PenTool,
+        bottom: "40%",
+        right: "45%",
+        size: 28,
+        delay: "0.5s",
+        duration: "5s",
+        color: "text-white/10",
+    }, // Writing
 ];
 
 const DepartmentSection = () => {
     return (
-        <section className="relative py-12 md:py-24 bg-[#11031d] overflow-hidden font-sans">
+        <section className="relative py-24 md:py-32 bg-[#0B001A] overflow-hidden font-sans group/grid">
+            {/* --- GALAXY BACKGROUND --- */}
+            <div className="absolute inset-0 w-full h-full pointer-events-none">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#2E0249]/40 via-[#0F0518] to-[#05010D]"></div>
 
-            {/* --- LUMINOUS ANIMATED BACKGROUND --- */}
-            <div className="absolute inset-0 w-full h-full overflow-hidden">
+                {/* Animated Nebula Clouds */}
+                <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse opacity-50"></div>
+                <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse delay-1000 opacity-50"></div>
 
-                {/* Base Gradient - No Black */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#3b0764] via-[#280a3f] to-[#330953] opacity-100"></div>
+                {/* Moving Stars */}
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 animate-[pulse_8s_infinite]"></div>
 
-                {/* Massive Glowing Light Orbs */}
-                <div className="absolute top-[-30%] left-[-20%] w-[1000px] h-[1000px] bg-[#340d58] opacity-30 rounded-full blur-[150px] animate-pulse"></div>
-                <div className="absolute bottom-[-30%] right-[-20%] w-[1000px] h-[1000px] bg-[#420e4a] opacity-30 rounded-full blur-[150px] animate-pulse delay-1000"></div>
-                <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-indigo-500/20 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2"></div>
-
-                {/* Subtle Pattern Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-
-                {/* --- NEW: Educational Floating Icons --- */}
+                {/* Floating Background Icons */}
                 {floatingIcons.map((item, index) => (
                     <div
                         key={index}
@@ -107,108 +158,144 @@ const DepartmentSection = () => {
                             animationDuration: item.duration,
                         }}
                     >
-                        <item.Icon size={item.size} strokeWidth={1.5} />
+                        <item.Icon size={item.size} strokeWidth={1} />
                     </div>
                 ))}
-
-                {/* Original Floating Particles/Stars (Kept for extra magic) */}
-                <div className="absolute top-1/4 left-1/4 w-1.5 h-1.5 bg-white rounded-full animate-[ping_3s_infinite] shadow-[0_0_10px_white]"></div>
-                <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-purple-200 rounded-full animate-[ping_5s_infinite] shadow-[0_0_10px_#E879F9] delay-1000"></div>
-                <div className="absolute bottom-10 left-1/2 w-1 h-1 bg-cyan-200 rounded-full animate-[ping_4s_infinite] delay-500"></div>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="text-center mb-10 md:mb-20">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-purple-300/40 bg-white/10 mb-3 md:mb-4 backdrop-blur-xl shadow-[0_0_20px_rgba(232,121,249,0.4)]">
-                        <Sparkles className="text-[#E879F9] w-3 h-3 md:w-4 md:h-4 animate-pulse" />
-                        <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-purple-100 uppercase">
-                            Core Faculties
+                <div className="text-center mb-24 relative">
+                    <span className="relative inline-block px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-bold tracking-[0.3em] text-purple-200 uppercase shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-md"></span>
+                        <span className="relative z-10 flex items-center gap-2">
+                            <Sparkles size={12} className="text-purple-400" /> Core Faculties{" "}
+                            <Sparkles size={12} className="text-purple-400" />
                         </span>
-                    </div>
-                    <h2 className="text-3xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-[0_0_25px_rgba(168,85,247,0.5)]">
-                        OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E879F9] via-white to-[#A855F7]">DEPARTMENTS</span>
+                    </span>
+                    <h2 className="mt-6 text-4xl md:text-7xl font-black text-white tracking-tight drop-shadow-[0_0_40px_rgba(139,92,246,0.6)]">
+                        OUR{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E0B0FF] via-white to-[#A855F7]">
+                            DEPARTMENTS
+                        </span>
                     </h2>
-                    <div className="w-24 h-1.5 bg-gradient-to-r from-[#A855F7] to-[#E879F9] mx-auto rounded-full mt-6 shadow-[0_0_20px_rgba(232,121,249,0.8)]"></div>
+                    <div className="w-48 h-1 mx-auto bg-gradient-to-r from-transparent via-purple-500 to-transparent mt-8"></div>
                 </div>
 
-                {/* Cards Container */}
-                <div className="grid grid-cols-2 gap-3 md:gap-16 max-w-5xl mx-auto">
-
-                    {departments.map((dept) => {
+                {/* Grid for Departments - Side by Side on All Devices */}
+                <div className="grid grid-cols-2 gap-4 md:gap-16 max-w-4xl mx-auto">
+                    {departments.map((dept, index) => {
                         const Icon = dept.icon;
                         return (
                             <div
-                                key={dept.id}
+                                key={index}
                                 className={`
-                                    group relative w-full
-                                    bg-[#4c1d95]/40 backdrop-blur-2xl
-                                    border border-white/20 
+                                    group/card relative w-full
+                                    bg-[#1A0B2E]/10 backdrop-blur-xl
+                                    border border-white/10 
                                     rounded-[24px] md:rounded-[40px]
-                                    p-4 md:p-12
+                                    p-5 pt-16 md:p-12 md:pt-20
                                     flex flex-col items-center text-center
                                     transition-all duration-500 ease-out
+                                    
+                                    
+                                    /* Hover & Focus Effects */
                                     hover:-translate-y-2 md:hover:-translate-y-4
-                                    ${dept.border}
-                                    hover:shadow-[0_20px_60px_-15px_rgba(168,85,247,0.4)] ${dept.bg}
-                                    overflow-hidden
+                                    hover:bg-[#251040]/80
+                                    hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)]
+                                    hover:z-10
+                                    ${dept.borderColor}
+
+                                   
+                                    
+                                    overflow-visible cursor-pointer
                                 `}
                             >
-                                {/* Inner Gradient Overlay */}
-                                <div className={`absolute inset-0 rounded-[24px] md:rounded-[40px] bg-gradient-to-b ${dept.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
+                                {/* Top Holographic Sheen */}
+                                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[inherit]"></div>
 
-                                {/* Icon Circle with "Bracket" effect */}
-                                <div className="relative mb-4 md:mb-8">
-                                    {/* Rotating Bright Rings */}
-                                    <div className="absolute inset-0 -m-2 md:-m-4 border-2 border-dashed border-white/20 rounded-full animate-[spin_15s_linear_infinite] group-hover:border-white/50 transition-colors"></div>
-                                    <div className="absolute inset-0 -m-2 md:-m-4 border-2 border-white/10 rounded-full"></div>
-
-                                    <div className="relative w-14 h-14 md:w-32 md:h-32 bg-gradient-to-br from-[#581c87] to-[#3b0764] rounded-full flex items-center justify-center border border-white/20 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] group-hover:scale-110 transition-transform duration-500">
-                                        <Icon className={`${dept.color} w-7 h-7 md:w-14 md:h-14 drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]`} />
+                                {/* --- Floating Icon (Outside/Overlapping Card) --- */}
+                                <div
+                                    className={`
+                                                absolute -top-[70px] left-1/2 -translate-x-1/2
+                                                w-20 h-20 md:w-32 md:h-32
+                                                bg-[#0B001A] rounded-full 
+                                                flex items-center justify-center
+                                                shadow-[0_10px_30px_rgba(0,0,0,0.8)]
+                                                border-2 border-white/10
+                                                group-hover/card:scale-110 transition-transform duration-500
+                                                z-20
+                                            `}
+                                >
+                                    <div
+                                        className={`w-10 h-10 md:w-20 md:h-20 ${dept.color} drop-shadow-[0_0_15px_currentColor]`}
+                                    >
+                                        <Icon className="w-3/4 h-3/4 md:w-4/5 md:h-4/5 pl-3 mt-2" />
                                     </div>
+
+                                    {/* Spinning Ring */}
+                                    <div className="absolute inset-0 rounded-full border border-dashed border-white animate-spin-slow"></div>
                                 </div>
 
+                                {/* Inner Gradient Background */}
+                                <div
+                                    className={`absolute inset-0 rounded-[24px] md:rounded-[40px] bg-gradient-to-b ${dept.bgGradient} opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none`}
+                                ></div>
+
                                 {/* Content */}
-                                <div className="relative z-10 w-full">
-                                    <h3 className="text-sm md:text-3xl font-bold text-white mb-1 md:mb-2 group-hover:tracking-wide transition-all duration-300 drop-shadow-md">
+                                <div className="relative z-10 mt-2 md:mt-4 w-full">
+                                    <h3 className="text-sm md:text-3xl font-bold text-white mb-1 md:mb-2 group-hover/card:tracking-wide transition-all duration-300 drop-shadow-md">
                                         {dept.title}
                                     </h3>
-                                    <p className="text-[10px] md:text-base font-medium text-purple-200 uppercase tracking-widest mb-3 md:mb-4 group-hover:text-white">
+                                    <p className="text-[10px] md:text-base font-medium text-purple-200/70 uppercase tracking-widest mb-3 md:mb-5 group-hover/card:text-white">
                                         {dept.subtitle}
                                     </p>
 
-                                    {/* Divider */}
-                                    <div className="w-8 md:w-12 h-0.5 bg-white/30 mx-auto mb-3 md:mb-4 group-hover:w-full group-hover:bg-white/70 transition-all duration-500"></div>
+                                    {/* Animated Line */}
+                                    <div
+                                        className={`w-8 md:w-12 h-1 bg-white/20 mx-auto mb-3 md:mb-5 rounded-full group-hover/card:w-20 md:group-hover/card:w-24 transition-all duration-500 ${dept.accent}`}
+                                    ></div>
 
-                                    <p className="text-purple-100 text-[10px] md:text-sm font-light leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity">
+                                    <p className="text-gray-400 text-[10px] md:text-sm font-light leading-relaxed opacity-80 group-hover/card:opacity-100 group-hover/card:text-gray-200 transition-all">
                                         {dept.description}
                                     </p>
                                 </div>
 
-                                {/* Bottom Glow Spot */}
-                                <div className={`absolute -bottom-10 left-1/2 -translate-x-1/2 w-24 h-24 md:w-40 md:h-40 ${dept.color.replace('text-', 'bg-')}/40 blur-[60px] rounded-full group-hover:opacity-100 opacity-0 transition-opacity duration-500`}></div>
+                                {/* Bottom Neon Pulse */}
+                                <div
+                                    className={`absolute bottom-0 left-0 w-full h-1 ${dept.accent} opacity-30 group-hover/card:opacity-100 group-hover/card:shadow-[0_0_20px_currentColor] transition-all duration-500`}
+                                ></div>
                             </div>
                         );
                     })}
-
                 </div>
             </div>
 
             <style jsx global>{`
-                .animate-float {
-                    animation: float 6s ease-in-out infinite;
-                }
-                @keyframes float {
-                    0%, 100% { transform: translateY(0px); }
-                    50% { transform: translateY(-20px); }
-                }
-                /* Existing spin animation */
-                @keyframes spin {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                }
-            `}</style>
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+        .animate-spin-slow {
+          animation: spin 10s linear infinite;
+        }
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
         </section>
     );
 };
