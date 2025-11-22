@@ -32,7 +32,7 @@ const Header = () => {
   // Static Menu Items from First Header
   const menuItems = [
     { name: "Home", href: "/" },
-    // { name: "Admission", href: "#admission" },
+    { name: "Admission", href: "#admission" },
     // { name: "Reviews", href: "#reviews" },
     { name: "Contact", href: "/contact" },
     { name: "About Us", href: "/about-us" },
