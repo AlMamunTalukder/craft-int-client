@@ -21,96 +21,134 @@ const ITicon = () => (<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" fill=
 const SoftSkillIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" fill="currentColor" data-name="Layer 2" viewBox="0 0 94.08 116.2"><g id="Layer_1-2" data-name="Layer 1"><g><path d="m62.36,87.76h-30.54c-.29-1.57-.5-3.19-.9-4.76-1.2-4.77-3.71-8.77-7.24-12.19-5.19-5.04-8.33-11.2-9.56-18.32-2.63-15.13,6.01-30.59,20.25-36.3,19.5-7.82,40.97,3.45,45.26,24.02,2.43,11.65-.73,21.96-9.12,30.45-4.12,4.16-6.9,8.9-7.84,14.69-.07.4-.1.81-.15,1.22-.05.4-.11.81-.16,1.2Zm-30.81-54.25c-.31.25-.84.51-1.11.94-.79,1.24-1.49,2.54-2.22,3.82-1.02,1.79-1.1,1.92.54,3.14,1.67,1.24,2.62,2.61,1.98,4.75-.09.31-.12.67-.04.98.72,2.69-.24,4.63-2.55,6.06-.74.46-.76,1.19-.32,1.94.9,1.52,1.77,3.04,2.65,4.57.41.71.96.97,1.75.67.38-.15.8-.22,1.16-.4,1.61-.82,3.1-.91,4.44.55.29.32.72.61,1.13.71,2.74.7,3.83,2.57,3.94,5.25.04.86.62,1.27,1.52,1.25,1.23-.03,2.46,0,3.69,0,2.95,0,2.9.29,3.36-2.85.23-1.53.77-2.6,2.37-2.99.58-.14,1.2-.44,1.62-.85,1.9-1.9,3.94-1.93,6.2-.73.94.5,1.62.07,2.11-.82.69-1.26,1.43-2.48,2.15-3.73.95-1.65,1-1.88-.56-3.05-1.64-1.23-2.71-2.55-2.04-4.72.09-.3.11-.67.03-.98-.65-2.67.23-4.64,2.56-6.06.8-.49.8-1.26.34-2.05-.87-1.48-1.73-2.97-2.58-4.47-.43-.75-1.02-1.02-1.85-.68-.42.17-.87.25-1.27.45-1.54.76-2.95.78-4.22-.58-.35-.37-.86-.7-1.35-.83-2.67-.69-3.66-2.54-3.77-5.11-.04-.92-.63-1.35-1.58-1.33-1.48.03-2.95,0-4.43,0-2.01,0-2.04.02-2.43,1.94-.13.64-.3,1.28-.37,1.93-.09.83-.54,1.26-1.28,1.63-1.45.74-2.81,1.67-4.27,2.4-.59.29-1.37.44-2.01.33-1.04-.18-2.02-.64-3.28-1.06Z"></path><path d="m62.18,99.78c.8.99,1.82,1.84,2.28,2.92,1.19,2.77-.91,5.72-4.02,5.84-1.55.06-3.11.01-4.73.01-1.18,4.98-4.11,8-9.41,7.62-4.52-.32-6.95-3.24-7.9-7.62-1.39,0-2.78,0-4.16,0-2.52-.01-4.2-1.15-4.79-3.23-.58-2.04.3-3.83,2.52-5.16.06-.03.08-.12.1-.15-.62-.53-1.33-.97-1.83-1.58-1.06-1.32-1.25-2.84-.56-4.39.75-1.7,2.15-2.56,3.98-2.62,1.97-.06,3.93-.02,5.9-.02,6.8,0,13.61,0,20.41,0,2.46,0,4.17,1.24,4.71,3.34.51,1.98-.37,3.78-2.43,5-.1.06-.17.15-.05.04Z"></path><path d="m48.86,3.69c0,.65.05,1.31-.01,1.96-.1,1.05-.77,1.66-1.78,1.67-1.02.01-1.75-.57-1.82-1.62-.09-1.34-.09-2.7,0-4.04.06-1.03.71-1.62,1.78-1.65,1.03-.03,1.73.61,1.84,1.73.06.65.01,1.31.01,1.96,0,0,0,0,0,0Z"></path><path d="m3.55,48.85c-.65,0-1.31.07-1.96-.01C.56,48.71-.01,48.07,0,47.01c.01-1,.56-1.68,1.54-1.74,1.38-.1,2.78-.1,4.16-.01,1.05.06,1.63.8,1.61,1.82-.02,1.02-.63,1.68-1.68,1.78-.69.06-1.39.01-2.08.01,0,0,0,0,0-.01Z"></path><path d="m90.36,48.93c-.69-.03-1.39,0-2.08-.11-.99-.15-1.52-.83-1.52-1.79,0-.96.54-1.7,1.53-1.77,1.42-.09,2.86-.1,4.28,0,.98.07,1.51.78,1.5,1.77,0,1-.54,1.64-1.52,1.77-.72.09-1.47.02-2.2.02,0,.03,0,.06,0,.1Z"></path><path d="m24.74,6.01c.27.2.91.47,1.25.96.7,1,1.29,2.08,1.85,3.17.51.98.24,1.93-.6,2.47-.87.55-1.94.33-2.56-.63-.66-1.03-1.28-2.09-1.83-3.19-.66-1.32.16-2.73,1.89-2.78Z"></path><path d="m71.87,7.93c-1.12,1.67-2.08,3.26-3.24,4.68-.24.3-1.45.2-1.86-.15-.45-.38-.86-1.4-.66-1.88.59-1.42,1.39-2.78,2.34-3.99.31-.4,1.38-.51,1.96-.32.52.17.85.93,1.46,1.65Z"></path><path d="m12.87,25.96c0,1.61-1.28,2.55-2.47,2-1.25-.58-2.45-1.31-3.61-2.07-.82-.54-1-1.4-.56-2.28.44-.89,1.3-1.29,2.16-.89,1.36.63,2.65,1.44,3.91,2.26.35.23.47.8.57.98Z"></path><path d="m88.07,24.74c-.2.27-.47.91-.95,1.25-1,.71-2.08,1.29-3.17,1.85-1.02.53-2.03.21-2.54-.7-.47-.85-.23-1.87.68-2.45,1.12-.58,2.29-1.14,3.25-1.94.48-.4.83-1.36.72-1.97-.11-.59-.89-1.06-1.3-1.49Z"></path><path d="m7.9,71.86c-.7-.62-1.51-1-1.65-1.54-.16-.61.06-1.66.51-2.02,1.1-.89,2.37-1.63,3.69-2.14.54-.21,1.59.14,2,.6.36.41.44,1.69.12,1.95-1.39,1.14-2.97,2.04-4.66,3.15Z"></path><path d="m86.59,71.62c-.65-.18-.99-.22-1.27-.37-1.11-.61-2.23-1.21-3.29-1.9-.9-.58-1.09-1.63-.58-2.47.52-.86,1.48-1.16,2.45-.65,1.12.58,2.29,1.14,3.25,1.94.48.4.83,1.36.72,1.97-.11.59-.89,1.06-1.3,1.49Z"></path><path d="m47,54.39c-4.02-.02-7.35-3.37-7.32-7.38.02-4.02,3.38-7.34,7.39-7.32,4.02.02,7.34,3.37,7.33,7.38-.01,4.01-3.38,7.34-7.39,7.32Z"></path></g></g></svg>);
 
 
+// const barColorMap = {
+//     "text-emerald-400": "group-hover:bg-emerald-400",
+//     "text-cyan-400": "group-hover:bg-cyan-400",
+//     "text-pink-400": "group-hover:bg-pink-400",
+//     "text-violet-400": "group-hover:bg-violet-400",
+//     "text-amber-400": "group-hover:bg-amber-400",
+//     "text-sky-400": "group-hover:bg-sky-400",
+// };
 
 const features = [
     {
         icon: IslamicKnowledgeIcon,
         title: "ISLAMIC KNOWLEDGE",
         color: "text-emerald-400",
-        gradient: "from-emerald-500/20 to-teal-900/50",
-        border: "group-hover:border-emerald-500/50",
-        shadow: "group-hover:shadow-emerald-500/30"
+        glow: "shadow-emerald-500/50",
+        borderColor: "group-hover:border-emerald-500/60",
+        bgGradient: "from-emerald-900/30 to-emerald-900/10",
+        barColor: "bg-emerald-400" // Add this line
     },
     {
         icon: Academicicon,
         title: "ACADEMIC KNOWLEDGE",
         color: "text-cyan-400",
-        gradient: "from-cyan-500/20 to-blue-900/50",
-        border: "group-hover:border-cyan-500/50",
-        shadow: "group-hover:shadow-cyan-500/30"
+        glow: "shadow-cyan-500/50",
+        borderColor: "group-hover:border-cyan-500/60",
+        bgGradient: "from-cyan-900/30 to-cyan-900/10",
+        barColor: "bg-cyan-400" // Add this line
     },
     {
         icon: Languageicon,
         title: "LANGUAGES",
-        color: "text-rose-400",
-        gradient: "from-rose-500/20 to-pink-900/50",
-        border: "group-hover:border-rose-500/50",
-        shadow: "group-hover:shadow-rose-500/30"
+        color: "text-pink-400",
+        glow: "shadow-pink-500/50",
+        borderColor: "group-hover:border-pink-500/60",
+        bgGradient: "from-pink-900/30 to-pink-900/10",
+        barColor: "bg-pink-400" // Add this line
     },
     {
         icon: ITicon,
         title: "IT SKILLS",
         color: "text-violet-400",
-        gradient: "from-violet-500/20 to-purple-900/50",
-        border: "group-hover:border-violet-500/50",
-        shadow: "group-hover:shadow-violet-500/30"
+        glow: "shadow-violet-500/50",
+        borderColor: "group-hover:border-violet-500/60",
+        bgGradient: "from-violet-900/30 to-violet-900/10",
+        barColor: "bg-violet-400" // Add this line
     },
     {
         icon: SoftSkillIcon,
-        title: "SOFT & HARD SKILLS",
+        title: "SOFT SKILLS",
         color: "text-amber-400",
-        gradient: "from-amber-500/20 to-orange-900/50",
-        border: "group-hover:border-amber-500/50",
-        shadow: "group-hover:shadow-amber-500/30"
+        glow: "shadow-amber-500/50",
+        borderColor: "group-hover:border-amber-500/60",
+        bgGradient: "from-amber-900/30 to-amber-900/10",
+        barColor: "bg-amber-400" // Add this line
     },
     {
         icon: Businessicon,
         title: "BUSINESS SKILLS",
         color: "text-sky-400",
-        gradient: "from-sky-500/20 to-indigo-900/50",
-        border: "group-hover:border-sky-500/50",
-        shadow: "group-hover:shadow-sky-500/30"
+        glow: "shadow-sky-500/50",
+        borderColor: "group-hover:border-sky-500/60",
+        bgGradient: "from-sky-900/30 to-sky-900/10",
+        barColor: "bg-sky-400" // Add this line
     },
 ];
 
-
+// Background Floating Icons
+const floatingIcons = [
+    { Icon: IslamicKnowledgeIcon, top: '10%', left: '10%', size: 40, delay: '0s', duration: '6s', color: 'text-cyan-200/10' },
+    { Icon: Academicicon, top: '20%', right: '20%', size: 35, delay: '1s', duration: '5s', color: 'text-purple-200/10' },
+    { Icon: Languageicon, bottom: '15%', left: '15%', size: 45, delay: '2s', duration: '7s', color: 'text-blue-200/10' },
+    { Icon: ITicon, bottom: '25%', right: '10%', size: 30, delay: '3s', duration: '8s', color: 'text-amber-200/10' },
+    { Icon: SoftSkillIcon, top: '50%', left: '5%', size: 28, delay: '1.5s', duration: '6.5s', color: 'text-fuchsia-200/10' },
+    { Icon: Businessicon, top: '60%', right: '5%', size: 32, delay: '0.5s', duration: '7.5s', color: 'text-emerald-200/10' },
+];
 
 const CourseFeatures = () => {
     return (
-        <section className="relative min-h-screen py-20 overflow-hidden bg-[#05010D] font-sans group/grid">
+        <section className="relative min-h-screen bg-[#0B001A] overflow-hidden font-sans py-24">
             
-            {/* --- COSMIC VOID BACKGROUND --- */}
-            <div className="absolute inset-0 w-full h-full pointer-events-none">
+            {/* --- GALAXY BACKGROUND --- */}
+            <div className="absolute inset-0 w-full h-full">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#2E0249]/40 via-[#0F0518] to-[#05010D]"></div>
+                
+                {/* Animated Nebula Clouds */}
+                <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse opacity-50"></div>
+                <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse delay-1000 opacity-50"></div>
+
                 {/* Moving Stars */}
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 animate-[pulse_10s_infinite]"></div>
-                
-                {/* Nebula Glows */}
-                <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] bg-purple-500/20 rounded-full blur-[150px] animate-[blob_15s_infinite]"></div>
-                <div className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] bg-blue-800/20 rounded-full blur-[150px] animate-[blob_20s_infinite_reverse]"></div>
-                
-                {/* Center Spotlight */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px]  bg-[#4F0187]/10 rounded-full blur-[120px]"></div>
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 animate-[pulse_8s_infinite]"></div>
+
+                {/* Floating Background Icons */}
+                {floatingIcons.map((item, index) => (
+                    <div
+                        key={index}
+                        className={`absolute animate-float ${item.color}`}
+                        style={{
+                            top: item.top,
+                            left: item.left,
+                            right: item.right,
+                            bottom: item.bottom,
+                            animationDelay: item.delay,
+                            animationDuration: item.duration,
+                        }}
+                    >
+                        <item.Icon   />
+                    </div>
+                ))}
             </div>
 
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                 
                 {/* Title Section */}
-                <div className="text-center mb-20">
-                    <div className="inline-block mb-4 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-lg">
-                        <span className="text-gray-300 text-xs tracking-[0.4em] uppercase font-bold flex items-center gap-3">
-                             <Star size={12} className="text-yellow-400 fill-yellow-400" /> 
-                             Why Choose Us
-                             <Star size={12} className="text-yellow-400 fill-yellow-400" /> 
+                <div className="text-center mb-24 relative">
+                    <span className="relative inline-block px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-bold tracking-[0.3em] text-purple-200 uppercase shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-md"></span>
+                        <span className="relative z-10 flex items-center gap-2">
+                             <Star size={12} className="text-yellow-400 fill-yellow-400" /> Why Choose Us <Star size={12} className="text-yellow-400 fill-yellow-400" />
                         </span>
-                    </div>
-                    <h2 className="text-4xl md:text-7xl font-extrabold text-white tracking-tight drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]">
-                        OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] via-white to-[#A855F7]">CURRICULUM</span>
+                    </span>
+                    <h2 className="mt-6 text-4xl md:text-7xl font-black text-white tracking-tight drop-shadow-[0_0_40px_rgba(139,92,246,0.6)]">
+                        OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E0B0FF] via-white to-[#A855F7]">CURRICULUM</span>
                     </h2>
-                    <div className="w-40 h-1.5 mx-auto bg-gradient-to-r from-purple-600 via-fuchsia-500 to-purple-600 rounded-full mt-8 shadow-[0_0_20px_rgba(232,121,249,0.8)]"></div>
+                    <div className="w-48 h-1 mx-auto bg-gradient-to-r from-transparent via-purple-500 to-transparent mt-8"></div>
                 </div>
 
-                {/* Grid for Curriculum Features with Spotlight Effect */}
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-14">
+                {/* Grid for Curriculum Features */}
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
                     {features.map((feature, index) => {
                         const Icon = feature.icon;
                         return (
@@ -118,76 +156,67 @@ const CourseFeatures = () => {
                                 key={index}
                                 className={`
                                     group relative 
-                                    bg-purple-500/20 backdrop-blur-md 
-                                    border border-white/10
-                                    rounded-[30px] md:rounded-[30px]
-                                    p-8 pt-16
+                                    bg-white/5 backdrop-blur-xl 
+                                    rounded-[30px] p-8 md:p-10 
                                     flex flex-col items-center text-center 
+                                    border border-white/10
                                     transition-all duration-500 ease-out
-                                    hover:-translate-y-4
-                                    hover:z-10 cursor-pointer
-                                    ${feature.shadow}
-                                    ${feature.border}
+                                    hover:-translate-y-3
+                                    hover:bg-[#1A0B2E]/60
+                                    hover:shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)]
+                                    cursor-pointer
+                                    overflow-hidden
+                                    ${feature.borderColor}
                                 `}
                             >
-                           
-                                {/* --- Floating Icon (Outside Card) --- */}
+                                {/* Top Holographic Sheen */}
+                                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                                
+                                {/* Icon Container with Neon Pulse */}
                                 <div className={`
-                                    absolute -top-10 left-1/2 -translate-x-1/2
-                                    w-20 h-20 md:w-24 md:h-24
-                                    bg-[#0B001A]
-                                    rounded-full 
+                                    relative mb-8
+                                    w-20 h-20 md:w-28 md:h-28
+                                    rounded-2xl rotate-3 group-hover:rotate-0
                                     flex items-center justify-center
-                                    shadow-[0_0_30px_rgba(0,0,0,0.8)]
-                                    border-2 border-white/10
-                                    group-hover:scale-110 transition-transform duration-500
-                                    group-hover:border-opacity-100
-                                    z-20
-                                    ${feature.border}
+                                    bg-gradient-to-br ${feature.bgGradient}
+                                    border border-white/10
+                                    shadow-lg
+                                    group-hover:scale-110 transition-all duration-500
+                                    group-hover:shadow-[0_0_40px_rgba(0,0,0,0.5)]
+                                    ${feature.glow}
                                 `}>
-                                    <div className={`w-10 h-10 md:w-12 md:h-12 ${feature.color} drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]`}>
+                                    <div className={`w-10 h-10 md:w-14 md:h-14 ${feature.color} drop-shadow-[0_0_10px_currentColor] transition-all duration-300`}>
                                         <Icon />
                                     </div>
-                                    
-                                    {/* Spinning Ring around Icon */}
-                                    <div className="absolute inset-0 rounded-full border border-dashed border-white/20 animate-spin-slow"></div>
                                 </div>
 
-                                {/* Card Inner Glow */}
-                                <div className={`absolute inset-0 bg-gradient-to-b ${feature.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-[inherit] pointer-events-none`}></div>
+                                {/* Feature Title */}
+                                <h3 className="text-sm md:text-xl font-bold text-gray-200 tracking-widest group-hover:text-white transition-colors duration-300 uppercase drop-shadow-md z-10">
+                                    {feature.title}
+                                </h3>
+                                
+                                {/* Decorative Bottom Bar */}
+                                {/* <div className={`w-12 h-1 mt-6 rounded-full bg-white/20 group-hover:w-24 group-hover:bg-current transition-all duration-500 ${feature.glow.replace('text-', 'bg-')}`}></div> */}
+                                {/* Decorative Bottom Bar - FIXED */}
+                                <div className={`w-12 h-1 mt-6 rounded-full ${feature.barColor} group-hover:w-24 transition-all duration-500 ${feature.glow}`}></div>
 
-                                {/* Content */}
-                                <div className="relative z-10 mt-4">
-                                    <h3 className="text-sm md:text-xl font-bold text-gray-200 tracking-widest group-hover:text-white transition-colors duration-300 uppercase drop-shadow-lg">
-                                        {feature.title}
-                                    </h3>
 
-                                    {/* Animated Line with Hover Color */}
-                                    <div className={`w-10 h-1 bg-white/20 mt-6 rounded-full mx-auto group-hover:w-20 transition-all duration-500 ${feature.color.replace("text-", "group-hover:bg-")}`}></div>
-                                </div>
 
-                                {/* Bottom Neon Pulse */}
-                                <div className={`absolute bottom-0 left-0 w-full h-1 ${feature.color.replace('text-', 'bg-')} opacity-50 group-hover:opacity-100 group-hover:shadow-[0_0_20px_currentColor] transition-all duration-500`}></div>
+                                {/* Subtle Corner Accent */}
+                                <div className={`absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl ${feature.bgGradient} opacity-0 group-hover:opacity-40 blur-xl rounded-tl-full transition-opacity duration-500`}></div>
                             </div>
                         );
                     })}
                 </div>
             </div>
-
-            {/* --- Custom Animations --- */}
+            
             <style jsx global>{`
-                @keyframes blob {
-                    0% { transform: translate(0px, 0px) scale(1); }
-                    33% { transform: translate(30px, -50px) scale(1.1); }
-                    66% { transform: translate(-20px, 20px) scale(0.9); }
-                    100% { transform: translate(0px, 0px) scale(1); }
+                .animate-float {
+                    animation: float 6s ease-in-out infinite;
                 }
-                .animate-spin-slow {
-                    animation: spin 10s linear infinite;
-                }
-                @keyframes spin {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px); }
+                    50% { transform: translateY(-20px); }
                 }
             `}</style>
         </section>
@@ -198,6 +227,187 @@ export default CourseFeatures;
 
 
 
+// const features = [
+//     {
+//         icon: IslamicKnowledgeIcon,
+//         title: "ISLAMIC KNOWLEDGE",
+//         color: "text-emerald-400",
+//         gradient: "from-emerald-500/20 to-teal-900/50",
+//         border: "group-hover:border-emerald-500/50",
+//         shadow: "group-hover:shadow-emerald-500/30"
+//     },
+//     {
+//         icon: Academicicon,
+//         title: "ACADEMIC KNOWLEDGE",
+//         color: "text-cyan-400",
+//         gradient: "from-cyan-500/20 to-blue-900/50",
+//         border: "group-hover:border-cyan-500/50",
+//         shadow: "group-hover:shadow-cyan-500/30"
+//     },
+//     {
+//         icon: Languageicon,
+//         title: "LANGUAGES",
+//         color: "text-rose-400",
+//         gradient: "from-rose-500/20 to-pink-900/50",
+//         border: "group-hover:border-rose-500/50",
+//         shadow: "group-hover:shadow-rose-500/30"
+//     },
+//     {
+//         icon: ITicon,
+//         title: "IT SKILLS",
+//         color: "text-violet-400",
+//         gradient: "from-violet-500/20 to-purple-900/50",
+//         border: "group-hover:border-violet-500/50",
+//         shadow: "group-hover:shadow-violet-500/30"
+//     },
+//     {
+//         icon: SoftSkillIcon,
+//         title: "SOFT & HARD SKILLS",
+//         color: "text-amber-400",
+//         gradient: "from-amber-500/20 to-orange-900/50",
+//         border: "group-hover:border-amber-500/50",
+//         shadow: "group-hover:shadow-amber-500/30"
+//     },
+//     {
+//         icon: Businessicon,
+//         title: "BUSINESS SKILLS",
+//         color: "text-sky-400",
+//         gradient: "from-sky-500/20 to-indigo-900/50",
+//         border: "group-hover:border-sky-500/50",
+//         shadow: "group-hover:shadow-sky-500/30"
+//     },
+// ];
+
+
+
+// const CourseFeatures = () => {
+//     return (
+//         <section className="relative min-h-screen py-20 overflow-hidden bg-[#05010D] font-sans group/grid">
+            
+//             {/* --- COSMIC VOID BACKGROUND --- */}
+//             <div className="absolute inset-0 w-full h-full pointer-events-none">
+//                 {/* Moving Stars */}
+//                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 animate-[pulse_10s_infinite]"></div>
+                
+//                 {/* Nebula Glows */}
+//                 <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] bg-purple-500/20 rounded-full blur-[150px] animate-[blob_15s_infinite]"></div>
+//                 <div className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] bg-blue-800/20 rounded-full blur-[150px] animate-[blob_20s_infinite_reverse]"></div>
+                
+//                 {/* Center Spotlight */}
+//                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px]  bg-[#4F0187]/10 rounded-full blur-[120px]"></div>
+//             </div>
+
+//             <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                
+//                 {/* Title Section */}
+//                 <div className="text-center mb-20">
+//                     <div className="inline-block mb-4 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-lg">
+//                         <span className="text-gray-300 text-xs tracking-[0.4em] uppercase font-bold flex items-center gap-3">
+//                              <Star size={12} className="text-yellow-400 fill-yellow-400" /> 
+//                              Why Choose Us
+//                              <Star size={12} className="text-yellow-400 fill-yellow-400" /> 
+//                         </span>
+//                     </div>
+//                     <h2 className="text-4xl md:text-7xl font-extrabold text-white tracking-tight drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]">
+//                         OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] via-white to-[#A855F7]">CURRICULUM</span>
+//                     </h2>
+//                     <div className="w-40 h-1.5 mx-auto bg-gradient-to-r from-purple-600 via-fuchsia-500 to-purple-600 rounded-full mt-8 shadow-[0_0_20px_rgba(232,121,249,0.8)]"></div>
+//                 </div>
+
+//                 {/* Grid for Curriculum Features with Spotlight Effect */}
+//                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-14">
+//                     {features.map((feature, index) => {
+//                         const Icon = feature.icon;
+//                         return (
+//                             <div
+//                                 key={index}
+//                                 className={`
+//                                     group relative 
+//                                     bg-purple-500/20 backdrop-blur-md 
+//                                     border border-white/10
+//                                     rounded-[30px] md:rounded-[30px]
+//                                     p-8 pt-16
+//                                     flex flex-col items-center text-center 
+//                                     transition-all duration-500 ease-out
+//                                     hover:-translate-y-4
+//                                     hover:z-10 cursor-pointer
+//                                     ${feature.shadow}
+//                                     ${feature.border}
+//                                 `}
+//                             >
+                           
+//                                 {/* --- Floating Icon (Outside Card) --- */}
+//                                 <div className={`
+//                                     absolute -top-10 left-1/2 -translate-x-1/2
+//                                     w-20 h-20 md:w-24 md:h-24
+//                                     bg-[#0B001A]
+//                                     rounded-full 
+//                                     flex items-center justify-center
+//                                     shadow-[0_0_30px_rgba(0,0,0,0.8)]
+//                                     border-2 border-white/10
+//                                     group-hover:scale-110 transition-transform duration-500
+//                                     group-hover:border-opacity-100
+//                                     z-20
+//                                     ${feature.border}
+//                                 `}>
+//                                     <div className={`w-10 h-10 md:w-12 md:h-12 ${feature.color} drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]`}>
+//                                         <Icon />
+//                                     </div>
+                                    
+//                                     {/* Spinning Ring around Icon */}
+//                                     <div className="absolute inset-0 rounded-full border border-dashed border-white/20 animate-spin-slow"></div>
+//                                 </div>
+
+//                                 {/* Card Inner Glow */}
+//                                 <div className={`absolute inset-0 bg-gradient-to-b ${feature.gradient} opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-[inherit] pointer-events-none`}></div>
+
+//                                 {/* Content */}
+//                                 <div className="relative z-10 mt-4">
+//                                     <h3 className="text-sm md:text-xl font-bold text-gray-200 tracking-widest group-hover:text-white transition-colors duration-300 uppercase drop-shadow-lg">
+//                                         {feature.title}
+//                                     </h3>
+
+//                                     {/* Animated Line with Hover Color */}
+//                                    <div
+//     className={`
+//         w-10 h-1 bg-white/20 mt-6 rounded-full mx-auto
+//         group-hover:w-20 transition-all duration-500
+//         ${colorMap[feature.color]}
+//     `}
+// ></div>
+
+//                                 </div>
+
+//                                 {/* Bottom Neon Pulse */}
+//                                 <div className={`absolute bottom-0 left-0 w-full h-1 ${feature.color.replace('text-', 'bg-')} opacity-50 group-hover:opacity-100 group-hover:shadow-[0_0_20px_currentColor] transition-all duration-500`}></div>
+//                             </div>
+//                         );
+//                     })}
+//                 </div>
+//             </div>
+
+//             {/* --- Custom Animations --- */}
+//             <style jsx global>{`
+//                 @keyframes blob {
+//                     0% { transform: translate(0px, 0px) scale(1); }
+//                     33% { transform: translate(30px, -50px) scale(1.1); }
+//                     66% { transform: translate(-20px, 20px) scale(0.9); }
+//                     100% { transform: translate(0px, 0px) scale(1); }
+//                 }
+//                 .animate-spin-slow {
+//                     animation: spin 10s linear infinite;
+//                 }
+//                 @keyframes spin {
+//                     from { transform: rotate(0deg); }
+//                     to { transform: rotate(360deg); }
+//                 }
+//             `}</style>
+//         </section>
+//     );
+// };
+
+// export default CourseFeatures;
+// ------------------------
 // const features = [
 //     {
 //         icon: IslamicKnowledgeIcon,
