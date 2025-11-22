@@ -1,4 +1,461 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import React, { useState } from "react";
+import { 
+  User, 
+  Users, 
+  Home, 
+  Activity, 
+  Send, 
+  School, 
+  Phone, 
+  MapPin,
+  Heart,
+  CheckCircle,
+  AlertCircle,
+  Calendar,
+  BookOpen,
+  Star
+} from "lucide-react";
+import logoicon from "../../../../public/img/logoicon.png";
+import Image from "next/image";
+
+
+// --- Custom Alert Modal Component ---
+const CustomAlert = ({ isOpen, type, title, message, onClose }: any) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0F0518]/80 backdrop-blur-md animate-fadeIn">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-8 transform transition-all scale-100 animate-bounceIn text-center relative overflow-hidden border-t-8 border-purple-600">
+        
+        {/* Icon */}
+        <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center shadow-lg ${type === 'success' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`}>
+          {type === 'success' ? <CheckCircle size={40} strokeWidth={2.5} /> : <AlertCircle size={40} strokeWidth={2.5} />}
+        </div>
+
+        {/* Content */}
+        <h3 className={`text-2xl font-bold mb-3 ${type === 'success' ? 'text-green-800' : 'text-red-800'}`}>
+          {title}
+        </h3>
+        <p className="text-gray-600 mb-8 text-base leading-relaxed">
+          {message}
+        </p>
+
+        {/* Button */}
+        <button
+          onClick={onClose}
+          className={`w-full py-3.5 px-6 rounded-xl font-bold text-white transition-all hover:-translate-y-1 hover:shadow-lg active:scale-95 ${type === 'success' ? 'bg-gradient-to-r from-green-500 to-green-700 shadow-green-200' : 'bg-gradient-to-r from-red-500 to-red-700 shadow-red-200'}`}
+        >
+          {type === 'success' ? 'আলহামদুলিল্লাহ' : 'বন্ধ করুন'}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const AdmissionForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [alertState, setAlertState] = useState({ isOpen: false, type: 'success', title: '', message: '' });
+
+  // ⚠️ PASTE YOUR GOOGLE SCRIPT URL HERE
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoJZ2zwXROTZoxsXH2eNutjwrQ1FrZe0rm4p8dAtBpROImMRPc1hcyjnX4Vd43nFzF/exec"; 
+
+  const showAlert = (type: string, title: string, message: string) => {
+    setAlertState({ isOpen: true, type, title, message });
+  };
+
+  const closeAlert = () => {
+    setAlertState({ ...alertState, isOpen: false });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData,
+      });
+
+      showAlert('success', 'আলহামদুলিল্লাহ!', 'আপনার ভর্তি ফর্মটি সফলভাবে জমা দেওয়া হয়েছে। শীঘ্রই অফিস থেকে যোগাযোগ করা হবে।');
+      form.reset(); 
+
+    } catch (error) {
+      console.error("Error!", error);
+      showAlert('error', 'দুঃখিত!', 'সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // --- Modern Input Component ---
+  const InputField = ({ label, name, type = "text", required = false, placeholder = "", width = "col-span-1", icon: Icon }: any) => (
+    <div className={`${width} group`}>
+      <label className="block text-sm font-semibold text-gray-700 mb-2 ml-1 group-focus-within:text-purple-700 transition-colors">
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      <div className="relative">
+        {Icon && <Icon className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors" size={18} />}
+        <input 
+          name={name} 
+          required={required} 
+          type={type} 
+          placeholder={placeholder}
+          className={`w-full ${Icon ? 'pl-11' : 'pl-4'} pr-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-800 placeholder-gray-400 focus:bg-white focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all outline-none shadow-sm hover:border-purple-300`} 
+        />
+      </div>
+    </div>
+  );
+
+  // --- Modern Selectable Card (Radio) Component ---
+  const RadioGroup = ({ label, name, options }: any) => (
+    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
+      <label className="block text-sm font-bold text-gray-800 mb-4 pb-2 border-b border-dashed border-gray-200 flex items-center gap-2">
+        <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+        {label}
+      </label>
+      <div className="flex flex-wrap gap-3">
+        {options.map((opt: any) => (
+          <label key={opt.val} className="cursor-pointer relative flex-grow md:flex-grow-0">
+            <input type="radio" name={name} value={opt.val} className="peer sr-only" />
+            <div className="
+              px-5 py-2.5 rounded-full text-sm font-medium text-center transition-all duration-200 border border-gray-200 bg-gray-50 text-gray-600
+              peer-checked:bg-purple-600 peer-checked:text-white peer-checked:border-purple-600 peer-checked:shadow-lg peer-checked:scale-105
+              hover:bg-purple-50 hover:border-purple-200
+            ">
+              {opt.text}
+            </div>
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-[#F4F6F9] py-8 px-4 md:px-8 relative overflow-x-hidden">
+      
+      {/* --- Background Design --- */}
+      <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-[#2E0249] via-[#4F0187] to-[#F4F6F9] z-0"></div>
+      <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-pink-500/20 rounded-full blur-[120px]"></div>
+      <div className="absolute top-[100px] right-[-100px] w-[300px] h-[300px] bg-blue-500/20 rounded-full blur-[100px]"></div>
+
+      {/* --- Custom Alert --- */}
+      <CustomAlert 
+        isOpen={alertState.isOpen} 
+        type={alertState.type} 
+        title={alertState.title} 
+        message={alertState.message} 
+        onClose={closeAlert} 
+      />
+
+      <div className="w-full max-w-5xl mx-auto relative z-10">
+        
+        {/* --- HEADER CARD --- */}
+        <div className="bg-white/95 backdrop-blur-xl rounded-[2.5rem] shadow-2xl p-8 md:p-12 text-center mb-10 border border-white/50 relative overflow-hidden">
+          
+          {/* Decorative Header Pattern */}
+          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-purple-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+          
+          <div className="relative z-10">
+            <div className=" flex items-center justify-center mx-auto mb-6 ">
+          <Image src={logoicon} alt="img" className="h-24 w-16"/>
+            </div>
+            
+            <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-3 tracking-tight">
+              ক্রাফট ইন্টারন্যাশনাল ইনস্টিটিউট
+            </h1>
+            
+            <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-1.5 rounded-full text-gray-600 text-sm font-medium mb-8">
+              <MapPin size={14} className="text-red-500" />
+              <p>নিমাইকাশারী, সিদ্ধিরগঞ্জ, নারায়ণগঞ্জ-১৪৩০</p>
+            </div>
+            
+            <div className="mb-8">
+               <span className="inline-block px-8 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full text-lg font-bold shadow-lg shadow-purple-500/30 tracking-wide">
+                 ভর্তি যাচাই ফর্ম
+               </span>
+            </div>
+
+            <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5 max-w-2xl mx-auto">
+              <p className="font-bold text-amber-800 mb-1 flex items-center justify-center gap-2 text-base">
+                 <Heart size={18} className="fill-amber-600 text-amber-600 animate-pulse" />
+                 আল্লাহকে সাক্ষী রেখে সঠিক তথ্য প্রদান করুন
+              </p>
+              <p className="text-sm text-amber-700/80">
+                এখানে নির্ভুল তথ্য প্রদান করুন। আপনার দেওয়া তথ্যের ভিত্তিতে শিক্ষার্থীর শিক্ষার মান ও গাইডলাইন নির্ধারণ করা হবে।
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-8">
+          
+          {/* --- SECTION 1: STUDENT INFO --- */}
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+            <div className="bg-gradient-to-r from-purple-50 to-white px-8 py-6 border-b border-purple-100 flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600">
+                <User size={22} />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-gray-900">শিক্ষার্থীর তথ্য</h2>
+                <p className="text-sm text-gray-500">শিক্ষার্থীর ব্যক্তিগত এবং একাডেমিক তথ্য</p>
+              </div>
+            </div>
+            
+            <div className="p-8 grid grid-cols-1 md:grid-cols-12 gap-6">
+              <InputField width="md:col-span-6" label="শিক্ষার্থীর নাম" name="StudentName" required placeholder="বাংলায় পুরো নাম" icon={User} />
+              <InputField width="md:col-span-2" label="বয়স" name="Age" placeholder="যেমন: ১০" icon={Calendar} />
+              <InputField width="md:col-span-4" label="আগ্রহী শ্রেণি" name="Class" placeholder="ভর্তি হতে ইচ্ছুক শ্রেণি" icon={BookOpen} />
+              
+              <div className="md:col-span-12 border-t border-dashed border-gray-200 my-2"></div>
+
+              <InputField width="md:col-span-6" label="পূর্ববর্তী প্রতিষ্ঠানের নাম" name="PrevSchool" placeholder="আগের স্কুলের নাম" icon={School} />
+              <InputField width="md:col-span-6" label="পূর্ব অধ্যায়নকৃত শ্রেণি/বিভাগ" name="PrevClass" placeholder="কোন ক্লাসে পড়ত" />
+              
+              <InputField width="md:col-span-6" label="সর্বশেষ জিপিএ (GPA)" name="GPA" placeholder="প্রাপ্ত জিপিএ" icon={Star} />
+              <InputField width="md:col-span-6" label="পূর্ববর্তী রোল" name="Roll" placeholder="ক্লাস রোল" />
+            </div>
+          </div>
+
+          {/* --- SECTION 2: GUARDIAN INFO --- */}
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-50 to-white px-8 py-6 border-b border-blue-100 flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
+                <Users size={22} />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-gray-900">অভিভাবকের তথ্য</h2>
+                <p className="text-sm text-gray-500">পিতা ও মাতার বিস্তারিত তথ্য</p>
+              </div>
+            </div>
+            
+            <div className="p-8 space-y-8">
+              {/* Father Info */}
+              <div className="relative p-6 rounded-2xl bg-slate-50 border border-slate-200">
+                 <div className="absolute -top-3 left-6 bg-slate-100 px-3 py-1 rounded-md text-xs font-bold text-slate-600 uppercase tracking-wider border border-slate-200">
+                    পিতার তথ্য
+                 </div>
+                 <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-2">
+                    <InputField width="md:col-span-4" label="পিতার নাম" name="FatherName" required />
+                    <InputField width="md:col-span-3" label="পেশা" name="FatherJob" />
+                    <InputField width="md:col-span-2" label="শিক্ষাগত যোগ্যতা" name="FatherEdu" />
+                    <InputField width="md:col-span-3" label="মোবাইল" name="FatherMobile" required placeholder="017xxxxxxxx" icon={Phone} />
+                 </div>
+              </div>
+
+              {/* Mother Info */}
+              <div className="relative p-6 rounded-2xl bg-pink-50/50 border border-pink-100">
+                 <div className="absolute -top-3 left-6 bg-pink-100 px-3 py-1 rounded-md text-xs font-bold text-pink-600 uppercase tracking-wider border border-pink-200">
+                    মাতার তথ্য
+                 </div>
+                 <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-2">
+                    <InputField width="md:col-span-4" label="মাতার নাম" name="MotherName" />
+                    <InputField width="md:col-span-3" label="পেশা" name="MotherJob" />
+                    <InputField width="md:col-span-2" label="শিক্ষাগত যোগ্যতা" name="MotherEdu" />
+                    <InputField width="md:col-span-3" label="মোবাইল" name="MotherMobile" icon={Phone} />
+                 </div>
+              </div>
+
+              {/* Address */}
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
+                    <MapPin size={16} className="text-purple-600" /> ঠিকানা
+                </label>
+                <textarea 
+                  name="Address" 
+                  rows={3} 
+                  className="w-full px-5 py-4 rounded-2xl border border-gray-200 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none resize-none shadow-sm placeholder-gray-400" 
+                  placeholder="বর্তমান এবং স্থায়ী ঠিকানা বিস্তারিত লিখুন..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          {/* --- SECTION 3: FAMILY INFO --- */}
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+            <div className="bg-gradient-to-r from-emerald-50 to-white px-8 py-6 border-b border-emerald-100 flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600">
+                <Home size={22} />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-gray-900">পারিবারিক পরিবেশ</h2>
+                <p className="text-sm text-gray-500">পারিবারিক মূল্যবোধ ও সংস্কৃতি</p>
+              </div>
+            </div>
+
+            <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <RadioGroup 
+                label="❖ আপনার পরিবারের উপার্জন ১০০% হালাল কি?" 
+                name="HalalIncome"
+                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
+              />
+              <RadioGroup 
+                label="❖ পরিবারের উপার্জনক্ষম সদস্য কতজন?" 
+                name="Earners"
+                options={[{val:'1', text:'১ জন'}, {val:'2', text:'২ জন'}, {val:'3+', text:'৩ জন+'}]}
+              />
+              <RadioGroup 
+                label="❖ পিতা-মাতা নিয়মিত ৫ ওয়াক্ত নামাজ পড়েন কি?" 
+                name="ParentsPrayer"
+                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
+              />
+              <RadioGroup 
+                label="❖ পরিবারের কোন সদস্য মাদক/নেশায় আক্রান্ত?" 
+                name="Addiction"
+                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
+              />
+              <RadioGroup 
+                label="❖ বাসায় টেলিভিশন আছে কি?" 
+                name="TV"
+                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
+              />
+              <RadioGroup 
+                label="❖ বাসায় নিয়মিত কুরআন তিলাওয়াত করা হয়?" 
+                name="QuranRecitation"
+                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}, {val:'Sometimes', text:'মাঝেমাঝে'}]}
+              />
+              <RadioGroup 
+                label="❖ পরিবারে সদস্যদের মধ্যে ঝগড়া বিবাদ কেমন হয়?" 
+                name="Quarrels"
+                options={[{val:'Never', text:'হয় না'}, {val:'Often', text:'প্রায়ই'}, {val:'Sometimes', text:'মাঝেমাঝে'}]}
+              />
+              <RadioGroup 
+                label="❖ পরিবারের সদস্যরা পর্দা পালন করে কি?" 
+                name="Purdah"
+                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}, {val:'Trying', text:'চেষ্টা করা হয়'}]}
+              />
+            </div>
+          </div>
+
+          {/* --- SECTION 4: BEHAVIOR INFO --- */}
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+            <div className="bg-gradient-to-r from-rose-50 to-white px-8 py-6 border-b border-rose-100 flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center text-rose-600">
+                <Activity size={22} />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-gray-900">আচরণ ও দক্ষতা</h2>
+                <p className="text-sm text-gray-500">শিক্ষার্থীর আচরণগত বৈশিষ্ট্য</p>
+              </div>
+            </div>
+
+            <div className="p-8 space-y-8">
+              
+               {/* Reading Ability */}
+              <div className="bg-rose-50/30 p-6 rounded-2xl border border-rose-100">
+                  <RadioGroup 
+                    label="❖ আপনার সন্তান কি পড়তে পারে?" 
+                    name="ReadingAbility"
+                    options={[
+                      {val:'Quran', text:'কুরআন'}, 
+                      {val:'Ampara', text:'আম্মাপারা'}, 
+                      {val:'Qaida', text:'কায়েদা'},
+                      {val:'None', text:'কোনটিই নয়'}
+                    ]}
+                  />
+              </div>
+
+              {/* Mobile Usage */}
+              <div className="bg-white p-6 rounded-2xl border border-gray-200 hover:border-rose-300 transition-all shadow-sm">
+                <label className="block text-sm font-bold text-gray-800 mb-3">❖ দৈনিক কত সময় মোবাইল ব্যবহার করে?</label>
+                <div className="relative">
+                    <Phone size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input name="MobileUsage" type="text" placeholder="সময় উল্লেখ করুন (যেমন: ১ ঘণ্টা)" className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-4 focus:ring-rose-100 focus:border-rose-400 outline-none transition-all" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <RadioGroup 
+                  label="❖ সন্তানের আচরণ কেমন?" 
+                  name="GeneralBehavior"
+                  options={[{val:'Average', text:'মোটামুটি'}, {val:'Good', text:'ভালো'}, {val:'Very Good', text:'অনেক ভালো'}]}
+                />
+                 <RadioGroup 
+                  label="❖ পিতা মাতার কথা শোনে?" 
+                  name="Obedience"
+                  options={[{val:'Not At All', text:'না'}, {val:'Somewhat', text:'মোটামুটি'}, {val:'Fully', text:'পুরোপুরি'}]}
+                />
+                 <RadioGroup 
+                  label="❖ বড়দের সাথে আচরণ?" 
+                  name="ElderBehavior"
+                  options={[{val:'Average', text:'মোটামুটি'}, {val:'Good', text:'ভালো'}, {val:'Very Good', text:'অনেক ভালো'}]}
+                />
+                 <RadioGroup 
+                  label="❖ ছোটদের সাথে আচরণ?" 
+                  name="YoungerBehavior"
+                  options={[{val:'Average', text:'মোটামুটি'}, {val:'Good', text:'ভালো'}, {val:'Very Good', text:'অনেক ভালো'}]}
+                />
+                <RadioGroup 
+                  label="❖ মিথ্যা বলে বা জেদ করে?" 
+                  name="LyingStubbornness"
+                  options={[{val:'Often', text:'প্রায়ই'}, {val:'Sometimes', text:'মাঝেমাঝে'}, {val:'Rarely', text:'খুব কম'}, {val:'Never', text:'না'}]}
+                />
+                <RadioGroup 
+                  label="❖ কোন উন্নতি বেশি চান?" 
+                  name="ImprovementGoal"
+                  options={[{val:'Manners', text:'আদব আখলাক'}, {val:'Physical', text:'শারীরিক'}]}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* --- SUBMIT BUTTON --- */}
+          <div className="pt-6 pb-20 text-center">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`
+                group relative inline-flex items-center justify-center px-12 py-4 rounded-full font-bold text-white text-xl shadow-[0_10px_20px_rgba(124,58,237,0.4)]
+                bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#8B5CF6]
+                hover:shadow-[0_20px_30px_rgba(124,58,237,0.5)] hover:-translate-y-1 hover:scale-105
+                active:scale-95 transition-all duration-300 overflow-hidden
+                ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}
+              `}
+            >
+              {/* Shine Effect */}
+              <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
+              
+              <span className="relative flex items-center gap-3 z-10">
+                {isLoading ? (
+                   <span className="flex items-center gap-2"><div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> প্রসেসিং...</span>
+                ) : (
+                   <> <Send size={22} /> সাবমিট করুন </>
+                )}
+              </span>
+            </button>
+            <p className="text-gray-500 text-xs mt-4">সাবমিট করার আগে তথ্যগুলো পুনরায় চেক করে নিন</p>
+          </div>
+
+        </form>
+      </div>
+      
+      {/* Global Styles */}
+      <style jsx global>{`
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes bounceIn { 0% { transform: scale(0.8); opacity: 0; } 70% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); } }
+        @keyframes shine { 100% { left: 125%; } }
+        .animate-fadeIn { animation: fadeIn 0.3s ease-out forwards; }
+        .animate-bounceIn { animation: bounceIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .animate-shine { animation: shine 0.75s; }
+      `}</style>
+    </div>
+  );
+};
+
+export default AdmissionForm;
+
+
+
+
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // "use client";
 
 // import React, { useState } from "react";
@@ -361,418 +818,3 @@
 // };
 
 // export default AdmissionForm;
-
-
-
-"use client";
-
-import React, { useState } from "react";
-import { 
-  User, 
-  Users, 
-  Home, 
-  Activity, 
-  Send, 
-  Phone, 
-  MapPin,
-  Heart,
-  CheckCircle,
-  AlertCircle
-} from "lucide-react";
-import Image from "next/image";
-import logoicon from "../../../../public/img/logoicon.png";
-
-// --- Custom Alert Modal Component ---
-const CustomAlert = ({ isOpen, type, title, message, onClose }: any) => {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 transform transition-all scale-100 animate-bounceIn text-center relative overflow-hidden">
-        
-        {/* Decorative Background Blob */}
-        <div className={`absolute top-0 left-0 w-full h-2 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`}></div>
-
-        {/* Icon */}
-        <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${type === 'success' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`}>
-          {type === 'success' ? <CheckCircle size={32} /> : <AlertCircle size={32} />}
-        </div>
-
-        {/* Content */}
-        <h3 className={`text-2xl font-bold mb-2 ${type === 'success' ? 'text-green-700' : 'text-red-700'}`}>
-          {title}
-        </h3>
-        <p className="text-gray-600 mb-6 text-sm">
-          {message}
-        </p>
-
-        {/* Button */}
-        <button
-          onClick={onClose}
-          className={`w-full py-3 px-4 rounded-xl font-bold text-white transition-all hover:-translate-y-1 hover:shadow-lg ${type === 'success' ? 'bg-green-600 hover:bg-green-700 shadow-green-200' : 'bg-red-600 hover:bg-red-700 shadow-red-200'}`}
-        >
-          {type === 'success' ? 'ঠিক আছে' : 'বন্ধ করুন'}
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const AdmissionForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [alertState, setAlertState] = useState({ isOpen: false, type: 'success', title: '', message: '' });
-
-  // ⚠️ PASTE YOUR GOOGLE SCRIPT URL HERE
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoJZ2zwXROTZoxsXH2eNutjwrQ1FrZe0rm4p8dAtBpROImMRPc1hcyjnX4Vd43nFzF/exec"; 
-
-  const showAlert = (type: string, title: string, message: string) => {
-    setAlertState({ isOpen: true, type, title, message });
-  };
-
-  const closeAlert = () => {
-    setAlertState({ ...alertState, isOpen: false });
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    try {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        body: formData,
-      });
-
-      // Success Alert using Custom Component
-      showAlert('success', 'আলহামদুলিল্লাহ!', 'ভর্তি ফর্মটি সফলভাবে জমা দেওয়া হয়েছে।');
-
-      form.reset(); // Clear the form after success
-    } catch (error) {
-      console.error("Error!", error);
-      
-      // Error Alert using Custom Component
-      showAlert('error', 'দুঃখিত!', 'সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Reusable Input Component for cleaner code
-  const InputField = ({ label, name, type = "text", required = false, placeholder = "", width = "col-span-1" }: any) => (
-    <div className={`${width} group`}>
-      <label className="block text-sm font-semibold text-gray-700 mb-2 group-hover:text-purple-700 transition-colors">
-        {label} {required && <span className="text-red-500">*</span>}
-      </label>
-      <input 
-        name={name} 
-        required={required} 
-        type={type} 
-        placeholder={placeholder}
-        className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all outline-none text-gray-800 placeholder-gray-400" 
-      />
-    </div>
-  );
-
-  // Reusable Radio Group Component
-  const RadioGroup = ({ label, name, options }: any) => (
-    <div className="bg-white p-4 rounded-xl border border-gray-100 hover:border-purple-200 hover:shadow-md transition-all duration-300">
-      <label className="block text-sm font-bold text-gray-800 mb-3 border-b border-dashed border-gray-200 pb-2">
-        {label}
-      </label>
-      <div className="flex flex-wrap gap-3">
-        {options.map((opt: any) => (
-          <label key={opt.val} className="relative cursor-pointer group">
-            <input type="radio" name={name} value={opt.val} className="peer sr-only" />
-            <div className="px-4 py-2 rounded-full border border-gray-200 bg-gray-50 text-gray-600 text-sm font-medium transition-all
-              peer-checked:bg-purple-600 peer-checked:text-white peer-checked:border-purple-600 peer-checked:shadow-lg
-              group-hover:border-purple-300">
-              {opt.text}
-            </div>
-          </label>
-        ))}
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="min-h-screen bg-[#F3F4F6] py-10 px-4 md:px-8 relative overflow-hidden">
-      
-      {/* Custom Alert Component */}
-      <CustomAlert 
-        isOpen={alertState.isOpen} 
-        type={alertState.type} 
-        title={alertState.title} 
-        message={alertState.message} 
-        onClose={closeAlert} 
-      />
-      
-      {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-br from-[#4F0187] via-[#6D28D9] to-[#8A2BE2] rounded-b-[50px] md:rounded-b-[100px] z-0"></div>
-      <div className="absolute top-20 right-10 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-      <div className="absolute top-40 left-10 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl"></div>
-
-      <div className="w-full max-w-5xl mx-auto relative z-10">
-        
-        {/* --- HEADER CARD --- */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center mb-8 border-b-4 border-[#F300E7]">
-          <div className="w-32 h-32 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
-            <Image src={logoicon} alt="img" className="h-24 w-16"/>
-            {/* <School size={40} className="text-purple-700" /> */}
-          </div>
-          
-          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3 tracking-tight">
-            ক্রাফট ইন্টারন্যাশনাল ইনস্টিটিউট
-          </h1>
-          <div className="flex items-center justify-center gap-2 text-gray-500 text-sm md:text-base font-medium mb-6">
-            <MapPin size={16} />
-            <p>নিমাইকাশারী, সিদ্ধিরগঞ্জ, নারায়ণগঞ্জ-১৪৩০</p>
-          </div>
-          
-          <div className="inline-block relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative px-8 py-3 bg-white ring-1 ring-gray-900/5 rounded-full leading-none flex items-center justify-center space-x-2 shadow-sm">
-              <span className="text-purple-900 font-bold text-lg">ভর্তি যাচাই ফর্ম</span>
-            </div>
-          </div>
-
-          <div className="mt-8 p-4 bg-orange-50 border border-orange-100 rounded-xl text-sm md:text-base text-gray-700">
-            <p className="font-bold text-orange-800 mb-1 flex items-center justify-center gap-2">
-               <Heart size={16} className="fill-orange-600 text-orange-600" />
-               আল্লাহকে সাক্ষী রেখে সঠিক তথ্য প্রদান করুন
-            </p>
-            <p className="text-xs md:text-sm text-gray-500">
-              এখানে নির্ভুল তথ্য প্রদান করুন। নিম্ন প্রদত্ত তথ্য অনুযায়ী শিক্ষার্থীর পড়াশোনার মান নির্ধারণ করা হবে।
-            </p>
-          </div>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          
-          {/* --- SECTION 1: STUDENT INFO --- */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
-            <div className="bg-purple-50 px-6 py-4 border-b border-purple-100 flex items-center gap-3">
-              <div className="p-2 bg-white rounded-lg shadow-sm text-purple-600"><User size={20} /></div>
-              <h2 className="text-xl font-bold text-purple-900">শিক্ষার্থীর প্রাথমিক তথ্য</h2>
-            </div>
-            
-            <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-12 gap-6">
-              <InputField width="md:col-span-6" label="শিক্ষার্থীর নাম" name="StudentName" required placeholder="বাংলায় পুরো নাম লিখুন" />
-              <InputField width="md:col-span-2" label="বয়স" name="Age" placeholder="যেমন: ১০" />
-              <InputField width="md:col-span-4" label="আগ্রহী শ্রেণি" name="Class" placeholder="ভর্তি হতে ইচ্ছুক শ্রেণি" />
-              
-              <InputField width="md:col-span-6" label="পূর্ববর্তী প্রতিষ্ঠানের নাম" name="PrevSchool" placeholder="আগের স্কুলের নাম" />
-              <InputField width="md:col-span-6" label="পূর্ব অধ্যায়নকৃত শ্রেণি/বিভাগ" name="PrevClass" placeholder="কোন ক্লাসে পড়ত" />
-              
-              <InputField width="md:col-span-6" label="সর্বশেষ পরীক্ষায় প্রাপ্ত জিপিএ" name="GPA" placeholder="GPA Score" />
-              <InputField width="md:col-span-6" label="পূর্ববর্তী শ্রেণির রোল" name="Roll" placeholder="ক্লাস রোল" />
-            </div>
-          </div>
-
-          {/* --- SECTION 2: GUARDIAN INFO --- */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
-            <div className="bg-blue-50 px-6 py-4 border-b border-blue-100 flex items-center gap-3">
-              <div className="p-2 bg-white rounded-lg shadow-sm text-blue-600"><Users size={20} /></div>
-              <h2 className="text-xl font-bold text-blue-900">অভিভাবকের প্রাথমিক তথ্য</h2>
-            </div>
-            
-            <div className="p-6 md:p-8 space-y-8">
-              {/* Father Info */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 bg-gray-50/50 rounded-xl border border-gray-100">
-                 <div className="md:col-span-12 pb-2 border-b border-gray-200 mb-2">
-                    <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider">পিতার তথ্য</h3>
-                 </div>
-                 <InputField width="md:col-span-4" label="পিতার নাম" name="FatherName" required />
-                 <InputField width="md:col-span-3" label="পেশা" name="FatherJob" />
-                 <InputField width="md:col-span-2" label="শিক্ষাগত যোগ্যতা" name="FatherEdu" />
-                 <InputField width="md:col-span-3" label="মোবাইল" name="FatherMobile" required placeholder="017xxxxxxxx" />
-              </div>
-
-              {/* Mother Info */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 bg-gray-50/50 rounded-xl border border-gray-100">
-                 <div className="md:col-span-12 pb-2 border-b border-gray-200 mb-2">
-                    <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider">মাতার তথ্য</h3>
-                 </div>
-                 <InputField width="md:col-span-4" label="মাতার নাম" name="MotherName" />
-                 <InputField width="md:col-span-3" label="পেশা" name="MotherJob" />
-                 <InputField width="md:col-span-2" label="শিক্ষাগত যোগ্যতা" name="MotherEdu" />
-                 <InputField width="md:col-span-3" label="মোবাইল" name="MotherMobile" />
-              </div>
-
-              {/* Address */}
-              <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">ঠিকানা</label>
-                <textarea name="Address" rows={2} className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none resize-none" placeholder="বর্তমান এবং স্থায়ী ঠিকানা বিস্তারিত লিখুন..."></textarea>
-              </div>
-            </div>
-          </div>
-
-          {/* --- SECTION 3: FAMILY INFO --- */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
-            <div className="bg-green-50 px-6 py-4 border-b border-green-100 flex items-center gap-3">
-              <div className="p-2 bg-white rounded-lg shadow-sm text-green-600"><Home size={20} /></div>
-              <h2 className="text-xl font-bold text-green-900">পারিবারিক তথ্য ও পরিবেশ</h2>
-            </div>
-
-            <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <RadioGroup 
-                label="❖ আপনার পরিবারের উপার্জন ১০০% হালাল কি?" 
-                name="HalalIncome"
-                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
-              />
-              <RadioGroup 
-                label="❖ পরিবারের উপার্জনক্ষম সদস্য কতজন?" 
-                name="Earners"
-                options={[{val:'1', text:'১ জন'}, {val:'2', text:'২ জন'}, {val:'3+', text:'৩ জন+'}]}
-              />
-              <RadioGroup 
-                label="❖ পিতা-মাতা নিয়মিত ৫ ওয়াক্ত নামাজ পড়েন কি?" 
-                name="ParentsPrayer"
-                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
-              />
-              <RadioGroup 
-                label="❖ পরিবারের কোন সদস্য মাদক/নেশায় আক্রান্ত আছে কি?" 
-                name="Addiction"
-                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
-              />
-              <RadioGroup 
-                label="❖ বাসায় টেলিভিশন আছে কি?" 
-                name="TV"
-                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
-              />
-              <RadioGroup 
-                label="❖ বাসায় নিয়মিত কুরআন তিলাওয়াত করা হয়?" 
-                name="QuranRecitation"
-                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}, {val:'Sometimes', text:'মাঝেমাঝে'}]}
-              />
-              <RadioGroup 
-                label="❖ পরিবারে সদস্যদের মধ্যে ঝগড়া বিবাদ কেমন হয়?" 
-                name="Quarrels"
-                options={[{val:'Never', text:'হয় না'}, {val:'Often', text:'প্রায়শই হয়'}, {val:'Sometimes', text:'মাঝেমাঝে'}]}
-              />
-              <RadioGroup 
-                label="❖ পরিবারের সদস্যরা পর্দা পালন করে কি?" 
-                name="Purdah"
-                options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}, {val:'Trying', text:'চেষ্টা করা হয়'}]}
-              />
-            </div>
-          </div>
-
-          {/* --- SECTION 4: BEHAVIOR INFO --- */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
-            <div className="bg-rose-50 px-6 py-4 border-b border-rose-100 flex items-center gap-3">
-              <div className="p-2 bg-white rounded-lg shadow-sm text-rose-600"><Activity size={20} /></div>
-              <h2 className="text-xl font-bold text-rose-900">শিক্ষার্থীর আচরণ ও দক্ষতা</h2>
-            </div>
-
-            <div className="p-6 md:p-8 space-y-6">
-              
-               {/* Reading Ability */}
-              <RadioGroup 
-                label="❖ আপনার সন্তান কি পড়তে পারে?" 
-                name="ReadingAbility"
-                options={[
-                  {val:'Quran', text:'কুরআন'}, 
-                  {val:'Ampara', text:'আম্মাপারা'}, 
-                  {val:'Qaida', text:'কায়েদা'},
-                  {val:'None', text:'কোনটিই নয়'}
-                ]}
-              />
-
-              {/* Mobile Usage */}
-              <div className="bg-white p-4 rounded-xl border border-gray-100 hover:border-rose-200 transition-all">
-                <label className="block text-sm font-bold text-gray-800 mb-2">❖ দৈনিক কত সময় মোবাইল ব্যবহার করে?</label>
-                <div className="relative">
-                    <Phone size={18} className="absolute left-3 top-3 text-gray-400" />
-                    <input name="MobileUsage" type="text" placeholder="সময় উল্লেখ করুন (যেমন: ১ ঘণ্টা)" className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-rose-200 focus:border-rose-400 outline-none transition-all" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <RadioGroup 
-                  label="❖ আপনার সন্তানের আচরণ কেমন?" 
-                  name="GeneralBehavior"
-                  options={[{val:'Average', text:'মোটামুটি'}, {val:'Good', text:'ভালো'}, {val:'Very Good', text:'অনেক ভালো'}]}
-                />
-                 <RadioGroup 
-                  label="❖ সন্তান পিতা মাতার কথা শোনে?" 
-                  name="Obedience"
-                  options={[{val:'Not At All', text:'মোটেই শোনে না'}, {val:'Somewhat', text:'মোটামুটি'}, {val:'Fully', text:'পুরোপুরি'}]}
-                />
-                 <RadioGroup 
-                  label="❖ পরিবারের বড়দের সাথে আচরণ কেমন?" 
-                  name="ElderBehavior"
-                  options={[{val:'Average', text:'মোটামুটি'}, {val:'Good', text:'ভালো'}, {val:'Very Good', text:'অনেক ভালো'}]}
-                />
-                 <RadioGroup 
-                  label="❖ পরিবারের ছোটদের সাথে আচরণ কেমন?" 
-                  name="YoungerBehavior"
-                  options={[{val:'Average', text:'মোটামুটি'}, {val:'Good', text:'ভালো'}, {val:'Very Good', text:'অনেক ভালো'}]}
-                />
-                <RadioGroup 
-                  label="❖ সন্তান কি মিথ্যা বলে? বা জেদ করে?" 
-                  name="LyingStubbornness"
-                  options={[{val:'Often', text:'প্রায়ই'}, {val:'Sometimes', text:'মাঝেমধ্যে'}, {val:'Rarely', text:'খুব কম'}, {val:'Never', text:'করে না'}]}
-                />
-                <RadioGroup 
-                  label="❖ কোন দিকটিতে বেশি উন্নতি চান?" 
-                  name="ImprovementGoal"
-                  options={[{val:'Manners', text:'আদব আখলাক'}, {val:'Physical', text:'শারীরিক দক্ষতা'}]}
-                />
-              </div>
-
-            </div>
-          </div>
-
-          {/* --- SUBMIT BUTTON --- */}
-          <div className="pt-8 pb-20 flex justify-center">
-            <button
-              type="submit"
-              disabled={isLoading}
-              className={`
-                group relative px-10 py-4 rounded-full font-bold text-white text-lg shadow-xl 
-                bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] 
-                hover:shadow-2xl hover:shadow-purple-500/40 hover:-translate-y-1 
-                active:scale-95 transition-all duration-300 overflow-hidden
-                ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}
-              `}
-            >
-              <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-500 ease-out -skew-x-12 origin-left" />
-              <span className="relative flex items-center gap-3">
-                {isLoading ? (
-                   <>প্রসেসিং হচ্ছে...</>
-                ) : (
-                   <> <Send size={20} /> জমা দিন </>
-                )}
-              </span>
-            </button>
-          </div>
-
-        </form>
-      </div>
-      
-      {/* Global Animation Styles */}
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes bounceIn {
-          0% { transform: scale(0.8); opacity: 0; }
-          70% { transform: scale(1.05); opacity: 1; }
-          100% { transform: scale(1); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out forwards;
-        }
-        .animate-bounceIn {
-          animation: bounceIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-      `}</style>
-    </div>
-  );
-};
-
-export default AdmissionForm;
