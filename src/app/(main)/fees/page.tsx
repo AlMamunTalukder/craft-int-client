@@ -1,4 +1,4 @@
-import { GraduationCap, CreditCard, Home, Coins, Banknote, Hammer as Hamburger, CircleDollarSign } from "lucide-react"
+import { GraduationCap, CreditCard, Home, Coins, Banknote, Hamburger, CircleDollarSign } from "lucide-react"
 
 const feeData = [
   {
@@ -134,10 +134,10 @@ const FeeStructure = () => {
                 </span>
               </div> */}
 
-              <div className="relative bg-gradient-to-br from-[#2a1450] via-[#1f0f40] to-[#180830] p-3 md:p-8 h-full flex flex-col z-10">
+              <div className="relative bg-gradient-to-br from-[#452875]  to-[#2a0c56] p-3 md:p-6 h-full flex flex-col z-10">
                 {/* Card Header */}
                 <div className="mb-8 border-b border-purple-500/20 pb-6 mt-3 md:mt-0">
-                  <h3 className="text-center text-2xl md:text-4xl font-bold bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent group-hover:from-[#D8B4FE] group-hover:via-white group-hover:to-[#D8B4FE] transition-all duration-300 mb-2">
+                  <h3 className="text-center text-2xl md:text-4xl font-bold bg-gradient-to-r from-white via-purple-100 to-white bg-clip-text text-transparent group-hover:from-[#D8B4FE] group-hover:via-white group-hover:to-[#D8B4FE] transition-all duration-300 mb-2 pt-2">
                     {item.className}
                   </h3>
                   <p className="text-gray-400 text-sm text-center">ভর্তিকালীন এবং মাসিক খরচের বিবরণ</p>
@@ -162,7 +162,7 @@ const FeeStructure = () => {
                         </div>
                         <div className="text-right space-x-2">
                           <span className="text-white/50 font-medium line-through text-xs">{fee.main}</span>
-                          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-purple-100 font-bold text-lg group-hover:from-[#D8B4FE] group-hover:to-white transition-all">
+                          <span className="text-white bg-clip-text bg-gradient-to-r from-purple-300 to-purple-100 font-bold text-lg group-hover:from-[#D8B4FE] group-hover:to-white transition-all">
                             {fee.amount}
                           </span>
                         </div>
