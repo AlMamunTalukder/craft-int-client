@@ -3,7 +3,7 @@
 // import React from "react";
 // import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
 
-// import bg from "../../../../public/img/bg.webp";
+// import bg from "../../../public/img/bg.webp";
 
 // const Banner = () => {
 //   return (
@@ -119,8 +119,8 @@ import {
   PenTool
 } from "lucide-react";
 
-import bg from "../../../../public/img/bg.webp";
-import img1 from "../../../../public/img/website-icon-admission.png";
+import bg from "../../../public/img/bg.webp";
+import img1 from "../../../public/img/website-icon-admission.png";
 import Image from "next/image";
 
 const Banner = () => {

@@ -13,7 +13,7 @@ import dynamic from "next/dynamic";
 // import Link from "next/link";
 
 const CountdownTimer = dynamic(
-  () => import("@/app/components/CountdownTimer/CountdownTimer"),
+  () => import("@/components/CountdownTimer/CountdownTimer"),
   { ssr: false }
 );
 

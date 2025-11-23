@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.554.0",
     "next": "14.2.16",
@@ -18,7 +22,9 @@
     "react-image-accordion": "^1.2.2",
     "sharp": "^0.34.1",
     "sweetalert2": "^11.26.3",
-    "swiper": "^11.2.6"
+    "swiper": "^11.2.6",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",

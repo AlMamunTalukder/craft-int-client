@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
-import img from "../../../../public/img/business.png";
+import img from "../../../public/img/business.png";
 
 const businessSkillsData = [
   "Business mindset - বিজনেসের জন্য নিজের মনকে তৈরি করা।",

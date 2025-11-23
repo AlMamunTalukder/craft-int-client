@@ -47,7 +47,7 @@ const departments = [
     },
     {
         id: 2,
-        title: "HIFZ QURAN",
+        title: "HIFZUL QURAN",
         subtitle: "DEPARTMENT",
         icon: QuranIcon, 
         description: "Tahfizul Quran & Islamic Studies",

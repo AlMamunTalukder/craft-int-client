@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 import Image from "next/image";
-import itskills from "../../../../public/img/itskills.png";
+import itskills from "../../../public/img/itskills.png";
 
 
 

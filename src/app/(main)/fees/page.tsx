@@ -46,7 +46,7 @@ const feeData = [
     category: "আবাসিক সহ",
     fees: [
       { label: "ভর্তি ফি", main: "১৮,০০০/-", amount: "১৩,৫০০/-", icon: GraduationCap },
-      { label: "মাসিক বেতন", amount: "৬,২০০/-", icon: CreditCard },
+      { label: "মাসিক বেতন + টিউশন ফি", amount: "৬,২০০/-", icon: CreditCard },
     ],
     total: "৩৪,২০০/-",
     isResidential: true,

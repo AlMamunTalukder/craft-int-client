@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { Check, Lightbulb, Zap, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
-import soft from "../../../../public/img/Asset4.png";
+import soft from "../../../public/img/Asset4.png";
 
 const skillsLeft = [
   { id: 1, title: "Communication Skill - যোগাযোগের দক্ষতা।" },
@@ -114,7 +114,7 @@ const SoftSkills = () => {
           </div>
               
               <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">
-                  SOFT <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] via-white to-[#A855F7]">& HARD</span> SKILLS
+                  SOFT <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] via-white to-[#a55de9]">& HARD</span> SKILLS
               </h2>
               <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed">
                   আমাদের শিক্ষার্থীদের জন্য প্রয়োজনীয় জীবনমুখী দক্ষতা ও নৈতিক শিক্ষার এক অনন্য সমন্বয়, যা তাদের ভবিষ্যৎ জীবনের প্রতিটি পদক্ষেপে এগিয়ে রাখবে।
