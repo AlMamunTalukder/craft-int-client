@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import img from "../../../public/img/business.png";
@@ -22,6 +22,25 @@ const businessSkillsData = [
 
 const BusinessSkills = () => {
   const [showAll, setShowAll] = useState(false);
+   const [savedScroll, setSavedScroll] = useState(0);
+  
+    useEffect(() => {
+      if (showAll) {
+        // After expanding, return to previous scroll position
+        setTimeout(() => {
+          window.scrollTo({
+            top: savedScroll,
+            behavior: "instant", // or "smooth"
+          });
+        }, 50);
+      }
+    }, [showAll, savedScroll]);
+
+     const toggleShowAll = () => {
+    // Save current scroll position BEFORE expanding
+    setSavedScroll(window.scrollY);
+    setShowAll(!showAll);
+  };
 
   // Show only 6 items initially, show all when expanded
   const displayItems = showAll ? businessSkillsData : businessSkillsData.slice(0, 6);
@@ -106,7 +125,7 @@ const BusinessSkills = () => {
           {/* Show More/Less Button */}
         <div className="mt-8 text-center">
           <button 
-            onClick={() => setShowAll(!showAll)}
+            onClick={toggleShowAll}
             className="group relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-200 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full hover:shadow-lg hover:shadow-purple-500/40 focus:outline-none ring-offset-2 focus:ring-2 ring-purple-400"
           >
             <span>{showAll ? 'কম দেখুন' : 'আরও দেখুন'}</span>

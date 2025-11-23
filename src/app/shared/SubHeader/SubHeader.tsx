@@ -10,6 +10,7 @@ import {
 import Container from "../Container/Container";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 // import Link from "next/link";
 
 const CountdownTimer = dynamic(
@@ -18,14 +19,29 @@ const CountdownTimer = dynamic(
 );
 
 export default function SubHeader() {
+  const SocialIcon = ({
+    icon,
+    href,
+  }: {
+    icon: React.ReactNode;
+    href: string;
+  }) => (
+    <Link
+      href={href}
+      className="w-8 h-8 rounded-full bg-white  flex items-center justify-center text-[#4F0187] hover:bg-[#4F0187] hover:-translate-y-1 transition-all duration-300 border border-gray-700 hover:border-[#4F0187] hover:text-[#DC25FF]  cursor-pointer"
+    >
+      {icon}
+    </Link>
+  );
+
   return (
     <div className="bg-[#4F0187] text-white py-5">
       <Container>
         <div className="lg:flex justify-between items-center lg:space-y-0 space-y-3">
           <div className="flex lg:justify-start justify-center gap-2">
             <div className="text-center">
+              <p>অগ্রিম ভর্তিতে ২৫% ছাড়...</p>
               <p>প্রি ওয়ান থেকে সেভেন এবং হিফয বিভাগে ভর্তি চলছে। </p>
-               
             </div>
           </div>
 
@@ -44,12 +60,18 @@ export default function SubHeader() {
             </Link>
           </div> */}
 
-          <div className="flex lg:justify-start justify-center gap-3 text-lg">
-            <FaFacebookF className="hover:text-[#DC25FF] cursor-pointer" />
-            <FaWhatsapp className="hover:text-[#DC25FF] cursor-pointer" />
-            <FaYoutube className="hover:text-[#DC25FF] cursor-pointer" />
-            <FaTelegramPlane className="hover:text-[#DC25FF] cursor-pointer" />
-            <FaUsers className="hover:text-[#DC25FF] cursor-pointer" />
+          <div className="flex lg:justify-start justify-center gap-2 text-lg">
+            <SocialIcon
+              icon={<FaFacebookF />}
+              href="https://www.facebook.com/ciibd25/"
+            />
+            <SocialIcon icon={<FaWhatsapp />} href="01604-858100" />
+            <SocialIcon
+              icon={<FaYoutube />}
+              href="https://www.youtube.com/@CII1216/videos"
+            />
+            <SocialIcon icon={<FaTelegramPlane />} href="#" />
+            <SocialIcon icon={<FaUsers />} href="#" />
           </div>
         </div>
       </Container>

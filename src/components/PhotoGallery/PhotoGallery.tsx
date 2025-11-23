@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import img1 from "../../../public/img/img1.jpeg";
-import img2 from "../../../public/img/img2.jpeg";
-import img3 from "../../../public/img/img3.jpeg";
-import img4 from "../../../public/img/img4.jpeg";
+import img1 from "../../../public/img/gallery/img4.jpeg";
+import img2 from "../../../public/img/gallery/lab2.jpg";
+import img3 from "../../../public/img/gallery/door.jpg";
+import img4 from "../../../public/img/gallery/class2.jpg";
+import img5 from "../../../public/img/gallery/meeting.jpg";
+import img6 from "../../../public/img/gallery/class4.jpg";
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Container from '@/app/shared/Container/Container';
@@ -48,13 +50,13 @@ const galleries: ImageGallery[] = [
     id: '05',
     description:
       'স্টুডিও',
-    image: img1,
+    image: img5,
   },
   {
     id: '05',
     description:
       'ক্লাসরুম',
-    image: img3,
+    image: img6,
   },
 ];
 
@@ -85,7 +87,7 @@ const ImageGallery = () => {
            <h1 className="text-3xl md:text-4xl font-bold text-[#4F0187]">ফটো গ্যালারি</h1>
          </div> 
           <div className=" w-24 h-1.5 mx-auto bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full"></div>
-        <div className="columns-3 gap-4 space-y-4 mt-5">
+        <div className="columns-3 gap-4 space-y-4 mt-5 ">
           {galleries.map((gallery, i) => (
             <Dialog key={gallery.id} open={open && index === i} onOpenChange={setOpen}>
               <DialogTrigger asChild>
@@ -97,7 +99,7 @@ const ImageGallery = () => {
                   <Image
                     src={gallery.image}
                     alt="gallery image"
-                    className="w-full h-auto"
+                    className="w-full h-full"
                     placeholder="blur"
                   />
                 </motion.div>
@@ -105,7 +107,7 @@ const ImageGallery = () => {
 
               <AnimatePresence>
                 {open && index === i && (
-                  <DialogContent className="max-w-4xl p-0 border-none">
+                  <DialogContent className=" p-0 border-none ">
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, scale: 0.92 }}
@@ -117,7 +119,7 @@ const ImageGallery = () => {
                       <Image
                         src={galleries[index].image}
                         alt="large preview"
-                        className="w-full h-auto rounded"
+                        className=" rounded"
                       />
 
                       <DialogTitle className="p-2">{galleries[index].description}</DialogTitle>

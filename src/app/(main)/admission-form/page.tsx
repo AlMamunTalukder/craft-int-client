@@ -351,42 +351,42 @@ const AdmissionForm = () => {
 
                 <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                   <RadioGroup 
-                    label="❖ আপনার পরিবারের উপার্জন ১০০% হালাল কি?" 
+                    label="আপনার পরিবারের উপার্জন ১০০% হালাল কি?" 
                     name="HalalIncome"
                     options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
                   />
-                  <RadioGroup 
-                    label="❖ পরিবারের উপার্জনক্ষম সদস্য কতজন?" 
+                  {/* <RadioGroup 
+                    label="পরিবারের উপার্জনক্ষম সদস্য কতজন?" 
                     name="Earners"
                     options={[{val:'1', text:'১ জন'}, {val:'2', text:'২ জন'}, {val:'3+', text:'৩ জন+'}]}
-                  />
+                  /> */}
                   <RadioGroup 
-                    label="❖ পিতা-মাতা নিয়মিত ৫ ওয়াক্ত নামাজ পড়েন কি?" 
+                    label=" পিতা-মাতা নিয়মিত ৫ ওয়াক্ত নামাজ পড়েন কি?" 
                     name="ParentsPrayer"
                     options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
                   />
                   <RadioGroup 
-                    label="❖ পরিবারের কোন সদস্য মাদক/নেশায় আক্রান্ত?" 
+                    label=" পরিবারের কোন সদস্য মাদক/নেশায় আক্রান্ত?" 
                     name="Addiction"
                     options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
                   />
                   <RadioGroup 
-                    label="❖ বাসায় টেলিভিশন আছে কি?" 
+                    label=" বাসায় টেলিভিশন আছে কি?" 
                     name="TV"
                     options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
                   />
                   <RadioGroup 
-                    label="❖ বাসায় নিয়মিত কুরআন তিলাওয়াত করা হয়?" 
+                    label=" বাসায় নিয়মিত কুরআন তিলাওয়াত করা হয়?" 
                     name="QuranRecitation"
                     options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}, {val:'Sometimes', text:'মাঝেমাঝে'}]}
                   />
                   <RadioGroup 
-                    label="❖ পরিবারে সদস্যদের মধ্যে ঝগড়া বিবাদ কেমন হয়?" 
+                    label=" পরিবারে সদস্যদের মধ্যে ঝগড়া বিবাদ কেমন হয়?" 
                     name="Quarrels"
                     options={[{val:'Never', text:'হয় না'}, {val:'Often', text:'প্রায়ই'}, {val:'Sometimes', text:'মাঝেমাঝে'}]}
                   />
                   <RadioGroup 
-                    label="❖ পরিবারের সদস্যরা পর্দা পালন করে কি?" 
+                    label=" পরিবারের সদস্যরা পর্দা পালন করে কি?" 
                     name="Purdah"
                     options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}, {val:'Trying', text:'চেষ্টা করা হয়'}]}
                   />
@@ -411,9 +411,9 @@ const AdmissionForm = () => {
 
                 <div className="p-8 space-y-8">
                   {/* Reading Ability */}
-                  <div className="bg-white/60 p-6 rounded-2xl border border-rose-200 shadow-sm">
+                  {/* <div className="bg-white/60 p-6 rounded-2xl border border-rose-200 shadow-sm">
                     <RadioGroup 
-                      label="❖ আপনার সন্তান কি পড়তে পারে?" 
+                      label=" আপনার সন্তান কি পড়তে পারে?" 
                       name="ReadingAbility"
                       options={[
                         {val:'Quran', text:'কুরআন'}, 
@@ -422,11 +422,11 @@ const AdmissionForm = () => {
                         {val:'None', text:'কোনটিই নয়'}
                       ]}
                     />
-                  </div>
+                  </div> */}
 
                   {/* Mobile Usage */}
                   <div className="bg-white/60 p-6 rounded-2xl border border-rose-200 shadow-sm">
-                    <label className="block text-sm font-bold text-gray-800 mb-3">❖ দৈনিক কত সময় মোবাইল ব্যবহার করে?</label>
+                    <label className="block text-sm font-bold text-gray-800 mb-3"> দৈনিক কত সময় মোবাইল ব্যবহার করে?</label>
                     <div className="relative">
                       <Phone size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-rose-400" />
                       <input name="MobileUsage" type="text" placeholder="সময় উল্লেখ করুন (যেমন: ১ ঘণ্টা)" className="w-full pl-12 pr-4 py-3 rounded-xl border border-rose-200 bg-white/50 focus:bg-white focus:ring-4 focus:ring-rose-100 focus:border-rose-400 outline-none transition-all" />
@@ -436,7 +436,7 @@ const AdmissionForm = () => {
                 <RadioGroup 
                   label=" সন্তানের আচরণ কেমন?" 
                   name="GeneralBehavior"
-                   options={[{val:'Very Good', text:'অনেক ভালো'}, {val:'Good', text:'ভালো'}, {val:'Average', text:'ভাল নয়'},  ]}
+                   options={[{val:'Very Good', text:'অনেক ভালো'}, {val:'Good', text:'মোটামুটি'}, {val:'Average', text:'ভাল নয়'},  ]}
                 />
                  <RadioGroup 
                   label=" পিতা মাতার কথা শোনে?" 
@@ -446,23 +446,23 @@ const AdmissionForm = () => {
                  <RadioGroup 
                   label=" বড়দের সাথে আচরণ?" 
                   name="ElderBehavior"
-                  options={[{val:'Very Good', text:'অনেক ভালো'}, {val:'Good', text:'ভালো'}, {val:'Average', text:'ভাল নয়'},  ]}
+                  options={[{val:'Very Good', text:'অনেক ভালো'}, {val:'Good', text:'মোটামুটি'}, {val:'Average', text:'ভাল নয়'},  ]}
                 />
                  <RadioGroup 
                   label=" ছোটদের সাথে আচরণ?" 
                   name="YoungerBehavior"
-                  options={[{val:'Very Good', text:'অনেক ভালো'}, {val:'Good', text:'ভালো'}, {val:'Average', text:'ভাল নয়'},  ]}
+                  options={[{val:'Very Good', text:'অনেক ভালো'}, {val:'Good', text:'মোটামুটি'}, {val:'Average', text:'ভাল নয়'},  ]}
                 />
                 <RadioGroup 
                   label=" মিথ্যা বলে বা জেদ করে?" 
                   name="LyingStubbornness"
                   options={[{val:'Often', text:'প্রায়ই'}, {val:'Sometimes', text:'মাঝেমাঝে'}, {val:'Rarely', text:'খুব কম'}, {val:'Never', text:'না'}]}
                 />
-                <RadioGroup 
+                {/* <RadioGroup 
                   label=" কোন উন্নতি বেশি চান?" 
                   name="ImprovementGoal"
                   options={[{val:'Manners', text:'আদব আখলাক'}, {val:'Physical', text:'শারীরিক'}]}
-                />
+                /> */}
               </div>
                 </div>
               </div>

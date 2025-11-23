@@ -139,7 +139,7 @@ const ITSkills = () => {
                         <span className="text-[#D8B4FE] text-sm font-medium tracking-widest uppercase">Technical Expertise</span>
                     </div> */}
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
-                        Master Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]">IT Skills</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]">IT Skills</span>
                     </h2>
                     <div className="w-20 h-1 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] mx-auto rounded-full"></div>
                 </div>
@@ -154,7 +154,7 @@ const ITSkills = () => {
                                 className={`
                                     group relative p-3 md:p-6 
                                     rounded-2xl 
-                                    bg-[#1A0B2E]/60 backdrop-blur-md
+                                    bg-[#3f186c] backdrop-blur-md
                                     border border-white/5
                                     hover:bg-[#251040]/80
                                     transition-all duration-300 

@@ -30,8 +30,8 @@ export default function CategoriesSection() {
           </div>
           <h2 className="text-sm font-semibold tracking-wide">ISLAMIC KNOWLEDGE</h2>
           <p className="text-sm opacity-90 leading-relaxed">
-            ইসলামের যাবতীয় মৌলিক জ্ঞান যেমনঃ ইসলামী আকিদা, কুরআন শিক্ষা, নামাজ শিক্ষা, 
-            হাদিস-মাসআলা, হালাল হারাম, দোয়া - দরুদ ও এতদসংক্রান্ত শিক্ষা।
+            ইসলামের যাবতীয় মৌলিক জ্ঞান যেমনঃ ইসলামী আকিদা, কুরআন ও হাদিস শিক্ষা, নামাজ শিক্ষা, 
+            প্রয়োজনীয় মাসলা-মাসআলা, হালাল হারাম ও মাসনূন দু’আ ও দরুদ ইত্যাদি।
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function CategoriesSection() {
           </div>
           <h2 className="text-sm font-semibold tracking-wide">ACADEMIC KNOWLEDGE</h2>
           <p className="text-sm opacity-90 leading-relaxed">
-            জাতীয় শিক্ষাব্যবস্থা ও পাঠ্যসূচির আলোকে এটির সাজানো মডেল।
+            বাংলাদেশ মাদ্রাসা শিক্ষাবোর্ড এবং জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তকের আলোকে এটির সাজানো মডেল।
           </p>
         </div>
 
@@ -53,8 +53,7 @@ export default function CategoriesSection() {
           </div>
           <h2 className="text-sm font-semibold tracking-wide">LANGUAGES</h2>
           <p className="text-sm opacity-90 leading-relaxed">
-            বিভিন্ন ভাষার: ইঙ্গ্লিশ, আরবি ভাষা, একাডেমিক ও আদবসহ দৈনন্দিন কথাবর্তা, লেখা, 
-            পড়া এবং দ্রুত দক্ষতা নিশ্চিত করা।
+            বিশুদ্ধ উচ্চারণে, সাবলীলভাবে, প্রমিত বাংলায় এবং বিট্রিশ ও আরবদের মত করে, ইংরেজি ও আরবিতে অর্নগল কথা বলা, লেখা পড়া এবং শোনার দক্ষতা নিশ্চিত করা।
           </p>
         </div>
 

@@ -148,7 +148,7 @@ const CourseFeatures = () => {
                 </div>
 
                 {/* Grid for Curriculum Features */}
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-12">
                     {features.map((feature, index) => {
                         const Icon = feature.icon;
                         return (
@@ -157,7 +157,7 @@ const CourseFeatures = () => {
                                 className={`
                                     group relative 
                                     bg-white/5 backdrop-blur-xl 
-                                    rounded-[30px] p-8 md:p-10 
+                                    rounded-[30px] p-2 md:p-10 
                                     flex flex-col items-center text-center 
                                     border border-white/10
                                     transition-all duration-500 ease-out
