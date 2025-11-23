@@ -7,8 +7,8 @@ import img1 from "../../../public/img/img1.jpeg";
 import img2 from "../../../public/img/img2.jpeg";
 import img3 from "../../../public/img/img3.jpeg";
 import img4 from "../../../public/img/img4.jpeg";
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+// import { ArrowRight } from 'lucide-react';
+// import Link from 'next/link';
 import Container from '@/app/shared/Container/Container';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '../ui/button';
@@ -147,7 +147,7 @@ const ImageGallery = () => {
           ))}
         </div>
 
-        <div className="flex items-center justify-center  py-10">
+        {/* <div className="flex items-center justify-center  py-10">
            <Link href={'/gallery'}>
           <Button
             size="lg"
@@ -158,7 +158,7 @@ const ImageGallery = () => {
             <ArrowRight />
           </Button>
           </Link>
-        </div>
+        </div> */}
         </div>
 
       </Container>
