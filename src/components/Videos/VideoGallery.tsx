@@ -9,11 +9,11 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { VideoModal } from "./VideoModal";
-import image_1 from "@/public/img/video/video_thum_1.jpg";
-import image_2 from "@/public/img/video/video_thum_2.jpg";
-import image_3 from "@/public/img/video/video_thum_3.jpg";
-import image_4 from "@/public/img/video/video_thum_4.jpg";
-import image_5 from "@/public/img/video/video_thum_5.jpg";
+import image_1 from "../../../public/img/video/2.jpg";
+import image_2 from "../../../public/img/video/3.jpg";
+import image_3 from "../../../public/img/video/5.jpg";
+import image_4 from "../../../public/img/video/4.jpg";
+import image_5 from "../../../public/img/video/1.jpg";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Container from "@/app/shared/Container/Container";
@@ -21,49 +21,49 @@ import Container from "@/app/shared/Container/Container";
 const newsData = [
   {
     id: 1,
-    title: "স্বাস্থ্যসেবায় নতুন দিগন্ত: আধুনিক চিকিৎসা পদ্ধতি",
+    title: "Little Teachers in Action! ",
     description:
-      "ডক্টরস অ্যাসোসিয়েশন অফ বাংলাদেশের উদ্যোগে নতুন চিকিৎসা প্রযুক্তি প্রশিক্ষণ প্রোগ্রাম",
-    date: "১৫ নভেম্বর, ২০২৫",
-    duration: "12:35",
+      "How Class 2 Students are Practicing Teaching & Mastering Skills.",
+    date: "২১ অক্টোবর, ২০২৫",
+    duration: "02:21",
     thumbnail: image_1,
-    videoUrl: "https://www.youtube.com/embed/G5xD1PH3YJU?si=bimlzzg2SXs0XVOe",
+    videoUrl: "https://www.youtube.com/embed/SxpVOqrHw74?si=HmVpGvhzg9SfceAb",
   },
   {
     id: 2,
-    title: "জনস্বাস্থ্য সচেতনতা: প্রতিরোধই সর্বোত্তম চিকিৎসা",
-    description: "সারাদেশে স্বাস্থ্য সচেতনতা কার্যক্রম ও ফ্রি মেডিকেল ক্যাম্প",
+    title: "English Rhymes Power 🎤 ",
+    description: " মজায় মজায় ইংরেজি শেখার এই কৌশল আপনি আগে দেখেননি",
     date: "১২ নভেম্বর, ২০২৫",
-    duration: "8:20",
+    duration: "2:55",
     thumbnail: image_2,
-    videoUrl: 'https://www.youtube.com/embed/vwZRsMmHipg?si=z_Six3sQU-e-oqkr"',
+    videoUrl: 'https://www.youtube.com/embed/f8EmprR7JnE?si=XrgK3RblE6oopGm5"',
   },
   {
     id: 3,
-    title: "মেডিকেল কনফারেন্স ২০২৫: স্বাস্থ্যসেবার ভবিষ্যৎ",
-    description: "জাতীয় মেডিকেল কনফারেন্সে হাজারো চিকিৎসকের অংশগ্রহণ",
+    title: "CII টিচিং প্র্যাকটিস ",
+    description: "ছাত্রজীবন থেকেই শুরু হোক আপনার বাচ্চার প্রেজেন্টেশন স্কিল।",
     date: "১০ নভেম্বর, ২০২৫",
-    duration: "15:45",
+    duration: "2:45",
     thumbnail: image_3,
-    videoUrl: "https://www.youtube.com/embed/QdfPNNxEWA8?si=TZd9o6hDAu6zAsGE",
+    videoUrl: "https://www.youtube.com/embed/Ne7wG-JVyuc?si=7K8fhOcxMB0m0xYn",
   },
   {
     id: 4,
-    title: "বাংলাদেশের চিকিৎসকদের কোভিড-১৯ যুদ্ধ: নিবেদনের এক গল্প",
-    description: "মহামারির সময় চিকিৎসকদের ত্যাগ ও সেবার বাস্তব গল্প",
+    title: "The Right Way to Give Salaam",
+    description: "Essential Sunnah and Etiquette to Know Now",
     date: "৮ নভেম্বর, ২০২৫",
-    duration: "10:15",
+    duration: "2:34",
     thumbnail: image_4,
-    videoUrl: "https://www.youtube.com/embed/qPdkw72bJi4?si=uDg0Up9KlmRLgjKz",
+    videoUrl: "https://www.youtube.com/embed/v8t4P1Hm9Rk?si=LuVttEzXkF4ktk4Z",
   },
   {
     id: 5,
-    title: "গ্রামীণ স্বাস্থ্যসেবা: দুর্গম অঞ্চলে চিকিৎসা সেবা",
-    description: "দুর্গম এলাকায় চিকিৎসাসেবা পৌঁছে দেওয়ার বিশেষ উদ্যোগ",
+    title: "The Secret Formula to Sharpen Your Brain",
+    description: "The Magic of Mind Games",
     date: "৫ নভেম্বর, ২০২৫",
-    duration: "9:30",
+    duration: "1:17",
     thumbnail: image_5,
-    videoUrl: "https://www.youtube.com/embed/wAOK6VVQXVI?si=htxJdGoo3s4mql9W",
+    videoUrl: "https://www.youtube.com/embed/_rEGBY3wEe0?si=_Ib1ZZw5DuZT2tOl",
   },
 ];
 
@@ -99,134 +99,171 @@ const VideoGallery = () => {
     <>
       <Container>
         {/* Header */}
-        <div className="flex justify-center mb-5">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#4F0187]">
-            ফটো গ্যালারি
+        <div className="text-center mb-12">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#4F0187] mb-4">
+            ভিডিও গ্যালারি
           </h1>
+          <div className="w-24 h-2 mx-auto bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full"></div>
+          
         </div>
-        <div className=" w-24 h-1.5 mx-auto bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full"></div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Main Video Player */}
-          <div className="lg:col-span-2">
-            <div
-              className="relative rounded-xl overflow-hidden shadow-2xl group"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-            >
-              {/* Main Image */}
-              <div className="relative w-full aspect-video bg-gray-900">
-                <Image
-                  src={currentVideo.thumbnail}
-                  alt={currentVideo.title}
-                  fill
-                  className="w-full h-full object-cover"
-                />
+        {/* Main Video Player */}
+        <div className="mb-12">
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-2xl group bg-gradient-to-br from-purple-50 to-blue-50 p-2"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="relative w-full aspect-video bg-gray-900 rounded-xl overflow-hidden">
+              <Image
+                src={currentVideo.thumbnail}
+                alt={currentVideo.title}
+                fill
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                priority
+              />
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-link-to-t from-black/80 via-black/20 to-transparent"></div>
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
-                {/* Play Button */}
-                <button
-                  onClick={() => setIsDialogOpen(true)}
-                  className="absolute inset-0 m-auto w-20 h-20 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center transition-all transform hover:scale-110 shadow-lg"
-                >
-                  <Play className="text-white w-10 h-10 ml-1" fill="white" />
-                </button>
-
-                {/* Navigation Buttons */}
-                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button
-                    onClick={goPrev}
-                    className="w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110"
-                  >
-                    <ChevronLeft className="w-6 h-6 text-gray-800" />
-                  </button>
-                  <button
-                    onClick={goNext}
-                    className="w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110"
-                  >
-                    <ChevronRight className="w-6 h-6 text-gray-800" />
-                  </button>
+              {/* Content Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    {currentVideo.duration}
+                  </span>
+                  <span className="flex items-center gap-1 text-white/90 text-sm">
+                    <Calendar className="w-4 h-4" />
+                    {currentVideo.date}
+                  </span>
                 </div>
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 line-clamp-2">
+                  {currentVideo.title}
+                </h2>
+                <p className="text-white/80 text-sm md:text-base line-clamp-2">
+                  {currentVideo.description}
+                </p>
+              </div>
+
+              {/* Play Button */}
+              <button
+                onClick={() => setIsDialogOpen(true)}
+                className="absolute inset-0 m-auto w-20 h-20 md:w-24 md:h-24 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition-all transform hover:scale-110 shadow-2xl group/play"
+              >
+                <Play
+                  className="text-white w-8 h-8 md:w-10 md:h-10 ml-1"
+                  fill="white"
+                />
+                <div className="absolute inset-0 rounded-full bg-purple-600 animate-ping opacity-0 group-hover/play:opacity-100"></div>
+              </button>
+
+              {/* Navigation Buttons */}
+              <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button
+                  onClick={goPrev}
+                  className="w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110 backdrop-blur-sm"
+                >
+                  <ChevronLeft className="w-5 h-5 text-gray-800" />
+                </button>
+                <button
+                  onClick={goNext}
+                  className="w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110 backdrop-blur-sm"
+                >
+                  <ChevronRight className="w-5 h-5 text-gray-800" />
+                </button>
               </div>
             </div>
-
-            {/* Progress Indicators */}
-            <div className="flex gap-2 mt-4 justify-center">
-              {newsData.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    currentIndex === index
-                      ? "bg-blue-600 w-8"
-                      : "bg-gray-300 w-6 hover:bg-gray-400"
-                  }`}
-                />
-              ))}
-            </div>
           </div>
 
-          {/* Side Video List */}
-          <div className="lg:col-span-1">
-            <div className="space-y-4 max-h-[250px] md:max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
-              {newsData.map((item, index) => (
-                <div
-                  key={item.id}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`cursor-pointer rounded-lg overflow-hidden transition-all transform hover:scale-[1.02] ${
-                    currentIndex === index ? "bg-[#b9e1e5]" : "hover:shadow-md"
-                  }`}
-                >
-                  <div className="flex gap-3 p-3">
-                    <div className="relative w-32 h-20 shrink-0 rounded-md overflow-hidden">
-                      <Image
-                        src={item.thumbnail}
-                        alt={item.title}
-                        fill
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                        <Play className="w-6 h-6 text-white" fill="white" />
-                      </div>
-                      <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded">
-                        {item.duration}
-                      </div>
-                    </div>
+          {/* Progress Indicators */}
+          <div className="flex gap-3 mt-6 justify-center">
+            {newsData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`rounded-full transition-all duration-300 ${
+                  currentIndex === index
+                    ? "bg-purple-600 w-8 h-3"
+                    : "bg-gray-300 w-3 h-3 hover:bg-gray-400 hover:w-6"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
 
-                    <div className="flex-1 min-w-0">
-                      <h3
-                        className={`font-semibold text-sm mb-1 line-clamp-2 ${
-                          currentIndex === index
-                            ? "text-blue-600"
-                            : "text-gray-800 hover:text-blue-600"
-                        }`}
-                      >
-                        {item.title}
-                      </h3>
-                      <p className="text-xs text-gray-500 flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {item.date}
-                      </p>
+        {/* Video Grid */}
+        <div className="mb-12">
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            {newsData.map((item, index) => (
+              <div
+                key={item.id}
+                onClick={() => setCurrentIndex(index)}
+                className={`group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 ${
+                  currentIndex === index
+                    ? "ring-4 ring-purple-500 shadow-2xl transform scale-105"
+                    : "shadow-lg hover:shadow-2xl hover:transform hover:scale-105"
+                }`}
+              >
+                <div className="relative aspect-video bg-gray-900">
+                  <Image
+                    src={item.thumbnail}
+                    alt={item.title}
+                    fill
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <Play className="w-6 h-6 text-white" fill="white" />
                     </div>
                   </div>
+
+                  {/* Duration Badge */}
+                  <div className="absolute bottom-3 right-3 bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                    {item.duration}
+                  </div>
+
+                  {/* Active Indicator */}
+                  {currentIndex === index && (
+                    <div className="absolute top-3 left-3 bg-purple-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                      এখন দেখানো হচ্ছে
+                    </div>
+                  )}
                 </div>
-              ))}
-            </div>
-            <div className="flex items-center justify-center  py-10">
-              <Link href={"/videos"}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-[#1fafbe] text-[#1fafbe] hover:bg-[#1fafbe] hover:text-white transition-all duration-300"
-                >
-                  আরও দেখুন
-                  <ArrowRight />
-                </Button>
-              </Link>
-            </div>
+
+                <div className="p-4 bg-white">
+                  <h3
+                    className={`font-semibold text-sm mb-2 line-clamp-2 ${
+                      currentIndex === index
+                        ? "text-purple-600"
+                        : "text-gray-800"
+                    }`}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 flex items-center gap-1">
+                    <Calendar className="w-3 h-3" />
+                    {item.date}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
+
+        {/* More Videos Button */}
+        <div className="text-center">
+          <Link href={"/videos"}>
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] hover:from-[#5A1A9C] hover:to-[#9B4AE2] text-white px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-5"
+            >
+              আরও ভিডিও দেখুন
+              <ArrowRight className="ml-3 w-5 h-5" />
+            </Button>
+          </Link>
         </div>
 
         {/* Video Modal */}

@@ -16,7 +16,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Imports from your structure
-import logo from "../../../../public/img/Asset1.png";
+import logo from "../../../../public/img/footer.png";
 import bg from "../../../../public/img/bg.webp";
 import Container from "../Container/Container";
 

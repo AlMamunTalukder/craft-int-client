@@ -1,3 +1,4 @@
+import VideoGallery from "@/components/Videos/VideoGallery";
 import Banner from "../../components/Banner/Banner";
 import BusinessSkills from "../../components/BusinessSkills/BusinessSkills";
 import ClassDescription from "../../components/ClassDescription/ClassDescription";
@@ -22,6 +23,7 @@ export default function Home() {
       <SoftHardSkill />
       <BusinessSkills />
       <PhotoGallery />
+      <VideoGallery/>
     </div>
   );
 }

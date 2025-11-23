@@ -32,7 +32,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
           <div className="absolute -top-14 right-0 flex items-center gap-3">
             <button
               onClick={() => setIsVideoModalOpen(false)}
-              className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white rounded-lg transition-all duration-200 border border-white/20 hover:border-white/30 shadow-lg"
+              className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 backdrop-blur-md text-white rounded-lg transition-all duration-200 border border-purple-500 hover:border-purple-300 shadow-lg"
             >
               <X size={20} />
               <span className="font-medium">Close</span>
@@ -40,7 +40,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
           </div>
 
           {/* Video Container with Glass Effect */}
-          <div className="relative bg-linear-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+          <div className="relative bg-gradient-to-br from-purple-900 to-purple-700 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
             {/* Video Player */}
             <div className="relative pt-[56.25%] bg-black">
               <iframe
@@ -53,7 +53,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
             </div>
 
             {/* Video Info Footer */}
-            <div className="bg-[#70B2B2] backdrop-blur-md p-4 sm:p-6 border-t border-white/10">
+            <div className="bg-gradient-to-r from-purple-600 to-purple-700 backdrop-blur-md p-4 sm:p-6 border-t border-white/10">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
