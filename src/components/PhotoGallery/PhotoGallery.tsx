@@ -80,11 +80,12 @@ const ImageGallery = () => {
   return (
     <div className="bg-linear-to-b from-[#c3eaee] to-gray-50 py-4">
       <Container >
-        {/* <SectionTitle
-          title="ফটো গ্যালারি"
-          align="left"
-        /> */}
-        <div className="columns-3 gap-4 space-y-4">
+        <div className="mt-10 pb-20"> 
+         <div className="flex justify-center mb-5">
+           <h1 className="text-3xl md:text-4xl font-bold text-[#4F0187]">ফটো গ্যালারি</h1>
+         </div> 
+          <div className=" w-24 h-1.5 mx-auto bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full"></div>
+        <div className="columns-3 gap-4 space-y-4 mt-5">
           {galleries.map((gallery, i) => (
             <Dialog key={gallery.id} open={open && index === i} onOpenChange={setOpen}>
               <DialogTrigger asChild>
@@ -151,13 +152,15 @@ const ImageGallery = () => {
           <Button
             size="lg"
             variant="outline"
-            className="border-[#1fafbe] text-[#1fafbe] hover:bg-[#1fafbe] hover:text-white transition-all duration-300"
+            className="border-[#8A2BE2] text-[#8A2BE2] hover:bg-[#8A2BE2] hover:text-white transition-all duration-300"
           >
             আরও দেখুন
             <ArrowRight />
           </Button>
           </Link>
         </div>
+        </div>
+
       </Container>
     </div>
   );
