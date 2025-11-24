@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   User, 
   Users, 
@@ -19,6 +20,12 @@ import {
   Star,
   Sparkles,
   Award,
+  Target,
+  Brain,
+  Shield,
+  GraduationCap,
+  Crown,
+  Rocket
 } from "lucide-react";
 import logoicon from "../../../../public/img/logo.png";
 import Image from "next/image";
@@ -50,23 +57,31 @@ const CustomAlert = ({ isOpen, type, title, message, onClose }: any) => {
   );
 };
 
-// --- Animated Section Component ---
-const AnimatedSection = ({ children, isVisible, delay = 0 }: any) => (
-  <div className={`transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-       style={{ transitionDelay: `${delay}ms` }}>
-    {children}
-  </div>
-);
+
 
 const AdmissionForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [alertState, setAlertState] = useState({ isOpen: false, type: 'success', title: '', message: '' });
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set(['header']));
+  const [formData, setFormData] = useState<Record<string, string>>({});
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoJZ2zwXROTZoxsXH2eNutjwrQ1FrZe0rm4p8dAtBpROImMRPc1hcyjnX4Vd43nFzF/exec"; 
 
+  // Load saved form data from localStorage
+  useEffect(() => {
+    const savedData = localStorage.getItem('admissionFormData');
+    if (savedData) {
+      setFormData(JSON.parse(savedData));
+    }
+  }, []);
+
+  // Save form data to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('admissionFormData', JSON.stringify(formData));
+  }, [formData]);
+
   // Intersection Observer for scroll animations
-  React.useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -96,6 +111,13 @@ const AdmissionForm = () => {
     setAlertState({ ...alertState, isOpen: false });
   };
 
+  const handleInputChange = (name: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
@@ -104,13 +126,19 @@ const AdmissionForm = () => {
     const formData = new FormData(form);
 
     try {
-      await fetch(SCRIPT_URL, {
+      const response = await fetch(SCRIPT_URL, {
         method: "POST",
         body: formData,
       });
 
-      showAlert('success', 'আলহামদুলিল্লাহ!', 'আপনার ভর্তি ফর্মটি সফলভাবে জমা দেওয়া হয়েছে। শীঘ্রই অফিস থেকে যোগাযোগ করা হবে।');
-      form.reset(); 
+      if (response.ok) {
+        showAlert('success', 'আলহামদুলিল্লাহ!', 'আপনার ভর্তি ফর্মটি সফলভাবে জমা দেওয়া হয়েছে। শীঘ্রই অফিস থেকে যোগাযোগ করা হবে।');
+        form.reset();
+        localStorage.removeItem('admissionFormData');
+        setFormData({});
+      } else {
+        throw new Error('Server response not OK');
+      }
     } catch (error) {
       console.error("Error!", error);
       showAlert('error', 'দুঃখিত!', 'সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।');
@@ -132,6 +160,8 @@ const AdmissionForm = () => {
           required={required} 
           type={type} 
           placeholder={placeholder}
+          value={formData[name] || ''}
+          onChange={(e) => handleInputChange(name, e.target.value)}
           className={`w-full ${Icon ? 'pl-11' : 'pl-4'} pr-4 py-3.5 rounded-xl border border-gray-200 bg-white/70 text-gray-800 placeholder-gray-400 focus:bg-white focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all outline-none shadow-sm hover:border-purple-300`} 
         />
       </div>
@@ -147,7 +177,14 @@ const AdmissionForm = () => {
       <div className="flex flex-wrap gap-3">
         {options.map((opt: any) => (
           <label key={opt.val} className="relative cursor-pointer group">
-            <input type="radio" name={name} value={opt.val} className="peer sr-only" />
+            <input 
+              type="radio" 
+              name={name} 
+              value={opt.val} 
+              checked={formData[name] === opt.val}
+              onChange={(e) => handleInputChange(name, e.target.value)}
+              className="peer sr-only" 
+            />
             <div className="px-4 py-2 rounded-full border border-gray-200 bg-white/50 text-gray-600 text-sm font-medium transition-all
               peer-checked:bg-purple-600 peer-checked:text-white peer-checked:border-purple-600 peer-checked:shadow-lg
               group-hover:border-purple-300">
@@ -159,8 +196,26 @@ const AdmissionForm = () => {
     </div>
   );
 
+  // --- Enhanced TextArea Component ---
+  const TextAreaField = ({ label, name, required = false, placeholder = "", icon: Icon }: any) => (
+    <div className="group">
+      <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
+        {Icon && <Icon size={16} className="text-emerald-600" />} {label}
+      </label>
+      <textarea 
+        name={name}
+        required={required}
+        value={formData[name] || ''}
+        onChange={(e) => handleInputChange(name, e.target.value)}
+        rows={3} 
+        className="w-full px-5 py-4 rounded-2xl border border-emerald-200 bg-white/70 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition-all outline-none resize-none shadow-sm placeholder-gray-400" 
+        placeholder={placeholder}
+      ></textarea>
+    </div>
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-8 px-4 md:px-8 relative ">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-8 px-4 md:px-8 relative">
       
       {/* Enhanced Background Design */}
       <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-[#2E0249] via-[#4F0187] to-transparent z-0"></div>
@@ -187,68 +242,98 @@ const AdmissionForm = () => {
       <div className="w-full max-w-6xl mx-auto relative z-10">
         
         {/* UNIQUE HEADER DESIGN */}
-        <AnimatedSection isVisible={visibleSections.has('header')}>
-          <div className="bg-gradient-to-br from-white/95 via-purple-50/95 to-white/95 rounded-[3rem] shadow-2xl p-8 md:p-12 text-center mb-12 border-2 border-white/50 relative overflow-hidden backdrop-blur-sm">
-            
-     
-            
-
-            {/* Main Header Gradient Bar */}
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-500 via-purple-500 to-indigo-500"></div>
-            
-            {/* Animated Background Elements */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-purple-300/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-green-300/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-            
-            <div className="relative z-10">
-              {/* Logo and Title Container */}
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
-                <div className="relative">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-purple-500 rounded-full blur-xl opacity-20 animate-pulse"></div>
-                  <Image src={logoicon} alt="Madrassa Logo" className="h-14 w-32 drop-shadow-2xl relative z-10" />
-                </div>
-                
-                
-              </div>
-
-              {/* Main Title */}
-              <div className="mb-16">
-                <div className="inline-block relative">
-                  <span className="relative px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl text-xl font-bold shadow-2xl shadow-purple-500/30 tracking-wide z-10 mb-4">
-                    ভর্তি যাচাই ফর্ম
-                  </span>
-                  <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-purple-500 rounded-2xl blur opacity-30 animate-pulse"></div>
-                </div>
-              </div>
-
+        <div >
+            <div className="bg-gradient-to-br from-white/95 via-purple-50/95 to-white/95 rounded-[3rem] shadow-2xl p-8 md:p-12 text-center mb-12 border-2 border-white/50 relative overflow-hidden backdrop-blur-sm">
               
-
-              {/* Important Notice */}
-              <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-3xl p-6 max-w-3xl mx-auto shadow-lg relative pt-4">
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-500 text-white px-4 py-1 rounded-full text-sm font-bold">
-                  গুরুত্বপূর্ণ নোটিশ
-                </div>
-                <p className="font-bold text-amber-800 mb-2 flex items-center justify-center gap-3 text-lg">
-                  <Heart size={20} className="fill-amber-600 text-amber-600 animate-pulse" />
-                  আল্লাহকে সাক্ষী রেখে সঠিক তথ্য প্রদান করুন
-                </p>
-                <p className="text-sm text-amber-700/80 text-center">
-                 আপনার সন্তানকে ভর্তি করাতে আগ্রহী হলে, অনুগ্রহ করে নিচের ফর্মটি পূরণ করুন।
-ফর্মটি পাওয়ার পর, আমাদের টিম খুব শীঘ্রই আপনার সাথে যোগাযোগ করবে
-                </p>
-            
-              </div>
-
+              {/* Main Header Gradient Bar */}
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-500 via-purple-500 to-indigo-500"></div>
               
+              {/* Animated Background Elements */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-purple-300/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-green-300/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              
+              <div className="relative z-10">
+                {/* Premium Header Design */}
+                <div className="mb-8">
+                  {/* Logo with Premium Badge */}
+                  <div className="relative inline-block mb-6">
+                    <div className="absolute -inset-6 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                    <div className="relative bg-white/80 rounded-3xl p-4 shadow-2xl border border-white/50 backdrop-blur-sm">
+                      <Image src={logoicon} alt="Madrassa Logo" className="h-16 w-36 drop-shadow-2xl" />
+                    </div>
+                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full p-2 shadow-lg animate-bounce">
+                      <Crown size={16} className="text-white" />
+                    </div>
+                  </div>
+
+                  {/* Main Title with Premium Design */}
+                  <div className="relative mb-8">
+                    <div className="absolute -inset-8 bg-gradient-to-r from-purple-600/20 via-indigo-600/20 to-blue-600/20 rounded-full blur-3xl"></div>
+                    <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent relative z-10 mb-4 tracking-tight">
+                      ভর্তি যাচাই ফর্ম
+                    </h1>
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                      <div className="w-8 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
+                      <Rocket size={20} className="text-purple-500 animate-pulse" />
+                      <div className="w-8 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full"></div>
+                    </div>
+                    <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">
+                      আপনার সন্তানের ভবিষ্যৎ গড়ার প্রথম পদক্ষেপ
+                    </p>
+                  </div>
+                </div>
+
+                {/* Premium Feature Icons */}
+                <div className="flex justify-center items-center gap-6 mb-8 flex-wrap">
+                  {[
+                    { icon: GraduationCap, text: 'গুণগত শিক্ষা', color: 'purple' },
+                    { icon: Shield, text: 'নিরাপদ পরিবেশ', color: 'green' },
+                    { icon: Brain, text: 'মননশীল বিকাশ', color: 'blue' },
+                    { icon: Target, text: 'লক্ষ্য অর্জন', color: 'orange' }
+                  ].map((item, index) => (
+                    <div key={index} className="relative group">
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br from-${item.color}-100 to-${item.color}-200 flex items-center justify-center text-${item.color}-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border-2 border-white/50`}>
+                        <item.icon size={24} />
+                      </div>
+                      <div className="absolute -inset-3 bg-gradient-to-r from-purple-300 to-indigo-300 rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+                      <p className="text-xs font-bold text-gray-700 mt-2 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {item.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Premium Important Notice */}
+                <div className="relative max-w-4xl mx-auto">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-amber-200 to-orange-200 rounded-3xl blur-xl opacity-30"></div>
+                  <div className="relative bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-3xl p-8 shadow-2xl">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                      <Heart size={16} className="fill-white" />
+                      গুরুত্বপূর্ণ নোটিশ
+                    </div>
+                    <div className="text-center pt-4">
+                      <p className="font-bold text-amber-800 mb-3 text-xl flex items-center justify-center gap-3">
+                        আল্লাহকে সাক্ষী রেখে সঠিক তথ্য প্রদান করুন
+                      </p>
+                      <p className="text-amber-700/80 leading-relaxed">
+                        আপনার সন্তানকে ভর্তি করাতে আগ্রহী হলে, অনুগ্রহ করে নিচের ফর্মটি পূরণ করুন।
+                        ফর্মটি পাওয়ার পর, আমাদের টিম খুব শীঘ্রই আপনার সাথে যোগাযোগ করবে। 
+                        <span className="block mt-2 font-semibold text-amber-600">
+                          সকল তথ্য গোপন রাখা হবে এবং শুধুমাত্র ভর্তি প্রক্রিয়ার জন্য ব্যবহার করা হবে।
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </AnimatedSection>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
+        {/* Rest of the form sections remain exactly the same */}
+        <form onSubmit={handleSubmit} className="space-y-8"> 
           
           {/* SECTION 1: STUDENT INFO */}
-          <div id="student" className="animated-section">
-            <AnimatedSection isVisible={visibleSections.has('student')} delay={200}>
+          <div>
               <div className="bg-gradient-to-br from-blue-50/80 to-cyan-100/80 rounded-3xl shadow-xl border-2 border-blue-200/50 overflow-hidden backdrop-blur-sm">
                 <div className="bg-gradient-to-r from-blue-100/80 to-blue-200/50 px-8 py-6 border-b border-blue-200 flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-700">
@@ -274,12 +359,10 @@ const AdmissionForm = () => {
                   <InputField width="md:col-span-6" label="পূর্ববর্তী রোল" name="Roll" placeholder="ক্লাস রোল" icon={Award} />
                 </div>
               </div>
-            </AnimatedSection>
           </div>
 
           {/* SECTION 2: GUARDIAN INFO */}
-          <div id="guardian" className="animated-section">
-            <AnimatedSection isVisible={visibleSections.has('guardian')} delay={400}>
+          <div >
               <div className="bg-gradient-to-br from-emerald-50/80 to-green-100/80 rounded-3xl shadow-xl border-2 border-emerald-200/50 overflow-hidden backdrop-blur-sm">
                 <div className="bg-gradient-to-r from-emerald-100/80 to-green-200/50 px-8 py-6 border-b border-emerald-200 flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-700">
@@ -319,25 +402,18 @@ const AdmissionForm = () => {
                   </div>
 
                   {/* Address */}
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-                      <MapPin size={16} className="text-emerald-600" /> ঠিকানা
-                    </label>
-                    <textarea 
-                      name="Address" 
-                      rows={3} 
-                      className="w-full px-5 py-4 rounded-2xl border border-emerald-200 bg-white/70 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition-all outline-none resize-none shadow-sm placeholder-gray-400" 
-                      placeholder="বর্তমান এবং স্থায়ী ঠিকানা বিস্তারিত লিখুন..."
-                    ></textarea>
-                  </div>
+                  <TextAreaField 
+                    label="ঠিকানা" 
+                    name="Address" 
+                    placeholder="বর্তমান এবং স্থায়ী ঠিকানা বিস্তারিত লিখুন..." 
+                    icon={MapPin}
+                  />
                 </div>
               </div>
-            </AnimatedSection>
           </div>
 
           {/* SECTION 3: FAMILY INFO */}
-          <div id="family" className="animated-section">
-            <AnimatedSection isVisible={visibleSections.has('family')} delay={600}>
+          <div >
               <div className="bg-gradient-to-br from-amber-50/80 to-orange-100/80 rounded-3xl shadow-xl border-2 border-amber-200/50 overflow-hidden backdrop-blur-sm">
                 <div className="bg-gradient-to-r from-amber-100/80 to-orange-200/50 px-8 py-6 border-b border-amber-200 flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-700">
@@ -355,11 +431,7 @@ const AdmissionForm = () => {
                     name="HalalIncome"
                     options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}]}
                   />
-                  {/* <RadioGroup 
-                    label="পরিবারের উপার্জনক্ষম সদস্য কতজন?" 
-                    name="Earners"
-                    options={[{val:'1', text:'১ জন'}, {val:'2', text:'২ জন'}, {val:'3+', text:'৩ জন+'}]}
-                  /> */}
+               
                   <RadioGroup 
                     label=" পিতা-মাতা নিয়মিত ৫ ওয়াক্ত নামাজ পড়েন কি?" 
                     name="ParentsPrayer"
@@ -380,11 +452,7 @@ const AdmissionForm = () => {
                     name="QuranRecitation"
                     options={[{val:'Yes', text:'হ্যাঁ'}, {val:'No', text:'না'}, {val:'Sometimes', text:'মাঝেমাঝে'}]}
                   />
-                  <RadioGroup 
-                    label=" পরিবারে সদস্যদের মধ্যে ঝগড়া বিবাদ কেমন হয়?" 
-                    name="Quarrels"
-                    options={[{val:'Never', text:'হয় না'}, {val:'Often', text:'প্রায়ই'}, {val:'Sometimes', text:'মাঝেমাঝে'}]}
-                  />
+                  
                   <RadioGroup 
                     label=" পরিবারের সদস্যরা পর্দা পালন করে কি?" 
                     name="Purdah"
@@ -392,12 +460,10 @@ const AdmissionForm = () => {
                   />
                 </div>
               </div>
-            </AnimatedSection>
           </div>
 
           {/* SECTION 4: BEHAVIOR INFO */}
-          <div id="behavior" className="animated-section">
-            <AnimatedSection isVisible={visibleSections.has('behavior')} delay={800}>
+          <div >
               <div className="bg-gradient-to-br from-rose-50/80 to-pink-100/80 rounded-3xl shadow-xl border-2 border-rose-200/50 overflow-hidden backdrop-blur-sm">
                 <div className="bg-gradient-to-r from-rose-100/80 to-pink-200/50 px-8 py-6 border-b border-rose-200 flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-rose-500/20 flex items-center justify-center text-rose-700">
@@ -410,68 +476,122 @@ const AdmissionForm = () => {
                 </div>
 
                 <div className="p-8 space-y-8">
-                  {/* Reading Ability */}
-                  {/* <div className="bg-white/60 p-6 rounded-2xl border border-rose-200 shadow-sm">
-                    <RadioGroup 
-                      label=" আপনার সন্তান কি পড়তে পারে?" 
-                      name="ReadingAbility"
-                      options={[
-                        {val:'Quran', text:'কুরআন'}, 
-                        {val:'Ampara', text:'আম্মাপারা'}, 
-                        {val:'Qaida', text:'কায়েদা'},
-                        {val:'None', text:'কোনটিই নয়'}
-                      ]}
-                    />
-                  </div> */}
-
                   {/* Mobile Usage */}
                   <div className="bg-white/60 p-6 rounded-2xl border border-rose-200 shadow-sm">
                     <label className="block text-sm font-bold text-gray-800 mb-3"> দৈনিক কত সময় মোবাইল ব্যবহার করে?</label>
                     <div className="relative">
                       <Phone size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-rose-400" />
-                      <input name="MobileUsage" type="text" placeholder="সময় উল্লেখ করুন (যেমন: ১ ঘণ্টা)" className="w-full pl-12 pr-4 py-3 rounded-xl border border-rose-200 bg-white/50 focus:bg-white focus:ring-4 focus:ring-rose-100 focus:border-rose-400 outline-none transition-all" />
+                      <input 
+                        name="MobileUsage" 
+                        type="text" 
+                        placeholder="সময় উল্লেখ করুন (যেমন: ১ ঘণ্টা)" 
+                        value={formData['MobileUsage'] || ''}
+                        onChange={(e) => handleInputChange('MobileUsage', e.target.value)}
+                        className="w-full pl-12 pr-4 py-3 rounded-xl border border-rose-200 bg-white/50 focus:bg-white focus:ring-4 focus:ring-rose-100 focus:border-rose-400 outline-none transition-all" 
+                      />
                     </div>
                   </div>
-   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <RadioGroup 
-                  label=" সন্তানের আচরণ কেমন?" 
-                  name="GeneralBehavior"
-                   options={[{val:'Very Good', text:'অনেক ভালো'}, {val:'Good', text:'মোটামুটি'}, {val:'Average', text:'ভাল নয়'},  ]}
-                />
-                 <RadioGroup 
-                  label=" পিতা মাতার কথা শোনে?" 
-                  name="Obedience"
-                  options={[{val:'Not At All', text:'না'}, {val:'Somewhat', text:'মোটামুটি'}, {val:'Fully', text:'পুরোপুরি'}]}
-                />
-                 <RadioGroup 
-                  label=" বড়দের সাথে আচরণ?" 
-                  name="ElderBehavior"
-                  options={[{val:'Very Good', text:'অনেক ভালো'}, {val:'Good', text:'মোটামুটি'}, {val:'Average', text:'ভাল নয়'},  ]}
-                />
-                 <RadioGroup 
-                  label=" ছোটদের সাথে আচরণ?" 
-                  name="YoungerBehavior"
-                  options={[{val:'Very Good', text:'অনেক ভালো'}, {val:'Good', text:'মোটামুটি'}, {val:'Average', text:'ভাল নয়'},  ]}
-                />
-                <RadioGroup 
-                  label=" মিথ্যা বলে বা জেদ করে?" 
-                  name="LyingStubbornness"
-                  options={[{val:'Often', text:'প্রায়ই'}, {val:'Sometimes', text:'মাঝেমাঝে'}, {val:'Rarely', text:'খুব কম'}, {val:'Never', text:'না'}]}
-                />
-                {/* <RadioGroup 
-                  label=" কোন উন্নতি বেশি চান?" 
-                  name="ImprovementGoal"
-                  options={[{val:'Manners', text:'আদব আখলাক'}, {val:'Physical', text:'শারীরিক'}]}
-                /> */}
-              </div>
+
+                  {/* Additional Behavior Radio Groups */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <RadioGroup 
+                      label=" সন্তানের আচরণ কেমন?" 
+                      name="GeneralBehavior"
+                      options={[
+                        {val:'Very Good', text:'অনেক ভালো'}, 
+                        {val:'Good', text:'মোটামুটি'}, 
+                        {val:'Average', text:'ভাল নয়'}
+                      ]}
+                    />
+                    <RadioGroup 
+                      label=" পিতা মাতার কথা শোনে?" 
+                      name="Obedience"
+                      options={[
+                        {val:'Not At All', text:'না'}, 
+                        {val:'Somewhat', text:'মোটামুটি'}, 
+                        {val:'Fully', text:'পুরোপুরি'}
+                      ]}
+                    />
+                    <RadioGroup 
+                      label=" বড়দের সাথে আচরণ?" 
+                      name="ElderBehavior"
+                      options={[
+                        {val:'Very Good', text:'অনেক ভালো'}, 
+                        {val:'Good', text:'মোটামুটি'}, 
+                        {val:'Average', text:'ভাল নয়'}
+                      ]}
+                    />
+                    <RadioGroup 
+                      label=" ছোটদের সাথে আচরণ?" 
+                      name="YoungerBehavior"
+                      options={[
+                        {val:'Very Good', text:'অনেক ভালো'}, 
+                        {val:'Good', text:'মোটামুটি'}, 
+                        {val:'Average', text:'ভাল নয়'}
+                      ]}
+                    />
+                    <RadioGroup 
+                      label=" মিথ্যা বলে বা জেদ করে?" 
+                      name="LyingStubbornness"
+                      options={[
+                        {val:'Often', text:'প্রায়ই'}, 
+                        {val:'Sometimes', text:'মাঝেমাঝে'}, 
+                        {val:'Rarely', text:'খুব কম'}, 
+                        {val:'Never', text:'না'}
+                      ]}
+                    />
+                    <RadioGroup 
+                      label=" পড়ালেখায় আগ্রহ?" 
+                      name="StudyInterest"
+                      options={[
+                        {val:'Very Interested', text:'খুব আগ্রহী'}, 
+                        {val:'Moderate', text:'মোটামুটি'}, 
+                        {val:'Less Interested', text:'কম আগ্রহী'}
+                      ]}
+                    />
+                    <RadioGroup 
+                      label=" বন্ধুদের সাথে সম্পর্ক?" 
+                      name="FriendRelationship"
+                      options={[
+                        {val:'Excellent', text:'অসাধারণ'}, 
+                        {val:'Good', text:'ভাল'}, 
+                        {val:'Average', text:'মোটামুটি'}
+                      ]}
+                    />
+                    <RadioGroup 
+                      label=" খেলাধুলায় আগ্রহ?" 
+                      name="SportsInterest"
+                      options={[
+                        {val:'Very Interested', text:'খুব আগ্রহী'}, 
+                        {val:'Moderate', text:'মোটামুটি'}, 
+                        {val:'Less Interested', text:'কম আগ্রহী'}
+                      ]}
+                    />
+                    <RadioGroup 
+                      label=" ধর্মীয় কাজে আগ্রহ?" 
+                      name="ReligiousInterest"
+                      options={[
+                        {val:'Very Interested', text:'খুব আগ্রহী'}, 
+                        {val:'Moderate', text:'মোটামুটি'}, 
+                        {val:'Less Interested', text:'কম আগ্রহী'}
+                      ]}
+                    />
+                    <RadioGroup 
+                      label=" রাগ নিয়ন্ত্রণ?" 
+                      name="AngerControl"
+                      options={[
+                        {val:'Excellent', text:'অসাধারণ'}, 
+                        {val:'Good', text:'ভাল'}, 
+                        {val:'Needs Improvement', text:'উন্নতি প্রয়োজন'}
+                      ]}
+                    />
+                  </div>
                 </div>
               </div>
-            </AnimatedSection>
           </div>
 
           {/* SUBMIT BUTTON */}
-          <div id="submit" className="animated-section">
-            <AnimatedSection isVisible={visibleSections.has('submit')} delay={1000}>
+          <div >
               <div className="pt-8 pb-20 text-center">
                 <button
                   type="submit"
@@ -506,7 +626,6 @@ const AdmissionForm = () => {
                   সাবমিট করার আগে তথ্যগুলো পুনরায় চেক করে নিন
                 </p>
               </div>
-            </AnimatedSection>
           </div>
         </form>
       </div>
@@ -543,370 +662,3 @@ const AdmissionForm = () => {
 };
 
 export default AdmissionForm;
-
-
-
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// "use client";
-
-// import React, { useState } from "react";
-// import Swal from "sweetalert2";
-
-// const primaryPurple = "#4F0187";
-// const lightPurple = "#8A2BE2";
-
-// const AdmissionForm = () => {
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   // ⚠️ PASTE YOUR GOOGLE SCRIPT URL HERE
-//   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwoJZ2zwXROTZoxsXH2eNutjwrQ1FrZe0rm4p8dAtBpROImMRPc1hcyjnX4Vd43nFzF/exec"; 
-
-//  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-//     setIsLoading(true);
-
-//     const form = e.currentTarget;
-//     const formData = new FormData(form);
-
-//     try {
-//       await fetch(SCRIPT_URL, {
-//         method: "POST",
-//         body: formData,
-//       });
-
-//       // Success Alert
-//       Swal.fire({
-//         title: 'আলহামদুলিল্লাহ!',
-//         text: 'ভর্তি ফর্মটি সফলভাবে জমা দেওয়া হয়েছে।',
-//         icon: 'success',
-//         confirmButtonText: 'ঠিক আছে',
-//         confirmButtonColor: primaryPurple,
-//       });
-
-//       form.reset(); // Clear the form after success
-//     } catch (error) {
-//       console.error("Error!", error);
-      
-//       // Error Alert
-//       Swal.fire({
-//         title: 'দুঃখিত!',
-//         text: 'সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।',
-//         icon: 'error',
-//         confirmButtonText: 'বন্ধ করুন',
-//         confirmButtonColor: '#d33',
-//       });
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-//       <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl p-2 md:p-12">
-        
-//         {/* --- HEADER --- */}
-//         <div className="text-center mb-8 space-y-2">
-//           <h1 className="text-3xl md:text-4xl font-bold text-purple-900">
-//             ক্রাফট ইন্টারন্যাশনাল ইনস্টিটিউট
-//           </h1>
-//           <p className="text-gray-600 text-sm md:text-base ">নিমাইকাশারী, সিদ্ধিরগঞ্জ, নারায়ণগঞ্জ-১৪৩০</p>
-          
-//           <div className="py-4">
-//             <span className="inline-block border-2 border-purple-800 rounded-full px-8 py-2 text-lg font-bold text-purple-900 shadow-sm bg-purple-50">
-//               ভর্তি যাচাই ফর্ম
-//             </span>
-//           </div>
-
-//           <div className="text-sm md:text-base text-gray-700 mt-4 space-y-1">
-//             <p className="font-semibold text-purple-800">আল্লাহকে সাক্ষী রেখে সঠিক তথ্য প্রদান করুন</p>
-//             <p className="text-xs md:text-sm text-gray-500">
-//               এখানে নির্ভুল তথ্য প্রদান করুন। নিম্ন প্রদত্ত তথ্য অনুযায়ী শিক্ষার্থীর পড়াশোনার মান নির্ধারণ করা হবে, তাই তথ্য প্রদানে আপনার মনোযোগ আকর্ষণ করছি।
-//             </p>
-//           </div>
-
-         
-//         </div>
-
-//         <form onSubmit={handleSubmit} className="space-y-8">
-          
-//           {/* --- SECTION 1: STUDENT INFO --- */}
-//           <section className="bg-purple-50 p-2 md:p-6 rounded-xl border border-purple-100">
-//             <h2 className="text-xl font-bold text-purple-900 mb-4 border-b border-purple-200 pb-2 inline-block">
-//               শিক্ষার্থীর প্রাথমিক তথ্য
-//             </h2>
-//             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-//               <div className="md:col-span-6">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">শিক্ষার্থীর নাম:</label>
-//                 <input name="StudentName" required type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-2">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">বয়স:</label>
-//                 <input name="Age" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-4">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">যে ক্লাসে ভর্তি হতে আগ্রহী:</label>
-//                 <input name="Class" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-6">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">পূর্ববর্তী প্রতিষ্ঠানের নাম:</label>
-//                 <input name="PrevSchool" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-6">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">পূর্ব অধ্যায়নকৃত শ্রেণি/বিভাগ:</label>
-//                 <input name="PrevClass" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-6">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">সর্বশেষ পরীক্ষায় প্রাপ্ত জিপিএ:</label>
-//                 <input name="GPA" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-6">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">পূর্ববর্তী শ্রেণির রোল:</label>
-//                 <input name="Roll" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//             </div>
-//           </section>
-
-//           {/* --- SECTION 2: GUARDIAN INFO --- */}
-//           <section className="bg-purple-50 p-2 md:p-6 rounded-xl border border-purple-100">
-//             <h2 className="text-xl font-bold text-purple-900 mb-4 border-b border-purple-200 pb-2 inline-block">
-//               অভিভাবকের প্রাথমিক তথ্য
-//             </h2>
-            
-//             {/* Father */}
-//             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4 items-end">
-//               <div className="md:col-span-4">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">পিতার নাম:</label>
-//                 <input name="FatherName" required type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-3">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">পেশা:</label>
-//                 <input name="FatherJob" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-2">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">শিক্ষাগত যোগ্যতা:</label>
-//                 <input name="FatherEdu" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-3">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">মোবাইল:</label>
-//                 <input name="FatherMobile" required type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//             </div>
-
-//             {/* Mother */}
-//             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4 items-end">
-//               <div className="md:col-span-4">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">মাতার নাম:</label>
-//                 <input name="MotherName" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-3">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">পেশা:</label>
-//                 <input name="MotherJob" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-2">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">শিক্ষাগত যোগ্যতা:</label>
-//                 <input name="MotherEdu" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//               <div className="md:col-span-3">
-//                 <label className="block text-sm font-bold text-gray-700 mb-1">মোবাইল:</label>
-//                 <input name="MotherMobile" type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" />
-//               </div>
-//             </div>
-
-//             <div>
-//               <label className="block text-sm font-bold text-gray-700 mb-1">ঠিকানা:</label>
-//               <textarea name="Address" rows={2} className="w-full p-2 border rounded focus:ring-2 focus:ring-purple-400" placeholder="বর্তমান এবং স্থায়ী ঠিকানা..."></textarea>
-//             </div>
-//           </section>
-
-//           {/* --- SECTION 3: FAMILY INFO --- */}
-//           <section className="bg-white p-2 md:p-6 rounded-xl border border-gray-200 shadow-sm">
-//             <h2 className="text-xl font-bold text-purple-900 border-b-2 border-purple-200 inline-block pb-1 mb-6">
-//               পারিবারিক তথ্য ও পরিবেশ
-//             </h2>
-
-//             <div className="space-y-4 text-gray-800">
-//               {/* Question 1 */}
-//               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> আপনার পরিবারের উপার্জন ১০০% হালাল কি?</span>
-//                 <div className="flex flex-col md:flex-row gap-4 mt-2 sm:mt-0">
-//                   <label className="flex items-center gap-1"><input type="radio" name="HalalIncome" value="Yes" className="accent-purple-600" /> হ্যাঁ</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="HalalIncome" value="No" className="accent-purple-600" /> না</label>
-//                 </div>
-//               </div>
-
-//               {/* Question 2 */}
-//               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> পরিবারের উপার্জনক্ষম সদস্য কতজন?</span>
-//                 <div className="flex flex-col md:flex-row gap-4 mt-2 sm:mt-0">
-//                   <label className="flex items-center gap-1"><input type="radio" name="Earners" value="1" className="accent-purple-600" /> ১ জন</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="Earners" value="2" className="accent-purple-600" /> ২ জন</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="Earners" value="3+" className="accent-purple-600" /> ৩ জন+</label>
-//                 </div>
-//               </div>
-
-//               {/* Question 3 */}
-//               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> পিতা-মাতা নিয়মিত ৫ ওয়াক্ত নামাজ পড়েন কি?</span>
-//                 <div className="flex flex-col md:flex-row gap-4 mt-2 sm:mt-0">
-//                    <label className="flex items-center gap-1"><input type="radio" name="ParentsPrayer" value="Yes" className="accent-purple-600" /> হ্যাঁ</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="ParentsPrayer" value="No" className="accent-purple-600" /> না</label>
-//                 </div>
-//               </div>
-
-//               {/* Question 4 */}
-//               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> পরিবারের কোন সদস্য মাদক/নেশায় আক্রান্ত আছে কি?</span>
-//                 <div className="flex flex-col md:flex-row gap-4 mt-2 sm:mt-0">
-//                    <label className="flex items-center gap-1"><input type="radio" name="Addiction" value="Yes" className="accent-purple-600" /> হ্যাঁ</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="Addiction" value="No" className="accent-purple-600" /> না</label>
-//                 </div>
-//               </div>
-
-//               {/* Question 5 */}
-//               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> বাসায় টেলিভিশন আছে কি?</span>
-//                 <div className="flex flex-col md:flex-row gap-4 mt-2 sm:mt-0">
-//                    <label className="flex items-center gap-1"><input type="radio" name="TV" value="Yes" className="accent-purple-600" /> হ্যাঁ</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="TV" value="No" className="accent-purple-600" /> না</label>
-//                 </div>
-//               </div>
-
-//               {/* Question 6 */}
-//               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> বাসায় নিয়মিত কুরআন তিলাওয়াত করা হয়?</span>
-//                 <div className="flex flex-col md:flex-row gap-4 mt-2 sm:mt-0">
-//                    <label className="flex items-center gap-1"><input type="radio" name="QuranRecitation" value="Yes" className="accent-purple-600" /> হ্যাঁ</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="QuranRecitation" value="No" className="accent-purple-600" /> না</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="QuranRecitation" value="Sometimes" className="accent-purple-600" /> মাঝেমাঝে</label>
-//                 </div>
-//               </div>
-
-//               {/* Question 7 */}
-//               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> পরিবারে সদস্যদের মধ্যে ঝগড়া বিবাদ কেমন হয়?</span>
-//                 <div className="flex flex-col md:flex-row gap-4 mt-2 sm:mt-0">
-//                    <label className="flex items-center gap-1"><input type="radio" name="Quarrels" value="Never" className="accent-purple-600" /> হয় না</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="Quarrels" value="Often" className="accent-purple-600" /> প্রায়শই হয়</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="Quarrels" value="Sometimes" className="accent-purple-600" /> মাঝেমাঝে</label>
-//                 </div>
-//               </div>
-
-//               {/* Question 8 */}
-//               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-//                 <span className="font-bold"> পরিবারের সদস্যরা পর্দা পালন করে কি?</span>
-//                 <div className="flex flex-col md:flex-row gap-4 mt-2 sm:mt-0">
-//                    <label className="flex items-center gap-1"><input type="radio" name="Purdah" value="Yes" className="accent-purple-600" /> হ্যাঁ</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="Purdah" value="No" className="accent-purple-600" /> না</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="Purdah" value="Trying" className="accent-purple-600" /> চেষ্টা করা হয়</label>
-//                 </div>
-//               </div>
-//             </div>
-//           </section>
-
-//           {/* --- SECTION 4: BEHAVIOR INFO --- */}
-//           <section className="bg-white p-2 md:p-6 rounded-xl border border-gray-200 shadow-sm">
-//             <h2 className="text-xl font-bold text-purple-900 border-b-2 border-purple-200 inline-block pb-1 mb-6">
-//               ভর্তিচ্ছু শিক্ষার্থীর আচরণ সম্পর্কিত তথ্য
-//             </h2>
-
-//             <div className="space-y-4 text-gray-800">
-//               {/* Behavior 1 */}
-//               <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> আপনার সন্তান কি পড়তে পারে?</span>
-//                 <div className="flex flex-col md:flex-row flex-wrap gap-3 mt-2 md:mt-0">
-//                   <label className="flex items-center gap-1"><input type="radio" name="ReadingAbility" value="Quran" className="accent-purple-600" /> কুরআন</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="ReadingAbility" value="Ampara" className="accent-purple-600" /> আম্মাপারা</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="ReadingAbility" value="Qaida" className="accent-purple-600" /> কায়েদা</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="ReadingAbility" value="None" className="accent-purple-600" /> কোনটিই নয়</label>
-//                 </div>
-//               </div>
-
-//               {/* Behavior 2 */}
-//               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold whitespace-nowrap"> দৈনিক কত সময় মোবাইল ব্যবহার করে?</span>
-//                 <input name="MobileUsage" type="text" placeholder="(লিখুন)" className="border-b border-gray-400 focus:outline-none flex-grow text-purple-800 px-2" />
-//               </div>
-
-//               {/* Behavior 3 */}
-//               <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> আপনার সন্তানের আচরণ কেমন?</span>
-//                 <div className="flex flex-col md:flex-row gap-3 mt-2 md:mt-0">
-//                   <label className="flex items-center gap-1"><input type="radio" name="GeneralBehavior" value="Average" className="accent-purple-600" /> মোটামুটি</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="GeneralBehavior" value="Good" className="accent-purple-600" /> ভালো</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="GeneralBehavior" value="Very Good" className="accent-purple-600" /> অনেক ভালো</label>
-//                 </div>
-//               </div>
-
-//               {/* Behavior 4 */}
-//               <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> আপনার সন্তান পিতা মাতার কথা শোনে?</span>
-//                 <div className="flex flex-col md:flex-row flex-wrap gap-3 mt-2 md:mt-0">
-//                   <label className="flex items-center gap-1"><input type="radio" name="Obedience" value="Not At All" className="accent-purple-600" /> মোটেই শোনে না</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="Obedience" value="Somewhat" className="accent-purple-600" /> মোটামুটি শোনে</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="Obedience" value="Fully" className="accent-purple-600" /> পুরোপুরি শোনে</label>
-//                 </div>
-//               </div>
-
-//               {/* Behavior 5 */}
-//               <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> পরিবারের বড়দের সাথে ওর আচরণ কেমন?</span>
-//                 <div className="flex flex-col md:flex-row gap-3 mt-2 md:mt-0">
-//                   <label className="flex items-center gap-1"><input type="radio" name="ElderBehavior" value="Average" className="accent-purple-600" /> মোটামুটি</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="ElderBehavior" value="Good" className="accent-purple-600" /> ভালো</label>
-//                   <label className="flex items-center gap-1"><input type="radio" name="ElderBehavior" value="Very Good" className="accent-purple-600" /> অনেক ভালো</label>
-//                 </div>
-//               </div>
-
-//               {/* Behavior 6 */}
-//               <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> পরিবারের ছোটদের সাথে ওর আচরণ কেমন?</span>
-//                 <div className="flex flex-col md:flex-row gap-3 mt-2 md:mt-0">
-//                    <label className="flex items-center gap-1"><input type="radio" name="YoungerBehavior" value="Average" className="accent-purple-600" /> মোটামুটি</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="YoungerBehavior" value="Good" className="accent-purple-600" /> ভালো</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="YoungerBehavior" value="Very Good" className="accent-purple-600" /> অনেক ভালো</label>
-//                 </div>
-//               </div>
-
-//               {/* Behavior 7 */}
-//               <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-dashed border-gray-200 pb-2">
-//                 <span className="font-bold"> সন্তান কি মিথ্যা বলে? বা জেদ করে?</span>
-//                 <div className="flex flex-col md:flex-row flex-wrap gap-3 mt-2 md:mt-0">
-//                    <label className="flex items-center gap-1"><input type="radio" name="LyingStubbornness" value="Often" className="accent-purple-600" /> প্রায়ই করে</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="LyingStubbornness" value="Sometimes" className="accent-purple-600" /> মাঝেমধ্যে করে</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="LyingStubbornness" value="Rarely" className="accent-purple-600" /> খুব কম করে</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="LyingStubbornness" value="Never" className="accent-purple-600" /> করে না</label>
-//                 </div>
-//               </div>
-
-//               {/* Behavior 8 */}
-//               <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-//                 <span className="font-bold"> আপনার সন্তানকে পড়াশোনার পাশাপাশি কোন দিকটিতে বেশি উন্নতি করতে চান?</span>
-//                 <div className="flex flex-col md:flex-row gap-3 mt-2 md:mt-0">
-//                    <label className="flex items-center gap-1"><input type="radio" name="ImprovementGoal" value="Manners" className="accent-purple-600" /> আদব আখলাক</label>
-//                    <label className="flex items-center gap-1"><input type="radio" name="ImprovementGoal" value="Physical" className="accent-purple-600" /> শারীরিক দক্ষতা</label>
-//                 </div>
-//               </div>
-
-//             </div>
-//           </section>
-
-//           {/* --- SUBMIT BUTTON --- */}
-//           <div className="text-center pt-6">
-//             <button
-//               type="submit"
-//               disabled={isLoading}
-//               style={{ background: `linear-gradient(to right, ${primaryPurple}, ${lightPurple})` }}
-//               className={`text-white px-12 py-4 rounded-full font-bold text-lg shadow-lg transition transform duration-200 ${isLoading ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-xl hover:scale-105'}`}
-//             >
-//               {isLoading ? "পাঠানো হচ্ছে..." : "সাবমিট করুন"}
-//             </button>
-//           </div>
-
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AdmissionForm;

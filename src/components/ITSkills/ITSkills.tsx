@@ -138,10 +138,12 @@ const ITSkills = () => {
                     {/* <div className="inline-block px-4 py-1 rounded-full border border-[#8A2BE2]/30 bg-[#8A2BE2]/10 mb-4">
                         <span className="text-[#D8B4FE] text-sm font-medium tracking-widest uppercase">Technical Expertise</span>
                     </div> */}
-                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]">IT Skills</span>
+
+                     <h2 className="text-4xl md:text-7xl font-black text-white tracking-tight drop-shadow-[0_0_40px_rgba(139,92,246,0.6)]">
+                        IT <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E0B0FF] via-white to-[#A855F7]">SKILLS</span>
                     </h2>
-                    <div className="w-20 h-1 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] mx-auto rounded-full"></div>
+                    <div className="w-32 h-1.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mt-8"></div>
+                
                 </div>
 
                 {/* Bento Grid Layout */}

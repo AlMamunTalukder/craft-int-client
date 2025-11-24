@@ -72,7 +72,7 @@ const BusinessSkills = () => {
             </div>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-4xl md:text-7xl font-extrabold text-white tracking-tight">
             BUSINESS <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]">SKILLS</span>
           </h2>
           <div className="mt-4 w-24 h-1.5 mx-auto bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full"></div>

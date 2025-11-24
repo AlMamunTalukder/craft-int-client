@@ -84,9 +84,11 @@ const ImageGallery = () => {
       <Container >
         <div className="mt-10 pb-20"> 
          <div className="flex justify-center mb-5">
-           <h1 className="text-3xl md:text-4xl font-bold text-[#4F0187]">PHOTO GALLERY</h1>
+           <h1 className="text-4xl md:text-7xl font-bold text-[#4F0187]">PHOTO GALLERY</h1>
          </div> 
           <div className=" w-24 h-1.5 mx-auto bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full"></div>
+
+           
         <div className="columns-3 gap-4 space-y-4 mt-5 ">
           {galleries.map((gallery, i) => (
             <Dialog key={gallery.id} open={open && index === i} onOpenChange={setOpen}>
