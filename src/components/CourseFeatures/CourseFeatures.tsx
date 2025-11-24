@@ -99,7 +99,7 @@ const floatingIcons = [
 
 const CourseFeatures = () => {
     return (
-        <section className="relative min-h-screen bg-[#0B001A] overflow-hidden font-sans py-24">
+        <section className="relative min-h-screen bg-[#0B001A] overflow-hidden  py-24">
             
             {/* --- GALAXY BACKGROUND --- */}
             <div className="absolute inset-0 w-full h-full">

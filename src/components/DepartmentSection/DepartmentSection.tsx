@@ -68,7 +68,7 @@ const floatingIcons = [
 
 const DepartmentSection = () => {
     return (
-        <section className="relative py-24 md:py-32 bg-[#0B001A] overflow-hidden font-sans">
+        <section className="relative py-24 md:py-32 bg-[#0B001A] overflow-hidden ">
             
             {/* --- GALAXY BACKGROUND --- */}
             <div className="absolute inset-0 w-full h-full pointer-events-none">

@@ -41,7 +41,7 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="relative py-24 bg-[#080214] overflow-hidden font-sans group/section">
+    <section className="relative py-24 bg-[#080214] overflow-hidden  group/section">
       
       {/* --- COSMIC BACKGROUND WITH SHOOTING STARS --- */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
