@@ -118,18 +118,18 @@ const DepartmentSection = () => {
                 </div>
 
                 {/* --- NEW CARD DESIGN GRID --- */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 md:max-w-5xl mx-auto">
                     
                     {departments.map((dept, index) => {
                         const Icon = dept.icon;
                         return (
-                            <div key={index} className="group relative h-full">
+                            <div key={index} className="group relative h-full w-[250px] md:w-full mx-auto">
                                 
                                 {/* 1. Animated Gradient Border */}
                                 <div className={`absolute -inset-[2px] bg-gradient-to-r ${dept.borderGradient} rounded-[2.5rem] opacity-50 group-hover:opacity-100 blur-sm transition duration-500 group-hover:duration-200`}></div>
                                 
                                 {/* 2. Main Card Body */}
-                                <div className="relative h-full bg-[#0D0416] rounded-[2.5rem] p-8 md:p-12 flex flex-col items-center text-center border border-white/10 overflow-hidden transition-transform duration-500 group-hover:-translate-y-2">
+                                <div className="relative h-full bg-[#0D0416] rounded-[2.5rem] p-5 md:p-12 flex flex-col items-center text-center border border-white/10 overflow-hidden transition-transform duration-500 group-hover:-translate-y-2">
                                     
                                     {/* Background Glow inside card */}
                                     <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>

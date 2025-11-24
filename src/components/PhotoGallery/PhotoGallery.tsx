@@ -25,37 +25,37 @@ const galleries: ImageGallery[] = [
   {
     id: '01',
     description:
-      'স্টুডিও',
+      'Reception Dask',
     image: img1,
   },
   {
     id: '02',
     description:
-      'আইটি ক্লাস',
+      'IT Lab',
     image: img2,
   },
   {
     id: '03',
     description:
-      'ক্লাস রুম',
+      'Entry Door ',
     image: img3,
   },
   {
     id: '04',
     description:
-      'রিসিপশন',
+      'Class Room',
     image: img4,
   },
   {
     id: '05',
     description:
-      'স্টুডিও',
+      'Meeting Room',
     image: img5,
   },
   {
     id: '05',
     description:
-      'ক্লাসরুম',
+      'Conference Room',
     image: img6,
   },
 ];
@@ -84,7 +84,7 @@ const ImageGallery = () => {
       <Container >
         <div className="mt-10 pb-20"> 
          <div className="flex justify-center mb-5">
-           <h1 className="text-3xl md:text-4xl font-bold text-[#4F0187]">ফটো গ্যালারি</h1>
+           <h1 className="text-3xl md:text-4xl font-bold text-[#4F0187]">PHOTO GALLERY</h1>
          </div> 
           <div className=" w-24 h-1.5 mx-auto bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full"></div>
         <div className="columns-3 gap-4 space-y-4 mt-5 ">

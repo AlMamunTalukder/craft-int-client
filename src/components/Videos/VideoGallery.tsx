@@ -114,7 +114,7 @@ const VideoGallery = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#4F0187] mb-4">
-            ভিডিও গ্যালারি
+            VIDEO GALLERY
           </h1>
           <div className="w-24 h-2 mx-auto bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] rounded-full"></div>
         </div>
@@ -141,18 +141,18 @@ const VideoGallery = () => {
               {/* Content Overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-purple-600 text-white px-1 md:px-3 md:py-1 rounded-xl md:rounded-full text-xs md:text-sm md:font-medium">
                     {currentVideo.duration}
                   </span>
-                  <span className="flex items-center gap-1 text-white/90 text-sm">
+                  {/* <span className="flex items-center gap-1 text-white/90 text-sm">
                     <Calendar className="w-4 h-4" />
                     {currentVideo.date}
-                  </span>
+                  </span> */}
                 </div>
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 line-clamp-2">
+                <h2 className="text-lg md:text-2xl lg:text-3xl font-bold mb-2 line-clamp-2">
                   {currentVideo.title}
                 </h2>
-                <p className="text-white/80 text-sm md:text-base line-clamp-2">
+                <p className="text-white/80 text-xs md:text-base line-clamp-2">
                   {currentVideo.description}
                 </p>
               </div>
