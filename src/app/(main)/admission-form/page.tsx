@@ -256,20 +256,18 @@ const AdmissionForm = () => {
                 {/* Premium Header Design */}
                 <div className="mb-8">
                   {/* Logo with Premium Badge */}
-                  <div className="relative inline-block mb-6">
+                  <div className="relative inline-block ">
                     <div className="absolute -inset-6 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full blur-2xl opacity-20 animate-pulse"></div>
                     <div className="relative bg-white/80 rounded-3xl p-4 shadow-2xl border border-white/50 backdrop-blur-sm">
                       <Image src={logoicon} alt="Madrassa Logo" className="h-16 w-36 drop-shadow-2xl" />
                     </div>
-                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full p-2 shadow-lg animate-bounce">
-                      <Crown size={16} className="text-white" />
-                    </div>
+                    
                   </div>
 
                   {/* Main Title with Premium Design */}
                   <div className="relative mb-8">
                     <div className="absolute -inset-8 bg-gradient-to-r from-purple-600/20 via-indigo-600/20 to-blue-600/20 rounded-full blur-3xl"></div>
-                    <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent relative z-10 mb-4 tracking-tight">
+                    <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent relative z-10 mb-4 pt-2 tracking-tight">
                       ভর্তি যাচাই ফর্ম
                     </h1>
                     <div className="flex items-center justify-center gap-3 mb-4">
@@ -283,26 +281,7 @@ const AdmissionForm = () => {
                   </div>
                 </div>
 
-                {/* Premium Feature Icons */}
-                <div className="flex justify-center items-center gap-6 mb-8 flex-wrap">
-                  {[
-                    { icon: GraduationCap, text: 'গুণগত শিক্ষা', color: 'purple' },
-                    { icon: Shield, text: 'নিরাপদ পরিবেশ', color: 'green' },
-                    { icon: Brain, text: 'মননশীল বিকাশ', color: 'blue' },
-                    { icon: Target, text: 'লক্ষ্য অর্জন', color: 'orange' }
-                  ].map((item, index) => (
-                    <div key={index} className="relative group">
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br from-${item.color}-100 to-${item.color}-200 flex items-center justify-center text-${item.color}-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border-2 border-white/50`}>
-                        <item.icon size={24} />
-                      </div>
-                      <div className="absolute -inset-3 bg-gradient-to-r from-purple-300 to-indigo-300 rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
-                      <p className="text-xs font-bold text-gray-700 mt-2 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {item.text}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
+                
                 {/* Premium Important Notice */}
                 <div className="relative max-w-4xl mx-auto">
                   <div className="absolute -inset-4 bg-gradient-to-r from-amber-200 to-orange-200 rounded-3xl blur-xl opacity-30"></div>
@@ -549,24 +528,8 @@ const AdmissionForm = () => {
                         {val:'Less Interested', text:'কম আগ্রহী'}
                       ]}
                     />
-                    <RadioGroup 
-                      label=" বন্ধুদের সাথে সম্পর্ক?" 
-                      name="FriendRelationship"
-                      options={[
-                        {val:'Excellent', text:'অসাধারণ'}, 
-                        {val:'Good', text:'ভাল'}, 
-                        {val:'Average', text:'মোটামুটি'}
-                      ]}
-                    />
-                    <RadioGroup 
-                      label=" খেলাধুলায় আগ্রহ?" 
-                      name="SportsInterest"
-                      options={[
-                        {val:'Very Interested', text:'খুব আগ্রহী'}, 
-                        {val:'Moderate', text:'মোটামুটি'}, 
-                        {val:'Less Interested', text:'কম আগ্রহী'}
-                      ]}
-                    />
+                    
+                    
                     <RadioGroup 
                       label=" ধর্মীয় কাজে আগ্রহ?" 
                       name="ReligiousInterest"
@@ -580,7 +543,7 @@ const AdmissionForm = () => {
                       label=" রাগ নিয়ন্ত্রণ?" 
                       name="AngerControl"
                       options={[
-                        {val:'Excellent', text:'অসাধারণ'}, 
+                        {val:'Excellent', text:'মোটামুটি'}, 
                         {val:'Good', text:'ভাল'}, 
                         {val:'Needs Improvement', text:'উন্নতি প্রয়োজন'}
                       ]}
