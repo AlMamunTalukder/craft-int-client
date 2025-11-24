@@ -157,7 +157,7 @@ const CourseFeatures = () => {
                                 className={`
                                     group relative 
                                     bg-white/5 backdrop-blur-xl 
-                                    rounded-[30px] p-2 md:p-10 
+                                    rounded-[20px] md:rounded-[30px] py-5 md:p-10 
                                     flex flex-col items-center text-center 
                                     border border-white/10
                                     transition-all duration-500 ease-out
@@ -174,8 +174,8 @@ const CourseFeatures = () => {
                                 
                                 {/* Icon Container with Neon Pulse */}
                                 <div className={`
-                                    relative mb-8
-                                    w-20 h-20 md:w-28 md:h-28
+                                    relative mb-6 md:mb-8
+                                    w-16 h-16 md:w-28 md:h-28
                                     rounded-2xl rotate-3 group-hover:rotate-0
                                     flex items-center justify-center
                                     bg-gradient-to-br ${feature.bgGradient}
@@ -198,7 +198,7 @@ const CourseFeatures = () => {
                                 {/* Decorative Bottom Bar */}
                                 {/* <div className={`w-12 h-1 mt-6 rounded-full bg-white/20 group-hover:w-24 group-hover:bg-current transition-all duration-500 ${feature.glow.replace('text-', 'bg-')}`}></div> */}
                                 {/* Decorative Bottom Bar - FIXED */}
-                                <div className={`w-12 h-1 mt-6 rounded-full ${feature.barColor} group-hover:w-24 transition-all duration-500 ${feature.glow}`}></div>
+                                <div className={`w-12 h-1 mt-3 md:mt-6 rounded-full ${feature.barColor} group-hover:w-24 transition-all duration-500 ${feature.glow}`}></div>
 
 
 
