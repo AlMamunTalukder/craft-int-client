@@ -216,22 +216,18 @@ const Banner = () => {
               </h2>
             </div>
 
-            {/* <p className="text-yellow-200 text-base md:text-md leading-relaxed font-light animate-[slideUp_0.8s_ease-out_0.8s_both]">অগ্রিম ভর্তিতে ২৫% ছাড়...!</p>
-         
-            <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-2xl mx-auto md:mx-0 animate-[slideUp_0.8s_ease-out_0.8s_both] font-light">
-              প্রি ওয়ান থেকে সেভেন পর্যন্ত এবং নুরানি, নাজেরা হিফয বিভাগে (আবাসিক ও অনাবাসিক) -এ ভর্তি চলছে। 
-            </p> */}
+           
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-5 pt-8 justify-center md:justify-start animate-[slideUp_0.8s_ease-out_1s_both]">
-              <a href="/verification" className="group relative px-8 py-4 bg-gradient-to-r from-[#F300E7] to-[#A855F7] rounded-full text-white font-bold shadow-[0_10px_20px_rgba(243,0,231,0.3)] hover:shadow-[0_15px_30px_rgba(243,0,231,0.5)] transition-all hover:-translate-y-1 overflow-hidden">
+            <div className="flex flex-row gap-2 md:gap-5 py-8 justify-center md:justify-start ">
+              <a href="/verification" className="group relative px-3 md:px-8 py-2 md:py-4 bg-gradient-to-r from-[#F300E7] to-[#A855F7] rounded-full text-white font-bold shadow-[0_10px_20px_rgba(243,0,231,0.3)] hover:shadow-[0_15px_30px_rgba(243,0,231,0.5)] transition-all hover:-translate-y-1 overflow-hidden">
                 <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-500 ease-out -skew-x-12 origin-left" />
                 <span className="relative flex items-center gap-3 text-lg text-center md:text-start">
                   ভর্তি ফর্ম <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </span>
               </a>
 
-              <a href="/contact" className="px-8 py-4 bg-white/5 border border-white/10 rounded-full text-white font-bold backdrop-blur-md hover:bg-white/10 transition-all hover:-translate-y-1 flex items-center justify-center gap-3 text-lg hover:border-purple-500/50">
+              <a href="/contact" className="px-3 md:px-8 py-2 md:py-4 bg-white/5 border border-white/10 rounded-full text-white font-bold backdrop-blur-md hover:bg-white/10 transition-all hover:-translate-y-1 flex items-center justify-center gap-3 text-lg hover:border-purple-500/50">
                 <BookOpen size={20} />
                 যোগাযোগ করুন
               </a>

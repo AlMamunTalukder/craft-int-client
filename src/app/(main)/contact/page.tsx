@@ -182,7 +182,7 @@ const ContactPage = () => {
       {/* --- Map Section (Simple & Clean) --- */}
       <div className="max-w-6xl w-full mt-12 rounded-3xl overflow-hidden shadow-lg h-[500px] border-4 border-white">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3991.112853300191!2d90.4977701!3d23.698595100000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b77e13f12695%3A0x83546d61ef6169e8!2sShwapno(Nimai%20kashari%20Bazar)!5e1!3m2!1sen!2sbd!4v1763564013931!5m2!1sen!2sbd"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3991.11260286175!2d90.49513157559385!3d23.698603290762286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b7bacaefa671%3A0x4f2678a208facb34!2sCraft%20International%20Institute!5e1!3m2!1sen!2sbd!4v1764046973490!5m2!1sen!2sbd"
           width="100%" 
           height="100%" 
           style={{ border: 0 }} 
@@ -190,6 +190,8 @@ const ContactPage = () => {
           loading="lazy" 
           className=" transition-all duration-700"
         />
+
+        
      
       </div>
 

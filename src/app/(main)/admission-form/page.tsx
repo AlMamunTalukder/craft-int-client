@@ -70,7 +70,7 @@ const RadioGroup = ({ label, name, options, formData, handleInputChange }: any) 
     <label className="block text-sm font-bold text-gray-800 mb-3 border-b border-dashed border-gray-200 pb-2">
       {label}
     </label>
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-1.5 md:gap-3">
       {options.map((opt: any) => (
         <label key={opt.val} className="relative cursor-pointer group">
           <input 
@@ -81,7 +81,7 @@ const RadioGroup = ({ label, name, options, formData, handleInputChange }: any) 
             onChange={(e) => handleInputChange(name, e.target.value)}
             className="peer sr-only" 
           />
-          <div className="px-4 py-2 rounded-full border border-gray-200 bg-white/50 text-gray-600 text-sm font-medium transition-all
+          <div className="px-3 md:px-4 py-2 rounded-full border border-gray-200 bg-white/50 text-gray-600 text-sm font-medium transition-all
             peer-checked:bg-purple-600 peer-checked:text-white peer-checked:border-purple-600 peer-checked:shadow-lg
             group-hover:border-purple-300">
             {opt.text}
@@ -236,7 +236,7 @@ const AdmissionForm = () => {
         
         {/* UNIQUE HEADER DESIGN */}
         <div>
-          <div className="bg-gradient-to-br from-white/95 via-purple-50/95 to-white/95 rounded-[3rem] shadow-2xl p-8 md:p-12 text-center mb-12 border-2 border-white/50 relative overflow-hidden backdrop-blur-sm">
+          <div className="bg-gradient-to-br from-white/95 via-purple-50/95 to-white/95 rounded-[1rem] md:rounded-[3rem] shadow-2xl p-4 md:p-12 text-center mb-12 border-2 border-white/50 relative overflow-hidden backdrop-blur-sm">
             
             {/* Main Header Gradient Bar */}
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-500 via-purple-500 to-indigo-500"></div>
@@ -251,10 +251,10 @@ const AdmissionForm = () => {
                 {/* Main Title with Premium Design */}
                 <div className="relative mb-8">
                   <div className="absolute -inset-8 bg-gradient-to-r from-purple-600/20 via-indigo-600/20 to-blue-600/20 rounded-full blur-3xl"></div>
-                  <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent relative z-10 mb-4 pt-2 tracking-tight">
+                  <h1 className="text-4xl md:text-7xl font-black bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent relative z-10 mb-4 pt-2 tracking-tight">
                     ভর্তি যাচাই ফর্ম
                   </h1>
-                  <div className="flex items-center justify-center gap-3 mb-4">
+                  <div className="hidden md:flex items-center justify-center gap-3 mb-4">
                     <div className="w-8 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full"></div>
                     <Rocket size={20} className="text-purple-500 animate-pulse" />
                     <div className="w-8 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full"></div>
@@ -265,8 +265,8 @@ const AdmissionForm = () => {
               {/* Premium Important Notice */}
               <div className="relative max-w-4xl mx-auto">
                 <div className="absolute -inset-4 bg-gradient-to-r from-amber-200 to-orange-200 rounded-3xl blur-xl opacity-30"></div>
-                <div className="relative bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-3xl p-8 shadow-2xl">
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                <div className="relative bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-3xl p-3 md:p-8 shadow-2xl">
+                  <div className="hidden md:flex items-center absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg  gap-2">
                     <Heart size={16} className="fill-white" />
                     গুরুত্বপূর্ণ নোটিশ
                   </div>
@@ -290,8 +290,8 @@ const AdmissionForm = () => {
           
           {/* SECTION 1: STUDENT INFO */}
           <div>
-            <div className="bg-gradient-to-br from-blue-50/80 to-cyan-100/80 rounded-3xl shadow-xl border-2 border-blue-200/50 overflow-hidden backdrop-blur-sm">
-              <div className="bg-gradient-to-r from-blue-100/80 to-blue-200/50 px-8 py-6 border-b border-blue-200 flex items-center gap-4">
+            <div className="bg-gradient-to-br from-blue-50/80 to-cyan-100/80 rounded-2xl md:rounded-3xl shadow-xl border-2 border-blue-200/50 overflow-hidden backdrop-blur-sm">
+              <div className="bg-gradient-to-r from-blue-100/80 to-blue-200/50 px-2.5 md:px-8 py-2 md:py-6 border-b border-blue-200 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-700">
                   <User size={24} />
                 </div>
@@ -301,7 +301,7 @@ const AdmissionForm = () => {
                 </div>
               </div>
               
-              <div className="p-8 grid grid-cols-1 md:grid-cols-12 gap-6">
+              <div className="p-3 md:p-8 grid grid-cols-1 md:grid-cols-12 gap-6">
                 <InputField 
                   width="md:col-span-6" 
                   label="শিক্ষার্থীর নাম" 
@@ -375,8 +375,8 @@ const AdmissionForm = () => {
 
           {/* SECTION 2: GUARDIAN INFO */}
           <div>
-            <div className="bg-gradient-to-br from-emerald-50/80 to-green-100/80 rounded-3xl shadow-xl border-2 border-emerald-200/50 overflow-hidden backdrop-blur-sm">
-              <div className="bg-gradient-to-r from-emerald-100/80 to-green-200/50 px-8 py-6 border-b border-emerald-200 flex items-center gap-4">
+            <div className="bg-gradient-to-br from-emerald-50/80 to-green-100/80 rounded-2xl md:rounded-3xl shadow-xl border-2 border-emerald-200/50 overflow-hidden backdrop-blur-sm">
+              <div className="bg-gradient-to-r from-emerald-100/80 to-green-200/50 px-2.5 md:px-8 py-2 md:py-6 border-b border-emerald-200 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-700">
                   <Users size={24} />
                 </div>
@@ -386,9 +386,9 @@ const AdmissionForm = () => {
                 </div>
               </div>
               
-              <div className="p-8 space-y-8">
+              <div className="px-3 md:px-8 py-5 md:py-8 space-y-8">
                 {/* Father Info */}
-                <div className="relative p-6 rounded-2xl bg-white/60 border border-blue-200 shadow-sm">
+                <div className="relative p-3 md:p-6 rounded-2xl bg-white/60 border border-blue-200 shadow-sm">
                   <div className="absolute -top-3 left-6 bg-blue-100 px-3 py-1 rounded-md text-xs font-bold text-blue-700 uppercase border border-blue-200">
                     পিতার তথ্য
                   </div>
@@ -429,7 +429,7 @@ const AdmissionForm = () => {
                 </div>
 
                 {/* Mother Info */}
-                <div className="relative p-6 rounded-2xl bg-white/60 border border-pink-200 shadow-sm">
+                <div className="relative p-3 md:p-6 rounded-2xl bg-white/60 border border-pink-200 shadow-sm">
                   <div className="absolute -top-3 left-6 bg-pink-100 px-3 py-1 rounded-md text-xs font-bold text-pink-700 uppercase tracking-wider border border-pink-200">
                     মাতার তথ্য
                   </div>
@@ -482,7 +482,7 @@ const AdmissionForm = () => {
           {/* SECTION 3: FAMILY INFO */}
           <div>
             <div className="bg-gradient-to-br from-amber-50/80 to-orange-100/80 rounded-3xl shadow-xl border-2 border-amber-200/50 overflow-hidden backdrop-blur-sm">
-              <div className="bg-gradient-to-r from-amber-100/80 to-orange-200/50 px-8 py-6 border-b border-amber-200 flex items-center gap-4">
+              <div className="bg-gradient-to-r from-amber-100/80 to-orange-200/50 px-2.5 md:px-8 py-2 md:py-6 border-b border-amber-200 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-700">
                   <Home size={24} />
                 </div>
@@ -492,7 +492,7 @@ const AdmissionForm = () => {
                 </div>
               </div>
 
-              <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-3 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <RadioGroup 
                   label="আপনার পরিবারের উপার্জন ১০০% হালাল কি?" 
                   name="HalalIncome"
@@ -542,7 +542,7 @@ const AdmissionForm = () => {
           {/* SECTION 4: BEHAVIOR INFO */}
           <div>
             <div className="bg-gradient-to-br from-rose-50/80 to-pink-100/80 rounded-3xl shadow-xl border-2 border-rose-200/50 overflow-hidden backdrop-blur-sm">
-              <div className="bg-gradient-to-r from-rose-100/80 to-pink-200/50 px-8 py-6 border-b border-rose-200 flex items-center gap-4">
+              <div className="bg-gradient-to-r from-rose-100/80 to-pink-200/50 px-2.5 md:px-8 py-2 md:py-6 border-b border-rose-200 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-rose-500/20 flex items-center justify-center text-rose-700">
                   <Activity size={24} />
                 </div>
@@ -552,9 +552,9 @@ const AdmissionForm = () => {
                 </div>
               </div>
 
-              <div className="p-8 space-y-8">
+              <div className="px-3 md:px-8 py-5 md:py-8 space-y-8">
                 {/* Mobile Usage */}
-                <div className="bg-white/60 p-6 rounded-2xl border border-rose-200 shadow-sm">
+                <div className="bg-white/60 p-3 md:p-6 rounded-2xl border border-rose-200 shadow-sm">
                   <label className="block text-sm font-bold text-gray-800 mb-3"> দৈনিক কত সময় মোবাইল ব্যবহার করে?</label>
                   <div className="relative">
                     <Phone size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-rose-400" />
@@ -671,7 +671,7 @@ const AdmissionForm = () => {
                 type="submit"
                 disabled={isLoading}
                 className={`
-                  group relative inline-flex items-center justify-center px-16 py-5 rounded-2xl font-bold text-white text-xl 
+                  group relative inline-flex items-center justify-center px-10 md:px-16 py-5 rounded-2xl font-bold text-white text-xl 
                   shadow-[0_20px_40px_rgba(124,58,237,0.4)] bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#8B5CF6]
                   hover:shadow-[0_30px_50px_rgba(124,58,237,0.6)] hover:-translate-y-2 hover:scale-105
                   active:scale-95 transition-all duration-500 overflow-hidden border-2 border-white/20
@@ -697,7 +697,7 @@ const AdmissionForm = () => {
               </button>
               <p className="text-gray-500 text-sm mt-6 flex items-center justify-center gap-2">
                 <CheckCircle size={16} className="text-green-500" />
-                সাবমিট করার আগে তথ্যগুলো পুনরায় চেক করে নিন
+                সাবমিট করার পূর্বে তথ্যগুলো পুনরায় চেক করুন। 
               </p>
             </div>
           </div>

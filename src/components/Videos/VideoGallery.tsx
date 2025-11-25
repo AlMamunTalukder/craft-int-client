@@ -333,7 +333,7 @@ const VideoGallery = () => {
               size="lg"
               className="bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] hover:from-[#5A1A9C] hover:to-[#9B4AE2] text-white px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-5"
             >
-              আরও ভিডিও দেখুন
+              আরও দেখুন
               <ArrowRight className="ml-3 w-5 h-5" />
             </Button>
           </Link>

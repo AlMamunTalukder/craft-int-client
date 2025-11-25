@@ -53,6 +53,7 @@ const BusinessSkills = () => {
         <div className="absolute top-[-10%] left-[-5%] w-96 h-96 bg-[#4F0187]/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-[#8A2BE2]/20 rounded-full blur-[150px]" />
       </div>
+       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

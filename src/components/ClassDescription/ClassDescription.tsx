@@ -1,14 +1,6 @@
 "use client";
 import React from 'react';
-
-const IslamicKnowledgeIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.42 88.39" className="w-full h-full" fill="currentColor"> <g><path d="m63.95,0c.58.3,1.2.53,1.72.91,1.11.81,1.69,1.93,1.74,3.32,0,.2,0,.4,0,.6,0,20.23,0,40.46,0,60.7,0,2.4-1.14,4.09-3.2,4.65-.52.14-1.08.18-1.62.18-16.32,0-32.64,0-48.96,0-1.6,0-2.03-.45-2.03-2.06,0-22.1,0-44.21-.01-66.31,0-.9.25-1.56,1.05-1.99,17.1,0,34.2,0,51.3,0Zm-24.46,61.19c2.2-.58,3.77-1.94,4.78-3.99.38-.78,1.09-1.12,1.95-1.24,2.96-.41,4.95-2.01,5.82-4.9.13-.44.33-.64.78-.75,3.32-.8,5.4-3.39,5.41-6.77.02-5.32.02-10.65,0-15.97-.01-3.34-2.11-5.98-5.34-6.75-.52-.12-.73-.33-.89-.84-.87-2.75-2.74-4.4-5.62-4.78-1.1-.15-1.85-.65-2.34-1.65-.74-1.5-1.88-2.65-3.46-3.2-.9-.31-1.27-.69-1.19-1.68.07-.88-.62-1.47-1.46-1.45-.8.01-1.38.57-1.44,1.42-.03.42,0,.85,0,1.28-2.23.6-3.8,1.89-4.77,3.89-.43.89-1.21,1.23-2.15,1.37-2.89.43-4.82,2.03-5.68,4.84-.15.47-.34.67-.83.79-3.24.76-5.35,3.4-5.37,6.73-.03,5.35-.03,10.7,0,16.05.02,3.33,2.13,5.93,5.38,6.71.48.12.68.33.83.81.86,2.76,2.74,4.41,5.6,4.82,1.11.16,1.77.69,2.38,1.6.68,1,1.53,1.92,2.45,2.71.58.5,1.41.71,2.12,1.05.12,2.01.46,2.62,1.49,2.63,1.01.01,1.32-.53,1.55-2.72Z"></path><path d="m.01,42.31c0-11.14,0-22.28,0-33.42C.02,4.77,2.5,1.41,6.25.35c1.65-.47,2.42.11,2.42,1.82,0,12.18,0,24.35,0,36.53,0,9.87,0,19.75,0,29.62,0,1.65-.13,1.84-1.68,2.34-2.64.85-4.26,3.31-4,6.05.25,2.63,2.37,4.73,5.1,5.05.03,0,.06,0,.09,0,1.92,0,1.7.23,1.72,2.03,0,.65-.31.93-.94.97-4.44.3-8.75-3.57-8.91-8.08-.08-2.13-.03-4.26-.03-6.39,0-9.33,0-18.65,0-27.98Z"></path><path d="m35.5,73.32c8.75,0,17.5,0,26.25,0,1.79,0,2.19.4,2.19,2.17,0,.58.01,1.15,0,1.73-.03,1.01-.54,1.54-1.53,1.62-.26.02-.52,0-.78,0-9.67,0-19.34,0-29.01,0q-1.47,0-1.63-1.42c-.09-.76-.51-1.22-1.26-1.31-.79-.09-1.34.28-1.57,1.04-.09.3-.1.62-.1.94,0,2.1,0,4.2,0,6.3-.02,2.92-2.13,4.54-4.96,3.81-.06-.01-.11-.03-.16-.05-1.64-.68-3.25-.54-4.94-.04-3.07.92-5.16-.75-5.16-3.95,0-2.1,0-4.2,0-6.3,0-1.11-.55-1.76-1.45-1.76-.91,0-1.46.59-1.48,1.73-.01.76-.37,1.02-1.07,1.01-1.64-.02-2.93-1.23-2.93-2.78,0-1.61,1.2-2.74,3-2.74,8.35-.01,16.69,0,25.04,0,.52,0,1.04,0,1.55,0Z"></path><path d="m48.66,81.8c5.27,0,10.53,0,15.8,0,.32,0,.64,0,.95.03.76.09,1.2.57,1.27,1.31.07.75-.32,1.28-1.04,1.49-.32.1-.68.11-1.02.11-10.76,0-21.52.01-32.29-.02-.42,0-1.15-.26-1.2-.5-.12-.7-.04-1.46.13-2.16.04-.16.71-.25,1.09-.25,5.44-.02,10.88-.01,16.32-.01Z"></path><path d="m45.89,42.6c-11.28,9.2-24.53-4.05-15.35-15.39,11.17-7.88,23.27,4.22,15.35,15.39Z"></path></g> </svg>
-);
-
-const Academicicon = () => (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 91.32 91.32" className="w-full h-full" fill="currentColor"><g><path d="m91.32,84.18c-.59.39-1.13.98-1.78,1.15-7.21,1.97-14.44,3.88-21.66,5.8-1.47.39-2.11.03-2.5-1.42-.57-2.14-1.12-4.29-1.7-6.5,8.61-2.29,17.14-4.57,25.77-6.87.52,1.96,1.01,3.87,1.52,5.78.09.33.23.65.35.98v1.07Z"></path><path d="m46.02,0c.89.37,1.19,1.07,1.18,2-.02,1.33,0,2.66,0,4.04h-19.74c0-1.6-.08-3.17.05-4.73.04-.46.67-.87,1.04-1.31,5.83,0,11.65,0,17.48,0Z"></path><path d="m49.43,28.57c-.69-2.61-1.36-5.15-2.03-7.69l-.2.02v52.11h-19.74V16.8h19.71v2.05c.84-.3,1.61-.64,2.41-.86,6.96-1.88,13.93-3.73,20.9-5.59,1.67-.45,2.25-.11,2.7,1.59.66,2.52,1.32,5.05,2.02,7.7-8.58,2.29-17.11,4.57-25.76,6.88Z"></path><path d="m.04,72.99V22.88h24.27v50.1H.04Zm12.1-30.36c1.87,0,3.74,0,5.62,0,1.51,0,2.04-.53,2.04-2.05,0-3.71,0-7.43,0-11.14,0-1.48-.51-2.02-1.96-2.02-3.77-.01-7.55-.01-11.32,0-1.42,0-1.93.51-1.93,1.94-.01,3.77-.01,7.55,0,11.32,0,1.42.54,1.94,1.94,1.95,1.87,0,3.74,0,5.62,0Z"></path><path d="m86.28,64.2c-8.61,2.3-17.14,4.58-25.77,6.88-2.92-11.17-5.81-22.27-8.74-33.48,8.59-2.29,17.12-4.57,25.78-6.87,2.91,11.16,5.81,22.28,8.74,33.48Z"></path><path d="m0,82.23h24.27c.03.23.08.42.08.62,0,2.17.02,4.33,0,6.5-.01,1.42-.55,1.96-1.94,1.96-6.83,0-13.66,0-20.49,0-1.36,0-1.92-.55-1.93-1.87-.01-2.37,0-4.74,0-7.21Z"></path><path d="m0,19.76C0,17.71-.01,15.75.02,13.79c.01-.95.54-1.47,1.47-1.6.26-.04.53-.03.8-.03,6.59,0,13.19,0,19.78,0,1.83,0,2.29.45,2.29,2.25,0,1.77,0,3.55,0,5.35H0Z"></path><path d="m27.41,82.25h19.78c0,1.76,0,3.48,0,5.19,0,.71.02,1.43-.01,2.14-.06,1.19-.61,1.72-1.8,1.73-1.96.02-3.92,0-5.88,0-3.36,0-6.71,0-10.07,0-1.49,0-2.01-.5-2.02-1.95-.01-2.34,0-4.69,0-7.12Z"></path><path d="m87.05,67.15c.56,2.14,1.09,4.16,1.63,6.25-8.61,2.3-17.14,4.57-25.77,6.87-.55-2.08-1.08-4.1-1.64-6.25,8.58-2.29,17.11-4.56,25.77-6.87Z"></path><path d="m27.46,13.68v-4.48h19.65v4.48h-19.65Z"></path><path d="m75.96,24.65c.28,1.06.53,2.06.81,3.12-8.59,2.29-17.1,4.56-25.74,6.87-.28-1.03-.55-2.03-.84-3.12,8.64-2.3,17.16-4.58,25.77-6.87Z"></path><path d="m.03,79.11v-2.93h24.27v2.93H.03Z"></path><path d="m27.46,79.11v-2.94h19.67v2.94h-19.67Z"></path></g></svg>);
-
-const Languageicon = () => (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 109.95 92.46" className="w-full h-full" fill="currentColor"><g><path d="m68.95,22.14c-2.94,0-5.74,0-8.54,0-2.84,0-5.69,0-8.53,0-3.56,0-6.81.99-9.89,3.03-.18-.37-.35-.69-.5-1.02-1.51-3.31-3.05-6.62-4.52-9.95-.5-1.13-1.24-1.9-2.49-1.89-1.19,0-1.92.76-2.41,1.84-3.95,8.74-7.93,17.46-11.9,26.2-.73,1.6-.31,3.04,1.01,3.65,1.39.63,2.72,0,3.49-1.66,1.09-2.37,2.15-4.76,3.25-7.12.14-.31.47-.74.73-.74,2.14-.06,4.28-.03,6.44-.03-1.13,6.56-.24,13.06-.64,19.52-.12.06-.23.16-.32.15-1.92-.37-3.09.72-4.31,1.99-2.7,2.84-5.52,5.57-8.29,8.33-1.46,1.46-2.94,1.86-4.46,1.17-1.68-.76-2.28-2.16-2.26-3.93.02-2.45,0-4.91,0-7.61-1.18,0-2.29.09-3.38-.01C4.88,53.42.15,48.46.08,41.87c-.1-9.83-.11-19.67,0-29.51C.15,5.21,5.55.02,12.69.01c14.53-.02,29.05-.02,43.58,0,7.33,0,12.65,5.33,12.68,12.64.01,3.11,0,6.22,0,9.49Z"></path><path d="m30.51,29.52c1.33-2.94,2.61-5.76,3.99-8.8.7,1.53,1.31,2.87,1.92,4.21.49,1.08.98,2.16,1.48,3.25.37.81.08,1.31-.78,1.33-2.15.04-4.29.01-6.61.01Z"></path><path d="m109.93,39.76c0-1.15-.07-2.32-.32-3.43-1.3-5.95-6.19-9.73-12.57-9.73-14.37-.01-28.75-.01-43.12,0-1.03,0-2.09.07-3.09.29-5.88,1.31-9.77,6.14-9.78,12.17-.03,9.57-.01,19.14,0,28.71,0,7.7,5.26,12.95,12.96,12.95,7.57,0,15.14.02,22.71-.02.99,0,1.71.24,2.41.97,3.08,3.16,6.2,6.3,9.39,9.36.7.67,1.72,1.26,2.66,1.39,2.29.33,3.98-1.44,4-3.97.03-2.53,0-5.06,0-7.73.67,0,1.16,0,1.65,0,7.86,0,13.1-5.23,13.1-13.06,0-9.3.01-18.6-.01-27.9Zm-18.74,18.66c-.83,2.12-2.07,4.04-3.71,5.75-1.79,1.85-3.65,3.15-5.58,3.91-3.53,1.38-6.95,1.35-10.24-.09-3.17-1.37-5.37-3.62-6.59-6.75-1.8-4.6.43-10.2,6.7-16.81-3.52-.18-5.59-.15-6.2.08-1.13.44-2.09,1.32-2.87,2.63-.78,1.31-1.15,1.96-1.1,1.94-.64.25-1.22-.28-1.74-1.6-.67-1.72-.32-3.62,1.08-5.69,1.34-1.97,3.07-3.37,5.2-4.2.32-.13,2.19-.22,5.6-.29,3.41-.07,5.93-.42,7.56-1.06l1.62-.72.38,6.81c-3.25,1.27-5.66,2.62-7.24,4.06-1.73,1.55-3.11,3.33-4.14,5.33-1.41,2.72-1.71,5.13-.88,7.25.86,2.2,2.42,3.65,4.69,4.36,2.14.68,4.41.56,6.81-.38,3.94-1.54,7.22-4.31,9.85-8.3.13-.21.41-.39.83-.56.21.25.45.56.7.93.25.37,0,1.5-.74,3.39Zm-8.62-4.84l-2.35,5.42-5.43-2.38,2.39-5.41,5.4,2.36Z"></path><path d="m27.94,71.88l.46,1.43c2.28-.74,4.42-.4,6.42,1.01,1.87,1.25,3.13,2.87,3.78,4.87.16.49.23.98.21,1.48-.02.5-.11.96-.28,1.38-.17.43-.42.81-.75,1.13-.33.33-.73.56-1.2.72-.33.11-.66.14-1.01.11-.34-.03-.67-.11-.98-.24-.31-.13-.59-.32-.84-.56-.25-.24-.43-.54-.54-.89-.2-.63-.15-1.22.15-1.79.31-.56.79-.95,1.44-1.16.4-.13.78-.15,1.16-.07.37.08.74.25,1.1.49l.03-.51c-.44-1.35-1.37-2.39-2.78-3.11-1.42-.8-3.11-.87-5.08-.2l5.29,16.31c-.15.02-.3.02-.47-.02-.17-.04-.29-.1-.38-.21-.84-.99-1.73-1.88-2.69-2.66-.96-.78-1.95-1.43-2.97-1.95-2.34-1.2-4.65-1.57-6.92-1.11l-3.87-2.53c2.48-3.71,5.61-6.94,9.4-9.69l-.53-1.64-12.71,4.12-2.62-1.31,24.72-8.01,2.66,1.3-10.2,3.31Zm-.55,4.96c-1.04.83-2.05,1.77-3.02,2.81-.97,1.05-1.97,2.25-3,3.61,3.7.32,6.83,1.71,9.38,4.18l.07-.02-3.43-10.58Z"></path></g></svg>);
-
+import { Academicicon, IslamicKnowledgeIcon, Languageicon} from "@/app/shared/Icons/Icons";
 
 
 export default function CategoriesSection() {
@@ -25,10 +17,10 @@ export default function CategoriesSection() {
 
         {/* Islamic Knowledge */}
         <div className="bg-gradient-to-br from-violet-700 to-purple-500 rounded-2xl p-6 text-white shadow-lg flex flex-col gap-4">
-          <div className="w-12 h-12">
+          <div className="w-12 h-12 ">
             <IslamicKnowledgeIcon />
           </div>
-          <h2 className="text-sm font-semibold tracking-wide">ISLAMIC KNOWLEDGE</h2>
+          <h2 className="text-sm font-semibold tracking-wide mt-3">ISLAMIC KNOWLEDGE</h2>
           <p className="text-sm opacity-90 leading-relaxed">
             ইসলামের যাবতীয় মৌলিক জ্ঞান যেমনঃ ইসলামী আকিদা, কুরআন ও হাদিস শিক্ষা, নামাজ শিক্ষা, 
             প্রয়োজনীয় মাসলা-মাসআলা, হালাল হারাম ও মাসনূন দু’আ ও দরুদ ইত্যাদি।
@@ -37,7 +29,7 @@ export default function CategoriesSection() {
 
         {/* Academic Knowledge */}
         <div className="bg-gradient-to-br from-violet-600 to-purple-400 rounded-2xl p-6 text-white shadow-lg flex flex-col gap-4">
-          <div className="w-12 h-12">
+          <div className="w-14 h-14">
             <Academicicon />
           </div>
           <h2 className="text-sm font-semibold tracking-wide">ACADEMIC KNOWLEDGE</h2>
@@ -48,7 +40,7 @@ export default function CategoriesSection() {
 
         {/* Languages */}
         <div className="bg-gradient-to-br from-purple-700 to-violet-500 rounded-2xl p-6 text-white shadow-lg flex flex-col gap-4">
-          <div className="w-12 h-12">
+          <div className="w-14 h-14">
             <Languageicon />
           </div>
           <h2 className="text-sm font-semibold tracking-wide">LANGUAGES</h2>
@@ -61,3 +53,157 @@ export default function CategoriesSection() {
     </div>
   );
 }
+
+
+
+
+// --- Configuration ---
+// const categories = [
+//   {
+//     id: 1,
+//     title: "ISLAMIC KNOWLEDGE",
+//     description: "ইসলামের যাবতীয় মৌলিক জ্ঞান যেমনঃ ইসলামী আকিদা, কুরআন ও হাদিস শিক্ষা, নামাজ শিক্ষা, প্রয়োজনীয় মাসলা-মাসআলা, হালাল হারাম ও মাসনূন দু’আ ও দরুদ ইত্যাদি।",
+//     icon: IslamicKnowledgeIcon,
+//     bg: "bg-gradient-to-br from-[#0f3f33] to-[#042f2e]", // Deep Emerald
+//     border: "border-emerald-500/30",
+//     glow: "shadow-emerald-500/20",
+//     iconColor: "text-emerald-400"
+//   },
+//   {
+//     id: 2,
+//     title: "ACADEMIC KNOWLEDGE",
+//     description: "বাংলাদেশ মাদ্রাসা শিক্ষাবোর্ড এবং জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তকের আলোকে এটির সাজানো মডেল।",
+//     icon: Academicicon,
+//     bg: "bg-gradient-to-br from-[#1e3a8a] to-[#172554]", // Deep Blue
+//     border: "border-blue-500/30",
+//     glow: "shadow-blue-500/20",
+//     iconColor: "text-blue-400"
+//   },
+//   {
+//     id: 3,
+//     title: "LANGUAGES",
+//     description: "বিশুদ্ধ উচ্চারণে, সাবলীলভাবে, প্রমিত বাংলায় এবং বিট্রিশ ও আরবদের মত করে, ইংরেজি ও আরবিতে অর্নগল কথা বলা, লেখা পড়া এবং শোনার দক্ষতা নিশ্চিত করা।",
+//     icon: Languageicon,
+//     bg: "bg-gradient-to-br from-[#831843] to-[#500724]", // Deep Rose
+//     border: "border-pink-500/30",
+//     glow: "shadow-pink-500/20",
+//     iconColor: "text-pink-400",
+//     isLanguage: true
+//   }
+// ];
+
+// export default function CategoriesSection() {
+//   return (
+//     <div className="w-full flex flex-col items-center gap-16 py-20 px-6 bg-[#0B001A] overflow-hidden relative">
+      
+//       {/* --- Background Effects --- */}
+//       <div className="absolute inset-0 w-full h-full pointer-events-none">
+//          <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-purple-900/20 to-transparent"></div>
+//          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 animate-pulse"></div>
+//       </div>
+
+//       {/* --- Top Video Section --- */}
+//       <div className="w-full max-w-5xl relative z-10 group cursor-pointer">
+//         <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_-15px_rgba(124,58,237,0.5)] border-2 border-white/10 group-hover:border-purple-500/60 transition-all duration-500 hover:scale-[1.02]">
+            
+//             {/* Video Placeholder Background */}
+//             <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-[#1A0B2E] to-purple-950">
+//                  {/* Animated Gradient Overlay */}
+//                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]"></div>
+//             </div>
+
+//             {/* Play Button */}
+//             <div className="absolute inset-0 flex items-center justify-center">
+//                 <div className="relative">
+//                     <div className="w-24 h-24 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 shadow-2xl group-hover:scale-110 transition-transform duration-300 z-10">
+//                         <Play className="w-10 h-10 text-white fill-white ml-1" />
+//                     </div>
+//                     {/* Pulse Rings */}
+//                     <div className="absolute top-0 left-0 w-24 h-24 rounded-full border-2 border-purple-500/50 animate-[ping_2s_infinite]"></div>
+//                     <div className="absolute top-0 left-0 w-24 h-24 rounded-full bg-purple-500/20 animate-[pulse_2s_infinite]"></div>
+//                 </div>
+//             </div>
+
+//             {/* Video Text Overlay */}
+//             <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+//                 <div className="flex items-center gap-3 mb-2">
+//                      <span className="px-3 py-1 rounded-full bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider animate-pulse">Live Now</span>
+//                 </div>
+//                 <h3 className="text-white text-2xl md:text-4xl font-bold tracking-tight">আমাদের শিক্ষা কার্যক্রম</h3>
+//                 <p className="text-gray-300 text-sm md:text-lg mt-2 max-w-2xl">এক নজরে দেখে নিন আমাদের বিশেষত্ব এবং শিক্ষার পরিবেশ</p>
+//             </div>
+//         </div>
+//       </div>
+
+//       {/* --- Categories Grid --- */}
+//       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+        
+//         {categories.map((cat) => {
+//             const Icon = cat.icon;
+//             return (
+//                 <div 
+//                     key={cat.id}
+//                     className={`
+//                         group relative 
+//                         rounded-[2.5rem] p-8 pt-12
+//                         ${cat.bg} 
+//                         shadow-2xl ${cat.glow}
+//                         flex flex-col gap-6 
+//                         border ${cat.border} hover:border-opacity-80
+//                         transition-all duration-500 hover:-translate-y-3
+//                         overflow-hidden
+//                     `}
+//                 >
+//                     {/* Inner Glow */}
+//                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+//                     {/* Floating Icon */}
+//                     <div className="relative w-20 h-20 bg-black/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/10 shadow-inner group-hover:rotate-3 transition-transform duration-500">
+//                         <div className={`w-12 h-12 ${cat.iconColor} drop-shadow-md`}>
+//                             <Icon />
+//                         </div>
+//                     </div>
+
+//                     {/* Content */}
+//                     <div className="relative z-10">
+//                         <h2 className="text-xl font-black text-white tracking-widest uppercase mb-4 border-b border-white/10 pb-4 inline-block">
+//                             {cat.title}
+//                         </h2>
+                        
+//                         <p className="text-gray-200 text-sm md:text-[15px] font-light leading-relaxed opacity-90">
+//                             {cat.description}
+//                         </p>
+
+//                         {/* Language Badges (Specific for Language Card) */}
+//                         {cat.isLanguage && (
+//                             <div className="flex flex-wrap gap-3 mt-6 justify-center">
+//                                 <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold backdrop-blur-sm hover:bg-white/20 transition-colors">
+//                                     বাংলা 🇧🇩
+//                                 </span>
+//                                 <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold backdrop-blur-sm hover:bg-white/20 transition-colors">
+//                                     English 🇬🇧
+//                                 </span>
+//                                 <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold backdrop-blur-sm hover:bg-white/20 transition-colors">
+//                                     العربية 🇸🇦
+//                                 </span>
+//                             </div>
+//                         )}
+//                     </div>
+
+//                     {/* Hover Shine Line */}
+//                     <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+//                 </div>
+//             );
+//         })}
+
+//       </div>
+
+//       {/* Styles */}
+//       <style jsx global>{`
+//         @keyframes shimmer {
+//             100% { transform: translateX(100%); }
+//         }
+//       `}</style>
+//     </div>
+//   );
+// }

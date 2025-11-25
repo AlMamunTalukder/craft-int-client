@@ -3,7 +3,7 @@ import Banner from "../../components/Banner/Banner";
 import BusinessSkills from "../../components/BusinessSkills/BusinessSkills";
 import ClassDescription from "../../components/ClassDescription/ClassDescription";
 // import Consultancy from "../components/Consultancy/Consultancy";
-import CourseFeatures from "../../components/CourseFeatures/CourseFeatures";
+import CourseFeatures from "../../components/OurCurriculum/OurCurriculum";
 import DepartmentSection from "../../components/DepartmentSection/DepartmentSection";
 import ITSkills from "../../components/ITSkills/ITSkills";
 // import OurActivities from "../components/OurActivities/OurActivities";
