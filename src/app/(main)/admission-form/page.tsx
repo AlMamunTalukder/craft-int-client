@@ -211,7 +211,7 @@ const AdmissionForm = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-8 px-4 md:px-8 relative">
       
       {/* Enhanced Background Design */}
-      <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-[#2E0249] via-[#4F0187] to-transparent z-0"></div>
+      <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-[#2E0249] via-[#4F0187] to-transparent"></div>
       <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-[120px] animate-pulse"></div>
       <div className="absolute top-[300px] right-[-150px] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
       <div className="absolute bottom-[-100px] left-1/3 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[80px] animate-pulse delay-500"></div>
@@ -232,7 +232,7 @@ const AdmissionForm = () => {
         onClose={closeAlert} 
       />
 
-      <div className="w-full max-w-6xl mx-auto relative z-10">
+      <div className="w-full max-w-6xl mx-auto relative">
         
         {/* UNIQUE HEADER DESIGN */}
         <div>
@@ -245,13 +245,13 @@ const AdmissionForm = () => {
             <div className="absolute top-0 right-0 w-40 h-40 bg-purple-300/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-green-300/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
             
-            <div className="relative z-10">
+            <div className="relative ">
               {/* Premium Header Design */}
               <div className="mb-8">
                 {/* Main Title with Premium Design */}
                 <div className="relative mb-8">
                   <div className="absolute -inset-8 bg-gradient-to-r from-purple-600/20 via-indigo-600/20 to-blue-600/20 rounded-full blur-3xl"></div>
-                  <h1 className="text-4xl md:text-7xl font-black bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent relative z-10 mb-4 pt-2 tracking-tight">
+                  <h1 className="text-4xl md:text-7xl font-black bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent relative mb-4 pt-2 tracking-tight">
                     ভর্তি যাচাই ফর্ম
                   </h1>
                   <div className="hidden md:flex items-center justify-center gap-3 mb-4">
@@ -680,7 +680,7 @@ const AdmissionForm = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                 
-                <span className="relative flex items-center gap-3 z-10">
+                <span className="relative flex items-center gap-3">
                   {isLoading ? (
                     <span className="flex items-center gap-3">
                       <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
