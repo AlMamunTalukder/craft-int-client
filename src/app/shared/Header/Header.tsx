@@ -55,7 +55,7 @@ const Header = () => {
               <Image
                 src={logo}
                 alt="Logo"
-                className="h-[45px] w-[120px] object-contain"
+                className="h-[45px] w-[120px] object-contain cursor-pointer"
                 priority
               />
             </Link>
