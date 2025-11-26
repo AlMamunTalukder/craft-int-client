@@ -220,7 +220,7 @@ const Banner = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-row gap-2 md:gap-5 py-8 justify-center md:justify-start ">
-              <a href="/verification" className="group relative px-3 md:px-8 py-2 md:py-4 bg-gradient-to-r from-[#F300E7] to-[#A855F7] rounded-full text-white font-bold shadow-[0_10px_20px_rgba(243,0,231,0.3)] hover:shadow-[0_15px_30px_rgba(243,0,231,0.5)] transition-all hover:-translate-y-1 overflow-hidden">
+              <a href="/admission-form" className="group relative px-3 md:px-8 py-2 md:py-4 bg-gradient-to-r from-[#F300E7] to-[#A855F7] rounded-full text-white font-bold shadow-[0_10px_20px_rgba(243,0,231,0.3)] hover:shadow-[0_15px_30px_rgba(243,0,231,0.5)] transition-all hover:-translate-y-1 overflow-hidden">
                 <div className="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-500 ease-out -skew-x-12 origin-left" />
                 <span className="relative flex items-center gap-3 text-lg text-center md:text-start">
                   ভর্তি ফর্ম <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
