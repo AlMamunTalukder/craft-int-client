@@ -46,7 +46,7 @@ const BusinessSkills = () => {
   const displayItems = showAll ? businessSkillsData : businessSkillsData.slice(0, 6);
 
   return (
-    <section className="relative py-20 bg-[#361664] overflow-hidden">
+    <section id="business-skills" className="relative py-20 bg-[#361664] overflow-hidden">
       
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">

@@ -109,7 +109,7 @@ const allSkills = [
 
 const ITSkills = () => {
     return (
-        <section className="relative min-h-screen py-10 md:py-20 overflow-hidden bg-[#4F0187] flex items-center justify-center ">
+        <section id="it-skills"  className="relative min-h-screen py-10 md:py-20 overflow-hidden bg-[#4F0187] flex items-center justify-center ">
             
             {/* Modern Abstract Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">

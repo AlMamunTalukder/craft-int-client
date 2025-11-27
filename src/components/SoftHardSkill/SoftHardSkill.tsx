@@ -176,7 +176,7 @@ const SoftSkills = () => {
   };
 
   return (
-    <section className="relative py-24 bg-[#2c154c] overflow-hidden">
+    <section id="soft-skills" className="relative py-24 bg-[#2c154c] overflow-hidden">
       {/* Background Effects (Matching other pages) */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#4F0187] opacity-10 blur-[150px] rounded-full"></div>
