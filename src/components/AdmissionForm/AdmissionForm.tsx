@@ -120,7 +120,7 @@ export default function AdmissionForm() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-8 px-4 md:px-8 relative">
       {/* Background decorations (kept as in original) */}
       <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-[#2E0249] via-[#4F0187] to-transparent"></div>
-      <div className="absolute top-[300px] right-[-150px] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+      <div className="absolute top-[300px] right-[-150px] w-full md:w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
       <div className="absolute bottom-[-100px] left-1/3 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[80px] animate-pulse delay-500"></div>
 
       {/* Floating Elements */}
