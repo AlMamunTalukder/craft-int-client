@@ -9,6 +9,7 @@ import { HiMenu, HiX } from "react-icons/hi";
 // 1. Imports from your First Header
 import Container from "../Container/Container";
 import logo from "../../../../public/img/logo.png";
+import { LogIn } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -79,13 +80,24 @@ const Header = () => {
                 </li>
               ))}
             </ul>
-            {/* User Menu */}
-            {/* <UserMenu user={user} /> */}
+            <Link
+              href="/login"
+              className="group flex items-center gap-2 bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-600 hover:from-purple-800 hover:via-purple-700 hover:to-indigo-700 text-white px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 transform hover:-translate-y-0.5 ring-2 ring-purple-500/20 hover:ring-purple-500/50"
+            >
+              <span>Login</span>
+              <LogIn className="text-xl group-hover:scale-110 transition-transform duration-300" />
+            </Link>
           </nav>
 
           {/* --- Mobile Menu Button --- */}
           <div className="md:hidden flex items-center gap-3">
-            {/* <UserMenu user={user} /> */}
+        <Link
+              href="/login"
+              className="group flex items-center gap-2 bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-600 hover:from-purple-800 hover:via-purple-700 hover:to-indigo-700 text-white px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 transform hover:-translate-y-0.5 ring-2 ring-purple-500/20 hover:ring-purple-500/50"
+            >
+              <span>Login</span>
+              <LogIn className="text-xl group-hover:scale-110 transition-transform duration-300" />
+            </Link>
             <button
               className="p-2 text-gray-600 hover:text-[#4F0187] transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
