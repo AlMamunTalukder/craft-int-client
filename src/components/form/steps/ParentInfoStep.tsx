@@ -1,0 +1,173 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { BsWhatsapp } from "react-icons/bs";
+import { InputField } from "../InputField";
+import { User, Briefcase, GraduationCap, Phone, Users, MapPin } from "lucide-react";
+
+interface ParentInfoStepProps {
+  formData: Record<string, any>;
+  handleInputChange: (name: string, value: any) => void;
+}
+
+export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepProps) => {
+  return (
+    <div className="space-y-6 animate-fadeIn">
+      <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-3 mb-6">
+        <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center text-green-700">
+          <Users size={20} />
+        </div>
+        অভিভাবকের তথ্য
+      </h3>
+
+      {/* Father's Information */}
+      <div className="relative p-6 rounded-2xl bg-gradient-to-br from-blue-50/50 to-indigo-50/50 border border-blue-200 shadow-sm mb-6">
+        <div className="absolute -top-3 left-6 bg-blue-100 px-4 py-1 rounded-full text-xs font-bold text-blue-700 border border-blue-200">
+          পিতার তথ্য
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-4">
+          <InputField
+            width="md:col-span-4"
+            label="পিতার নাম"
+            name="FatherName"
+            required
+            icon={User}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-4"
+            label="পেশা"
+            name="FatherJob"
+            icon={Briefcase}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-4"
+            label="শিক্ষাগত যোগ্যতা"
+            name="FatherEdu"
+            icon={GraduationCap}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-6"
+            label="মোবাইল"
+            name="FatherMobile"
+            required
+            icon={Phone}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-6"
+            label="Whatsapp"
+            name="FatherWhatsapp"            
+            icon={BsWhatsapp}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        </div>
+      </div>
+
+      {/* Mother's Information */}
+      <div className="relative p-6 rounded-2xl bg-gradient-to-br from-pink-50/50 to-rose-50/50 border border-pink-200 shadow-sm mb-6">
+        <div className="absolute -top-3 left-6 bg-pink-100 px-4 py-1 rounded-full text-xs font-bold text-pink-700 border border-pink-200">
+          মাতার তথ্য
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-4">
+          <InputField
+            width="md:col-span-4"
+            label="মাতার নাম"
+            name="MotherName"
+            icon={User}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-4"
+            label="পেশা"
+            name="MotherJob"
+            icon={Briefcase}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-4"
+            label="শিক্ষাগত যোগ্যতা"
+            name="MotherEdu"
+            icon={GraduationCap}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-6"
+            label="মোবাইল"
+            name="MotherMobile"
+            icon={Phone}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-6"
+            label="Whatsapp"
+            name="FMotherWhatsapp"            
+            icon={BsWhatsapp}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        </div>
+      </div>
+
+      {/* Guardian Information */}
+      <div className="relative p-6 rounded-2xl bg-gradient-to-br from-amber-50/50 to-orange-50/50 border border-amber-200 shadow-sm">
+        <div className="absolute -top-3 left-6 bg-amber-100 px-4 py-1 rounded-full text-xs font-bold text-amber-700 border border-amber-200">
+          অভিভাবকের তথ্য (যদি পিতা-মাতা ব্যতীত অন্য কেউ)
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-4">
+          <InputField
+            width="md:col-span-4"
+            label="অভিভাবকের নাম"
+            name="guardianName"
+            icon={User}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-4"
+            label="সম্পর্ক"
+            name="guardianRelation"
+            icon={Users}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-4"
+            label="মোবাইল"
+            name="guardianMobile"
+            icon={Phone}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-4"
+            label="Whatsapp"
+            name="FatherWhatsapp"            
+            icon={BsWhatsapp}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+          <InputField
+            width="md:col-span-8"
+            label="ঠিকানা"
+            name="guardianAddress"
+            icon={MapPin}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        </div>
+      </div>
+
+      
+    </div>
+  );
+};
