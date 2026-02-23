@@ -7,6 +7,7 @@ interface CheckboxFieldProps {
   name: string;
   formData: Record<string, any>;
   handleInputChange: (name: string, checked: boolean) => void;
+  disable: boolean;
 }
 
 export const CheckboxField = ({
@@ -14,12 +15,14 @@ export const CheckboxField = ({
   name,
   formData,
   handleInputChange,
+  disable = false,
 }: CheckboxFieldProps) => (
   <div className="flex items-center space-x-2">
     <Checkbox
       id={name}
       checked={formData?.[name] || false}
       onCheckedChange={(checked: any) => handleInputChange(name, checked)}
+      disabled = {disable}
     />
     <Label
       htmlFor={name}

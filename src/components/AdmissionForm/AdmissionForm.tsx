@@ -146,7 +146,7 @@ export default function AdmissionForm() {
           <div className="absolute -inset-1.5 bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 rounded-[2.5rem] md:rounded-[3.5rem] blur-2xl opacity-40 group-hover:opacity-70 transition duration-1000 group-hover:duration-300 animate-gradient-xy"></div>
 
           {/* Main Glassmorphism Card */}
-          <div className="relative bg-white/85 backdrop-blur-2xl border border-white/60 shadow-2xl rounded-[2rem] md:rounded-[1rem] overflow-hidden px-6 py-10 md:py-14 text-center transform transition-all duration-500 hover:scale-[1.02]">
+          <div className="relative bg-white/85 backdrop-blur-2xl border border-white/60 shadow-2xl rounded-[2rem] md:rounded-[1rem] overflow-hidden px-6 py-10 md:py-9 text-center transform transition-all duration-500 hover:scale-[1.02]">
             
             {/* Top Accent Line */}
             <div className="absolute top-0 left-0 w-full h-2.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
@@ -182,8 +182,8 @@ export default function AdmissionForm() {
               </div>
 
               {/* Main Title */}
-              <h1 className="text-5xl md:text-7xl font-black mb-5">
-                <span className="bg-gradient-to-r from-purple-900 via-purple-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-sm px-16">
+              <h1 className="text-5xl md:text-7xl font-black mb-3">
+                <span className="bg-gradient-to-r from-purple-900 via-purple-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-sm px-10">
                   ভর্তি ফর্ম
                 </span>
               </h1>
