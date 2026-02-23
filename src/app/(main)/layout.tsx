@@ -3,7 +3,6 @@ import "./globals.css";
 import { Hind_Siliguri } from "next/font/google";
 import BackToTop from "../shared/BackToTop/BackToTop";
 import Header from "../shared/Header/Header";
-// import SubHeader from "../shared/SubHeader/SubHeader";
 import Footer from "../shared/Footer/Footer";
 
 const siliguri = Hind_Siliguri({
