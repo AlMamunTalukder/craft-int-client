@@ -10,15 +10,49 @@ export const groups = [
 ];
 export const shifts = ["Morning", "Day", "Evening"];
 export const sections = ["A", "B", "C"];
-export const classes = [
-  { value: "1", label: "প্রথম শ্রেণি" },
-  { value: "2", label: "দ্বিতীয় শ্রেণি" },
-  { value: "3", label: "তৃতীয় শ্রেণি" },
-  { value: "4", label: "চতুর্থ শ্রেণি" },
-  { value: "5", label: "পঞ্চম শ্রেণি" },
-  { value: "6", label: "ষষ্ঠ শ্রেণি" },
-  { value: "7", label: "সপ্তম শ্রেণি" },
-  { value: "8", label: "অষ্টম শ্রেণি" },
-  { value: "9", label: "নবম শ্রেণি" },
-  { value: "10", label: "দশম শ্রেণি" },
+export const academicClasses = [
+  { value: "pre_one", label: "Pre One (Nursery)" },
+  { value: "one", label: "One" },
+  { value: "two", label: "Two" },
+  { value: "three", label: "Three" },
+  { value: "four_boys", label: "Four Boys" },
+  { value: "four_girls", label: "Four Girls" },
+  { value: "five", label: "Five" },
+  { value: "six", label: "Six" },
+  { value: "seven", label: "Seven" },
+  { value: "eight", label: "Eight" },
+];
+
+export const hifzClasses = [
+  { value: "nurani", label: "নূরানী" },
+  { value: "nazera", label: "নাযেরা" },
+  { value: "hifz", label: "হিফয" },
+  { value: "sunani", label: "শুনানী" },
+];
+
+
+export const fatherprofession = [
+  { value: "teacher", label: "শিক্ষক" },
+  { value: "doctor", label: "ডাক্তার" },
+  { value: "engineer", label: "ইঞ্জিনিয়ার" },
+  { value: "business", label: "ব্যবসায়ী" },
+  { value: "govt_job", label: "সরকারি চাকরিজীবি" },
+  { value: "private_job", label: "বেসরকারি চাকরিজীবি" },
+  { value: "lawyer", label: "উকিল" },
+  { value: "farmer", label: "কৃষক" }, 
+  { value: "driver", label: "চালক" },
+  { value: "others", label: "অন্যান্য" },
+];
+export const motherProfession = [
+  { value: "Housewife", label: "গৃহিণী" },
+  { value: "teacher", label: "শিক্ষক" },
+  { value: "doctor", label: "ডাক্তার" },
+  { value: "engineer", label: "ইঞ্জিনিয়ার" },
+  { value: "business", label: "ব্যবসায়ী" },
+  { value: "govt_job", label: "সরকারি চাকরিজীবি" },
+  { value: "private_job", label: "বেসরকারি চাকরিজীবি" },
+  { value: "lawyer", label: "উকিল" },
+  { value: "farmer", label: "কৃষক" }, 
+  { value: "driver", label: "চালক" },
+  { value: "others", label: "অন্যান্য" },
 ];

@@ -2,9 +2,21 @@
 import { useEffect } from "react";
 import { InputField } from "../InputField";
 import { SelectField } from "../SelectField";
-import { User, Calendar, BookOpen, GraduationCap, Cake, Fingerprint, Heart, Globe, Camera } from "lucide-react";
+import {
+  User,
+  Calendar,
+  BookOpen,
+  GraduationCap,
+  Cake,
+  Fingerprint,
+  Heart,
+  Globe,
+  Camera,
+} from "lucide-react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
+import { academicClasses, hifzClasses } from "@/lib/types";
+
 
 interface StudentInfoStepProps {
   formData: Record<string, any>;
@@ -19,7 +31,7 @@ export const StudentInfoStep = ({
   departments,
   bloodGroups,
 }: StudentInfoStepProps) => {
-  // Auto‑calculate age when date of birth changes
+ 
   useEffect(() => {
     if (formData.dateOfBirth) {
       const dob = new Date(formData.dateOfBirth);
@@ -29,7 +41,6 @@ export const StudentInfoStep = ({
       if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
         age--;
       }
-      // Only update if different to avoid loops
       if (formData.Age !== age.toString()) {
         handleInputChange("Age", age.toString());
       }
@@ -39,25 +50,9 @@ export const StudentInfoStep = ({
   // Class options based on department
   const getClassOptions = () => {
     if (formData.studentDepartment === "hifz") {
-      return [
-        { value: "nurani", label: "নূরানী" },
-        { value: "nazera", label: "নাযেরা" },
-        { value: "hifz", label: "হিফয" },
-        { value: "sunani", label: "শুনানী" },
-      ];
+      return hifzClasses;
     } else if (formData.studentDepartment === "academic") {
-      return [
-        { value: "kg", label: "KG" },
-        { value: "nursery", label: "Nursery" },
-        { value: "1", label: "১ম শ্রেণি" },
-        { value: "2", label: "২য় শ্রেণি" },
-        { value: "3", label: "৩য় শ্রেণি" },
-        { value: "4", label: "৪র্থ শ্রেণি" },
-        { value: "5", label: "৫ম শ্রেণি" },
-        { value: "6", label: "৬ষ্ঠ শ্রেণি" },
-        { value: "7", label: "৭ম শ্রেণি" },
-        { value: "8", label: "৮ম শ্রেণি" },
-      ];
+      return academicClasses;
     }
     return [];
   };
@@ -78,7 +73,7 @@ export const StudentInfoStep = ({
         <div className="lg:col-span-4">
           <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-2xl border-2 border-purple-100 shadow-sm h-full">
             <label className="block text-sm font-bold text-gray-700 mb-3">
-              শিক্ষার্থীর ছবি 
+              শিক্ষার্থীর ছবি
             </label>
 
             <div className="flex flex-col items-center">
@@ -154,7 +149,7 @@ export const StudentInfoStep = ({
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-              </div>            
+              </div>
 
               <InputField
                 width="col-span-1"
@@ -174,7 +169,7 @@ export const StudentInfoStep = ({
                 icon={Calendar}
                 formData={formData}
                 handleInputChange={handleInputChange}
-                disabled 
+                disabled
               />
 
               <SelectField
@@ -196,11 +191,15 @@ export const StudentInfoStep = ({
                 name="Class"
                 required
                 options={classOptions}
-                placeholder={formData.studentDepartment ? "শ্রেণি নির্বাচন করুন" : "প্রথমে বিভাগ নির্বাচন করুন"}
+                placeholder={
+                  formData.studentDepartment
+                    ? "শ্রেণি নির্বাচন করুন"
+                    : "প্রথমে বিভাগ নির্বাচন করুন"
+                }
                 icon={BookOpen}
                 formData={formData}
                 handleInputChange={handleInputChange}
-                // disabled
+                disabled={!formData.studentDepartment}
               />
 
               <InputField
@@ -211,7 +210,7 @@ export const StudentInfoStep = ({
                 icon={Calendar}
                 formData={formData}
                 handleInputChange={handleInputChange}
-              />            
+              />
 
               <InputField
                 width="col-span-1"

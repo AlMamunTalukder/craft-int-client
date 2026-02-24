@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { BsWhatsapp } from "react-icons/bs";
+import { fatherprofession, motherProfession } from "@/lib/types";
 import { InputField } from "../InputField";
+import { SelectField } from "../SelectField";
 import { User, Briefcase, GraduationCap, Phone, Users, MapPin } from "lucide-react";
+import { BsWhatsapp } from "react-icons/bs";
 
 interface ParentInfoStepProps {
   formData: Record<string, any>;
@@ -24,23 +26,38 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           পিতার তথ্য
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-4">
+          {/* Bengali and English name fields */}
           <InputField
-            width="md:col-span-4"
-            label="পিতার নাম"
-            name="FatherName"
+            width="md:col-span-6"
+            label="পিতার নাম (বাংলা)"
+            name="FatherNameBangla"
             required
             icon={User}
             formData={formData}
             handleInputChange={handleInputChange}
           />
           <InputField
+            width="md:col-span-6"
+            label="Father's Name (English)"
+            name="FatherName"
+            required
+            icon={User}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+
+          {/* Profession as select dropdown */}
+          <SelectField
             width="md:col-span-4"
             label="পেশা"
             name="FatherJob"
+            options={fatherprofession}
+            placeholder="পেশা নির্বাচন করুন"
             icon={Briefcase}
             formData={formData}
             handleInputChange={handleInputChange}
           />
+
           <InputField
             width="md:col-span-4"
             label="শিক্ষাগত যোগ্যতা"
@@ -49,6 +66,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             formData={formData}
             handleInputChange={handleInputChange}
           />
+
           <InputField
             width="md:col-span-6"
             label="মোবাইল"
@@ -58,10 +76,11 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             formData={formData}
             handleInputChange={handleInputChange}
           />
+
           <InputField
             width="md:col-span-6"
-            label="Whatsapp"
-            name="FatherWhatsapp"            
+            label="WhatsApp"
+            name="FatherWhatsapp"
             icon={BsWhatsapp}
             formData={formData}
             handleInputChange={handleInputChange}
@@ -76,21 +95,35 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-4">
           <InputField
-            width="md:col-span-4"
-            label="মাতার নাম"
-            name="MotherName"
+            width="md:col-span-6"
+            label="মাতার নাম (বাংলা)"
+            name="MotherNameBangla"
+            required
             icon={User}
             formData={formData}
             handleInputChange={handleInputChange}
           />
           <InputField
+            width="md:col-span-6"
+            label="Mother's Name (English)"
+            name="MotherName"
+            required
+            icon={User}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+
+          <SelectField
             width="md:col-span-4"
             label="পেশা"
             name="MotherJob"
+            options={motherProfession}
+            placeholder="পেশা নির্বাচন করুন"
             icon={Briefcase}
             formData={formData}
             handleInputChange={handleInputChange}
           />
+
           <InputField
             width="md:col-span-4"
             label="শিক্ষাগত যোগ্যতা"
@@ -99,6 +132,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             formData={formData}
             handleInputChange={handleInputChange}
           />
+
           <InputField
             width="md:col-span-6"
             label="মোবাইল"
@@ -107,10 +141,11 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             formData={formData}
             handleInputChange={handleInputChange}
           />
+
           <InputField
             width="md:col-span-6"
-            label="Whatsapp"
-            name="FMotherWhatsapp"            
+            label="WhatsApp"
+            name="MotherWhatsapp"
             icon={BsWhatsapp}
             formData={formData}
             handleInputChange={handleInputChange}
@@ -118,46 +153,67 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
         </div>
       </div>
 
-      {/* Guardian Information */}
+      {/* Guardian Information (optional) */}
       <div className="relative p-6 rounded-2xl bg-gradient-to-br from-amber-50/50 to-orange-50/50 border border-amber-200 shadow-sm">
         <div className="absolute -top-3 left-6 bg-amber-100 px-4 py-1 rounded-full text-xs font-bold text-amber-700 border border-amber-200">
           অভিভাবকের তথ্য (যদি পিতা-মাতা ব্যতীত অন্য কেউ)
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-4">
           <InputField
-            width="md:col-span-4"
-            label="অভিভাবকের নাম"
-            name="guardianName"
+            width="md:col-span-6"
+            label="অভিভাবকের নাম (বাংলা)"
+            name="guardianNameBangla"
             icon={User}
             formData={formData}
             handleInputChange={handleInputChange}
           />
           <InputField
-            width="md:col-span-4"
+            width="md:col-span-6"
+            label="Guardian's Name (English)"
+            name="guardianName"
+            icon={User}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+
+          <InputField
+            width="md:col-span-3"
             label="সম্পর্ক"
             name="guardianRelation"
             icon={Users}
             formData={formData}
             handleInputChange={handleInputChange}
           />
+
           <InputField
-            width="md:col-span-4"
+            width="md:col-span-3"
             label="মোবাইল"
             name="guardianMobile"
             icon={Phone}
             formData={formData}
             handleInputChange={handleInputChange}
           />
+
           <InputField
-            width="md:col-span-4"
-            label="Whatsapp"
-            name="FatherWhatsapp"            
+            width="md:col-span-3"
+            label="WhatsApp"
+            name="guardianWhatsapp"
             icon={BsWhatsapp}
             formData={formData}
             handleInputChange={handleInputChange}
           />
+
           <InputField
-            width="md:col-span-8"
+            width="md:col-span-3"
+            label="পেশা"
+            name="guardianJob"
+            icon={Briefcase}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+
+          <InputField
+            width="md:col-span-12"
             label="ঠিকানা"
             name="guardianAddress"
             icon={MapPin}
@@ -166,8 +222,6 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           />
         </div>
       </div>
-
-      
     </div>
   );
 };

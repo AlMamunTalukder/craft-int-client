@@ -4,7 +4,7 @@ import { Check, User, BookOpen, Users, Home, Activity, MapPin } from "lucide-rea
 const steps = [
   { number: 1, label: "Student", icon: User },
   { number: 2, label: "Academic", icon: BookOpen },
-  { number: 3, label: "Parent", icon: Users },
+  { number: 3, label: "Parents", icon: Users },
   { number: 4, label: "Family", icon: Home },
   { number: 5, label: "Behavior", icon: Activity },
   { number: 6, label: "Address", icon: MapPin },

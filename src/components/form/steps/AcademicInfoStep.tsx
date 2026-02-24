@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { InputField } from "../InputField";
-import { SelectField } from "../SelectField";
-import { School, BookOpen, Star, Award, Users2, Building, Clock } from "lucide-react";
+import { School, BookOpen, Star} from "lucide-react";
 
 interface AcademicInfoStepProps {
   formData: Record<string, any>;
@@ -16,9 +15,6 @@ interface AcademicInfoStepProps {
 export const AcademicInfoStep = ({
   formData,
   handleInputChange,
-  groups,
-  shifts,
-  sections,
 }: AcademicInfoStepProps) => {
   return (
     <div className="space-y-6 animate-fadeIn">
@@ -34,7 +30,7 @@ export const AcademicInfoStep = ({
           width="md:col-span-5"
           label="পূর্ববর্তী প্রতিষ্ঠানের নাম"
           name="PrevSchool"
-          placeholder="আগের স্কুলের নাম"
+          placeholder="পূর্ববর্তী প্রতিষ্ঠানের নাম"
           icon={School}
           formData={formData}
           handleInputChange={handleInputChange}
@@ -42,9 +38,9 @@ export const AcademicInfoStep = ({
 
         <InputField
           width="md:col-span-4"
-          label="পূর্ব অধ্যায়নকৃত শ্রেণি"
+          label="পূর্ববর্তী অধ্যয়নকৃত শ্রেণি"
           name="PrevClass"
-          placeholder="কোন ক্লাসে পড়ত"
+          placeholder="পূর্ববর্তী অধ্যয়নকৃত শ্রেণি"
           icon={BookOpen}
           formData={formData}
           handleInputChange={handleInputChange}
@@ -59,58 +55,6 @@ export const AcademicInfoStep = ({
           formData={formData}
           handleInputChange={handleInputChange}
         />
-
-        {/* <InputField
-          width="md:col-span-4"
-          label="পূর্ববর্তী রোল"
-          name="Roll"
-          placeholder="পূর্ববর্তী ক্লাসের রোল নম্বর"
-          icon={Award}
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-
-        <InputField
-          width="md:col-span-4"
-          label="শাখা"
-          name="section"
-          placeholder="শাখা (যেমন: ক, খ)"
-          icon={Users2}
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-
-        <SelectField
-          width="md:col-span-4"
-          label="গ্রুপ (প্রযোজ্য ক্ষেত্রে)"
-          name="group"
-          options={groups}
-          placeholder="গ্রুপ নির্বাচন করুন"
-          icon={Building}
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-
-        <InputField
-          width="md:col-span-4"
-          label="অপশনাল সাবজেক্ট"
-          name="optionalSubject"
-          placeholder="যেমন: উচ্চতর গণিত"
-          icon={BookOpen}
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-
-        <SelectField
-          width="md:col-span-4"
-          label="শিফট"
-          name="shift"
-          options={shifts}
-          placeholder="শিফট নির্বাচন করুন"
-          icon={Clock}
-          formData={formData}
-          handleInputChange={handleInputChange}
-        /> */}
       </div>
     </div>
   );

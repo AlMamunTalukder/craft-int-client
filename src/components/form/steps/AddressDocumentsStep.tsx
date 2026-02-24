@@ -192,9 +192,7 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
             formData={formData}
             handleInputChange={handleInputChange}
             disable
-          />
-          
-         
+          />         
         </div>
         </div>
 
