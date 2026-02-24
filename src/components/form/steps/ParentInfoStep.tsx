@@ -28,7 +28,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-4">
           {/* Bengali and English name fields */}
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-5"
             label="পিতার নাম (বাংলা)"
             name="FatherNameBangla"
             required
@@ -37,7 +37,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             handleInputChange={handleInputChange}
           />
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-4"
             label="Father's Name (English)"
             name="FatherName"
             required
@@ -48,7 +48,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
 
           {/* Profession as select dropdown */}
           <SelectField
-            width="md:col-span-4"
+            width="md:col-span-3"
             label="পেশা"
             name="FatherJob"
             options={fatherprofession}
@@ -68,7 +68,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           />
 
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-4"
             label="মোবাইল"
             name="FatherMobile"
             required
@@ -78,7 +78,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           />
 
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-4"
             label="WhatsApp"
             name="FatherWhatsapp"
             icon={BsWhatsapp}
@@ -95,7 +95,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-4">
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-5"
             label="মাতার নাম (বাংলা)"
             name="MotherNameBangla"
             required
@@ -104,7 +104,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             handleInputChange={handleInputChange}
           />
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-4"
             label="Mother's Name (English)"
             name="MotherName"
             required
@@ -114,7 +114,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           />
 
           <SelectField
-            width="md:col-span-4"
+            width="md:col-span-3"
             label="পেশা"
             name="MotherJob"
             options={motherProfession}
@@ -134,7 +134,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           />
 
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-4"
             label="মোবাইল"
             name="MotherMobile"
             icon={Phone}
@@ -143,7 +143,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           />
 
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-4"
             label="WhatsApp"
             name="MotherWhatsapp"
             icon={BsWhatsapp}
@@ -160,7 +160,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mt-4">
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-5"
             label="অভিভাবকের নাম (বাংলা)"
             name="guardianNameBangla"
             icon={User}
@@ -168,7 +168,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             handleInputChange={handleInputChange}
           />
           <InputField
-            width="md:col-span-6"
+            width="md:col-span-4"
             label="Guardian's Name (English)"
             name="guardianName"
             icon={User}
@@ -186,7 +186,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           />
 
           <InputField
-            width="md:col-span-3"
+            width="md:col-span-4"
             label="মোবাইল"
             name="guardianMobile"
             icon={Phone}
@@ -195,7 +195,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           />
 
           <InputField
-            width="md:col-span-3"
+            width="md:col-span-4"
             label="WhatsApp"
             name="guardianWhatsapp"
             icon={BsWhatsapp}
@@ -204,7 +204,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
           />
 
           <InputField
-            width="md:col-span-3"
+            width="md:col-span-4"
             label="পেশা"
             name="guardianJob"
             icon={Briefcase}

@@ -199,7 +199,7 @@ export const StudentInfoStep = ({
                 icon={BookOpen}
                 formData={formData}
                 handleInputChange={handleInputChange}
-                disabled={!formData.studentDepartment}
+                // disabled={!formData.studentDepartment}
               />
 
               <InputField

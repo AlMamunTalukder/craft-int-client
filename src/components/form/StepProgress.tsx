@@ -35,7 +35,7 @@ export const StepProgress = ({ currentStep, totalSteps }: StepProgressProps) => 
               )}
               <div className="flex flex-col items-center relative z-10">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
+                  className={`w-5 md:w-10 h-5 md:h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
                     isCompleted
                       ? "bg-purple-600 text-white"
                       : isCurrent
