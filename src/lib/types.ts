@@ -38,6 +38,7 @@ export const fatherprofession = [
   { value: "business", label: "ব্যবসায়ী" },
   { value: "govt_job", label: "সরকারি চাকরিজীবি" },
   { value: "private_job", label: "বেসরকারি চাকরিজীবি" },
+  { value: "expatriate", label: "প্রবাসী" },
   { value: "lawyer", label: "উকিল" },
   { value: "farmer", label: "কৃষক" }, 
   { value: "driver", label: "চালক" },
@@ -45,14 +46,12 @@ export const fatherprofession = [
 ];
 export const motherProfession = [
   { value: "Housewife", label: "গৃহিণী" },
-  { value: "teacher", label: "শিক্ষক" },
+  { value: "teacher", label: "শিক্ষকা" },
   { value: "doctor", label: "ডাক্তার" },
   { value: "engineer", label: "ইঞ্জিনিয়ার" },
   { value: "business", label: "ব্যবসায়ী" },
   { value: "govt_job", label: "সরকারি চাকরিজীবি" },
   { value: "private_job", label: "বেসরকারি চাকরিজীবি" },
   { value: "lawyer", label: "উকিল" },
-  { value: "farmer", label: "কৃষক" }, 
-  { value: "driver", label: "চালক" },
   { value: "others", label: "অন্যান্য" },
 ];
