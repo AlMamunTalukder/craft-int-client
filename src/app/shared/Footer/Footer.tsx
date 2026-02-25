@@ -141,9 +141,10 @@ const Footer = () => {
                 ঠিকানা
               </h3>
               <div className="flex flex-col lg:flex-row items-center lg:items-start gap-3">
-                <div className="mt-1 text-[#4F0187]">
-                  <FaMapMarkerAlt size={24} />
-                </div>
+                <div className="w-8 h-8 rounded-full bg-[#4F0187] flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
+                   <FaMapMarkerAlt size={16} />
+                  </div>
+                
                 <div className="text-sm leading-loose text-gray-300">
                   <p>ঢাকা চট্টগ্রাম মহাসড়ক (চিটাগাং রোড) সংলগ্ন মাদানি নগর মাদরাসা রোড, নিমাইকাশারী বাজার, </p>
                   <p></p>

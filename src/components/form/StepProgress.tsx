@@ -28,14 +28,14 @@ export const StepProgress = ({ currentStep, totalSteps }: StepProgressProps) => 
             <div key={step.number} className="flex-1 relative">
               {index < steps.length - 1 && (
                 <div
-                  className={`absolute top-5 left-[60%] w-full h-1 transition-all duration-500 ${
+                  className={`absolute top-3 lg:top-5 left-[60%] w-full h-1 transition-all duration-500 ${
                     currentStep > step.number ? "bg-purple-500" : "bg-gray-200"
                   }`}
                 />
               )}
               <div className="flex flex-col items-center relative z-10">
                 <div
-                  className={`w-5 md:w-10 h-5 md:h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
+                  className={`w-6 md:w-10 h-6 md:h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
                     isCompleted
                       ? "bg-purple-600 text-white"
                       : isCurrent
@@ -46,7 +46,7 @@ export const StepProgress = ({ currentStep, totalSteps }: StepProgressProps) => 
                   {isCompleted ? <Check size={18} /> : <StepIcon size={18} />}
                 </div>
                 <span
-                  className={`text-xs mt-2 font-medium ${
+                  className={`text-[10px] mt-2 font-medium ${
                     isCurrent ? "text-purple-600" : "text-gray-500"
                   }`}
                 >

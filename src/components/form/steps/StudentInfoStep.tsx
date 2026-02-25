@@ -77,7 +77,7 @@ export const StudentInfoStep = ({
             </label>
 
             <div className="flex flex-col items-center">
-              <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-xl mb-4 group">
+              <div className="relative w-28 md:w-40 h-28 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-xl mb-4 group">
                 {formData?.studentPhoto ? (
                   <>
                     <Image
@@ -125,7 +125,7 @@ export const StudentInfoStep = ({
 
         {/* Student Details Grid */}
         <div className="lg:col-span-8">
-          <div className="bg-white/80 p-6 rounded-2xl border-2 border-purple-100 shadow-sm">
+          <div className="bg-white/80 p-3 md:p-6 rounded-2xl border-2 border-purple-100 shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {/* Name Fields */}
               <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">

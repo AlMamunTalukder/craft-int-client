@@ -120,8 +120,8 @@ export default function AdmissionForm() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-8 px-4 md:px-8 relative">
       {/* Background decorations (kept as in original) */}
       <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-[#2E0249] via-[#4F0187] to-transparent"></div>
-      <div className="absolute top-[300px] right-[-150px] w-full md:w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
-      <div className="absolute bottom-[-100px] left-1/3 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[80px] animate-pulse delay-500"></div>
+      {/* <div className="absolute top-[300px] right-[-150px] w-full md:w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+      <div className="absolute bottom-[-100px] left-1/3 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[80px] animate-pulse delay-500"></div> */}
 
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 animate-float">
@@ -140,19 +140,19 @@ export default function AdmissionForm() {
       />
 
       <div className="w-full max-w-6xl mx-auto relative">
-        <div className="relative w-full max-w-6xl mx-auto mb-12 group perspective-1000">
+        <div className="relative w-full max-w-6xl mx-auto mb-12 group perspective-1000 md:px-4">
           
           {/* Animated Glow Background behind the card */}
           <div className="absolute -inset-1.5 bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 rounded-[2.5rem] md:rounded-[3.5rem] blur-2xl opacity-40 group-hover:opacity-70 transition duration-1000 group-hover:duration-300 animate-gradient-xy"></div>
 
           {/* Main Glassmorphism Card */}
-          <div className="relative bg-white/85 backdrop-blur-2xl border border-white/60 shadow-2xl rounded-[2rem] md:rounded-[1rem] overflow-hidden px-6 py-10 md:py-9 text-center transform transition-all duration-500 hover:scale-[1.02]">
+          <div className="relative bg-white/85 backdrop-blur-2xl border border-white/60 shadow-2xl rounded-[1rem] overflow-hidden px-3 md:px-6 py-10 md:py-9 text-center transform transition-all duration-500 hover:scale-[1.02]">
             
             {/* Top Accent Line */}
             <div className="absolute top-0 left-0 w-full h-2.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
             
             {/* Corner Decorative Blurs */}
-            <div className="absolute top-0 right-0 w-48 h-48 bg-purple-400/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            {/* <div className="absolute top-0 right-0 w-48 h-48 bg-purple-400/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div> */}
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
            {/* Floating Icons in Glass Badges */}
@@ -167,7 +167,7 @@ export default function AdmissionForm() {
             <div className="relative z-10 flex flex-col items-center text-center">
               
               {/* Elevated Logo */}
-              <div className="mb-10 relative">
+              <div className="mb-5 md:mb-10 relative">
                 <div className="absolute inset-0 bg-purple-200 rounded-full blur-2xl opacity-50 animate-pulse"></div>
                 <div className="relative bg-white p-4 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-gray-50 transform group-hover:-translate-y-2 transition-transform duration-500">
                   <Image
@@ -189,9 +189,9 @@ export default function AdmissionForm() {
               </h1>
 
               {/* Subtitle / Badge */}
-              <div className="inline-flex items-center justify-center gap-2 mb-8 bg-purple-50/80 backdrop-blur-sm px-6 py-2.5 rounded-full border border-purple-200/60 shadow-inner">
+              <div className="inline-flex items-center justify-center gap-2 mb-8 bg-purple-50/80 backdrop-blur-sm px-3 md:px-6 py-2.5 rounded-full border border-purple-200/60 shadow-inner">
                 <BookOpen size={18} className="text-purple-500 animate-pulse" />
-                <p className="text-purple-800 font-bold text-base md:text-lg">
+                <p className="text-purple-800 font-bold text-xs md:text-lg">
                   আগামীর আলোকিত ভবিষ্যতের সন্ধানে
                 </p>
                 <GraduationCap size={18} className="text-purple-500 animate-pulse" />
@@ -263,13 +263,13 @@ export default function AdmissionForm() {
               )}
             </CardContent>
 
-            <CardFooter className="bg-gray-50/50 border-t border-gray-200 p-4 sm:p-6 flex flex-col sm:flex-row justify-between gap-3 sm:gap-0">
+            <CardFooter className="bg-gray-50/50 border-t border-gray-200 p-4 sm:p-6 flex  justify-between gap-3 sm:gap-0">
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleBack}
                 disabled={currentStep === 1}
-                className="w-full sm:w-auto px-4 md:px-6 py-2 rounded-xl border-2 hover:bg-purple-50 hover:border-purple-300 transition-all order-2 sm:order-1"
+                className="w-full sm:w-auto px-0 md:px-6 py-2 rounded-xl border-2 hover:bg-purple-50 hover:border-purple-300 transition-all order-1  "
               >
                 <ArrowLeft size={16} className="mr-2" />
                 পেছনে
@@ -279,7 +279,7 @@ export default function AdmissionForm() {
                 <Button
                   type="button"
                   onClick={handleNext}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium shadow-lg hover:shadow-xl transition-all order-1 sm:order-2"
+                  className="w-full sm:w-auto px-0 md:px-8 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium shadow-lg hover:shadow-xl transition-all order-1 sm:order-2"
                 >
                   পরবর্তী
                   <ArrowRight size={16} className="ml-2" />

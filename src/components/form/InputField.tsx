@@ -59,7 +59,7 @@ export const InputField = ({
       <div className="relative">
         {Icon && (
           <Icon
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-purple-500 transition-colors"
             size={18}
           />
         )}
@@ -72,8 +72,8 @@ export const InputField = ({
           onChange={handleChange}
           disabled={disabled}
           className={`w-full ${
-            Icon ? "pl-11" : "pl-4"
-          } pr-4 py-3.5 rounded-xl border border-gray-200 bg-white/70 text-gray-800 placeholder-gray-400 focus:bg-white focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all outline-none shadow-sm hover:border-purple-300`}
+            Icon ? "pl-8 md:pl-11" : "pl-4"
+          } pr-2 md:pr-4 py-3.5 rounded-xl border border-gray-200 bg-white/70 text-gray-800 placeholder-gray-400 focus:bg-white focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all outline-none shadow-sm hover:border-purple-300`}
         />
       </div>
     </div>
