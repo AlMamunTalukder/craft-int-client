@@ -10,28 +10,35 @@ import {
   Loader2,
   Send,
   CheckCircle,
-  Sparkles,
   BookOpen,
   GraduationCap,
-  School,
 } from "lucide-react";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
 import { StepProgress } from "@/components/form/StepProgress";
 import { CustomAlert } from "@/components/form/CustomAlert";
 import { PreviewModal } from "@/components/form/PreviewModal";
-
 import { StudentInfoStep } from "@/components/form/steps/StudentInfoStep";
 import { AcademicInfoStep } from "@/components/form/steps/AcademicInfoStep";
 import { ParentInfoStep } from "@/components/form/steps/ParentInfoStep";
 import { FamilyEnvironmentStep } from "@/components/form/steps/FamilyEnvironmentStep";
 import { BehaviorSkillsStep } from "@/components/form/steps/BehaviorSkillsStep";
 import { AddressDocumentsStep } from "@/components/form/steps/AddressDocumentsStep";
-import { academicClasses, bloodGroups, departments, groups, sections, shifts } from "@/lib/types";
+import {
+  academicClasses,
+  bloodGroups,
+  departments,
+  groups,
+  sections,
+  shifts,
+} from "@/lib/types";
 import Image from "next/image";
-
-
+import { mapFormDataToBackend } from "@/utils/mapFormData";
 
 const SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbwoJZ2zwXROTZoxsXH2eNutjwrQ1FrZe0rm4p8dAtBpROImMRPc1hcyjnX4Vd43nFzF/exec";
@@ -59,11 +66,16 @@ export default function AdmissionForm() {
     localStorage.setItem("admissionFormData", JSON.stringify(formData));
   }, [formData]);
 
-  const showAlert = (type: "success" | "error", title: string, message: string) => {
+  const showAlert = (
+    type: "success" | "error",
+    title: string,
+    message: string,
+  ) => {
     setAlertState({ isOpen: true, type, title, message });
   };
 
-  const closeAlert = () => setAlertState((prev) => ({ ...prev, isOpen: false }));
+  const closeAlert = () =>
+    setAlertState((prev) => ({ ...prev, isOpen: false }));
 
   const handleInputChange = (name: string, value: any) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -84,44 +96,67 @@ export default function AdmissionForm() {
     setShowPreview(true);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-    const form = e.currentTarget;
-    const formDataToSubmit = new FormData(form);
 
-    try {
-      const res = await fetch(SCRIPT_URL, { method: "POST", body: formDataToSubmit });
-      if (res.ok) {
-        showAlert(
-          "success",
-          "আলহামদুলিল্লাহ!",
-          "আপনার ভর্তি ফর্মটি সফলভাবে জমা দেওয়া হয়েছে। শীঘ্রই অফিস থেকে যোগাযোগ করা হবে।"
-        );
-        form.reset();
-        localStorage.removeItem("admissionFormData");
-        setFormData({});
-        setCurrentStep(1);
-      } else {
-        throw new Error("Server response not OK");
-      }
-    } catch (error) {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsLoading(true);
+
+  try {
+    // Map the form data to match backend schema
+    const backendData = mapFormDataToBackend(formData);
+    console.log('Sending data to backend:', backendData);
+
+    // FIX 1: Use correct endpoint path (singular with hyphen)
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/admission-application`;
+    console.log('API URL:', apiUrl);
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(backendData),
+    });
+
+    console.log('Response status:', response.status);
+    
+    const result = await response.json();
+
+    if (response.ok && result.success) {
       showAlert(
-        "error",
-        "দুঃখিত!",
-        "সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।"
+        "success",
+        "আলহামদুলিল্লাহ!",
+        "আপনার ভর্তি ফর্মটি সফলভাবে জমা দেওয়া হয়েছে। শীঘ্রই অফিস থেকে যোগাযোগ করা হবে।"
       );
-    } finally {
-      setIsLoading(false);
+      
+      // Clear form and localStorage
+      localStorage.removeItem("admissionFormData");
+      setFormData({});
+      setCurrentStep(1);
+      
+      // FIX 2: Check if form element exists before resetting
+      if (e.currentTarget) {
+        e.currentTarget.reset();
+      }
+    } else {
+      throw new Error(result.message || "Something went wrong");
     }
-  };
+  } catch (error) {
+    console.error("Submission error:", error);
+    showAlert(
+      "error",
+      "দুঃখিত!",
+      error instanceof Error ? error.message : "সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
+    );
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-8 px-4 md:px-8 relative">
       {/* Background decorations (kept as in original) */}
       <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-[#2E0249] via-[#4F0187] to-transparent"></div>
-      {/* <div className="absolute top-[300px] right-[-150px] w-full md:w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
-      <div className="absolute bottom-[-100px] left-1/3 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[80px] animate-pulse delay-500"></div> */}
 
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 animate-float">
@@ -141,31 +176,36 @@ export default function AdmissionForm() {
 
       <div className="w-full max-w-6xl mx-auto relative">
         <div className="relative w-full max-w-6xl mx-auto mb-12 group perspective-1000 md:px-4">
-          
           {/* Animated Glow Background behind the card */}
           <div className="absolute -inset-1.5 bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 rounded-[2.5rem] md:rounded-[3.5rem] blur-2xl opacity-40 group-hover:opacity-70 transition duration-1000 group-hover:duration-300 animate-gradient-xy"></div>
 
           {/* Main Glassmorphism Card */}
           <div className="relative bg-white/85 backdrop-blur-2xl border border-white/60 shadow-2xl rounded-[1rem] overflow-hidden px-3 md:px-6 py-10 md:py-9 text-center transform transition-all duration-500 hover:scale-[1.02]">
-            
             {/* Top Accent Line */}
             <div className="absolute top-0 left-0 w-full h-2.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500"></div>
-            
+
             {/* Corner Decorative Blurs */}
             {/* <div className="absolute top-0 right-0 w-48 h-48 bg-purple-400/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div> */}
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
-           {/* Floating Icons in Glass Badges */}
+            {/* Floating Icons in Glass Badges */}
             <div className="absolute top-12 left-6 md:left-12 bg-white/60 backdrop-blur-md p-3.5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white animate-float-slow hidden md:block">
-              <BookOpen size={32} strokeWidth={1.5} className="text-indigo-600" />
+              <BookOpen
+                size={32}
+                strokeWidth={1.5}
+                className="text-indigo-600"
+              />
             </div>
             <div className="absolute bottom-16 right-6 md:right-12 bg-white/60 backdrop-blur-md p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white animate-float-fast hidden md:block">
-              <GraduationCap size={36} strokeWidth={1.5} className="text-purple-600" />
+              <GraduationCap
+                size={36}
+                strokeWidth={1.5}
+                className="text-purple-600"
+              />
             </div>
 
             {/* Inner Content Layout */}
             <div className="relative z-10 flex flex-col items-center text-center">
-              
               {/* Elevated Logo */}
               <div className="mb-5 md:mb-10 relative">
                 <div className="absolute inset-0 bg-purple-200 rounded-full blur-2xl opacity-50 animate-pulse"></div>
@@ -194,7 +234,10 @@ export default function AdmissionForm() {
                 <p className="text-purple-800 font-bold text-xs md:text-lg">
                   আগামীর আলোকিত ভবিষ্যতের সন্ধানে
                 </p>
-                <GraduationCap size={18} className="text-purple-500 animate-pulse" />
+                <GraduationCap
+                  size={18}
+                  className="text-purple-500 animate-pulse"
+                />
               </div>
 
               {/* Animated Separator Dots & Lines */}
@@ -208,17 +251,19 @@ export default function AdmissionForm() {
                 <div className="w-16 md:w-32 h-1 bg-gradient-to-l from-transparent to-indigo-500 rounded-full opacity-50"></div>
               </div>
             </div>
-
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 px-0 md:px-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 sm:space-y-6 px-0 md:px-4"
+        >
           <Card className="border-2 border-purple-100/50 shadow-xl overflow-hidden backdrop-blur-sm bg-white/90 rounded-xl sm:rounded-2xl">
-            <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100 p-2 md:p-6">
+            <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100 p-2 md:p-4">
               <StepProgress currentStep={currentStep} totalSteps={6} />
             </CardHeader>
 
-            <CardContent className="p-2 md:p-8">
+            <CardContent className="p-2 md:p-6">
               {currentStep === 1 && (
                 <StudentInfoStep
                   formData={formData}
@@ -317,7 +362,7 @@ export default function AdmissionForm() {
           </Card>
 
           <p className="text-gray-500 text-xs sm:text-sm text-center flex items-center justify-center gap-1 sm:gap-2 bg-white/50 py-2 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl">
-            <CheckCircle size={14}className="text-green-500 flex-shrink-0" />
+            <CheckCircle size={14} className="text-green-500 flex-shrink-0" />
             সাবমিট করার পূর্বে তথ্যগুলো পুনরায় চেক করুন।
           </p>
         </form>
@@ -325,23 +370,53 @@ export default function AdmissionForm() {
 
       <style jsx global>{`
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         @keyframes bounceIn {
-          0% { transform: scale(0.8); opacity: 0; }
-          70% { transform: scale(1.05); opacity: 1; }
-          100% { transform: scale(1); }
+          0% {
+            transform: scale(0.8);
+            opacity: 0;
+          }
+          70% {
+            transform: scale(1.05);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1);
+          }
         }
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
         }
-        .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
-        .animate-bounceIn { animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .delay-1000 { animation-delay: 1s; }
-        .delay-500 { animation-delay: 500ms; }
+        .animate-fadeIn {
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+        .animate-bounceIn {
+          animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+            forwards;
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .delay-1000 {
+          animation-delay: 1s;
+        }
+        .delay-500 {
+          animation-delay: 500ms;
+        }
       `}</style>
     </div>
   );
