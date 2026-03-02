@@ -1,9 +1,101 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { TAdmissionApplication } from "@/types/types";
-
+// utils/mapFormData.ts
+export interface TAdmissionApplication {
+  academicYear: string;
+  studentInfo: {
+    nameBangla: string;
+    nameEnglish: string;
+    dateOfBirth: Date;
+    age: number;
+    gender?: 'male' | 'female' | 'other';
+    department: string;
+    class: string;
+    session: string;
+    nidBirth?: string;
+    bloodGroup?: string;
+    nationality?: string;
+    studentPhoto?: string;
+  };
+  academicInfo?: {
+    previousSchool?: string;
+    previousClass?: string;
+    gpa?: string;
+  };
+  parentInfo: {
+    father: {
+      nameBangla: string;
+      nameEnglish: string;
+      profession?: string;
+      education?: string;
+      mobile: string;
+      whatsapp?: string;
+    };
+    mother: {
+      nameBangla: string;
+      nameEnglish: string;
+      profession?: string;
+      education?: string;
+      mobile?: string;
+      whatsapp?: string;
+    };
+    guardian?: {
+      nameBangla?: string;
+      nameEnglish?: string;
+      relation?: string;
+      mobile?: string;
+      whatsapp?: string;
+      profession?: string;
+      address?: string;
+    };
+  };
+  familyEnvironment?: {
+    halalIncome?: string;
+    parentsPrayer?: string;
+    addiction?: string;
+    tv?: string;
+    quranRecitation?: string;
+    purdah?: string;
+  };
+  behaviorSkills?: {
+    mobileUsage?: string;
+    generalBehavior?: string;
+    obedience?: string;
+    elderBehavior?: string;
+    youngerBehavior?: string;
+    lyingStubbornness?: string;
+    studyInterest?: string;
+    religiousInterest?: string;
+    angerControl?: string;
+  };
+  address: {
+    present: {
+      village?: string;
+      postOffice?: string;
+      postCode?: string;
+      policeStation?: string;
+      district?: string;
+    };
+    permanent: {
+      village: string;
+      postOffice: string;
+      postCode?: string;
+      policeStation: string;
+      district: string;
+    };
+  };
+  documents?: {
+    photographs?: boolean;
+    birthCertificate?: boolean;
+    markSheet?: boolean;
+    transferCertificate?: boolean;
+    characterCertificate?: boolean;
+  };
+  termsAccepted: boolean;
+  status: 'pending' | 'approved' | 'rejected';
+}
 
 export const mapFormDataToBackend = (formData: Record<string, any>): Partial<TAdmissionApplication> => {
-  // Calculate age from date of birth if needed
+  // Calculate age from date of birth
   const calculateAge = (dob: string): number => {
     if (!dob) return 0;
     const birthDate = new Date(dob);
@@ -18,7 +110,7 @@ export const mapFormDataToBackend = (formData: Record<string, any>): Partial<TAd
 
   // Get current academic year
   const currentYear = new Date().getFullYear();
-  const academicYear = `${currentYear}`;
+  const academicYear = `${currentYear}-${currentYear + 1}`;
 
   return {
     academicYear,
