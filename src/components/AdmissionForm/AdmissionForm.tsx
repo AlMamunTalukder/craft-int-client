@@ -482,6 +482,7 @@ export default function AdmissionForm() {
     message: "",
   });
   const [formData, setFormData] = useState<Record<string, any>>({});
+  const [submittedFormData, setSubmittedFormData] = useState<Record<string, any>>({});
 
   // Load saved form data
   useEffect(() => {
@@ -518,10 +519,10 @@ export default function AdmissionForm() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handlePreview = () => {
-    setGeneratedStudentId(`CII${Math.floor(100000 + Math.random() * 900000)}`);
-    setShowPreview(true);
-  };
+  // const handlePreview = () => {
+  //   setGeneratedStudentId(`CII${Math.floor(100000 + Math.random() * 900000)}`);
+  //   setShowPreview(true);
+  // };
 
   const handlePDFPreview = () => {
     setGeneratedStudentId(`CII${Math.floor(100000 + Math.random() * 900000)}`);
@@ -564,7 +565,7 @@ export default function AdmissionForm() {
     return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!validateRequiredFields(formData)) {
@@ -582,28 +583,25 @@ export default function AdmissionForm() {
 
       const response = await fetch(apiUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(backendData),
       });
 
       console.log('Response status:', response.status);
-      
       const result = await response.json();
 
       if (response.ok && result.success) {
+        // Save a copy of the submitted data for PDF download
+        setSubmittedFormData({ ...formData });
+
         // Clear form and localStorage
         localStorage.removeItem("admissionFormData");
         setFormData({});
         setCurrentStep(1);
-        
-        // Reset form
         if (e.currentTarget) {
           e.currentTarget.reset();
         }
 
-        // Generate student ID
         const newStudentId = `CII${Math.floor(100000 + Math.random() * 900000)}`;
         setGeneratedStudentId(newStudentId);
         
@@ -657,12 +655,12 @@ export default function AdmissionForm() {
       )}
 
       <SuccessModal
-        isOpen={showSuccessModal}
-        onClose={() => setShowSuccessModal(false)}
-        onSkip={handleSkip}
-        onDownloadPDF={handleDownloadPDF}
-        studentId={generatedStudentId}
-      />
+  isOpen={showSuccessModal}
+  onClose={() => setShowSuccessModal(false)}
+  onSkip={handleSkip}
+  onDownloadPDF={() => generatePDFFromData(submittedFormData, generatedStudentId)}
+  studentId={generatedStudentId}
+/>
 
       <div className="w-full max-w-6xl mx-auto relative">
         <div className="relative w-full max-w-6xl mx-auto mb-12 group perspective-1000 md:px-4">
