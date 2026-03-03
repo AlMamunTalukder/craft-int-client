@@ -21,8 +21,8 @@ export const SuccessModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full animate-fadeIn">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"  onClick={onClose}>
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full animate-fadeIn" onClick={(e) => e.stopPropagation()}>
         
         {/* Success Icon */}
         <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">

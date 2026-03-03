@@ -611,9 +611,9 @@ export default function AdmissionForm() {
         localStorage.removeItem("admissionFormData");
         setFormData({});
         setCurrentStep(1);
-        if (e.currentTarget) {
-          e.currentTarget.reset();
-        }
+        // if (e.currentTarget) {
+        //   e.currentTarget.reset();
+        // }
 
         const newStudentId = `CII${Math.floor(100000 + Math.random() * 900000)}`;
         setGeneratedStudentId(newStudentId);
@@ -633,6 +633,7 @@ export default function AdmissionForm() {
           : "সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
       );
     } finally {
+      console.log('setting isLoading false');
       setIsLoading(false);
     }
   };
