@@ -96,7 +96,6 @@
 //     setShowPreview(true);
 //   };
 
-
 //   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 //   e.preventDefault();
 //   setIsLoading(true);
@@ -119,7 +118,7 @@
 //     });
 
 //     console.log('Response status:', response.status);
-    
+
 //     const result = await response.json();
 
 //     if (response.ok && result.success) {
@@ -128,12 +127,12 @@
 //         "আলহামদুলিল্লাহ!",
 //         "আপনার ভর্তি ফর্মটি সফলভাবে জমা দেওয়া হয়েছে। শীঘ্রই অফিস থেকে যোগাযোগ করা হবে।"
 //       );
-      
+
 //       // Clear form and localStorage
 //       localStorage.removeItem("admissionFormData");
 //       setFormData({});
 //       setCurrentStep(1);
-      
+
 //       // FIX 2: Check if form element exists before resetting
 //       if (e.currentTarget) {
 //         e.currentTarget.reset();
@@ -422,7 +421,6 @@
 //   );
 // }
 
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
@@ -482,7 +480,9 @@ export default function AdmissionForm() {
     message: "",
   });
   const [formData, setFormData] = useState<Record<string, any>>({});
-  const [submittedFormData, setSubmittedFormData] = useState<Record<string, any>>({});
+  const [submittedFormData, setSubmittedFormData] = useState<
+    Record<string, any>
+  >({});
 
   // Load saved form data
   useEffect(() => {
@@ -538,56 +538,69 @@ export default function AdmissionForm() {
   };
 
   const handleDownloadPDF = () => {
-    generatePDFFromData(formData, generatedStudentId, `admission-form-${generatedStudentId}.pdf`);
+    generatePDFFromData(
+      formData,
+      generatedStudentId,
+      `admission-form-${generatedStudentId}.pdf`,
+    );
   };
 
   const validateRequiredFields = (data: Record<string, any>): boolean => {
     const requiredFields = [
-      'StudentName', 'studentName',  'gender',
-      'studentDepartment', 'Class', 
-      'FatherNameBangla', 'FatherName', 'FatherMobile',
-      'MotherNameBangla', 'MotherName',
-      'permVillage', 'permPostOffice', 'permPoliceStation', 'permDistrict',
-      'termsAccepted'
+      "StudentName",
+      "studentName",
+      "gender",
+      "studentDepartment",
+      "Class",
+      "FatherNameBangla",
+      "FatherName",
+      "FatherMobile",
+      "MotherNameBangla",
+      "MotherName",
+      "permVillage",
+      "permPostOffice",
+      "permPoliceStation",
+      "permDistrict",
+      "termsAccepted",
     ];
 
-    const missingFields = requiredFields.filter(field => !data[field]);
-    
+    const missingFields = requiredFields.filter((field) => !data[field]);
+
     if (missingFields.length > 0) {
       showAlert(
         "error",
         "দুঃখিত!",
-        `অনুগ্রহ করে প্রয়োজনীয় সকল তথ্য পূরণ করুন।`
+        `অনুগ্রহ করে প্রয়োজনীয় সকল তথ্য পূরণ করুন।`,
       );
       return false;
     }
-    
+
     return true;
   };
 
-   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!validateRequiredFields(formData)) {
       return;
     }
-    
+
     setIsLoading(true);
 
     try {
       const backendData = mapFormDataToBackend(formData);
-      console.log('Sending data to backend:', backendData);
+      console.log("Sending data to backend:", backendData);
 
       const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/admission-application`;
-      console.log('API URL:', apiUrl);
+      console.log("API URL:", apiUrl);
 
       const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(backendData),
       });
 
-      console.log('Response status:', response.status);
+      console.log("Response status:", response.status);
       const result = await response.json();
 
       if (response.ok && result.success) {
@@ -604,7 +617,7 @@ export default function AdmissionForm() {
 
         const newStudentId = `CII${Math.floor(100000 + Math.random() * 900000)}`;
         setGeneratedStudentId(newStudentId);
-        
+
         // Show success modal
         setShowSuccessModal(true);
       } else {
@@ -615,7 +628,9 @@ export default function AdmissionForm() {
       showAlert(
         "error",
         "দুঃখিত!",
-        error instanceof Error ? error.message : "সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
+        error instanceof Error
+          ? error.message
+          : "সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
       );
     } finally {
       setIsLoading(false);
@@ -636,7 +651,7 @@ export default function AdmissionForm() {
       </div>
 
       <CustomAlert {...alertState} onClose={closeAlert} />
-      
+
       <PreviewModal
         isOpen={showPreview}
         onClose={() => setShowPreview(false)}
@@ -655,12 +670,14 @@ export default function AdmissionForm() {
       )}
 
       <SuccessModal
-  isOpen={showSuccessModal}
-  onClose={() => setShowSuccessModal(false)}
-  onSkip={handleSkip}
-  onDownloadPDF={() => generatePDFFromData(submittedFormData, generatedStudentId)}
-  studentId={generatedStudentId}
-/>
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        onSkip={handleSkip}
+        onDownloadPDF={() =>
+          generatePDFFromData(submittedFormData, generatedStudentId)
+        }
+        studentId={generatedStudentId}
+      />
 
       <div className="w-full max-w-6xl mx-auto relative">
         <div className="relative w-full max-w-6xl mx-auto mb-12 group perspective-1000 md:px-4">
@@ -677,10 +694,18 @@ export default function AdmissionForm() {
 
             {/* Floating Icons */}
             <div className="absolute top-12 left-6 md:left-12 bg-white/60 backdrop-blur-md p-3.5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white animate-float-slow hidden md:block">
-              <BookOpen size={32} strokeWidth={1.5} className="text-indigo-600" />
+              <BookOpen
+                size={32}
+                strokeWidth={1.5}
+                className="text-indigo-600"
+              />
             </div>
             <div className="absolute bottom-16 right-6 md:right-12 bg-white/60 backdrop-blur-md p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white animate-float-fast hidden md:block">
-              <GraduationCap size={36} strokeWidth={1.5} className="text-purple-600" />
+              <GraduationCap
+                size={36}
+                strokeWidth={1.5}
+                className="text-purple-600"
+              />
             </div>
 
             {/* Inner Content Layout */}
@@ -713,7 +738,10 @@ export default function AdmissionForm() {
                 <p className="text-purple-800 font-bold text-xs md:text-lg">
                   আগামীর আলোকিত ভবিষ্যতের সন্ধানে
                 </p>
-                <GraduationCap size={18} className="text-purple-500 animate-pulse" />
+                <GraduationCap
+                  size={18}
+                  className="text-purple-500 animate-pulse"
+                />
               </div>
 
               {/* Animated Separator */}

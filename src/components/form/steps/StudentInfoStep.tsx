@@ -145,6 +145,7 @@ export const StudentInfoStep = ({
                   icon={User}
                   formData={formData}
                   handleInputChange={handleInputChange}
+                  validation="english"
                 />
               </div>
 

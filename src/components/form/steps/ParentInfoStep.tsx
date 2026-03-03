@@ -44,6 +44,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             icon={User}
             formData={formData}
             handleInputChange={handleInputChange}
+            validation="english"
           />
 
           {/* Profession as select dropdown */}
