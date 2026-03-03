@@ -545,38 +545,37 @@ export default function AdmissionForm() {
     );
   };
 
-  const validateRequiredFields = (data: Record<string, any>): boolean => {
-    const requiredFields = [
-      "StudentName",
-      "studentName",
-      "gender",
-      "studentDepartment",
-      "Class",
-      "FatherNameBangla",
-      "FatherName",
-      "FatherMobile",
-      "MotherNameBangla",
-      "MotherName",
-      "permVillage",
-      "permPostOffice",
-      "permPoliceStation",
-      "permDistrict",
-      "termsAccepted",
-    ];
+ const validateRequiredFields = (data: Record<string, any>): boolean => {
+  const requiredFields = [
+    'StudentName', 'studentName', 'gender',
+    'studentDepartment', 'Class', 
+    'FatherNameBangla', 'FatherName', 'FatherMobile',
+    'MotherNameBangla', 'MotherName',
+    'permVillage', 'permPostOffice', 'permPoliceStation', 'permDistrict',
+    'termsAccepted'
+  ];
 
-    const missingFields = requiredFields.filter((field) => !data[field]);
+  const missingFields = requiredFields.filter(field => !data[field]);
+  
+  if (missingFields.length > 0) {
+    showAlert("error", "দুঃখিত!", `অনুগ্রহ করে প্রয়োজনীয় সকল তথ্য পূরণ করুন।`);
+    return false;
+  }
 
-    if (missingFields.length > 0) {
-      showAlert(
-        "error",
-        "দুঃখিত!",
-        `অনুগ্রহ করে প্রয়োজনীয় সকল তথ্য পূরণ করুন।`,
-      );
-      return false;
-    }
+  // Phone number length validation
+  if (data.FatherMobile && data.FatherMobile.length !== 11) {
+    showAlert("error", "দুঃখিত!", "পিতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।");
+    return false;
+  }
 
-    return true;
-  };
+  // Mother's mobile is optional, but if provided, must be 11 digits
+  if (data.MotherMobile && data.MotherMobile.length !== 11) {
+    showAlert("error", "দুঃখিত!", "মাতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।");
+    return false;
+  }
+
+  return true;
+};
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
