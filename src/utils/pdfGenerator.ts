@@ -666,7 +666,7 @@ export const generatePDFFromData = (formData: Record<string, any>, studentId: st
           <!-- Footer -->
           <div class="footer">
             <div>এই ফর্মটি কম্পিউটার দ্বারা জেনারেটেড, স্বাক্ষরের প্রয়োজন নেই</div>
-            <div class="footer-note">ক্রাফট ইন্টারন্যাশনাল স্কুল - শিক্ষার আলো, জীবনের মূল্য</div>
+            <div class="footer-note">ক্রাফট ইন্টারন্যাশনাল স্কুল</div>
           </div>
         </div>
         
