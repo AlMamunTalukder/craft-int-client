@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from "react";
 import { InputField } from "../InputField";
 import { CheckboxField } from "../CheckboxField";
 import { Switch } from "@/components/ui/switch";
@@ -10,6 +11,21 @@ interface AddressDocumentsStepProps {
 }
 
 export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDocumentsStepProps) => {
+  const [sameAsPermanent, setSameAsPermanent] = useState(false);
+
+  const handleSameAsPermanentChange = (checked: boolean) => {
+    setSameAsPermanent(checked);
+    if (checked) {
+      // Copy permanent address to present address
+      handleInputChange('village', formData.permVillage || '');
+      handleInputChange('postOffice', formData.permPostOffice || '');
+      handleInputChange('postCode', formData.permPostCode || '');
+      handleInputChange('policeStation', formData.permPoliceStation || '');
+      handleInputChange('district', formData.permDistrict || '');
+    }
+    // If unchecked, we leave the present fields as they are (still have copied values)
+  };
+
   return (
     <div className="space-y-6 animate-fadeIn">
       <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
@@ -18,55 +34,6 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
         </div>
         ঠিকানা ও ডকুমেন্টস
       </h3>
-
-      {/* Present Address */}
-      <div className="relative p-6 rounded-2xl bg-white/60 border border-gray-200 shadow-sm mb-6">
-        <div className="absolute -top-3 left-6 bg-gray-100 px-4 py-1 rounded-full text-xs font-bold text-gray-700 border border-gray-200">
-          বর্তমান ঠিকানা
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
-          <InputField
-            width="md:col-span-3"
-            label="গ্রাম/এলাকা"
-            name="village"
-            icon={MapPinHouse}
-            formData={formData}
-            handleInputChange={handleInputChange}
-          />
-          <InputField
-            width="md:col-span-3"
-            label="ডাকঘর"
-            name="postOffice"
-            icon={Building}
-            formData={formData}
-            handleInputChange={handleInputChange}
-          />
-          <InputField
-            width="md:col-span-2"
-            label="পোস্ট কোড"
-            name="postCode"
-            icon={FileText}
-            formData={formData}
-            handleInputChange={handleInputChange}
-          />
-          <InputField
-            width="md:col-span-2"
-            label="থানা"
-            name="policeStation"
-            icon={Shield}
-            formData={formData}
-            handleInputChange={handleInputChange}
-          />
-          <InputField
-            width="md:col-span-2"
-            label="জেলা"
-            name="district"
-            icon={MapPin}
-            formData={formData}
-            handleInputChange={handleInputChange}
-          />
-        </div>
-      </div>
 
       {/* Permanent Address */}
       <div className="relative p-6 rounded-2xl bg-white/60 border border-gray-200 shadow-sm mb-6">
@@ -121,14 +88,75 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
         </div>
       </div>
 
+      {/* Same as Permanent Toggle */}
+      <div className="flex items-center justify-end gap-3 mb-2">
+        <label htmlFor="sameAsPermanent" className="text-sm font-medium text-gray-700">
+          বর্তমান ঠিকানা স্থায়ী ঠিকানার মতো হবে
+        </label>
+        <Switch
+          id="sameAsPermanent"
+          checked={sameAsPermanent}
+          onCheckedChange={handleSameAsPermanentChange}
+        />
+      </div>
+
+      {/* Present Address */}
+      <div className="relative p-6 rounded-2xl bg-white/60 border border-gray-200 shadow-sm mb-6">
+        <div className="absolute -top-3 left-6 bg-gray-100 px-4 py-1 rounded-full text-xs font-bold text-gray-700 border border-gray-200">
+          বর্তমান ঠিকানা
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4">
+          <InputField
+            width="md:col-span-3"
+            label="গ্রাম/এলাকা"
+            name="village"
+            icon={MapPinHouse}
+            formData={formData}
+            handleInputChange={handleInputChange}
+            disabled={sameAsPermanent}
+          />
+          <InputField
+            width="md:col-span-3"
+            label="ডাকঘর"
+            name="postOffice"
+            icon={Building}
+            formData={formData}
+            handleInputChange={handleInputChange}
+            disabled={sameAsPermanent}
+          />
+          <InputField
+            width="md:col-span-2"
+            label="পোস্ট কোড"
+            name="postCode"
+            icon={FileText}
+            formData={formData}
+            handleInputChange={handleInputChange}
+            disabled={sameAsPermanent}
+          />
+          <InputField
+            width="md:col-span-2"
+            label="থানা"
+            name="policeStation"
+            icon={Shield}
+            formData={formData}
+            handleInputChange={handleInputChange}
+            disabled={sameAsPermanent}
+          />
+          <InputField
+            width="md:col-span-2"
+            label="জেলা"
+            name="district"
+            icon={MapPin}
+            formData={formData}
+            handleInputChange={handleInputChange}
+            disabled={sameAsPermanent}
+          />
+        </div>
+      </div>
+
       {/* Documents */}
- 
       <div className="relative bg-rose-50/90 backdrop-blur-md p-6 md:p-8 rounded-[2rem] border-2 border-rose-300 shadow-lg shadow-rose-500/10 overflow-hidden group mb-8">
-        
-        {/* Animated Warning Top Border */}
         <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-red-500 via-rose-400 to-red-500 opacity-90"></div>
-        
-        {/* Background glow for emphasis */}
         <div className="absolute -top-10 -right-10 w-40 h-40 bg-red-200 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
@@ -144,7 +172,6 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
             </p>
           </div>
 
-          {/* Eye-catching Mandatory Badge */}
           <div className="inline-flex items-center gap-3 bg-white border border-rose-200 px-5 py-3 rounded-xl shadow-sm">
             <div className="flex h-3 w-3 relative shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
@@ -156,9 +183,8 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
           </div>
         </div>
 
-        {/* Checkbox Grid Area */}
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 bg-white/60 p-5 md:p-6 rounded-2xl border border-rose-100">
-         <CheckboxField
+          <CheckboxField
             label="ছবি"
             name="photographs"
             formData={formData}
@@ -186,15 +212,9 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
             handleInputChange={handleInputChange}
             disable
           />
-          <CheckboxField
-            label="চরিত্র সনদপত্র"
-            name="characterCertificate"
-            formData={formData}
-            handleInputChange={handleInputChange}
-            disable
-          />         
+                 
         </div>
-        </div>
+      </div>
 
       {/* Terms & Conditions */}
       <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-2xl border border-purple-200">

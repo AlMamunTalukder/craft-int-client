@@ -149,7 +149,7 @@ export const StudentInfoStep = ({
                 />
               </div>
 
-              {/* Date of Birth, Age, Gender - All in one row */}
+              
               <div className="md:col-span-4">
                 <InputField
                   label="জন্ম তারিখ"

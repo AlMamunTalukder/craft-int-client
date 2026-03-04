@@ -288,7 +288,7 @@ export default function AdmissionForm() {
             {/* Inner Content Layout */}
             <div className="relative z-10 flex flex-col items-center text-center">
               {/* Logo */}
-              <div className="mb-5 md:mb-10 relative">
+              {/* <div className="mb-5 md:mb-10 relative">
                 <div className="absolute inset-0 bg-purple-200 rounded-full blur-2xl opacity-50 animate-pulse"></div>
                 <div className="relative bg-white p-4 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-gray-50 transform group-hover:-translate-y-2 transition-transform duration-500">
                   <Image
@@ -300,7 +300,7 @@ export default function AdmissionForm() {
                     priority
                   />
                 </div>
-              </div>
+              </div> */}
 
               {/* Main Title */}
               <h1 className="text-5xl md:text-7xl font-black mb-3">

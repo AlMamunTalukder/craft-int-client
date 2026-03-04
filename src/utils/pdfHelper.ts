@@ -11,7 +11,16 @@ export const getBengaliValue = (key: string, value: any): string => {
       'Very Good': 'অনেক ভালো', 
       'Good': 'মোটামুটি', 
       'Average': 'ভাল নয়',
-      'Excellent': 'চমৎকার',
+      'Not At All': 'না',
+      'Somewhat': 'মোটামুটি',
+      'Fully': 'পুরোপুরি',
+      'Too Much': 'খুব বেশি',
+      'Sometimes': 'মাঝেমাঝে',
+      'Never': 'না',
+      'Very Interested': 'খুব আগ্রহী',
+      'Moderate': 'মোটামুটি',
+      'Less Interested': 'কম আগ্রহী',
+      'Excellent': 'মোটামুটি',
       'Needs Improvement': 'উন্নতি প্রয়োজন'
     }
   };
@@ -20,6 +29,7 @@ export const getBengaliValue = (key: string, value: any): string => {
   if (['HalalIncome', 'ParentsPrayer', 'Addiction', 'TV'].includes(key)) return valueMap.yesno[value] || value;
   if (key === 'QuranRecitation') return valueMap.prayer[value] || value;
   if (key === 'Purdah') return valueMap.purdah[value] || value;
+  if (valueMap.behavior[value]) return valueMap.behavior[value];
   
-  return valueMap.behavior[value] || value.toString();
+  return value.toString();
 };
