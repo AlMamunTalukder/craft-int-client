@@ -1,6 +1,5 @@
 export const pdfStyles = `
   <style>
-    /* Import Hind Siliguri for elegant Bengali typography */
     @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
     
     :root {
@@ -13,9 +12,7 @@ export const pdfStyles = `
     }
 
     * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
+      margin: 0; padding: 0; box-sizing: border-box; 
       -webkit-print-color-adjust: exact; 
       print-color-adjust: exact; 
     }
@@ -81,9 +78,15 @@ export const pdfStyles = `
       padding: 30px 40px;
     }
 
-    .main-header { margin-bottom: 30px; }
-    .main-header h1 { color: var(--purple-dark); font-size: 28px; font-weight: 700; margin-bottom: 4px; }
-    .main-header p { color: var(--purple-main); font-size: 14px; font-weight: 600; text-transform: uppercase; }
+    .main-header { 
+      margin-bottom: 25px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: flex-start;
+      border-bottom: 2px solid var(--purple-dark);
+      padding-bottom: 15px;
+    }
+    .logo-img { height: 60px; width: auto; object-fit: contain; }
 
     .section { margin-bottom: 24px; page-break-inside: avoid; }
     .section-title {
@@ -115,8 +118,8 @@ export const pdfStyles = `
       border-left: 4px solid var(--purple-main);
     }
 
-    .doc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px; }
-    .doc-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+    .doc-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 8px; }
+    .doc-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-dark); }
     .check-box {
       width: 18px;
       height: 18px;
@@ -128,6 +131,7 @@ export const pdfStyles = `
       color: var(--purple-main);
       font-weight: 700;
       background: white;
+      flex-shrink: 0;
     }
 
     .footer-signs { margin-top: 50px; display: flex; justify-content: space-between; }

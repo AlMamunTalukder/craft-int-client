@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { getBengaliValue } from "./pdfHelper";
 import { pdfStyles } from "./pdfStyles";
 
-// Helper to convert option values to Bangla
 
-
-// Main PDF generator
+/**
+ * Main Generator
+ */
 export const generatePDFFromData = (formData: Record<string, any>, studentId: string) => {
   const currentDate = new Date().toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+  const logoUrl = window.location.origin + "/img/logo.png";
 
-  // SVG Icons for Sections
   const icons = {
     student: `<svg class="section-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`,
     academic: `<svg class="section-icon" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>`,
@@ -31,38 +32,30 @@ export const generatePDFFromData = (formData: Record<string, any>, studentId: st
   <div class="pdf-wrapper">
     <div class="sidebar">
       <div class="sidebar-photo">
-        ${formData.studentPhoto ? `<img src="${formData.studentPhoto}" alt="Student" />` : '<div style="color:white; font-size:10px">পাসপোর্ট সাইজ ছবি</div>'}
+        ${formData.studentPhoto ? `<img src="${formData.studentPhoto}" alt="Student" />` : '<div style="color:white; font-size:10px; padding-top:60px; text-align:center">ছবি</div>'}
       </div>
       <div class="sidebar-id">আইডি: ${studentId}</div>
       
       <div class="sidebar-info">
-        <div class="sidebar-info-item">
-          <span class="sidebar-label">শ্রেণি</span>
-          <strong>${formData.Class || '-'}</strong>
-        </div>
-        <div class="sidebar-info-item">
-          <span class="sidebar-label">বিভাগ</span>
-          <strong>${formData.studentDepartment || '-'}</strong>
-        </div>
-        <div class="sidebar-info-item">
-          <span class="sidebar-label">সেশন</span>
-          <strong>${formData.session || '-'}</strong>
-        </div>
-        <div class="sidebar-info-item">
-          <span class="sidebar-label">লিঙ্গ</span>
-          <strong>${getBengaliValue('gender', formData.gender)}</strong>
-        </div>
-        <div class="sidebar-info-item">
-          <span class="sidebar-label">রক্তের গ্রুপ</span>
-          <strong>${formData.bloodGroup || '-'}</strong>
-        </div>
+        <div class="sidebar-info-item"><span class="sidebar-label">শ্রেণি</span><strong>${formData.Class || '-'}</strong></div>
+        <div class="sidebar-info-item"><span class="sidebar-label">বিভাগ</span><strong>${formData.studentDepartment || '-'}</strong></div>
+        <div class="sidebar-info-item"><span class="sidebar-label">সেশন</span><strong>${formData.session || '-'}</strong></div>
+        <div class="sidebar-info-item"><span class="sidebar-label">রক্তের গ্রুপ</span><strong>${formData.bloodGroup || '-'}</strong></div>
+      </div>
+
+      <div style="font-size: 11px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 15px; width: 100%;">
+        <span class="sidebar-label">স্থায়ী জেলা</span>
+        <strong style="font-size: 13px;">${formData.permDistrict || '-'}</strong>
       </div>
     </div>
 
     <div class="main-content">
       <div class="main-header">
-        <h1>Craft International Institute</h1>
-        <p>ভর্তি আবেদন ফরম</p>
+        <img src="${logoUrl}" class="logo-img" onerror="this.style.opacity='0'" />
+        <div style="text-align: right;">
+          <h2 style="color: var(--purple-dark); font-size: 22px; font-weight: 700;">ভর্তি আবেদন ফরম</h2>
+          <p style="color: var(--text-gray); font-size: 12px;">আবেদন আইডি: ${studentId}</p>
+        </div>
       </div>
 
       <div class="section">
@@ -74,77 +67,41 @@ export const generatePDFFromData = (formData: Record<string, any>, studentId: st
         <div class="grid grid-3">
           <div class="field"><span class="label">জন্ম তারিখ</span><div class="value">${formData.dateOfBirth ? new Date(formData.dateOfBirth).toLocaleDateString('bn-BD') : '-'}</div></div>
           <div class="field"><span class="label">বয়স</span><div class="value">${formData.Age || '-'}</div></div>
-          <div class="field"><span class="label">জাতীয়তা</span><div class="value">${formData.nationality || '-'}</div></div>
-        </div>
-        <div class="field"><span class="label">এনআইডি/জন্ম নিবন্ধন</span><div class="value">${formData.nidBirth || '-'}</div></div>
-      </div>
-
-      ${(formData.PrevSchool || formData.PrevClass || formData.GPA) ? `
-      <div class="section">
-        <div class="section-title">${icons.academic} পূর্ববর্তী একাডেমিক তথ্য</div>
-        <div class="grid grid-3">
-          <div class="field"><span class="label">পূর্ববর্তী প্রতিষ্ঠান</span><div class="value">${formData.PrevSchool || '-'}</div></div>
-          <div class="field"><span class="label">পূর্ববর্তী শ্রেণি</span><div class="value">${formData.PrevClass || '-'}</div></div>
-          <div class="field"><span class="label">সর্বশেষ জিপিএ</span><div class="value">${formData.GPA || '-'}</div></div>
+          <div class="field"><span class="label">এনআইডি/জন্ম নিবন্ধন</span><div class="value">${formData.nidBirth || '-'}</div></div>
         </div>
       </div>
-      ` : ''}
 
       <div class="section">
         <div class="section-title">${icons.parent} অভিভাবকের তথ্য</div>
         <div class="grid grid-2">
            <div class="address-card">
               <strong>পিতা:</strong> ${formData.FatherNameBangla || '-'}
-              <div class="field"><span class="label">পেশা ও শিক্ষা</span><div class="value">${formData.FatherJob || '-'} (${formData.FatherEdu || '-'})</div></div>
-              <div class="field"><span class="label">মোবাইল ও WhatsApp</span><div class="value">${formData.FatherMobile || '-'} / ${formData.FatherWhatsapp || '-'}</div></div>
+              <div class="field"><span class="label">মোবাইল</span><div class="value">${formData.FatherMobile || '-'}</div></div>
            </div>
            <div class="address-card">
               <strong>মাতা:</strong> ${formData.MotherNameBangla || '-'}
-              <div class="field"><span class="label">পেশা ও শিক্ষা</span><div class="value">${formData.MotherJob || '-'} (${formData.MotherEdu || '-'})</div></div>
-              <div class="field"><span class="label">মোবাইল ও WhatsApp</span><div class="value">${formData.MotherMobile || '-'} / ${formData.MotherWhatsapp || '-'}</div></div>
+              <div class="field"><span class="label">মোবাইল</span><div class="value">${formData.MotherMobile || '-'}</div></div>
            </div>
         </div>
-        ${formData.guardianName ? `
-          <div class="address-card" style="margin-top:10px; border-left-color: #9333ea;">
-            <strong>অন্য অভিভাবক:</strong> ${formData.guardianNameBangla || formData.guardianName}
-            <div class="grid grid-3">
-              <div class="field"><span class="label">সম্পর্ক</span><div class="value">${formData.guardianRelation || '-'}</div></div>
-              <div class="field"><span class="label">মোবাইল</span><div class="value">${formData.guardianMobile || '-'}</div></div>
-              <div class="field"><span class="label">পেশা</span><div class="value">${formData.guardianJob || '-'}</div></div>
-            </div>
-          </div>
-        ` : ''}
       </div>
 
       <div class="section">
         <div class="section-title">${icons.behavior} পারিবারিক পরিবেশ ও আচরণ</div>
         <div class="grid grid-3">
           <div class="field"><span class="label">হালাল উপার্জন</span><div class="value">${getBengaliValue('HalalIncome', formData.HalalIncome)}</div></div>
-          <div class="field"><span class="label">নামাজ (পিতা-মাতা)</span><div class="value">${getBengaliValue('ParentsPrayer', formData.ParentsPrayer)}</div></div>
           <div class="field"><span class="label">পর্দা পালন</span><div class="value">${getBengaliValue('Purdah', formData.Purdah)}</div></div>
-          <div class="field"><span class="label">সাধারণ আচরণ</span><div class="value">${getBengaliValue('GeneralBehavior', formData.GeneralBehavior)}</div></div>
-          <div class="field"><span class="label">পড়ালেখায় আগ্রহ</span><div class="value">${getBengaliValue('StudyInterest', formData.StudyInterest)}</div></div>
-          <div class="field"><span class="label">মোবাইল ব্যবহার</span><div class="value">${formData.MobileUsage || '-'}</div></div>
-          <div class="field"><span class="label">কুরআন তিলাওয়াত</span><div class="value">${getBengaliValue('QuranRecitation', formData.QuranRecitation)}</div></div>
-          <div class="field"><span class="label">টিভি দেখা</span><div class="value">${getBengaliValue('TV', formData.TV)}</div></div>
           <div class="field"><span class="label">রাগ নিয়ন্ত্রণ</span><div class="value">${getBengaliValue('AngerControl', formData.AngerControl)}</div></div>
+          <div class="field"><span class="label">নামাজ (পিতা-মাতা)</span><div class="value">${getBengaliValue('ParentsPrayer', formData.ParentsPrayer)}</div></div>
+          <div class="field"><span class="label">পড়ালেখায় আগ্রহ</span><div class="value">${getBengaliValue('StudyInterest', formData.StudyInterest)}</div></div>
+          <div class="field"><span class="label">মোবাইল ব্যবহার</span><div class="value">${formData.MobileUsage || '-'}</div></div>
         </div>
       </div>
 
       <div class="section">
-        <div class="section-title">${icons.address} ঠিকানা</div>
-        <div class="grid grid-2">
-          <div class="address-card">
-            <span class="label">বর্তমান ঠিকানা</span>
-            <div class="value" style="border:none; font-size:11px">
-              ${formData.village || '-'}, ডাকঘর: ${formData.postOffice || '-'}, থানা: ${formData.policeStation || '-'}, জেলা: ${formData.district || '-'}
-            </div>
-          </div>
-          <div class="address-card">
-            <span class="label">স্থায়ী ঠিকানা</span>
-            <div class="value" style="border:none; font-size:11px">
-              ${formData.permVillage || '-'}, ডাকঘর: ${formData.permPostOffice || '-'}, থানা: ${formData.permPoliceStation || '-'}, জেলা: ${formData.permDistrict || '-'}
-            </div>
+        <div class="section-title">${icons.address} যোগাযোগ ঠিকানা</div>
+        <div class="address-card">
+          <div class="value" style="border:none; font-size:12px">
+            বর্তমান ঠিকানা: ${formData.village || '-'}, ডাকঘর: ${formData.postOffice || '-'}, থানা: ${formData.policeStation || '-'}, জেলা: ${formData.district || '-'}
           </div>
         </div>
       </div>
@@ -152,16 +109,32 @@ export const generatePDFFromData = (formData: Record<string, any>, studentId: st
       <div class="section">
         <div class="section-title">${icons.docs} জমাকৃত ডকুমেন্টস ও অঙ্গীকারনামা</div>
         <div class="doc-grid">
-          <div class="doc-item"><div class="check-box">${formData.photographs ? '✓' : ''}</div> ৪ কপি ছবি</div>
-          <div class="doc-item"><div class="check-box">${formData.birthCertificate ? '✓' : ''}</div> জন্ম নিবন্ধন সনদ</div>
-          <div class="doc-item"><div class="check-box">${formData.markSheet ? '✓' : ''}</div> মার্কশিট</div>
-          <div class="doc-item"><div class="check-box">${formData.transferCertificate ? '✓' : ''}</div> টি.সি</div>
-          <div class="doc-item"><div class="check-box">${formData.characterCertificate ? '✓' : ''}</div> চারিত্রিক সনদ</div>
+          <div class="doc-item">
+            <div class="check-box">${formData.photographs ? '✓' : ''}</div>
+            <span>শিক্ষার্থীর পাসপোর্ট সাইজের ৪ কপি রঙিন ছবি (বাধ্যতামূলক)</span>
+          </div>
+          <div class="doc-item">
+            <div class="check-box">${formData.birthCertificate ? '✓' : ''}</div>
+            <span>শিক্ষার্থীর জন্ম নিবন্ধন সনদ (বাধ্যতামূলক)</span>
+          </div>
+          <div class="doc-item">
+            <div class="check-box">${formData.birthCertificate ? '✓' : ''}</div>
+            <span>পিতা-মাতার জাতীয় পরিচয়পত্রের ফটোকপি/পাসপোর্টের ফটোকপি (বাধ্যতামূলক)</span>
+          </div>
+          <div class="doc-item">
+            <div class="check-box">${formData.markSheet ? '✓' : ''}</div>
+            <span>মার্কশিট</span>
+          </div>
+          <div class="doc-item">
+            <div class="check-box">${formData.transferCertificate ? '✓' : ''}</div>
+            <span>টি.সি</span>
+          </div>
         </div>
         
         ${formData.termsAccepted ? `
-        <div style="margin-top:12px; font-size:11px; display:flex; align-items:center; gap:8px; color:var(--purple-dark); font-weight:700;">
-           <div class="check-box">✓</div> আমি প্রতিষ্ঠানের সকল নিয়ম ও শর্তাবলী মেনে নিতে অঙ্গীকারবদ্ধ।
+        <div style="margin-top:12px; font-size:11px; display:flex; align-items:flex-start; gap:8px; color:var(--purple-dark); font-weight:700; background: var(--purple-light); padding: 10px; border-radius: 6px;">
+           <div class="check-box" style="flex-shrink:0; margin-top:2px">✓</div> 
+           <span>আমি <span style="border-bottom: 1px dotted var(--purple-dark); padding: 0 5px;">${formData.StudentName || '---------------'}</span> সজ্ঞানে অঙ্গীকার করছি যে, অত্র প্রতিষ্ঠানের সকল নিয়মকানুন যথানিয়মে মেনে চলব। যদি প্রতিষ্ঠানের আইন পরিপন্থি কোনো কিছু আমার মাঝে পরিলক্ষিত হয়, তবে কর্তৃপক্ষের যে কোন সিদ্ধান্ত মেনে নিতে বাধ্য থাকব।</span>
         </div>` : ''}
       </div>
 
@@ -175,7 +148,7 @@ export const generatePDFFromData = (formData: Record<string, any>, studentId: st
       </div>
     </div>
   </div>
-  <script>window.onload = () => { setTimeout(() => window.print(), 500); }</script>
+  <script>window.onload = () => { setTimeout(() => window.print(), 800); }</script>
 </body>
 </html>`;
 

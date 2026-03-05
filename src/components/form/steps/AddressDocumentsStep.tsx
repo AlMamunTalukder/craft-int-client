@@ -167,9 +167,6 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
               </div>
               প্রদত্ত ডকুমেন্টসমূহ
             </h4>
-            <p className="text-rose-700 font-medium text-sm md:text-base">
-              ভর্তির সময় এই কাগজপত্রগুলো অফিসে জমা দেওয়া <span className="underline decoration-red-400 underline-offset-4 font-black text-red-600">বাধ্যতামূলক</span>।
-            </p>
           </div>
 
           <div className="inline-flex items-center gap-3 bg-white border border-rose-200 px-5 py-3 rounded-xl shadow-sm">
@@ -184,16 +181,24 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
         </div>
 
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 bg-white/60 p-5 md:p-6 rounded-2xl border border-rose-100">
+
           <CheckboxField
-            label="ছবি"
+            label="শিক্ষার্থীর পাসপোর্ট সাইজের ৪ কপি রঙিন ছবি (বাধ্যতামূলক)"
             name="photographs"
             formData={formData}
             handleInputChange={handleInputChange}
             disable
           />
           <CheckboxField
-            label="জন্ম নিবন্ধন সনদ"
+            label=" শিক্ষার্থীর জন্ম নিবন্ধন সনদ (বাধ্যতামূলক)"
             name="birthCertificate"
+            formData={formData}
+            handleInputChange={handleInputChange}
+            disable
+          />
+          <CheckboxField
+            label="পিতা-মাতার জাতীয় পরিচয়পত্রের ফটোকপি/পাসপোর্টের ফটোকপি (বাধ্যতামূলক)"
+            name="markSheet"
             formData={formData}
             handleInputChange={handleInputChange}
             disable
@@ -222,8 +227,8 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
           <div className="flex items-center gap-3">
             <ShieldCheck size={24} className="text-purple-600" />
             <div>
-              <p className="font-bold text-gray-800">শর্তাবলী</p>
-              <p className="text-sm text-gray-600">আমি ভর্তির সকল শর্ত মেনে নিচ্ছি</p>
+              <p className="font-bold text-gray-800">অঙ্গীকার নামা:</p>
+              <p className="text-sm text-gray-600">আমি --------------- সজ্ঞানে অঙ্গীকার করছি যে, অত্র প্রতিষ্ঠানের সকল নিয়মকানুন যথানিয়মে মেনে চলব। যদি প্রতিষ্ঠানের আইন পরিপন্থি কোনো কিছু আমার মাঝে পরিলক্ষিত হয়, তবে কর্তৃপক্ষের যে কোন সিদ্ধান্ত মেনে নিতে বাধ্য থাকব।</p>
             </div>
           </div>
           <Switch

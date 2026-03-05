@@ -86,7 +86,87 @@ export default function AdmissionForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ----- Step navigation and validation -----
+  const getRequiredFieldsForStep = (step: number): string[] => {
+    switch (step) {
+      case 1: // Student Info
+        return [
+          'StudentName',       // বাংলা নাম
+          'studentName',       // English name
+          'gender',            // লিঙ্গ
+          'studentDepartment', // বিভাগ
+          'Class',             // শ্রেণি
+        ];
+      case 2: // Academic Info – all optional
+        return [];
+      case 3: // Parent Info
+        return [
+          'FatherNameBangla',
+          'FatherName',
+          'FatherMobile',
+          'MotherNameBangla',
+          'MotherName',
+        ];
+      case 4: // Family Environment – all optional
+        return [];
+      case 5: // Behavior Skills – all optional
+        return [];
+      case 6: // Address & Documents
+        return [
+          'permVillage',
+          'permPostOffice',
+          'permPoliceStation',
+          'permDistrict',
+          'termsAccepted',
+        ];
+      default:
+        return [];
+    }
+  };
+
+  const validateStep = (step: number): boolean => {
+    const required = getRequiredFieldsForStep(step);
+    const missing = required.filter(field => {
+      const value = formData[field];
+      if (field === 'termsAccepted') return value !== true;
+      return !value || value.trim() === '';
+    });
+
+    if (missing.length > 0) {
+      showAlert('error', 'দুঃখিত!', 'অনুগ্রহ করে প্রয়োজনীয় তথ্য পূরণ করুন।');
+      return false;
+    }
+
+    // Additional format checks for step 3 (phone numbers)
+    if (step === 3) {
+      if (formData.FatherMobile && formData.FatherMobile.length !== 11) {
+        showAlert('error', 'দুঃখিত!', 'পিতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।');
+        return false;
+      }
+      if (formData.MotherMobile && formData.MotherMobile.length !== 11) {
+        showAlert('error', 'দুঃখিত!', 'মাতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।');
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+
+  const handleStepClick = (step: number) => {
+  setAlertState({
+    isOpen: false,
+    type: 'error',
+    title: '',
+    message: '',
+  });
+
+  setCurrentStep(step);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
   const handleNext = () => {
+    if (!validateStep(currentStep)) return; // block if current step incomplete
     setCurrentStep((prev) => Math.min(prev + 1, 6));
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -96,10 +176,7 @@ export default function AdmissionForm() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // const handlePreview = () => {
-  //   setGeneratedStudentId(`CII${Math.floor(100000 + Math.random() * 900000)}`);
-  //   setShowPreview(true);
-  // };
+
 
   const handlePDFPreview = () => {
     setGeneratedStudentId(`CII${Math.floor(100000 + Math.random() * 900000)}`);
@@ -110,49 +187,49 @@ export default function AdmissionForm() {
     setShowSuccessModal(false);
     setShowPDFPreview(false);
     setShowPreview(false);
-    // Redirect to home if needed
-    // router.push('/');
   };
 
   const handleDownloadPDF = () => {
     generatePDFFromData(
       formData,
       generatedStudentId,
-      // `admission-form-${generatedStudentId}.pdf`,
     );
   };
 
- const validateRequiredFields = (data: Record<string, any>): boolean => {
-  const requiredFields = [
-    'StudentName', 'studentName', 'gender',
-    'studentDepartment', 'Class', 
-    'FatherNameBangla', 'FatherName', 'FatherMobile',
-    'MotherNameBangla', 'MotherName',
-    'permVillage', 'permPostOffice', 'permPoliceStation', 'permDistrict',
-    'termsAccepted'
-  ];
+  // Final validation before submission (all required fields + phone length)
+  const validateRequiredFields = (data: Record<string, any>): boolean => {
+    const requiredFields = [
+      'StudentName', 'studentName', 'gender',
+      'studentDepartment', 'Class',
+      'FatherNameBangla', 'FatherName', 'FatherMobile',
+      'MotherNameBangla', 'MotherName',
+      'permVillage', 'permPostOffice', 'permPoliceStation', 'permDistrict',
+      'termsAccepted'
+    ];
 
-  const missingFields = requiredFields.filter(field => !data[field]);
-  
-  if (missingFields.length > 0) {
-    showAlert("error", "দুঃখিত!", `অনুগ্রহ করে প্রয়োজনীয় সকল তথ্য পূরণ করুন।`);
-    return false;
-  }
+    const missingFields = requiredFields.filter(field => {
+      const value = data[field];
+      if (field === 'termsAccepted') return value !== true;
+     return value === undefined || value === null || value === "";
+    });
 
-  // Phone number length validation
-  if (data.FatherMobile && data.FatherMobile.length !== 11) {
-    showAlert("error", "দুঃখিত!", "পিতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।");
-    return false;
-  }
+    if (missingFields.length > 0) {
+      showAlert("error", "দুঃখিত!", `অনুগ্রহ করে প্রয়োজনীয় সকল তথ্য পূরণ করুন।`);
+      return false;
+    }
 
-  // Mother's mobile is optional, but if provided, must be 11 digits
-  if (data.MotherMobile && data.MotherMobile.length !== 11) {
-    showAlert("error", "দুঃখিত!", "মাতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।");
-    return false;
-  }
+    // Phone number length validation
+    if (data.FatherMobile && data.FatherMobile.length !== 11) {
+      showAlert("error", "দুঃখিত!", "পিতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।");
+      return false;
+    }
+    if (data.MotherMobile && data.MotherMobile.length !== 11) {
+      showAlert("error", "দুঃখিত!", "মাতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।");
+      return false;
+    }
 
-  return true;
-};
+    return true;
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -187,9 +264,6 @@ export default function AdmissionForm() {
         localStorage.removeItem("admissionFormData");
         setFormData({});
         setCurrentStep(1);
-        // if (e.currentTarget) {
-        //   e.currentTarget.reset();
-        // }
 
         const newStudentId = `CII${Math.floor(100000 + Math.random() * 900000)}`;
         setGeneratedStudentId(newStudentId);
@@ -257,7 +331,7 @@ export default function AdmissionForm() {
       />
 
       <div className="w-full max-w-6xl mx-auto relative">
-        <div className="relative w-full max-w-6xl mx-auto mb-12 group perspective-1000 md:px-4">
+        <div className="relative w-full max-w-6xl mx-auto mb-12 group perspective-1000 md:px-3">
           {/* Animated Glow Background */}
           <div className="absolute -inset-1.5 bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 rounded-[2.5rem] md:rounded-[3.5rem] blur-2xl opacity-40 group-hover:opacity-70 transition duration-1000 group-hover:duration-300 animate-gradient-xy"></div>
 
@@ -287,25 +361,10 @@ export default function AdmissionForm() {
 
             {/* Inner Content Layout */}
             <div className="relative z-10 flex flex-col items-center text-center">
-              {/* Logo */}
-              {/* <div className="mb-5 md:mb-10 relative">
-                <div className="absolute inset-0 bg-purple-200 rounded-full blur-2xl opacity-50 animate-pulse"></div>
-                <div className="relative bg-white p-4 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-gray-50 transform group-hover:-translate-y-2 transition-transform duration-500">
-                  <Image
-                    src={"/img/logo.png"}
-                    alt="School Logo"
-                    height={90}
-                    width={240}
-                    className="w-auto h-[60px] md:h-[90px] object-contain drop-shadow-sm"
-                    priority
-                  />
-                </div>
-              </div> */}
-
               {/* Main Title */}
-              <h1 className="text-5xl md:text-7xl font-black mb-3">
+              <h1 className="text-5xl md:text-6xl font-black mb-3">
                 <span className="bg-gradient-to-r from-purple-900 via-purple-700 to-indigo-800 bg-clip-text text-transparent drop-shadow-sm px-10">
-                  ভর্তি ফর্ম
+                  ভর্তি ফরম
                 </span>
               </h1>
 
@@ -341,7 +400,11 @@ export default function AdmissionForm() {
         >
           <Card className="border-2 border-purple-100/50 shadow-xl overflow-hidden backdrop-blur-sm bg-white/90 rounded-xl sm:rounded-2xl">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100 p-2 md:p-4">
-              <StepProgress currentStep={currentStep} totalSteps={6} />
+              <StepProgress
+                currentStep={currentStep}
+                totalSteps={6}
+                onStepClick={handleStepClick}
+              />
             </CardHeader>
 
             <CardContent className="p-2 md:p-6">
