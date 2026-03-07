@@ -22,14 +22,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { StepProgress } from "@/components/form/StepProgress";
 import { CustomAlert } from "@/components/form/CustomAlert";
-import { PreviewModal } from "@/components/form/PreviewModal";
 import { StudentInfoStep } from "@/components/form/steps/StudentInfoStep";
 import { AcademicInfoStep } from "@/components/form/steps/AcademicInfoStep";
 import { ParentInfoStep } from "@/components/form/steps/ParentInfoStep";
 import { FamilyEnvironmentStep } from "@/components/form/steps/FamilyEnvironmentStep";
 import { BehaviorSkillsStep } from "@/components/form/steps/BehaviorSkillsStep";
 import { AddressDocumentsStep } from "@/components/form/steps/AddressDocumentsStep";
-import { PDFPreview } from "@/components/form/PDFPreview";
 import { SuccessModal } from "@/components/form/SuccessModal";
 import {
   academicClasses,
@@ -39,15 +37,14 @@ import {
   sections,
   shifts,
 } from "@/lib/types";
-import Image from "next/image";
 import { mapFormDataToBackend } from "@/utils/mapFormData";
+import { FinalPreview } from "../form/steps/FinalPreview";
 import { generatePDFFromData } from "@/utils/pdfGenerator";
 
 export default function AdmissionForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
-  const [showPreview, setShowPreview] = useState(false);
-  const [showPDFPreview, setShowPDFPreview] = useState(false);
+  const [showFinalPreview, setShowFinalPreview] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [generatedStudentId, setGeneratedStudentId] = useState("");
   const [alertState, setAlertState] = useState({
@@ -91,21 +88,21 @@ export default function AdmissionForm() {
     switch (step) {
       case 1: // Student Info
         return [
-          'StudentName',       // বাংলা নাম
-          'studentName',       // English name
-          'gender',            // লিঙ্গ
-          'studentDepartment', // বিভাগ
-          'Class',             // শ্রেণি
+          "StudentName",
+          "studentName",
+          "gender",
+          "studentDepartment",
+          "Class",
         ];
       case 2: // Academic Info – all optional
         return [];
       case 3: // Parent Info
         return [
-          'FatherNameBangla',
-          'FatherName',
-          'FatherMobile',
-          'MotherNameBangla',
-          'MotherName',
+          "FatherNameBangla",
+          "FatherName",
+          "FatherMobile",
+          "MotherNameBangla",
+          "MotherName",
         ];
       case 4: // Family Environment – all optional
         return [];
@@ -113,11 +110,11 @@ export default function AdmissionForm() {
         return [];
       case 6: // Address & Documents
         return [
-          'permVillage',
-          'permPostOffice',
-          'permPoliceStation',
-          'permDistrict',
-          'termsAccepted',
+          "permVillage",
+          "permPostOffice",
+          "permPoliceStation",
+          "permDistrict",
+          "termsAccepted",
         ];
       default:
         return [];
@@ -126,25 +123,24 @@ export default function AdmissionForm() {
 
   const validateStep = (step: number): boolean => {
     const required = getRequiredFieldsForStep(step);
-    const missing = required.filter(field => {
+    const missing = required.filter((field) => {
       const value = formData[field];
-      if (field === 'termsAccepted') return value !== true;
-      return !value || value.trim() === '';
+      if (field === "termsAccepted") return value !== true;
+      return !value || value.trim() === "";
     });
 
     if (missing.length > 0) {
-      showAlert('error', 'দুঃখিত!', 'অনুগ্রহ করে প্রয়োজনীয় তথ্য পূরণ করুন।');
+      showAlert("error", "দুঃখিত!", "অনুগ্রহ করে প্রয়োজনীয় তথ্য পূরণ করুন।");
       return false;
     }
 
-    // Additional format checks for step 3 (phone numbers)
     if (step === 3) {
       if (formData.FatherMobile && formData.FatherMobile.length !== 11) {
-        showAlert('error', 'দুঃখিত!', 'পিতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।');
+        showAlert("error", "দুঃখিত!", "পিতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।");
         return false;
       }
       if (formData.MotherMobile && formData.MotherMobile.length !== 11) {
-        showAlert('error', 'দুঃখিত!', 'মাতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।');
+        showAlert("error", "দুঃখিত!", "মাতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।");
         return false;
       }
     }
@@ -152,73 +148,84 @@ export default function AdmissionForm() {
     return true;
   };
 
-
   const handleStepClick = (step: number) => {
-  setAlertState({
-    isOpen: false,
-    type: 'error',
-    title: '',
-    message: '',
-  });
-
-  setCurrentStep(step);
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+    setAlertState({ isOpen: false, type: "error", title: "", message: "" });
+    setCurrentStep(step);
+    setShowFinalPreview(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleNext = () => {
-    if (!validateStep(currentStep)) return; // block if current step incomplete
-    setCurrentStep((prev) => Math.min(prev + 1, 6));
+    if (currentStep < 6) {
+      if (!validateStep(currentStep)) return;
+      setCurrentStep((prev) => prev + 1);
+    } else if (currentStep === 6) {
+      // From step 6 go to final preview
+      if (!validateStep(currentStep)) return;
+      setShowFinalPreview(true);
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleBack = () => {
-    setCurrentStep((prev) => Math.max(prev - 1, 1));
+    if (showFinalPreview) {
+      setShowFinalPreview(false);
+    } else if (currentStep > 1) {
+      setCurrentStep((prev) => prev - 1);
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-
-
-  const handlePDFPreview = () => {
-    setGeneratedStudentId(`CII${Math.floor(100000 + Math.random() * 900000)}`);
-    setShowPDFPreview(true);
   };
 
   const handleSkip = () => {
     setShowSuccessModal(false);
-    setShowPDFPreview(false);
-    setShowPreview(false);
   };
 
-  const handleDownloadPDF = () => {
-    generatePDFFromData(
-      formData,
-      generatedStudentId,
-    );
+  const downloadPDF = async (data: Record<string, any>) => {
+    try {
+      setIsLoading(true); // optional, shows loading state
+      await generatePDFFromData(data, generatedStudentId);
+    } catch (error) {
+      console.error("PDF download error:", error);
+      showAlert("error", "দুঃখিত!", "PDF ডাউনলোড করতে সমস্যা হয়েছে।");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // Final validation before submission (all required fields + phone length)
   const validateRequiredFields = (data: Record<string, any>): boolean => {
     const requiredFields = [
-      'StudentName', 'studentName', 'gender',
-      'studentDepartment', 'Class',
-      'FatherNameBangla', 'FatherName', 'FatherMobile',
-      'MotherNameBangla', 'MotherName',
-      'permVillage', 'permPostOffice', 'permPoliceStation', 'permDistrict',
-      'termsAccepted'
+      "StudentName",
+      "studentName",
+      "gender",
+      "studentDepartment",
+      "Class",
+      "FatherNameBangla",
+      "FatherName",
+      "FatherMobile",
+      "MotherNameBangla",
+      "MotherName",
+      "permVillage",
+      "permPostOffice",
+      "permPoliceStation",
+      "permDistrict",
+      "termsAccepted",
     ];
 
-    const missingFields = requiredFields.filter(field => {
+    const missingFields = requiredFields.filter((field) => {
       const value = data[field];
-      if (field === 'termsAccepted') return value !== true;
-     return value === undefined || value === null || value === "";
+      if (field === "termsAccepted") return value !== true;
+      return value === undefined || value === null || value === "";
     });
 
     if (missingFields.length > 0) {
-      showAlert("error", "দুঃখিত!", `অনুগ্রহ করে প্রয়োজনীয় সকল তথ্য পূরণ করুন।`);
+      showAlert(
+        "error",
+        "দুঃখিত!",
+        `অনুগ্রহ করে প্রয়োজনীয় সকল তথ্য পূরণ করুন।`,
+      );
       return false;
     }
 
-    // Phone number length validation
     if (data.FatherMobile && data.FatherMobile.length !== 11) {
       showAlert("error", "দুঃখিত!", "পিতার মোবাইল নম্বর ১১ ডিজিট হতে হবে।");
       return false;
@@ -242,33 +249,23 @@ export default function AdmissionForm() {
 
     try {
       const backendData = mapFormDataToBackend(formData);
-      console.log("Sending data to backend:", backendData);
-
       const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/admission-application`;
-      console.log("API URL:", apiUrl);
-
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(backendData),
       });
 
-      console.log("Response status:", response.status);
       const result = await response.json();
 
       if (response.ok && result.success) {
-        // Save a copy of the submitted data for PDF download
         setSubmittedFormData({ ...formData });
-
-        // Clear form and localStorage
         localStorage.removeItem("admissionFormData");
         setFormData({});
         setCurrentStep(1);
-
+        setShowFinalPreview(false);
         const newStudentId = `CII${Math.floor(100000 + Math.random() * 900000)}`;
         setGeneratedStudentId(newStudentId);
-
-        // Show success modal
         setShowSuccessModal(true);
       } else {
         throw new Error(result.message || "Something went wrong");
@@ -283,7 +280,6 @@ export default function AdmissionForm() {
           : "সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
       );
     } finally {
-      console.log('setting isLoading false');
       setIsLoading(false);
     }
   };
@@ -303,30 +299,11 @@ export default function AdmissionForm() {
 
       <CustomAlert {...alertState} onClose={closeAlert} />
 
-      <PreviewModal
-        isOpen={showPreview}
-        onClose={() => setShowPreview(false)}
-        formData={formData}
-        studentId={generatedStudentId}
-      />
-
-      {showPDFPreview && (
-        <PDFPreview
-          formData={formData}
-          studentId={generatedStudentId}
-          onClose={() => setShowPDFPreview(false)}
-          onSkip={handleSkip}
-          onDownloadPDF={handleDownloadPDF}
-        />
-      )}
-
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
         onSkip={handleSkip}
-        onDownloadPDF={() =>
-          generatePDFFromData(submittedFormData, generatedStudentId)
-        }
+        onDownloadPDF={() => downloadPDF(submittedFormData)}
         studentId={generatedStudentId}
       />
 
@@ -394,122 +371,113 @@ export default function AdmissionForm() {
           </div>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4 sm:space-y-6 px-0 md:px-4"
-        >
-          <Card className="border-2 border-purple-100/50 shadow-xl overflow-hidden backdrop-blur-sm bg-white/90 rounded-xl sm:rounded-2xl">
-            <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100 p-2 md:p-4">
-              <StepProgress
-                currentStep={currentStep}
-                totalSteps={6}
-                onStepClick={handleStepClick}
-              />
-            </CardHeader>
+        {!showFinalPreview ? (
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 sm:space-y-6 px-0 md:px-4"
+          >
+            <Card className="border-2 border-purple-100/50 shadow-xl overflow-hidden backdrop-blur-sm bg-white/90 rounded-xl sm:rounded-2xl">
+              <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100 p-2 md:p-4">
+                <StepProgress
+                  currentStep={currentStep}
+                  totalSteps={6}
+                  onStepClick={handleStepClick}
+                />
+              </CardHeader>
 
-            <CardContent className="p-2 md:p-6">
-              {currentStep === 1 && (
-                <StudentInfoStep
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                  departments={departments}
-                  bloodGroups={bloodGroups}
-                />
-              )}
-              {currentStep === 2 && (
-                <AcademicInfoStep
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                  groups={groups}
-                  shifts={shifts}
-                  sections={sections}
-                  classes={academicClasses}
-                />
-              )}
-              {currentStep === 3 && (
-                <ParentInfoStep
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                />
-              )}
-              {currentStep === 4 && (
-                <FamilyEnvironmentStep
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                />
-              )}
-              {currentStep === 5 && (
-                <BehaviorSkillsStep
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                />
-              )}
-              {currentStep === 6 && (
-                <AddressDocumentsStep
-                  formData={formData}
-                  handleInputChange={handleInputChange}
-                />
-              )}
-            </CardContent>
+              <CardContent className="p-2 md:p-6">
+                {currentStep === 1 && (
+                  <StudentInfoStep
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                    departments={departments}
+                    bloodGroups={bloodGroups}
+                  />
+                )}
+                {currentStep === 2 && (
+                  <AcademicInfoStep
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                    groups={groups}
+                    shifts={shifts}
+                    sections={sections}
+                    classes={academicClasses}
+                  />
+                )}
+                {currentStep === 3 && (
+                  <ParentInfoStep
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                  />
+                )}
+                {currentStep === 4 && (
+                  <FamilyEnvironmentStep
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                  />
+                )}
+                {currentStep === 5 && (
+                  <BehaviorSkillsStep
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                  />
+                )}
+                {currentStep === 6 && (
+                  <AddressDocumentsStep
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                  />
+                )}
+              </CardContent>
 
-            <CardFooter className="bg-gray-50/50 border-t border-gray-200 p-4 sm:p-6 flex justify-between gap-3 sm:gap-0">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handleBack}
-                disabled={currentStep === 1}
-                className="w-full sm:w-auto px-0 md:px-6 py-2 rounded-xl border-2 hover:bg-purple-50 hover:border-purple-300 transition-all order-1"
-              >
-                <ArrowLeft size={16} className="mr-2" />
-                পেছনে
-              </Button>
-
-              {currentStep < 6 ? (
+              <CardFooter className="bg-gray-50/50 border-t border-gray-200 p-4 sm:p-6 flex justify-between gap-3 sm:gap-0">
                 <Button
                   type="button"
-                  onClick={handleNext}
-                  className="w-full sm:w-auto px-0 md:px-8 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium shadow-lg hover:shadow-xl transition-all order-1 sm:order-2"
+                  variant="outline"
+                  onClick={handleBack}
+                  disabled={currentStep === 1}
+                  className="w-full sm:w-auto px-0 md:px-6 py-2 rounded-xl border-2 hover:bg-purple-50 hover:border-purple-300 transition-all "
                 >
-                  পরবর্তী
-                  <ArrowRight size={16} className="ml-2" />
+                  <ArrowLeft size={16} className="mr-2" />
+                  পেছনে
                 </Button>
-              ) : (
-                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto order-1 sm:order-2">
+
+                {currentStep < 6 ? (
                   <Button
                     type="button"
-                    onClick={handlePDFPreview}
-                    className="w-full sm:w-auto px-4 sm:px-6 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-medium shadow-lg hover:shadow-xl transition-all"
+                    onClick={handleNext}
+                    className="w-full sm:w-auto px-0 md:px-8 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 ..."
                   >
-                    <Eye size={16} className="mr-2" />
-                    প্রিভিউ
+                    পরবর্তী
+                    <ArrowRight size={16} className="ml-2" />
                   </Button>
+                ) : (
                   <Button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full sm:w-auto px-6 sm:px-8 py-2 rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-medium shadow-lg hover:shadow-xl transition-all disabled:opacity-70"
+                    type="button"
+                    onClick={handleNext}
+                    className="w-full sm:w-auto px-0 md:px-8 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 ..."
                   >
-                    {isLoading ? (
-                      <>
-                        <Loader2 size={16} className="mr-2 animate-spin" />
-                        জমা হচ্ছে...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={16} className="mr-2" />
-                        জমা দিন
-                      </>
-                    )}
+                    প্রিভিউ
+                    <Eye size={16} className="ml-2" />
                   </Button>
-                </div>
-              )}
-            </CardFooter>
-          </Card>
+                )}
+              </CardFooter>
+            </Card>
 
-          <p className="text-gray-500 text-xs sm:text-sm text-center flex items-center justify-center gap-1 sm:gap-2 bg-white/50 py-2 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl">
-            <CheckCircle size={14} className="text-green-500 flex-shrink-0" />
-            সাবমিট করার পূর্বে তথ্যগুলো পুনরায় চেক করুন।
-          </p>
-        </form>
+            <p className="text-gray-500 text-xs sm:text-sm text-center flex items-center justify-center gap-1 sm:gap-2 bg-white/50 py-2 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl">
+              <CheckCircle size={14} className="text-green-500 flex-shrink-0" />
+              সাবমিট করার পূর্বে তথ্যগুলো পুনরায় চেক করুন।
+            </p>
+          </form>
+        ) : (
+          <FinalPreview
+            formData={formData}
+            generatedStudentId={generatedStudentId}
+            onBack={handleBack}
+            onDownloadPDF={() => downloadPDF(formData)}
+            isLoading={isLoading}
+          />
+        )}
       </div>
 
       <style jsx global>{`
