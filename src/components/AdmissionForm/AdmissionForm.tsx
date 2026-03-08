@@ -250,6 +250,9 @@ export default function AdmissionForm() {
     try {
       const backendData = mapFormDataToBackend(formData);
       const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/admission-application`;
+
+      console.log('Submitting to:', apiUrl);
+      
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
