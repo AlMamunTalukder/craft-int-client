@@ -43,9 +43,9 @@ export const generatePDFFromData = async (
   const presentAddressStr = formatAddress(presentAddr);
   const permanentAddressStr = formatAddress(permanentAddr);
 
-  // Create container with previous good design
+  // Create container with the previous good design
   const container = document.createElement("div");
-  container.style.width = "800px"; // A4 width at 96dpi
+  container.style.width = "800px";
   container.style.padding = "20px";
   container.style.margin = "0 auto";
   container.style.background = "white";
@@ -194,6 +194,7 @@ export const generatePDFFromData = async (
             <div class="field"><span class="label">পেশা</span><div class="value">${formData.guardianJob || "-"}</div></div>
             <div class="field"><span class="label">মোবাইল</span><div class="value">${formData.guardianMobile || "-"}</div></div>
           </div>
+          <div class="field"><span class="label">WhatsApp</span><div class="value">${formData.guardianWhatsapp || "-"}</div></div>
           <div class="field"><span class="label">ঠিকানা</span><div class="value">${formData.guardianAddress || "-"}</div></div>` : ''}
         </div>
 
@@ -282,10 +283,9 @@ export const generatePDFFromData = async (
     const pdfHeight = pdf.internal.pageSize.getHeight();
     const imgWidth = canvas.width;
     const imgHeight = canvas.height;
-    const ratio = pdfWidth / imgWidth; // scale factor
+    const ratio = pdfWidth / imgWidth;
     const totalPages = Math.ceil((imgHeight * ratio) / pdfHeight);
 
-    // Add pages
     for (let page = 0; page < totalPages; page++) {
       if (page > 0) pdf.addPage();
       const sourceY = page * (pdfHeight / ratio);
