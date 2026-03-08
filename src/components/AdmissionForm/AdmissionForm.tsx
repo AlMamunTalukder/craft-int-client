@@ -182,7 +182,7 @@ export default function AdmissionForm() {
 
   const downloadPDF = async (data: Record<string, any>) => {
     try {
-      setIsLoading(true); // optional, shows loading state
+      setIsLoading(true);
       await generatePDFFromData(data, generatedStudentId);
     } catch (error) {
       console.error("PDF download error:", error);
@@ -240,26 +240,33 @@ export default function AdmissionForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log('🔹 handleSubmit started');
 
     if (!validateRequiredFields(formData)) {
+      console.log('🔸 Validation failed');
       return;
     }
+    console.log('🔸 Validation passed');
 
     setIsLoading(true);
+    console.log('🔸 Loading started');
 
     try {
       const backendData = mapFormDataToBackend(formData);
-      const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/admission-application`;
+      console.log('🔸 Backend data prepared:', backendData);
 
-      console.log('Submitting to:', apiUrl);
-      
+      const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/admission-application`;
+      console.log('🔸 Sending to:', apiUrl);
+
       const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(backendData),
       });
+      console.log('🔸 Response status:', response.status);
 
       const result = await response.json();
+      console.log('🔸 Response data:', result);
 
       if (response.ok && result.success) {
         setSubmittedFormData({ ...formData });
@@ -274,15 +281,14 @@ export default function AdmissionForm() {
         throw new Error(result.message || "Something went wrong");
       }
     } catch (error) {
-      console.error("Submission error:", error);
+      console.error('🔸 Catch error:', error);
       showAlert(
         "error",
         "দুঃখিত!",
-        error instanceof Error
-          ? error.message
-          : "সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
+        error instanceof Error ? error.message : "সার্ভারে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
       );
     } finally {
+      console.log('🔸 Finally block');
       setIsLoading(false);
     }
   };
@@ -374,11 +380,9 @@ export default function AdmissionForm() {
           </div>
         </div>
 
-        {!showFinalPreview ? (
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-4 sm:space-y-6 px-0 md:px-4"
-          >
+        {/* FORM - always present, wraps both step content and final preview */}
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 px-0 md:px-4">
+          {!showFinalPreview ? (
             <Card className="border-2 border-purple-100/50 shadow-xl overflow-hidden backdrop-blur-sm bg-white/90 rounded-xl sm:rounded-2xl">
               <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100 p-2 md:p-4">
                 <StepProgress
@@ -439,7 +443,7 @@ export default function AdmissionForm() {
                   variant="outline"
                   onClick={handleBack}
                   disabled={currentStep === 1}
-                  className="w-full sm:w-auto px-0 md:px-6 py-2 rounded-xl border-2 hover:bg-purple-50 hover:border-purple-300 transition-all "
+                  className="w-full sm:w-auto px-0 md:px-6 py-2 rounded-xl border-2 hover:bg-purple-50 hover:border-purple-300 transition-all"
                 >
                   <ArrowLeft size={16} className="mr-2" />
                   পেছনে
@@ -449,7 +453,7 @@ export default function AdmissionForm() {
                   <Button
                     type="button"
                     onClick={handleNext}
-                    className="w-full sm:w-auto px-0 md:px-8 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 ..."
+                    className="w-full sm:w-auto px-0 md:px-8 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white"
                   >
                     পরবর্তী
                     <ArrowRight size={16} className="ml-2" />
@@ -458,7 +462,7 @@ export default function AdmissionForm() {
                   <Button
                     type="button"
                     onClick={handleNext}
-                    className="w-full sm:w-auto px-0 md:px-8 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 ..."
+                    className="w-full sm:w-auto px-0 md:px-8 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 text-white"
                   >
                     প্রিভিউ
                     <Eye size={16} className="ml-2" />
@@ -466,21 +470,21 @@ export default function AdmissionForm() {
                 )}
               </CardFooter>
             </Card>
+          ) : (
+            <FinalPreview
+              formData={formData}
+              generatedStudentId={generatedStudentId}
+              onBack={handleBack}
+              onDownloadPDF={() => downloadPDF(formData)}
+              isLoading={isLoading}
+            />
+          )}
 
-            <p className="text-gray-500 text-xs sm:text-sm text-center flex items-center justify-center gap-1 sm:gap-2 bg-white/50 py-2 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl">
-              <CheckCircle size={14} className="text-green-500 flex-shrink-0" />
-              সাবমিট করার পূর্বে তথ্যগুলো পুনরায় চেক করুন।
-            </p>
-          </form>
-        ) : (
-          <FinalPreview
-            formData={formData}
-            generatedStudentId={generatedStudentId}
-            onBack={handleBack}
-            onDownloadPDF={() => downloadPDF(formData)}
-            isLoading={isLoading}
-          />
-        )}
+          <p className="text-gray-500 text-xs sm:text-sm text-center flex items-center justify-center gap-1 sm:gap-2 bg-white/50 py-2 sm:py-3 px-3 sm:px-4 rounded-xl sm:rounded-2xl">
+            <CheckCircle size={14} className="text-green-500 flex-shrink-0" />
+            সাবমিট করার পূর্বে তথ্যগুলো পুনরায় চেক করুন।
+          </p>
+        </form>
       </div>
 
       <style jsx global>{`
