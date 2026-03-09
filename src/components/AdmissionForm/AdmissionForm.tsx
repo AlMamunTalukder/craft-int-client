@@ -227,6 +227,7 @@ export default function AdmissionForm() {
                   bloodGroups={bloodGroups}
                 />
               )}
+              
               {currentStep === 2 && (
                 <AcademicInfoStep
                   formData={formData}
