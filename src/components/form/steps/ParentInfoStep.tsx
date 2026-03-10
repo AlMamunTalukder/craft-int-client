@@ -2,7 +2,14 @@
 import { fatherprofession, motherProfession } from "@/lib/types";
 import { InputField } from "../InputField";
 import { SelectField } from "../SelectField";
-import { User, Briefcase, GraduationCap, Phone, Users, MapPin } from "lucide-react";
+import {
+  User,
+  Briefcase,
+  GraduationCap,
+  Phone,
+  Users,
+  MapPin,
+} from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 
 interface ParentInfoStepProps {
@@ -10,7 +17,10 @@ interface ParentInfoStepProps {
   handleInputChange: (name: string, value: any) => void;
 }
 
-export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepProps) => {
+export const ParentInfoStep = ({
+  formData,
+  handleInputChange,
+}: ParentInfoStepProps) => {
   return (
     <div className="space-y-6 animate-fadeIn">
       <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-3 mb-6">
@@ -44,6 +54,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             icon={User}
             formData={formData}
             handleInputChange={handleInputChange}
+            validation="english"
           />
 
           {/* Profession as select dropdown */}
@@ -75,8 +86,11 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             icon={Phone}
             formData={formData}
             handleInputChange={handleInputChange}
+            validation="phone"
+            showPrefix="+88"
           />
 
+          {/* Father's WhatsApp (optional, but still phone format) */}
           <InputField
             width="md:col-span-4"
             label="WhatsApp"
@@ -84,6 +98,8 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             icon={BsWhatsapp}
             formData={formData}
             handleInputChange={handleInputChange}
+            validation="phone"
+            showPrefix="+88"
           />
         </div>
       </div>
@@ -111,6 +127,7 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             icon={User}
             formData={formData}
             handleInputChange={handleInputChange}
+            validation="english"
           />
 
           <SelectField
@@ -140,8 +157,11 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             icon={Phone}
             formData={formData}
             handleInputChange={handleInputChange}
+            validation="phone"
+            showPrefix="+88"
           />
 
+          {/* Mother's WhatsApp (optional) */}
           <InputField
             width="md:col-span-4"
             label="WhatsApp"
@@ -149,6 +169,8 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             icon={BsWhatsapp}
             formData={formData}
             handleInputChange={handleInputChange}
+            validation="phone"
+            showPrefix="+88"
           />
         </div>
       </div>
@@ -192,8 +214,11 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             icon={Phone}
             formData={formData}
             handleInputChange={handleInputChange}
+            validation="phone"
+            showPrefix="+88"
           />
 
+          {/* Guardian's WhatsApp (optional) */}
           <InputField
             width="md:col-span-4"
             label="WhatsApp"
@@ -201,6 +226,8 @@ export const ParentInfoStep = ({ formData, handleInputChange }: ParentInfoStepPr
             icon={BsWhatsapp}
             formData={formData}
             handleInputChange={handleInputChange}
+            validation="phone"
+            showPrefix="+88"
           />
 
           <InputField

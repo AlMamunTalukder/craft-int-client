@@ -11,23 +11,23 @@ export const groups = [
 export const shifts = ["Morning", "Day", "Evening"];
 export const sections = ["A", "B", "C"];
 export const academicClasses = [
-  { value: "pre_one", label: "Pre One (Nursery)" },
-  { value: "one", label: "One" },
-  { value: "two", label: "Two" },
-  { value: "three", label: "Three" },
-  { value: "four_boys", label: "Four (Boys)" },
-  { value: "four_girls", label: "Four (Girls)" },
-  { value: "five", label: "Five" },
-  { value: "six", label: "Six" },
-  { value: "seven", label: "Seven" },
-  { value: "eight", label: "Eight" },
+  { value: "Pre_one", label: "Pre One (Nursery)" },
+  { value: "One", label: "One" },
+  { value: "Two", label: "Two" },
+  { value: "Three", label: "Three" },
+  { value: "Four_boys", label: "Four (Boys)" },
+  { value: "Four_girls", label: "Four (Girls)" },
+  { value: "Five", label: "Five" },
+  { value: "Six", label: "Six" },
+  { value: "Seven", label: "Seven" },
+  { value: "Eight", label: "Eight" },
 ];
 
 export const hifzClasses = [
-  { value: "nurani", label: "নূরানী" },
-  { value: "nazera", label: "নাযেরা" },
-  { value: "hifz", label: "হিফয" },
-  { value: "sunani", label: "শুনানী" },
+  { value: "Nurani", label: "নূরানী" },
+  { value: "Nazera", label: "নাযেরা" },
+  { value: "Hifz", label: "হিফয" },
+  { value: "Sunani", label: "শুনানী" },
 ];
 
 

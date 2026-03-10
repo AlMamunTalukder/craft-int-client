@@ -17,7 +17,6 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { academicClasses, hifzClasses } from "@/lib/types";
 
-
 interface StudentInfoStepProps {
   formData: Record<string, any>;
   handleInputChange: (name: string, value: any) => void;
@@ -126,11 +125,10 @@ export const StudentInfoStep = ({
         {/* Student Details Grid */}
         <div className="lg:col-span-8">
           <div className="bg-white/80 p-3 md:p-6 rounded-2xl border-2 border-purple-100 shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {/* Name Fields */}
-              <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+              {/* Name Fields - Full width */}
+              <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-5">
                 <InputField
-                  width="col-span-1"
                   label="শিক্ষার্থীর নাম (বাংলা)"
                   name="StudentName"
                   required
@@ -140,7 +138,6 @@ export const StudentInfoStep = ({
                   handleInputChange={handleInputChange}
                 />
                 <InputField
-                  width="col-span-1"
                   label="Student Name (English)"
                   name="studentName"
                   required
@@ -148,100 +145,126 @@ export const StudentInfoStep = ({
                   icon={User}
                   formData={formData}
                   handleInputChange={handleInputChange}
+                  validation="english"
                 />
               </div>
 
-              <InputField
-                width="col-span-1"
-                label="জন্ম তারিখ"
-                name="dateOfBirth"
-                type="date"
-                icon={Cake}
-                formData={formData}
-                handleInputChange={handleInputChange}
-              />
+              
+              <div className="md:col-span-4">
+                <InputField
+                  label="জন্ম তারিখ"
+                  name="dateOfBirth"
+                  type="date"
+                  icon={Cake}
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                />
+              </div>
 
-              <InputField
-                width="col-span-1"
-                label="বয়স"
-                name="Age"
-                placeholder="স্বয়ংক্রিয় গণনা হবে"
-                icon={Calendar}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                disabled
-              />
+              <div className="md:col-span-4">
+                <InputField
+                  label="বয়স"
+                  name="Age"
+                  placeholder="স্বয়ংক্রিয় গণনা হবে"
+                  icon={Calendar}
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                  disabled
+                />
+              </div>
 
-              <SelectField
-                width="col-span-1"
-                label="বিভাগ"
-                name="studentDepartment"
-                required
-                options={departments}
-                placeholder="বিভাগ নির্বাচন করুন"
-                icon={GraduationCap}
-                formData={formData}
-                handleInputChange={handleInputChange}
-              />
+              <div className="md:col-span-4">
+                <SelectField
+                  label="লিঙ্গ"
+                  name="gender"
+                  required
+                  options={[
+                    { value: "male", label: "পুরুষ" },
+                    { value: "female", label: "মহিলা" }
+                  ]}
+                  placeholder="লিঙ্গ নির্বাচন করুন"
+                  icon={User}
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                />
+              </div>
 
-              {/* Dynamic Class Select */}
-              <SelectField
-                width="col-span-1"
-                label="যে শ্রেণিতে ভর্তি হতে আগ্রহী"
-                name="Class"
-                required
-                options={classOptions}
-                placeholder={
-                  formData.studentDepartment
-                    ? "শ্রেণি নির্বাচন করুন"
-                    : "প্রথমে বিভাগ নির্বাচন করুন"
-                }
-                icon={BookOpen}
-                formData={formData}
-                handleInputChange={handleInputChange}
-                // disabled={!formData.studentDepartment}
-              />
+              {/* Department and Class */}
+              <div className="md:col-span-6">
+                <SelectField
+                  label="বিভাগ"
+                  name="studentDepartment"
+                  required
+                  options={departments}
+                  placeholder="বিভাগ নির্বাচন করুন"
+                  icon={GraduationCap}
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                />
+              </div>
 
-              <InputField
-                width="col-span-1"
-                label="সেশন"
-                name="session"
-                placeholder="2024"
-                icon={Calendar}
-                formData={formData}
-                handleInputChange={handleInputChange}
-              />
+              <div className="md:col-span-6">
+                <SelectField
+                  label="যে শ্রেণিতে ভর্তি হতে আগ্রহী"
+                  name="Class"
+                  required
+                  options={classOptions}
+                  placeholder={
+                    formData.studentDepartment
+                      ? "শ্রেণি নির্বাচন করুন"
+                      : "প্রথমে বিভাগ নির্বাচন করুন"
+                  }
+                  icon={BookOpen}
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                />
+              </div>
 
-              <InputField
-                width="col-span-1"
-                label="জাতীয় পরিচয়পত্র/জন্ম নিবন্ধন নম্বর"
-                name="nidBirth"
-                placeholder="1234567890"
-                icon={Fingerprint}
-                formData={formData}
-                handleInputChange={handleInputChange}
-              />
+              {/* Session, NID/Birth, Blood Group, Nationality */}
+              <div className="md:col-span-6">
+                <InputField
+                  label="সেশন"
+                  name="session"
+                  placeholder="2026"
+                  icon={Calendar}
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                />
+              </div>
 
-              <SelectField
-                width="col-span-1"
-                label="রক্তের গ্রুপ"
-                name="bloodGroup"
-                options={bloodGroups}
-                placeholder="রক্তের গ্রুপ নির্বাচন করুন"
-                icon={Heart}
-                formData={formData}
-                handleInputChange={handleInputChange}
-              />
+              <div className="md:col-span-6">
+                <InputField
+                  label="জাতীয় পরিচয়পত্র/জন্ম নিবন্ধন নম্বর"
+                  name="nidBirth"
+                  placeholder="1234567890"
+                  icon={Fingerprint}
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                />
+              </div>
 
-              <InputField
-                width="col-span-1"
-                label="জাতীয়তা"
-                name="nationality"
-                placeholder="Bangladeshi"
-                icon={Globe}
-                formData={formData}
-                handleInputChange={handleInputChange}
-              />
+              <div className="md:col-span-6">
+                <SelectField
+                  label="রক্তের গ্রুপ"
+                  name="bloodGroup"
+                  options={bloodGroups}
+                  placeholder="রক্তের গ্রুপ নির্বাচন করুন"
+                  icon={Heart}
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                />
+              </div>
+
+              <div className="md:col-span-6">
+                <InputField
+                  label="জাতীয়তা"
+                  name="nationality"
+                  placeholder="Bangladeshi"
+                  icon={Globe}
+                  formData={formData}
+                  handleInputChange={handleInputChange}
+                />
+              </div>
             </div>
           </div>
         </div>
