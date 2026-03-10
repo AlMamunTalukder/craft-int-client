@@ -1,19 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useState } from "react";
-import {
-  User,
-  Lock,
-  Eye,
-  EyeOff,
-  LogIn,
- 
-} from "lucide-react";
-import Image from "next/image";
+import { User, Lock, Eye, EyeOff, LogIn } from "lucide-react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
-    userId: "",
+    credential: "",
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -27,16 +23,48 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // API Call Simulation
-    setTimeout(() => {
-      console.log("Login Data:", formData);
+    const loadingToast = toast.loading("Logging in...");
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            credential: formData.credential,
+            password: formData.password,
+          }),
+          credentials: "include",
+        },
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+      toast.dismiss(loadingToast);
+      toast.success(data.message || "Login successful! ");
+      if (data.data?.user) {
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+      }
+      setTimeout(() => {
+        if (data.success) {
+          router.push("/profile");
+        }
+      }, 1500);
+    } catch (err: any) {
+      toast.dismiss(loadingToast);
+    } finally {
       setIsLoading(false);
-      // Add redirection logic here
-    }, 1500);
+    }
   };
 
   return (
@@ -62,20 +90,6 @@ const Login = () => {
 
           {/* Header Section */}
           <div className="text-center mb-10">
-            <div className="mx-auto w-36 h-16 bg-gradient-to-tr from-purple-600 to-[#F300E7] rounded-2xl p-0.5 mb-6 shadow-lg shadow-purple-500/30 transform group-hover:scale-105 transition-transform duration-500">
-              <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center p-2">
-                {/* <ShieldCheck className="text-white w-8 h-8" strokeWidth={1.5} /> */}
-                <Image
-                  src={"/img/logo.png"}
-                  alt="School Logo"
-                  height={90}
-                  width={240}
-                  className="w-auto h-[60px] md:h-[90px] object-contain drop-shadow-sm"
-                  priority
-                />
-              </div>
-            </div>
-
             <h2 className="text-3xl font-extrabold text-white tracking-tight mb-2 flex items-center justify-center gap-2">
               স্বাগতম
             </h2>
@@ -86,10 +100,10 @@ const Login = () => {
 
           {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* User ID Field */}
+            {/* User ID Field - Changed to credential */}
             <div className="space-y-2">
               <label className="text-gray-300 text-sm font-semibold ml-1">
-                ইউজার আইডি
+                ইউজার আইডি / ইমেইল
               </label>
               <div className="relative group/input">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -97,10 +111,10 @@ const Login = () => {
                 </div>
                 <input
                   type="text"
-                  name="userId"
-                  value={formData.userId}
+                  name="credential"
+                  value={formData.credential}
                   onChange={handleInputChange}
-                  placeholder="আপনার আইডি লিখুন"
+                  placeholder="আপনার আইডি বা ইমেইল লিখুন"
                   required
                   className="w-full pl-11 pr-4 py-3.5 bg-[#0F0518]/50 border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all duration-300"
                 />
@@ -149,7 +163,6 @@ const Login = () => {
               </a>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={isLoading}
@@ -169,13 +182,6 @@ const Login = () => {
               </div>
             </button>
           </form>
-
-          {/* Security Notice */}
-          {/* <div className="mt-8 text-center border-t border-white/5 pt-6">
-            <p className="text-xs text-gray-500">
-              শুধুমাত্র অনুমোদিত শিক্ষার্থী জন্য।
-            </p>
-          </div> */}
         </div>
       </div>
     </section>

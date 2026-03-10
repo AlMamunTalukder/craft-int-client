@@ -4,13 +4,12 @@ import { Hind_Siliguri } from "next/font/google";
 import BackToTop from "../shared/BackToTop/BackToTop";
 import Header from "../shared/Header/Header";
 import Footer from "../shared/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 const siliguri = Hind_Siliguri({
   weight: "400",
   subsets: ["bengali"],
 });
-
-
 
 export const metadata: Metadata = {
   title: "Craft Institute BD",
@@ -24,15 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={` ${siliguri.className} antialiased`}
-      >
-      {/* <SubHeader /> */}
+      <body className={` ${siliguri.className} antialiased`}>
+        {/* <SubHeader /> */}
         <Header />
         {children}
-        
+        <Toaster />
         <BackToTop />
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
