@@ -274,7 +274,7 @@ export default function AdmissionForm() {
         setFormData({});
         setCurrentStep(1);
         setShowFinalPreview(false);
-        const newStudentId = `CII${Math.floor(100000 + Math.random() * 900000)}`;
+        const newStudentId = `OA-${Math.floor(100000 + Math.random() * 900000)}`;
         setGeneratedStudentId(newStudentId);
         setShowSuccessModal(true);
       } else {
