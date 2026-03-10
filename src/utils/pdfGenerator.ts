@@ -14,124 +14,160 @@ export const generatePDFFromData = async (
   });
   const logoUrl = window.location.origin + "/img/logo.png";
 
-  // Helper to format address
   const formatAddress = (addr: any) => {
     const parts = [];
     if (addr.village) parts.push(addr.village);
     if (addr.postOffice) parts.push(addr.postOffice);
-    if (addr.postCode) parts.push(addr.postCode);
     if (addr.policeStation) parts.push(addr.policeStation);
     if (addr.district) parts.push(addr.district);
     return parts.join(", ") || "-";
   };
 
-  const presentAddr = {
+  const presentAddressStr = formatAddress({
     village: formData.village,
     postOffice: formData.postOffice,
-    postCode: formData.postCode,
     policeStation: formData.policeStation,
     district: formData.district,
-  };
-  const permanentAddr = {
+  });
+
+  const permanentAddressStr = formatAddress({
     village: formData.permVillage,
     postOffice: formData.permPostOffice,
-    postCode: formData.permPostCode,
     policeStation: formData.permPoliceStation,
     district: formData.permDistrict,
-  };
+  });
 
-  const presentAddressStr = formatAddress(presentAddr);
-  const permanentAddressStr = formatAddress(permanentAddr);
-
-  // Create container with the previous good design
   const container = document.createElement("div");
-  container.style.width = "800px";
-  container.style.padding = "20px";
-  container.style.margin = "0 auto";
-  container.style.background = "white";
+  container.style.width = "210mm";
+  container.style.minHeight = "297mm";
   container.style.position = "absolute";
   container.style.left = "-9999px";
   container.style.top = "0";
-  container.style.fontFamily = "'Hind Siliguri', 'Arial', sans-serif";
-  container.style.lineHeight = "1.5";
-  container.style.boxSizing = "border-box";
+  container.style.background = "white";
 
   container.innerHTML = `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>ভর্তি ফর্ম - ${studentId}</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: white; font-size: 12px; }
-    .pdf-wrapper { width: 100%; max-width: 800px; margin: 0 auto; background: white; }
-    /* Header */
-    .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #8b5cf6; padding-bottom: 10px; margin-bottom: 20px; }
-    .logo-img { height: 50px; width: auto; }
-    .title h2 { color: #5b21b6; font-size: 24px; font-weight: 700; margin: 0; }
-    .title p { color: #6b7280; font-size: 12px; margin: 5px 0 0; }
-    /* Two‑column layout */
-    .main-row { display: flex; gap: 20px; }
-    .sidebar { width: 200px; background: #f3e8ff; border-radius: 8px; padding: 15px; flex-shrink: 0; }
-    .sidebar-photo { width: 120px; height: 120px; margin: 0 auto 10px; border-radius: 50%; overflow: hidden; border: 3px solid white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .sidebar-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .sidebar-id { font-weight: bold; color: #5b21b6; background: white; padding: 4px 8px; border-radius: 20px; display: inline-block; margin-bottom: 15px; }
-    .sidebar-info-item { margin-bottom: 8px; border-bottom: 1px dashed #c4b5fd; padding-bottom: 5px; }
-    .sidebar-label { font-size: 10px; color: #6b21a8; display: block; font-weight: 500; }
-    .address-block { margin-top: 15px; border-top: 1px solid #c4b5fd; padding-top: 10px; }
-    .address-block strong { color: #5b21b6; font-size: 11px; display: block; margin-bottom: 5px; }
-    .address-text { font-size: 11px; background: white; padding: 6px; border-radius: 4px; }
-    /* Main content */
-    .content { flex: 1; }
-    .section { background: #f9fafb; border-radius: 8px; padding: 15px; margin-bottom: 15px; border: 1px solid #e5e7eb; }
-    .section-title { font-weight: 700; color: #5b21b6; margin-bottom: 10px; font-size: 14px; border-left: 4px solid #8b5cf6; padding-left: 8px; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-    .field { margin-bottom: 8px; }
-    .field .label { font-size: 10px; color: #6b7280; display: block; }
-    .field .value { font-weight: 500; color: #111827; background: white; padding: 6px 8px; border-radius: 4px; border: 1px solid #e5e7eb; min-height: 28px; }
-    .doc-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-    .doc-item { display: flex; align-items: center; gap: 5px; font-size: 11px; width: calc(50% - 5px); }
-    .check-box { width: 18px; height: 18px; background: white; border: 1px solid #5b21b6; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; color: #5b21b6; }
-    .pledge { margin-top: 12px; background: #ede9fe; padding: 10px; border-radius: 6px; font-size: 11px; display: flex; align-items: flex-start; gap: 8px; }
-    .footer-signs { display: flex; justify-content: space-between; margin-top: 20px; border-top: 1px dashed #9ca3af; padding-top: 15px; }
-    .sign-line { width: 180px; border-bottom: 1px solid #374151; padding-bottom: 4px; font-size: 11px; color: #4b5563; text-align: center; }
-    hr { border: none; border-top: 1px dashed #d1d5db; margin: 15px 0; }
-  </style>
-</head>
-<body>
-  <div class="pdf-wrapper">
-    <!-- Header -->
-    <div class="header">
-      <img src="${logoUrl}" class="logo-img" onerror="this.style.display='none'" />
-      <div class="title">
-        <h2>ভর্তি আবেদন ফরম</h2>
-        <p>আইডি: ${studentId} | তারিখ: ${currentDate}</p>
-      </div>
-    </div>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+      
+      .pdf-body { font-family: 'Hind Siliguri', sans-serif; display: flex; color: #1e1b4b; margin: 0; padding: 0; width: 210mm; min-height: 297mm; }
+      
+      /* --- SIDEBAR --- */
+      .sidebar { width: 70mm; background: #4c1d95; color: white; padding: 25px 15px; display: flex; flex-direction: column; min-height: 297mm; box-sizing: border-box; }
+      .sidebar-photo { width: 120px; height: 145px; border: 3px solid rgba(255, 255, 255, 0.2); border-radius: 10px; overflow: hidden; background: rgba(255, 255, 255, 0.1); margin: 0 auto 20px; }
+      .sidebar-photo img { width: 100%; height: 100%; object-fit: cover; }
+      
+      /* FIXED SIDEBAR ID ALIGNMENT */
+      .sidebar-id { 
+        height: 32px;     
+        padding: 0 6px; 
+        background: white; 
+        color: #4c1d95; 
+        display: flex; 
+        align-items: center; /* Vertical center */
+        justify-content: center; /* Horizontal center */
+        border-radius: 20px; 
+        font-weight: 700; 
+        font-size: 13px; 
+        margin: 0 auto 25px; 
+        width: 120px; 
+        line-height: 1; /* Reset line height */
+      }
+      
+      .sidebar-info-group { width: 100%; margin-bottom: 20px; }
+      .sidebar-item { margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 5px; }
+      .sidebar-label { opacity: 0.7; display: block; font-size: 10px; text-transform: uppercase; color: #ddd; letter-spacing: 0.5px; line-height: 1.2; }
+      .sidebar-val { font-size: 13px; font-weight: 500; display: block; margin-top: 2px; line-height: 1.3; }
 
-    <!-- Main row: sidebar + content -->
-    <div class="main-row">
-      <!-- Sidebar -->
+      .sidebar-address-box { margin-top: 15px; background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); }
+      .addr-title { font-size: 11px; font-weight: 700; color: #e9d5ff; margin-bottom: 5px; display: block; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 3px; }
+      .addr-text { font-size: 11px; line-height: 1.4; color: #f3f4f6; }
+
+      /* --- MAIN CONTENT --- */
+      .main-content { flex: 1; padding: 30px 35px; background: white; box-sizing: border-box; }
+      .main-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #4c1d95; padding-bottom: 15px; margin-bottom: 20px; }
+      .logo-img { height: 55px; width: auto; }
+      
+      .section { margin-bottom: 18px; }
+      .section-title { color: #4c1d95; font-size: 15px; font-weight: 700; margin-bottom: 10px; border-bottom: 2px solid #f5f3ff; padding-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+      
+      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+      
+      .field { padding: 3px 0; }
+      .label { color: #64748b; font-size: 10px; font-weight: 600; display: block; line-height: 1.2; margin-bottom: 2px; }
+      
+      /* FIXED MAIN CONTENT VALUE ALIGNMENT */
+      .value { 
+        font-size: 13px; 
+        font-weight: 500; 
+        border-bottom: 1px solid #e9d5ff; 
+        color: #000; 
+        min-height: 26px; 
+        display: flex; 
+        align-items: center; 
+        line-height: 1;
+          padding: 2px 0 2px 0;
+      }
+      
+      .info-card { background: #f5f3ff; padding: 10px; border-radius: 8px; border-left: 4px solid #7c3aed; }
+      
+      .doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+      .doc-item { display: flex; align-items: center; gap: 8px; font-size: 10.5px; }
+      .check-box { width: 16px;
+  height: 16px;
+  font-size: 11px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   border: 1.5px solid #7c3aed; 
+   border-radius: 3px;   
+   color: #7c3aed; 
+   font-weight: bold;  
+   background: white; 
+   flex-shrink: 0; }
+      
+      .pledge-box { margin-top: 12px; background: #f5f3ff; padding: 10px; border-radius: 6px; font-size: 11px; line-height: 1.5; border: 1px dashed #7c3aed; color: #1e1b4b; }
+      .footer-signs { margin-top: 35px; display: flex; justify-content: space-between; }
+      .sign-line { width: 150px; border-top: 1.5px solid #4c1d95; text-align: center; padding-top: 6px; font-size: 11px; font-weight: 600; color: #4c1d95; }
+    </style>
+
+    <div class="pdf-body">
       <div class="sidebar">
         <div class="sidebar-photo">
-          ${formData.studentPhoto ? `<img src="${formData.studentPhoto}" />` : '<div style="line-height:120px; text-align:center; color:#9ca3af;">ছবি</div>'}
+          ${formData.studentPhoto ? `<img src="${formData.studentPhoto}" />` : '<div style="display:flex; align-items:center; justify-content:center; height:100%; color:rgba(255,255,255,0.4); font-size:10px;">ছবি</div>'}
         </div>
-        <div style="text-align:center;"><span class="sidebar-id">${studentId}</span></div>
-        <div class="sidebar-info-item"><span class="sidebar-label">শ্রেণি</span><strong>${formData.Class || "-"}</strong></div>
-        <div class="sidebar-info-item"><span class="sidebar-label">বিভাগ</span><strong>${formData.studentDepartment || "-"}</strong></div>
-        <div class="sidebar-info-item"><span class="sidebar-label">সেশন</span><strong>${formData.session || "-"}</strong></div>
-        <div class="sidebar-info-item"><span class="sidebar-label">রক্তের গ্রুপ</span><strong>${formData.bloodGroup || "-"}</strong></div>
-        <div class="address-block"><strong>স্থায়ী ঠিকানা</strong><div class="address-text">${permanentAddressStr}</div></div>
-        <div class="address-block"><strong>বর্তমান ঠিকানা</strong><div class="address-text">${presentAddressStr}</div></div>
+        <div class="sidebar-id">${studentId}</div>
+        
+        <div class="sidebar-info-group">
+          <div class="sidebar-item"><span class="sidebar-label">শ্রেণি</span><span class="sidebar-val">${formData.Class || "-"}</span></div>
+          <div class="sidebar-item"><span class="sidebar-label">বিভাগ</span><span class="sidebar-val">${formData.studentDepartment || "-"}</span></div>
+          <div class="sidebar-item"><span class="sidebar-label">সেশন</span><span class="sidebar-val">${formData.session || "-"}</span></div>
+          <div class="sidebar-item"><span class="sidebar-label">রক্তের গ্রুপ</span><span class="sidebar-val">${formData.bloodGroup || "-"}</span></div>
+        </div>
+
+        <div class="sidebar-address-box">
+          <span class="addr-title">বর্তমান ঠিকানা</span>
+          <div class="addr-text">${presentAddressStr}</div>
+        </div>
+
+        <div class="sidebar-address-box">
+          <span class="addr-title">স্থায়ী ঠিকানা</span>
+          <div class="addr-text">${permanentAddressStr}</div>
+        </div>
       </div>
 
-      <!-- Main content -->
-      <div class="content">
-        <!-- Student Information -->
+      <div class="main-content">
+        <div class="main-header">
+          <img src="${logoUrl}" class="logo-img" onerror="this.style.opacity='0'" />
+          <div style="text-align: right;">
+            <h2 style="color: #4c1d95; font-size: 20px; margin: 0; font-weight: 800;">ভর্তি আবেদন ফরম</h2>
+            <p style="font-size: 10px; color: #64748b; margin-top: 2px;">প্রিন্ট তারিখ: ${currentDate}</p>
+          </div>
+        </div>
+
         <div class="section">
-          <div class="section-title">শিক্ষার্থীর তথ্য</div>
+          <div class="section-title">শিক্ষার্থীর প্রাথমিক তথ্য</div>
           <div class="grid-2">
             <div class="field"><span class="label">নাম (বাংলা)</span><div class="value">${formData.StudentName || "-"}</div></div>
             <div class="field"><span class="label">নাম (ইংরেজি)</span><div class="value">${formData.studentName || "-"}</div></div>
@@ -139,137 +175,73 @@ export const generatePDFFromData = async (
           <div class="grid-3">
             <div class="field"><span class="label">জন্ম তারিখ</span><div class="value">${formData.dateOfBirth ? new Date(formData.dateOfBirth).toLocaleDateString("bn-BD") : "-"}</div></div>
             <div class="field"><span class="label">বয়স</span><div class="value">${formData.Age || "-"}</div></div>
-            <div class="field"><span class="label">লিঙ্গ</span><div class="value">${formData.gender === "male" ? "পুরুষ" : formData.gender === "female" ? "মহিলা" : "-"}</div></div>
+            <div class="field"><span class="label">লিঙ্গ</span><div class="value">${getBengaliValue("gender", formData.gender)}</div></div>
           </div>
-          <div class="grid-3">
-            <div class="field"><span class="label">এনআইডি/জন্ম নিবন্ধন</span><div class="value">${formData.nidBirth || "-"}</div></div>
-            <div class="field"><span class="label">জাতীয়তা</span><div class="value">${formData.nationality || "-"}</div></div>
-            <div class="field"><span class="label">রক্তের গ্রুপ</span><div class="value">${formData.bloodGroup || "-"}</div></div>
-          </div>
+          <div class="field"><span class="label">এনআইডি/জন্ম নিবন্ধন</span><div class="value">${formData.nidBirth || "-"}</div></div>
         </div>
 
-        <!-- Academic Info -->
-        <div class="section">
-          <div class="section-title">পূর্ববর্তী একাডেমিক তথ্য</div>
-          <div class="grid-3">
-            <div class="field"><span class="label">পূর্ববর্তী প্রতিষ্ঠান</span><div class="value">${formData.PrevSchool || "-"}</div></div>
-            <div class="field"><span class="label">পূর্ব অধ্যায়নকৃত শ্রেণি</span><div class="value">${formData.PrevClass || "-"}</div></div>
-            <div class="field"><span class="label">সর্বশেষ জিপিএ</span><div class="value">${formData.GPA || "-"}</div></div>
-          </div>
-        </div>
-
-        <!-- Parent Info -->
         <div class="section">
           <div class="section-title">অভিভাবকের তথ্য</div>
           <div class="grid-2">
-            <div class="field"><span class="label">পিতার নাম (বাংলা)</span><div class="value">${formData.FatherNameBangla || "-"}</div></div>
-            <div class="field"><span class="label">পিতার নাম (ইংরেজি)</span><div class="value">${formData.FatherName || "-"}</div></div>
+            <div class="info-card">
+              <strong style="font-size:11px; color:#4c1d95; line-height:1.5;">পিতা: ${formData.FatherNameBangla || "-"}</strong>
+              <div class="field"><span class="label">পেশা ও মোবাইল</span><div class="value" style="font-size:12px; border:none; min-height:auto;">${formData.FatherJob || "-"} | ${formData.FatherMobile || "-"}</div></div>
+            </div>
+            <div class="info-card">
+              <strong style="font-size:11px; color:#4c1d95; line-height:1.5;">মাতা: ${formData.MotherNameBangla || "-"}</strong>
+              <div class="field"><span class="label">পেশা ও মোবাইল</span><div class="value" style="font-size:12px; border:none; min-height:auto;">${formData.MotherJob || "-"} | ${formData.MotherMobile || "-"}</div></div>
+            </div>
           </div>
-          <div class="grid-3">
-            <div class="field"><span class="label">পেশা</span><div class="value">${formData.FatherJob || "-"}</div></div>
-            <div class="field"><span class="label">শিক্ষাগত যোগ্যতা</span><div class="value">${formData.FatherEdu || "-"}</div></div>
-            <div class="field"><span class="label">মোবাইল</span><div class="value">${formData.FatherMobile || "-"}</div></div>
-          </div>
-          <div class="field"><span class="label">WhatsApp</span><div class="value">${formData.FatherWhatsapp || "-"}</div></div>
-          <hr />
-          <div class="grid-2">
-            <div class="field"><span class="label">মাতার নাম (বাংলা)</span><div class="value">${formData.MotherNameBangla || "-"}</div></div>
-            <div class="field"><span class="label">মাতার নাম (ইংরেজি)</span><div class="value">${formData.MotherName || "-"}</div></div>
-          </div>
-          <div class="grid-3">
-            <div class="field"><span class="label">পেশা</span><div class="value">${formData.MotherJob || "-"}</div></div>
-            <div class="field"><span class="label">শিক্ষাগত যোগ্যতা</span><div class="value">${formData.MotherEdu || "-"}</div></div>
-            <div class="field"><span class="label">মোবাইল</span><div class="value">${formData.MotherMobile || "-"}</div></div>
-          </div>
-          <div class="field"><span class="label">WhatsApp</span><div class="value">${formData.MotherWhatsapp || "-"}</div></div>
-          ${formData.guardianNameBangla || formData.guardianName ? `
-          <hr />
-          <div class="section-title" style="font-size:12px;">অভিভাবক (পিতা-মাতা ব্যতীত)</div>
-          <div class="grid-2">
-            <div class="field"><span class="label">নাম (বাংলা)</span><div class="value">${formData.guardianNameBangla || "-"}</div></div>
-            <div class="field"><span class="label">নাম (ইংরেজি)</span><div class="value">${formData.guardianName || "-"}</div></div>
-          </div>
-          <div class="grid-3">
-            <div class="field"><span class="label">সম্পর্ক</span><div class="value">${formData.guardianRelation || "-"}</div></div>
-            <div class="field"><span class="label">পেশা</span><div class="value">${formData.guardianJob || "-"}</div></div>
-            <div class="field"><span class="label">মোবাইল</span><div class="value">${formData.guardianMobile || "-"}</div></div>
-          </div>
-          <div class="field"><span class="label">WhatsApp</span><div class="value">${formData.guardianWhatsapp || "-"}</div></div>
-          <div class="field"><span class="label">ঠিকানা</span><div class="value">${formData.guardianAddress || "-"}</div></div>` : ''}
         </div>
 
-        <!-- Family Environment -->
         <div class="section">
-          <div class="section-title">পারিবারিক পরিবেশ</div>
+          <div class="section-title">পারিবারিক পরিবেশ ও আচরণ</div>
           <div class="grid-3">
             <div class="field"><span class="label">হালাল উপার্জন</span><div class="value">${getBengaliValue("HalalIncome", formData.HalalIncome)}</div></div>
-            <div class="field"><span class="label">পিতা-মাতার নামাজ</span><div class="value">${getBengaliValue("ParentsPrayer", formData.ParentsPrayer)}</div></div>
-            <div class="field"><span class="label">মাদক/নেশায় আক্রান্ত</span><div class="value">${getBengaliValue("Addiction", formData.Addiction)}</div></div>
-            <div class="field"><span class="label">টেলিভিশন</span><div class="value">${getBengaliValue("TV", formData.TV)}</div></div>
-            <div class="field"><span class="label">কুরআন তিলাওয়াত</span><div class="value">${getBengaliValue("QuranRecitation", formData.QuranRecitation)}</div></div>
             <div class="field"><span class="label">পর্দা পালন</span><div class="value">${getBengaliValue("Purdah", formData.Purdah)}</div></div>
-          </div>
-        </div>
-
-        <!-- Behavior & Skills -->
-        <div class="section">
-          <div class="section-title">আচরণ ও দক্ষতা</div>
-          <div class="grid-3">
-            <div class="field"><span class="label">মোবাইল ব্যবহার</span><div class="value">${formData.MobileUsage || "-"}</div></div>
-            <div class="field"><span class="label">সন্তানের আচরণ</span><div class="value">${getBengaliValue("GeneralBehavior", formData.GeneralBehavior)}</div></div>
-            <div class="field"><span class="label">পিতা-মাতার কথা শোনে</span><div class="value">${getBengaliValue("Obedience", formData.Obedience)}</div></div>
-            <div class="field"><span class="label">বড়দের সাথে আচরণ</span><div class="value">${getBengaliValue("ElderBehavior", formData.ElderBehavior)}</div></div>
-            <div class="field"><span class="label">ছোটদের সাথে আচরণ</span><div class="value">${getBengaliValue("YoungerBehavior", formData.YoungerBehavior)}</div></div>
-            <div class="field"><span class="label">মিথ্যা/জেদ</span><div class="value">${getBengaliValue("LyingStubbornness", formData.LyingStubbornness)}</div></div>
+            <div class="field"><span class="label">নামাজ (পিতা-মাতা)</span><div class="value">${getBengaliValue("ParentsPrayer", formData.ParentsPrayer)}</div></div>
             <div class="field"><span class="label">পড়ালেখায় আগ্রহ</span><div class="value">${getBengaliValue("StudyInterest", formData.StudyInterest)}</div></div>
-            <div class="field"><span class="label">ধর্মীয় কাজে আগ্রহ</span><div class="value">${getBengaliValue("ReligiousInterest", formData.ReligiousInterest)}</div></div>
             <div class="field"><span class="label">রাগ নিয়ন্ত্রণ</span><div class="value">${getBengaliValue("AngerControl", formData.AngerControl)}</div></div>
+            <div class="field"><span class="label">মোবাইল ব্যবহার</span><div class="value">${formData.MobileUsage || "-"}</div></div>
           </div>
         </div>
 
-        <!-- Documents & Pledge -->
         <div class="section">
-          <div class="section-title">জমাকৃত ডকুমেন্টস ও অঙ্গীকার</div>
+          <div class="section-title">জমাকৃত ডকুমেন্টস ও অঙ্গীকারনামা</div>
           <div class="doc-grid">
-            <div class="doc-item"><span class="check-box">${formData.photographs ? "✓" : ""}</span>ছবি (৪ কপি)</div>
-            <div class="doc-item"><span class="check-box">${formData.birthCertificate ? "✓" : ""}</span>জন্ম নিবন্ধন</div>
-            <div class="doc-item"><span class="check-box">${formData.birthCertificate ? "✓" : ""}</span>পিতা-মাতার এনআইডি</div>
-            <div class="doc-item"><span class="check-box">${formData.markSheet ? "✓" : ""}</span>মার্কশিট</div>
-            <div class="doc-item"><span class="check-box">${formData.transferCertificate ? "✓" : ""}</span>টি.সি</div>
+            <div class="doc-item"><div class="check-box">${formData.photographs ? "✓" : ""}</div>শিক্ষার্থীর পাসপোর্ট সাইজের ৪ কপি রঙিন ছবি (বাধ্যতামূলক) </div>
+            <div class="doc-item"><div class="check-box">${formData.birthCertificate ? "✓" : ""}</div> শিক্ষার্থীর জন্ম নিবন্ধন সনদ (বাধ্যতামূলক)</div>
+            <div class="doc-item"><div class="check-box">${formData.birthCertificate ? "✓" : ""}</div>পিতা-মাতার জাতীয় পরিচয়পত্রের ফটোকপি/পাসপোর্টের ফটোকপি (বাধ্যতামূলক)</div>
+            <div class="doc-item"><div class="check-box">${formData.markSheet ? "✓" : ""}</div> মার্কশিট</div>
+            <div class="doc-item"><div class="check-box">${formData.markSheet ? "✓" : ""}</div> ট্রান্সফার সার্টিফিকেট</div>
           </div>
-          ${formData.termsAccepted ? `
-          <div class="pledge">
-            <span class="check-box" style="flex-shrink:0;">✓</span>
-            <span>আমি <strong>${formData.StudentName || "__________"}</strong> অঙ্গীকার করছি যে, প্রতিষ্ঠানের সকল নিয়ম মেনে চলব।</span>
-          </div>` : ''}
+          
+          ${
+            formData.termsAccepted
+              ? `
+          <div class="pledge-box">
+             আমি <strong>${formData.StudentName || "__________"}</strong> সজ্ঞানে অঙ্গীকার করছি যে, প্রতিষ্ঠানের সকল নিয়মকানুন মেনে চলব। প্রতিষ্ঠানের আইন পরিপন্থি কোনো কিছু আমার মাঝে পরিলক্ষিত হলে কর্তৃপক্ষের সিদ্ধান্ত মেনে নিতে বাধ্য থাকব।
+          </div>`
+              : ""
+          }
         </div>
 
-        <!-- Signatures -->
         <div class="footer-signs">
           <div class="sign-line">অভিভাবকের স্বাক্ষর</div>
           <div class="sign-line">অধ্যক্ষের স্বাক্ষর</div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-</html>`;
+  `;
 
   document.body.appendChild(container);
 
   try {
-    const loadingToast = document.createElement("div");
-    loadingToast.className = "fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg z-50";
-    loadingToast.innerText = "PDF তৈরি হচ্ছে...";
-    document.body.appendChild(loadingToast);
-
     const canvas = await html2canvas(container, {
-      scale: 2,
-      backgroundColor: "#ffffff",
-      logging: false,
-      allowTaint: false,
+      scale: 3, // Higher scale for better text clarity
       useCORS: true,
-      windowWidth: 800,
+      logging: false,
+      windowWidth: 794,
     });
 
     const imgData = canvas.toDataURL("image/png");
@@ -278,37 +250,10 @@ export const generatePDFFromData = async (
       unit: "mm",
       format: "a4",
     });
-
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-    const imgWidth = canvas.width;
-    const imgHeight = canvas.height;
-    const ratio = pdfWidth / imgWidth;
-    const totalPages = Math.ceil((imgHeight * ratio) / pdfHeight);
-
-    for (let page = 0; page < totalPages; page++) {
-      if (page > 0) pdf.addPage();
-      const sourceY = page * (pdfHeight / ratio);
-      const sourceHeight = Math.min(imgHeight - sourceY, pdfHeight / ratio);
-      pdf.addImage(
-        imgData,
-        "PNG",
-        0,
-        0,
-        pdfWidth,
-        sourceHeight * ratio,
-        undefined,
-        undefined,
-        sourceY
-      );
-    }
-
+    pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
     pdf.save(`admission-form-${studentId}.pdf`);
-
-    document.body.removeChild(loadingToast);
   } catch (error) {
-    console.error("PDF generation error:", error);
-    alert("PDF তৈরি করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।");
+    console.error("PDF generation failed:", error);
   } finally {
     document.body.removeChild(container);
   }
