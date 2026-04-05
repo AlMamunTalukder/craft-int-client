@@ -293,9 +293,7 @@ export default function SoftSkills() {
             SKILLS
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed">
-            আমাদের শিক্ষার্থীদের জন্য প্রয়োজনীয় জীবনমুখী দক্ষতা ও নৈতিক শিক্ষার
-            এক অনন্য সমন্বয়, যা তাদের ভবিষ্যৎ জীবনের প্রতিটি পদক্ষেপে এগিয়ে
-            রাখবে।
+            একজন পরিপূর্ণ ও সফল মানুষ হিসেবে নিজেকে গড়ে তোলার জন্য আমাদের এই বিশেষ কারিকুলামে রয়েছে <span className="text-white font-bold">৯টি ক্যাটাগরিতে সর্বমোট ৭৫টি</span> জীবনমুখী ও প্রোফেশনাল দক্ষতা।
           </p>
 
           <div className="w-24 h-1.5 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] mx-auto rounded-full mt-8 shadow-lg shadow-purple-500/30"></div>
@@ -339,7 +337,7 @@ export default function SoftSkills() {
 
                   <div className="flex items-center gap-4 shrink-0">
                     <div
-                      className={`hidden sm:flex items-center justify-center px-1 md:px-3 md:py-1 rounded-full border transition-all duration-300 ${category.activeBorder} ${category.activeBg} ${category.textColor} `}
+                      className={`flex items-center justify-center px-1 md:px-3 md:py-1 rounded-full border transition-all duration-300 ${category.activeBorder} ${category.activeBg} ${category.textColor} `}
                     >
                       <span className="text-[10px] md:text-xs font-bold">
                         {category.count} Skills
