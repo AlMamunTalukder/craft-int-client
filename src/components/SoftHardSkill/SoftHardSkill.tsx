@@ -309,25 +309,23 @@ export default function SoftSkills() {
             return (
               <div
                 key={category.id}
-                className={`relative overflow-hidden rounded-[1rem] border-2 backdrop-blur-md transition-all duration-500 ${category.activeBorder}  `}
+                className={`relative overflow-hidden rounded-lg md:rounded-[1rem] border-2 backdrop-blur-md transition-all duration-500 ${category.activeBorder}  `}
               >
                 {/* Accordion Header (Clickable) */}
                 <button
                   onClick={() => toggleSection(category.id)}
-                  className="w-full flex items-center justify-between p-4 md:p-4 text-left focus:outline-none"
+                  className="w-full flex items-center justify-between p-3 md:p-4 text-left focus:outline-none"
                 >
-                  <div className="flex items-center gap-4 md:gap-5">
+                  <div className="flex items-center gap-2 md:gap-5">
                     <div
                       className={`
-                      w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 shadow-lg
-                     bg-gradient-to-br ${category.theme} text-white
-                    `}
+                      w-10 h-10 md:w-14 md:h-14 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 shadow-lg  bg-gradient-to-br ${category.theme} text-white `}
                     >
-                      <Icon className="w-6 h-6 md:w-7 md:h-7" />
+                      <Icon className="w-5 h-5 md:w-7 md:h-7" />
                     </div>
                     <div>
                       <h3
-                        className={`text-lg md:text-xl font-bold tracking-wide transition-colors duration-300 ${isOpen ? "text-white" : "text-gray-200"}`}
+                        className={`text-md md:text-xl font-bold tracking-wide transition-colors duration-300 ${isOpen ? "text-white" : "text-gray-200"}`}
                       >
                         {category.categoryEn}
                       </h3>
@@ -341,15 +339,15 @@ export default function SoftSkills() {
 
                   <div className="flex items-center gap-4 shrink-0">
                     <div
-                      className={`flex items-center justify-center px-3 py-1 rounded-full border transition-all duration-300 ${category.activeBorder} ${category.activeBg} ${category.textColor} `}
+                      className={`hidden sm:flex items-center justify-center px-1 md:px-3 md:py-1 rounded-full border transition-all duration-300 ${category.activeBorder} ${category.activeBg} ${category.textColor} `}
                     >
-                      <span className="text-xs font-bold">
+                      <span className="text-[10px] md:text-xs font-bold">
                         {category.count} Skills
                       </span>
                     </div>
                     <div
                       className={`
-                      w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500
+                      w-5 md:w-8 h-5 md:h-8 rounded-full flex items-center justify-center transition-all duration-500
                       ${isOpen ? `bg-gradient-to-br ${category.theme} text-white rotate-180` : "bg-white/10 text-gray-400"}
                     `}
                     >
@@ -367,32 +365,34 @@ export default function SoftSkills() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="p-4 md:p-6 pt-0">
-                      {/* Background Glow inside open content */}
+                    <div className="p-3 md:p-6 pt-0 relative">
+                      {/* Deep Background Glow inside open content for extreme focus */}
                       <div
-                        className={`absolute top-1/2 right-0 w-64 h-64 bg-gradient-to-br ${category.theme} blur-[100px] opacity-15 pointer-events-none`}
+                        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br ${category.theme} blur-[120px] opacity-10 pointer-events-none`}
                       ></div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 relative z-10">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 relative z-10">
                         {category.skills.map((skill, index) => (
                           <div
                             key={index}
-                            className={`
-                              flex items-start gap-3 p-4 rounded-xl transition-all duration-300
-                              bg-black/20 border border-white/5 hover:border-white/10 hover:bg-white/[0.04]
-                            `}
+                            className="group/card relative flex items-start gap-4 p-3 md:p-5 rounded-lg md:rounded-2xl transition-all duration-300 bg-black/40 border border-white/10 hover:border-white/30 hover:shadow-2xl hover:-translate-y-1 overflow-hidden"
                           >
-                            <CheckCircle2
-                              size={18}
-                              className={`${category.textColor} mt-0.5 shrink-0 opacity-80`}
-                            />
-                            <div>
-                              <h4 className="text-gray-200 font-bold text-sm md:text-lg mb-1 leading-snug">
-                                {skill.en}
-                              </h4>
-                              <p className="text-gray-400 text-xs md:text-sm font-medium leading-relaxed">
-                                {skill.bn}
-                              </p>
+                            {/* Hover Active Background Tint */}
+                            <div className={`absolute inset-0 bg-gradient-to-br ${category.theme} opacity-0 group-hover/card:opacity-10 transition-opacity duration-300 pointer-events-none`}></div>
+                            
+                            <div className="relative z-10 flex gap-3 w-full">
+                              <CheckCircle2
+                                size={22}
+                                className={`${category.textColor} mt-0.5 shrink-0 opacity-90 drop-shadow-[0_0_8px_currentColor] transition-transform duration-300 group-hover/card:scale-110`}
+                              />
+                              <div>
+                                <h4 className="text-gray-100 font-bold text-sm md:text-[15px] mb-1.5 leading-snug group-hover/card:text-white transition-colors duration-300">
+                                  {skill.en}
+                                </h4>
+                                <p className="text-gray-400 text-xs md:text-sm font-medium leading-relaxed group-hover/card:text-gray-300 transition-colors duration-300">
+                                  {skill.bn}
+                                </p>
+                              </div>
                             </div>
                           </div>
                         ))}
