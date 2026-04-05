@@ -311,7 +311,7 @@ export default function SoftSkills() {
                 key={category.id}
                 className={`relative overflow-hidden rounded-lg md:rounded-[1rem] border-2 backdrop-blur-md transition-all duration-500 ${category.activeBorder}  `}
               >
-                {/* Accordion Header (Clickable) */}
+               
                 <button
                   onClick={() => toggleSection(category.id)}
                   className="w-full flex items-center justify-between p-3 md:p-4 text-left focus:outline-none"
