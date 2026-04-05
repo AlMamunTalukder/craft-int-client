@@ -293,7 +293,12 @@ export default function SoftSkills() {
             SKILLS
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed">
-            একজন পরিপূর্ণ ও সফল মানুষ হিসেবে নিজেকে গড়ে তোলার জন্য আমাদের এই বিশেষ কারিকুলামে রয়েছে <span className="text-white font-bold">৯টি ক্যাটাগরিতে সর্বমোট ৭৫টি</span> জীবনমুখী ও প্রোফেশনাল দক্ষতা।
+            একজন পরিপূর্ণ ও সফল মানুষ হিসেবে নিজেকে গড়ে তোলার জন্য আমাদের এই
+            বিশেষ কারিকুলামে রয়েছে{" "}
+            <span className="text-white font-bold">
+              ৯টি ক্যাটাগরিতে সর্বমোট ৭৫টি
+            </span>{" "}
+            জীবনমুখী ও প্রোফেশনাল দক্ষতা।
           </p>
 
           <div className="w-24 h-1.5 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] mx-auto rounded-full mt-8 shadow-lg shadow-purple-500/30"></div>
@@ -307,12 +312,12 @@ export default function SoftSkills() {
             return (
               <div
                 key={category.id}
-                className={`relative overflow-hidden rounded-lg md:rounded-[1rem] border-2 backdrop-blur-md transition-all duration-500 ${category.activeBorder}  `}
+                className={`relative overflow-hidden rounded-lg md:rounded-[1rem] border-2 backdrop-blur-md transition-all duration-500 ${isOpen ? `${category.activeBorder} bg-[#0A0214]/50 shadow-2xl` : 'border-white/5 bg-[#0A0214]/50  hover:bg-white/[0.05]'}
+                `}
               >
-               
                 <button
                   onClick={() => toggleSection(category.id)}
-                  className="w-full flex items-center justify-between p-3 md:p-4 text-left focus:outline-none"
+                  className="w-full flex items-center justify-between p-2 md:p-4 text-left focus:outline-none"
                 >
                   <div className="flex items-center gap-2 md:gap-5">
                     <div
@@ -376,8 +381,10 @@ export default function SoftSkills() {
                             className="group/card relative flex items-start gap-4 p-3 md:p-5 rounded-lg md:rounded-2xl transition-all duration-300 bg-black/40 border border-white/10 hover:border-white/30 hover:shadow-2xl hover:-translate-y-1 overflow-hidden"
                           >
                             {/* Hover Active Background Tint */}
-                            <div className={`absolute inset-0 bg-gradient-to-br ${category.theme} opacity-0 group-hover/card:opacity-10 transition-opacity duration-300 pointer-events-none`}></div>
-                            
+                            <div
+                              className={`absolute inset-0 bg-gradient-to-br ${category.theme} opacity-0 group-hover/card:opacity-10 transition-opacity duration-300 pointer-events-none`}
+                            ></div>
+
                             <div className="relative z-10 flex gap-3 w-full">
                               <CheckCircle2
                                 size={22}
