@@ -255,7 +255,7 @@ export default function SoftSkills() {
   return (
     <section
       id="soft-skills"
-      className="relative py-24 bg-[#2c154c] overflow-hidden"
+      className="relative py-24 bg-[#381b5f] overflow-hidden"
     >
       {/* Background Effects (Matching other pages) */}
       <div className="absolute inset-0 pointer-events-none">
@@ -293,7 +293,9 @@ export default function SoftSkills() {
             SKILLS
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed">
-            একজন পরিপূর্ণ ও সফল মানুষ হিসেবে নিজেকে গড়ে তোলার জন্য আমাদের এই বিশেষ কারিকুলামে রয়েছে <span className="text-white font-bold">৯টি ক্যাটাগরিতে সর্বমোট ৭৫টি</span> জীবনমুখী ও প্রোফেশনাল দক্ষতা।
+            আমাদের শিক্ষার্থীদের জন্য প্রয়োজনীয় জীবনমুখী দক্ষতা ও নৈতিক শিক্ষার
+            এক অনন্য সমন্বয়, যা তাদের ভবিষ্যৎ জীবনের প্রতিটি পদক্ষেপে এগিয়ে
+            রাখবে।
           </p>
 
           <div className="w-24 h-1.5 bg-gradient-to-r from-[#4F0187] to-[#8A2BE2] mx-auto rounded-full mt-8 shadow-lg shadow-purple-500/30"></div>
@@ -307,17 +309,19 @@ export default function SoftSkills() {
             return (
               <div
                 key={category.id}
-                className={`relative overflow-hidden rounded-lg md:rounded-[1rem] border backdrop-blur-md transition-all duration-500 ${isOpen ? `${category.activeBorder} bg-[#0A0214]/30 shadow-2xl` : "border-purple-400 bg-[#3f186c] hover:bg-white/[0.05]"}
-                `}
+                className={`relative overflow-hidden rounded-[1rem] border-2 backdrop-blur-md transition-all duration-500 ${category.activeBorder}  `}
               >
                 {/* Accordion Header (Clickable) */}
                 <button
                   onClick={() => toggleSection(category.id)}
-                  className="w-full flex items-center justify-between p-2 md:p-4 mb-2 md:mb-0 text-left focus:outline-none"
+                  className="w-full flex items-center justify-between p-4 md:p-4 text-left focus:outline-none"
                 >
-                  <div className="flex items-center gap-3 md:gap-5">
+                  <div className="flex items-center gap-4 md:gap-5">
                     <div
-                      className={`w-12 h-12 md:w-14 md:h-14 rounded-lg md:rounded-xl  flex items-center justify-center shrink-0 transition-all duration-500 shadow-lg bg-gradient-to-br ${category.theme} text-white`}
+                      className={`
+                      w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 shadow-lg
+                     bg-gradient-to-br ${category.theme} text-white
+                    `}
                     >
                       <Icon className="w-6 h-6 md:w-7 md:h-7" />
                     </div>
@@ -328,7 +332,7 @@ export default function SoftSkills() {
                         {category.categoryEn}
                       </h3>
                       <p
-                        className={`text-xs md:text-sm mt-1 transition-colors duration-300 ${isOpen ? category.textColor : "text-gray-400"}`}
+                        className={`text-xs md:text-sm mt-1 transition-colors duration-300 ${isOpen ? category.textColor : "text-gray-500"}`}
                       >
                         {category.categoryBn}
                       </p>
@@ -337,7 +341,7 @@ export default function SoftSkills() {
 
                   <div className="flex items-center gap-4 shrink-0">
                     <div
-                      className={`flex items-center justify-center px-3 py-1 rounded-full border transition-all duration-300 ${category.activeBorder} ${category.activeBg} ${category.textColor}`}
+                      className={`flex items-center justify-center px-3 py-1 rounded-full border transition-all duration-300 ${category.activeBorder} ${category.activeBg} ${category.textColor} `}
                     >
                       <span className="text-xs font-bold">
                         {category.count} Skills
@@ -363,19 +367,19 @@ export default function SoftSkills() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="p-2 md:p-6 pt-0">
+                    <div className="p-4 md:p-6 pt-0">
                       {/* Background Glow inside open content */}
                       <div
-                        className={`absolute top-1/2 right-0 w-64 h-64 bg-gradient-to-br ${category.theme} blur-[100px] opacity-10 pointer-events-none`}
+                        className={`absolute top-1/2 right-0 w-64 h-64 bg-gradient-to-br ${category.theme} blur-[100px] opacity-15 pointer-events-none`}
                       ></div>
 
-                      <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 relative z-10">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 relative z-10">
                         {category.skills.map((skill, index) => (
                           <div
                             key={index}
                             className={`
-                              flex items-start gap-1.5 md:gap-3 p-1 md:p-4 rounded-lg md:rounded-xl transition-all duration-300
-                              bg-black/10 border border-gray-500 hover:border-white/10 hover:bg-white/[0.04]
+                              flex items-start gap-3 p-4 rounded-xl transition-all duration-300
+                              bg-black/20 border border-white/5 hover:border-white/10 hover:bg-white/[0.04]
                             `}
                           >
                             <CheckCircle2
@@ -383,10 +387,10 @@ export default function SoftSkills() {
                               className={`${category.textColor} mt-0.5 shrink-0 opacity-80`}
                             />
                             <div>
-                              <h4 className="text-gray-200 font-bold text-sm mb-1 leading-snug">
+                              <h4 className="text-gray-200 font-bold text-sm md:text-lg mb-1 leading-snug">
                                 {skill.en}
                               </h4>
-                              <p className="text-gray-400 text-xs font-medium leading-relaxed">
+                              <p className="text-gray-400 text-xs md:text-sm font-medium leading-relaxed">
                                 {skill.bn}
                               </p>
                             </div>
