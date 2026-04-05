@@ -72,12 +72,9 @@ const Login = () => {
       {/* --- Abstract Background Effects --- */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Top Left Purple Glow */}
-        <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-[#4F0187] opacity-20 rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-[#9617f1] opacity-20 rounded-full blur-[120px] "/>
         {/* Bottom Right Pink Glow */}
-        <div
-          className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-[#F300E7] opacity-10 rounded-full blur-[120px] animate-pulse"
-          style={{ animationDelay: "1s" }}
-        ></div>
+        <div className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-[#f504e9] opacity-15 rounded-full blur-[120px] "/>
         {/* Subtle Grid */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px]"></div>
       </div>
@@ -124,7 +121,7 @@ const Login = () => {
             {/* Password Field */}
             <div className="space-y-2">
               <label className="text-gray-300 text-sm font-semibold ml-1">
-                পাসওয়ার্ড
+                পাসওয়ার্ড (CIIStudent123)
               </label>
               <div className="relative group/input">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -154,14 +151,14 @@ const Login = () => {
             </div>
 
             {/* Forgot Password Link */}
-            <div className="flex justify-end">
+            {/* <div className="flex justify-end">
               <a
                 href="#"
                 className="text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors hover:underline underline-offset-4"
               >
                 পাসওয়ার্ড ভুলে গেছেন?
               </a>
-            </div>
+            </div> */}
 
             <button
               type="submit"
