@@ -455,15 +455,7 @@ export const generatePDFFromData = async (
           </div>
         </div>
 
-        <!-- Academic Info -->
-        <div class="section">
-          <div class="section-title">পূর্ববর্তী একাডেমিক তথ্য</div>
-          <div class="grid-3">
-            <div class="field"><span class="label">পূর্ববর্তী প্রতিষ্ঠান</span><div class="value">${formData.PrevSchool || "-"}</div></div>
-            <div class="field"><span class="label">পূর্ববর্তী শ্রেণি</span><div class="value">${formData.PrevClass || "-"}</div></div>
-            <div class="field"><span class="label">সর্বশেষ জিপিএ</span><div class="value">${formData.GPA || "-"}</div></div>
-          </div>
-        </div>
+      
 
         <!-- Parent Info -->
         <div class="section">
@@ -492,6 +484,17 @@ export const generatePDFFromData = async (
             ${formData.guardianAddress ? `<div class="mt-1"><span style="font-size:9px;">ঠিকানা: ${formData.guardianAddress}</span></div>` : ""}
           </div>
           ` : ""}
+        </div>
+
+
+          <!-- Academic Info -->
+        <div class="section">
+          <div class="section-title">পূর্ববর্তী একাডেমিক তথ্য</div>
+          <div class="grid-3">
+            <div class="field"><span class="label">পূর্ববর্তী প্রতিষ্ঠান</span><div class="value">${formData.PrevSchool || "-"}</div></div>
+            <div class="field"><span class="label">পূর্ববর্তী শ্রেণি</span><div class="value">${formData.PrevClass || "-"}</div></div>
+            <div class="field"><span class="label">সর্বশেষ জিপিএ</span><div class="value">${formData.GPA || "-"}</div></div>
+          </div>
         </div>
 
         <!-- Family Environment -->
