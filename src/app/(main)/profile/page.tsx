@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
@@ -180,7 +181,7 @@ const UserProfilePage = () => {
   const fetchStudentData = async () => {
     try {
       setIsLoading(true);
-      
+
       // Get user from localStorage
       const userStr = localStorage.getItem("user");
       if (!userStr) {
@@ -190,7 +191,7 @@ const UserProfilePage = () => {
       }
 
       const user = JSON.parse(userStr);
-      
+
       // Fetch student data using userId
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/student/by-user/${user.userId}`,
@@ -208,10 +209,10 @@ const UserProfilePage = () => {
       }
 
       const result = await response.json();
-      
+
       if (result.success && result.data) {
         setStudentData(result.data);
-        
+
         // Fetch fees and convert to due payments
         if (result.data.fees && result.data.fees.length > 0) {
           const payments = result.data.fees.map((fee: any, index: number) => ({
@@ -243,7 +244,7 @@ const UserProfilePage = () => {
         method: "POST",
         credentials: "include",
       });
-      
+
       localStorage.removeItem("user");
       toast.success("Logged out successfully");
       router.push("/login");
@@ -313,12 +314,12 @@ const UserProfilePage = () => {
   }
 
   // Get class name
-  const className = studentData.className && studentData.className.length > 0 
+  const className = studentData.className && studentData.className.length > 0
     ? (studentData.className[0] as any)?.className || "N/A"
     : "N/A";
-  
-  const section = studentData.section && studentData.section.length > 0 
-    ? studentData.section[0] 
+
+  const section = studentData.section && studentData.section.length > 0
+    ? studentData.section[0]
     : "N/A";
 
   return (
@@ -366,9 +367,8 @@ const UserProfilePage = () => {
       <div className="flex">
         {/* Desktop Sidebar */}
         <aside
-          className={`hidden lg:block bg-white border-r border-gray-200 transition-all duration-300 ${
-            sidebarOpen ? "w-72" : "w-20"
-          }`}
+          className={`hidden lg:block bg-white border-r border-gray-200 transition-all duration-300 ${sidebarOpen ? "w-72" : "w-20"
+            }`}
         >
           <DesktopSidebar
             studentData={studentData}
@@ -389,10 +389,10 @@ const UserProfilePage = () => {
                 {sidebarOpen ? <PanelLeftClose size={20} /> : <PanelLeftOpen size={20} />}
               </Button>
               <h1 className="text-xl font-bold text-gray-900">
-                {activeTab === "profile" ? "Profile" : 
-                 activeTab === "attendance" ? "Attendance" :
-                 activeTab === "due" ? "Due Payments" :
-                 activeTab === "reports" ? "Reports" : "Settings"}
+                {activeTab === "profile" ? "Profile" :
+                  activeTab === "attendance" ? "Attendance" :
+                    activeTab === "due" ? "Due Payments" :
+                      activeTab === "reports" ? "Reports" : "Settings"}
               </h1>
             </div>
             <div className="flex items-center gap-4">
@@ -547,11 +547,10 @@ const DesktopSidebar = ({ studentData, activeTab, setActiveTab, sidebarOpen, set
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all ${
-                isActive
+              className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all ${isActive
                   ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg"
                   : "text-gray-700 hover:bg-purple-50"
-              } ${!sidebarOpen && "justify-center"}`}
+                } ${!sidebarOpen && "justify-center"}`}
             >
               <Icon size={20} className={isActive ? "text-white" : "text-gray-500"} />
               {sidebarOpen && <span className="font-medium">{item.label}</span>}
@@ -564,9 +563,8 @@ const DesktopSidebar = ({ studentData, activeTab, setActiveTab, sidebarOpen, set
       <div className="p-4 border-t border-gray-100">
         <button
           onClick={handleLogout}
-          className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl text-gray-700 hover:bg-red-50 transition-all ${
-            !sidebarOpen && "justify-center"
-          }`}
+          className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl text-gray-700 hover:bg-red-50 transition-all ${!sidebarOpen && "justify-center"
+            }`}
         >
           <LogOut size={20} className="text-gray-500" />
           {sidebarOpen && <span className="font-medium">Logout</span>}
@@ -632,11 +630,10 @@ const MobileSidebar = ({ studentData, activeTab, setActiveTab, setMobileMenuOpen
                 setActiveTab(item.id);
                 setMobileMenuOpen(false);
               }}
-              className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all ${
-                isActive
+              className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl transition-all ${isActive
                   ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg"
                   : "text-gray-700 hover:bg-purple-50"
-              }`}
+                }`}
             >
               <Icon size={20} className={isActive ? "text-white" : "text-gray-500"} />
               <span className="font-medium">{item.label}</span>
@@ -658,12 +655,12 @@ const MobileSidebar = ({ studentData, activeTab, setActiveTab, setMobileMenuOpen
 // Profile Content Component
 const ProfileContent = ({ studentData }: { studentData: StudentData }) => {
   // Get class name
-  const className = studentData.className && studentData.className.length > 0 
+  const className = studentData.className && studentData.className.length > 0
     ? (studentData.className[0] as any)?.className || "N/A"
     : "N/A";
-  
-  const section = studentData.section && studentData.section.length > 0 
-    ? studentData.section[0] 
+
+  const section = studentData.section && studentData.section.length > 0
+    ? studentData.section[0]
     : "N/A";
 
   // Format date
@@ -1328,7 +1325,7 @@ export default UserProfilePage;
 //   Search,
 //   Filter,
 //   DownloadCloud,
-//   Share2,  
+//   Share2,
 //   CalendarDays,
 //   Clock3,
 //   CheckCheck,
