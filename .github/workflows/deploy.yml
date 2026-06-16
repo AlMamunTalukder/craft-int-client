@@ -15,13 +15,26 @@ jobs:
       - name: Install SSH Client
         run: sudo apt-get update && sudo apt-get install -y openssh-client
 
+      - name: Validate SSH settings and connectivity
+        env:
+          SSH_HOST: ${{ secrets.HOST }}
+          SSH_PORT: ${{ secrets.PORT || 22 }}
+        run: |
+          if [ -z "$SSH_HOST" ]; then
+            echo "HOST secret is missing."
+            exit 1
+          fi
+
+          sudo apt-get update && sudo apt-get install -y netcat-openbsd
+          nc -vz -w 10 "$SSH_HOST" "$SSH_PORT"
+
       - name: Deploy to VPS using SSH
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
+          port: ${{ secrets.PORT || 22 }}
           script: |
             echo "Starting deployment to VPS..."
 
