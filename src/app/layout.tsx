@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` ${siliguri.className} antialiased`}>
-        {/* <SubHeader /> */}
+
         <Header />
         {children}
         <Toaster />
