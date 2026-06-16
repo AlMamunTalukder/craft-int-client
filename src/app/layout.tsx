@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Hind_Siliguri } from "next/font/google";
-import BackToTop from "../shared/BackToTop/BackToTop";
-import Header from "../shared/Header/Header";
-import Footer from "../shared/Footer/Footer";
+import BackToTop from "./shared/BackToTop/BackToTop";
+import Header from "./shared/Header/Header";
+import Footer from "./shared/Footer/Footer";
 import { Toaster } from "react-hot-toast";
 
 const siliguri = Hind_Siliguri({

@@ -53,7 +53,7 @@ const galleries: ImageGallery[] = [
     image: img5,
   },
   {
-    id: '05',
+    id: '06',
     description:
       'Conference Room',
     image: img6,
