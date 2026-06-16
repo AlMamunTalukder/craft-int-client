@@ -126,7 +126,7 @@ const ImageGallery = () => {
 
                         <DialogTitle className="p-2">{galleries[index].description}</DialogTitle>
 
-                        {/* Controls */}
+
                         <Button
                           size="icon"
                           variant="default"
