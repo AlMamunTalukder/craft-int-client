@@ -121,8 +121,30 @@ export const generatePDFFromData = async (
           .check-box { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; border: 1.5px solid #7c3aed; border-radius: 3px; background: #fff; box-sizing: border-box; }
           .doc-title { font-size: 11px; line-height: 1.3; color: #1e1b4b; }
           .pledge-box { margin-top: 8px; background: #f5f3ff; padding: 8px; border-radius: 6px; font-size: 10px; line-height: 1.4; border: 1px dashed #7c3aed; color: #1e1b4b; }
-          .footer-signs { margin-top: 85px; display: flex; justify-content: space-between; align-items: flex-end; }
-          .sign-line { width: 140px; display: flex; align-items: flex-end; justify-content: center; border-top: 1.5px solid #4c1d95; font-size: 11px; font-weight: 600; color: #4c1d95; }
+         
+
+
+           .footer-signs {
+            margin-top: 60px;  /* increased from 50px */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end; /* keep consistent */
+          }
+
+          .sign-line {
+            width: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;  /* push text to the bottom (just above the line) */
+            border-bottom: 1.5px solid #4c1d95;  /* line at the bottom */
+            min-height: 80px;  /* enough space for a signature above the line */
+            font-size: 11px;
+            font-weight: 600;
+            color: #4c1d95;
+            padding-bottom: 4px;  /* small gap between text and line */
+            text-align: center;
+          }
+
           .flex-between { display: flex; justify-content: space-between; align-items: center; }
           .mt-1 { margin-top: 4px; }
           .mt-2 { margin-top: 8px; }
@@ -270,11 +292,12 @@ export const generatePDFFromData = async (
 
 
             <!-- Signatures -->
-            <div class="footer-signs">
-              <div class="sign-line">অভিভাবকের স্বাক্ষর</div>
-              <div class="sign-line">শিক্ষার্থীর স্বাক্ষর</div>
-              <div class="sign-line">পরিচালকের স্বাক্ষর</div>
-            </div>
+              <div class="footer-signs">
+                  <div class="sign-line">অভিভাবকের স্বাক্ষর</div>
+                    <div class="sign-line">শিক্ষার্থীর স্বাক্ষর</div>
+                  <div class="sign-line">পরিচালকের স্বাক্ষর</div>
+              </div>
+
 
 
             <div style="text-align: center; margin-top: 8px; font-size: 8px; color: #94a3b8;">
