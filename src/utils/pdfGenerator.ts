@@ -185,6 +185,7 @@ export const generatePDFFromData = async (
               </div>
             </div>
           </div>
+
           <!-- Main Content -->
           <div class="main-content">
             <div class="main-header">
@@ -194,6 +195,7 @@ export const generatePDFFromData = async (
                 <p style="font-size: 8px; color: #64748b; margin-top: 2px;">প্রিন্ট তারিখ: ${currentDate}</p>
               </div>
             </div>
+
             <!-- Student Info -->
             <div class="section">
               <div class="section-title">শিক্ষার্থীর তথ্য</div>
@@ -201,17 +203,21 @@ export const generatePDFFromData = async (
                 <div class="field"><span class="label">নাম (বাংলা)</span><div class="value">${formData.StudentName || "-"}</div></div>
                 <div class="field"><span class="label">নাম (ইংরেজি)</span><div class="value">${formData.studentName || "-"}</div></div>
               </div>
+
               <div class="grid-3">
                 <div class="field"><span class="label">জন্ম তারিখ</span><div class="value">${formData.dateOfBirth ? new Date(formData.dateOfBirth).toLocaleDateString("bn-BD") : "-"}</div></div>
                 <div class="field"><span class="label">বয়স</span><div class="value">${formData.Age || "-"} বছর</div></div>
                 <div class="field"><span class="label">লিঙ্গ</span><div class="value">${getBengaliValue("gender", formData.gender)}</div></div>
               </div>
+
               <div class="grid-3">
                 <div class="field"><span class="label">এনআইডি/জন্ম নিবন্ধন</span><div class="value">${formData.nidBirth || "-"}</div></div>
                 <div class="field"><span class="label">শ্রেণি</span><div class="value">${formData.Class || "-"}</div></div>
                 <div class="field"><span class="label">বিভাগ</span><div class="value">${getDepartmentDisplay()}</div></div>
               </div>
+
             </div>
+
             <!-- Parent Info -->
             <div class="section">
               <div class="section-title">অভিভাবকের তথ্য</div>
@@ -240,6 +246,7 @@ export const generatePDFFromData = async (
               </div>
               ` : ""}
             </div>
+
             <!-- Academic Info -->
             <div class="section">
               <div class="section-title">পূর্ববর্তী একাডেমিক তথ্য</div>
@@ -249,16 +256,22 @@ export const generatePDFFromData = async (
                 <div class="field"><span class="label">সর্বশেষ জিপিএ</span><div class="value">${formData.GPA || "-"}</div></div>
               </div>
             </div>
+
             <!-- Family Environment -->
             <div class="section">
               <div class="section-title">পারিবারিক পরিবেশ</div>
-              <div class="grid-4">
+              <div class="grid-3">
                 <div class="field"><span class="label">হালাল উপার্জন</span><div class="value">${getBengaliValue("HalalIncome", formData.HalalIncome)}</div></div>
                 <div class="field"><span class="label">পিতা-মাতার নামাজ</span><div class="value">${getBengaliValue("ParentsPrayer", formData.ParentsPrayer)}</div></div>
                 <div class="field"><span class="label">নেশায় আক্রান্ত</span><div class="value">${getBengaliValue("Addiction", formData.Addiction)}</div></div>
-                <div class="field"><span class="label">টেলিভিশন</span><div class="value">${getBengaliValue("TV", formData.TV)}</div></div>
+                
               </div>
+
               <div class="grid-3">
+                <div class="field">
+                <span class="label">টেলিভিশন</span>
+                <div class="value">${getBengaliValue("TV", formData.TV)}</div>
+                </div>
                 <div class="field"><span class="label">কুরআন তিলাওয়াত</span><div class="value">${getBengaliValue("QuranRecitation", formData.QuranRecitation)}</div></div>
                 <div class="field"><span class="label">পর্দা পালন</span><div class="value">${getBengaliValue("Purdah", formData.Purdah)}</div></div>
               </div>
