@@ -368,7 +368,7 @@ export default function AdmissionForm() {
                 />
               </div>
 
-              {/* Animated Separator */}
+         
               <div className="flex items-center justify-center gap-3 md:gap-4 mt-2">
                 <div className="w-16 md:w-32 h-1 bg-gradient-to-r from-transparent to-purple-500 rounded-full opacity-50"></div>
                 <div className="flex gap-2.5">
