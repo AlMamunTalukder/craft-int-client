@@ -125,23 +125,23 @@ export const generatePDFFromData = async (
 
 
            .footer-signs {
-            margin-top: 60px;  /* increased from 50px */
+            margin-top: 80px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end; /* keep consistent */
+            align-items: flex-end;
           }
 
           .sign-line {
             width: 140px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;  /* push text to the bottom (just above the line) */
-            border-bottom: 1.5px solid #4c1d95;  /* line at the bottom */
-            min-height: 80px;  /* enough space for a signature above the line */
+            justify-content: flex-end;
+            border-bottom: 1.5px solid #4c1d95;
+            height: 120px;
             font-size: 11px;
             font-weight: 600;
             color: #4c1d95;
-            padding-bottom: 4px;  /* small gap between text and line */
+            padding-bottom: 6px;
             text-align: center;
           }
 
