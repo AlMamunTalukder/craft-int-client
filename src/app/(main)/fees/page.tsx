@@ -98,9 +98,9 @@ const FeeStructure = () => {
             <span className="text-gray-300 text-lg font-medium tracking-wider">ফি তালিকা </span> 
           </div>
           <h1 className="text-[28px] md:text-6xl font-bold text-white mb-3 md:mb-6">
-            অগ্রিম ভর্তিতে ২৫%{" "}
+            সীমিত আসনে ভর্তি {" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D8B4FE] to-[#A855F7]">
-              ছাড়...!
+              চলছে....!
             </span>
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto md:text-lg">
