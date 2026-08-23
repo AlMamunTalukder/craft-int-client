@@ -49,7 +49,7 @@ const Footer = () => {
                 <div className=" p-3 rounded-lg backdrop-blur-sm inline-block">
                   <Image
                     src={logo}
-                    alt="Craft Institute Logo"
+                    alt="Craft Int. Institute Logo"
                     className="w-[150px] h-auto object-contain brightness-110"
                   />
                 </div>
