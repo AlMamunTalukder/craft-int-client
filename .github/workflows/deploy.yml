@@ -58,15 +58,15 @@ jobs:
             fi
 
             echo "Installing dependencies..."
-            npm install
+            pnpm install
 
             echo "Building Next.js application..."
-            npm run build
+            pnpm run build
 
             # Restart application using PM2
             if command -v pm2 &> /dev/null; then
               echo "Restarting application using PM2..."
-              pm2 restart management-client || pm2 start npm --name "management-client" -- run start
+              pm2 restart management-client || pm2 start pnpm --name "management-client" -- run start
             else
               echo "PM2 not found. Please install it using 'npm install -g pm2'."
               exit 1
