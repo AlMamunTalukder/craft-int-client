@@ -162,7 +162,7 @@ const Footer = () => {
           <Container>
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
               <p>
-                &copy; {currentYear} <span className="text-white font-semibold">Craft Institute</span>. All Rights Reserved.
+                &copy; {currentYear} <span className="text-white font-semibold">Craft International Institute</span>. All Rights Reserved.
               </p>
               <div className="flex gap-6">
                 <Link href="/privacy" className="hover:text-[#8A2BE2] transition-colors">Privacy Policy</Link>
