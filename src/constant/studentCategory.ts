@@ -3,7 +3,7 @@ export const STUDENT_CATEGORIES = [
   { value: "Non-Residential", label: "Non-Residential (অনাবাসিক)" },
   { value: "Day Care", label: "Day Care (ডে কেয়ার)" },
   // { value: "Non-Residential One Meal", label: "Non-Residential One Meal" },
-  // { value: "Residential No Meal", label: "Residential No Meal" },
+  { value: "Residential No Meal", label: "Residential No Meal" },
   // { value: "Day Care One Meal", label: "Day Care One Meal" },
 ] as const;
 
