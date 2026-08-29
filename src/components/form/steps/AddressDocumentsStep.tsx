@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { InputField } from "../InputField";
-import { CheckboxField } from "../CheckboxField";
 import { Switch } from "@/components/ui/switch";
-import { MapPin, MapPinHouse, Building, FileText, Shield, ShieldCheck } from "lucide-react";
+import { MapPin, MapPinHouse, Building, FileText, Shield, ShieldCheck, AlertTriangle, Check } from "lucide-react";
 
 interface AddressDocumentsStepProps {
   formData: Record<string, any>;
@@ -155,9 +154,8 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
       </div>
 
       {/* Documents */}
-      <div className="relative bg-rose-50/90 backdrop-blur-md p-6 md:p-8 rounded-[2rem] border-2 border-rose-300 shadow-lg shadow-rose-500/10 overflow-hidden group mb-8">
-        <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-red-500 via-rose-400 to-red-500 opacity-90"></div>
-        <div className="absolute -top-10 -right-10 w-40 h-40 bg-red-200 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+      <div className="relative bg-rose-50/90 backdrop-blur-md p-3 md:p-8 rounded-2xl md:rounded-[2rem] border-2 border-rose-300 shadow-lg shadow-rose-500/10 overflow-hidden group mb-8">
+        
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
           <div>
@@ -180,51 +178,34 @@ export const AddressDocumentsStep = ({ formData, handleInputChange }: AddressDoc
           </div>
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 bg-white/60 p-5 md:p-6 rounded-2xl border border-rose-100">
-
-          <CheckboxField
-            label="শিক্ষার্থীর পাসপোর্ট সাইজের ৪ কপি রঙিন ছবি (বাধ্যতামূলক)"
-            name="photographs"
-            formData={formData}
-            handleInputChange={handleInputChange}
-            disable
-          />
-          <CheckboxField
-            label=" শিক্ষার্থীর জন্ম নিবন্ধন সনদ (বাধ্যতামূলক)"
-            name="birthCertificate"
-            formData={formData}
-            handleInputChange={handleInputChange}
-            disable
-          />
-          <CheckboxField
-            label="পিতা-মাতার জাতীয় পরিচয়পত্রের ফটোকপি/পাসপোর্টের ফটোকপি (বাধ্যতামূলক)"
-            name="markSheet"
-            formData={formData}
-            handleInputChange={handleInputChange}
-            disable
-          />
-          <CheckboxField
-            label="মার্কশিট"
-            name="markSheet"
-            formData={formData}
-            handleInputChange={handleInputChange}
-            disable
-          />
-          <CheckboxField
-            label="ট্রান্সফার সার্টিফিকেট"
-            name="transferCertificate"
-            formData={formData}
-            handleInputChange={handleInputChange}
-            disable
-          />
-                 
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 bg-white/80 p-1 md:p-6 rounded-2xl border border-rose-100">
+          {[
+            "শিক্ষার্থীর পাসপোর্ট সাইজের ৪ কপি রঙিন ছবি",
+            "শিক্ষার্থীর জন্ম নিবন্ধন সনদ",
+            "পিতা-মাতার জাতীয় পরিচয়পত্রের ফটোকপি / পাসপোর্টের ফটোকপি",
+            "মার্কশিট (প্রযোজ্য ক্ষেত্রে)",
+            "ট্রান্সফার সার্টিফিকেট (প্রযোজ্য ক্ষেত্রে)",
+            "চরিত্র সনদপত্র (প্রযোজ্য ক্ষেত্রে)",
+          ].map((doc) => (
+            <div key={doc} className="flex items-center gap-3 bg-white border border-rose-200 rounded-xl px-4 py-3 shadow-sm">
+              <span className="w-7 h-7 rounded-full bg-rose-600 flex items-center justify-center shrink-0">
+                <Check size={14} className="text-white" />
+              </span>
+              <span className="text-sm font-semibold text-rose-900 leading-tight">{doc}</span>
+              <span className="ml-auto text-[10px] font-bold text-white bg-red-600 px-2 py-0.5 rounded-full shrink-0">আবশ্যক</span>
+            </div>
+          ))}
         </div>
+        <p className="relative z-10 flex items-center gap-2 text-xs font-medium text-rose-700 mt-4 bg-white/70 px-4 py-2 rounded-lg border border-rose-100">
+          <AlertTriangle size={14} className="text-red-600 shrink-0" />
+          প্রদত্ত ডকুমেন্টসমূহ অবশ্যই অফিসে জমাদান বাধ্যতামূলক
+        </p>
       </div>
 
       {/* Terms & Conditions */}
-      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-2xl border border-purple-200">
+      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 p-3 md:p-6 rounded-2xl border border-purple-200">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="md:flex items-center gap-4  ">
             <ShieldCheck size={24} className="text-purple-600" />
             <div>
               <p className="font-bold text-gray-800">অঙ্গীকার নামা:</p>

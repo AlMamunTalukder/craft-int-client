@@ -274,8 +274,9 @@ export default function AdmissionForm() {
         setFormData({});
         setCurrentStep(1);
         setShowFinalPreview(false);
-        const newStudentId = `OA-${Math.floor(100000 + Math.random() * 900000)}`;
-        setGeneratedStudentId(newStudentId);
+        // UPDATED: Use DB applicationId (OA-XXXX) from backend, not random - same ID shown in management pending
+        const backendId = result.data?.applicationId || result.data?.applicationId || `OA-${Math.floor(100000 + Math.random() * 900000)}`;
+        setGeneratedStudentId(backendId);
         setShowSuccessModal(true);
       } else {
         throw new Error(result.message || "Something went wrong");

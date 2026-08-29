@@ -92,6 +92,7 @@ export interface TAdmissionApplication {
   };
   termsAccepted: boolean;
   status: 'pending' | 'approved' | 'rejected';
+  category?: string;
 }
 
 export const mapFormDataToBackend = (formData: Record<string, any>): Partial<TAdmissionApplication> => {
@@ -213,5 +214,6 @@ export const mapFormDataToBackend = (formData: Record<string, any>): Partial<TAd
     termsAccepted: formData.termsAccepted || false,
     
     status: 'pending',
+    category: formData.category || 'Residential',
   };
 };

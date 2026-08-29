@@ -8,6 +8,7 @@ export const generatePDFFromData = async (
   studentId: string,
   options?: { returnHtml?: boolean }
 ): Promise<string | void> => {
+  // UPDATED 2026-08-29: Added category + guardian whatsapp + bottom-pin for signatures/footer
   // ===================== HELPERS =====================
   const currentDate = new Date().toLocaleDateString("bn-BD", {
     year: "numeric",
@@ -213,6 +214,21 @@ export const generatePDFFromData = async (
             padding: 20px 25px;
             background: white;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+          }
+
+          /* UPDATED: content-grow fills available height so bottom-pin stays at bottom */
+          .content-grow {
+            flex: 1;
+          }
+
+          /* UPDATED: bottom-pin only for signatures+footer - 10px lift + 15px bottom margin as requested */
+          .bottom-pin {
+            margin-top: auto;
+            padding-top: 12px;
+            padding-bottom: 10px;
+            transform: translateY(-10px);
           }
 
           .main-header {
@@ -345,9 +361,11 @@ export const generatePDFFromData = async (
             color: #1e1b4b;
           }
 
+         
           /* ===== PLEDGE ===== */
           .pledge-box {
-            margin-top: 8px;
+            margin-top: 35px;
+            margin-bottom: 12px;
             background: #f5f3ff;
             padding: 8px;
             border-radius: 6px;
@@ -357,21 +375,21 @@ export const generatePDFFromData = async (
             color: #1e1b4b;
           }
 
+          /* UPDATED: signatures line margin as requested */
           /* ===== SIGNATURES (with more space) ===== */
-          .footer-signs {
-            margin-top: 80px;
+          .footer-signs {            
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            margin-bottom: 12px;
           }
 
           .sign-line {
-            width: 140px;
+            width: 100px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             border-bottom: 1.5px solid #4c1d95;
-            height: 120px;
+            height: 60px;
             font-size: 11px;
             font-weight: 600;
             color: #4c1d95;
@@ -423,6 +441,11 @@ export const generatePDFFromData = async (
                 <span class="sidebar-label">বিভাগ</span>
                 <span class="sidebar-val">${getDepartmentDisplay()}</span>
               </div>
+              <!-- UPDATED: Added category to sidebar from STUDENT_CATEGORIES -->
+              <div class="sidebar-item">
+                <span class="sidebar-label">ক্যাটাগরি</span>
+                <span class="sidebar-val">${formData.category || "Residential"}</span>
+              </div>
               <div class="sidebar-item">
                 <span class="sidebar-label">সেশন</span>
                 <span class="sidebar-val">${formData.session || new Date().getFullYear()}</span>
@@ -435,7 +458,11 @@ export const generatePDFFromData = async (
                 <span class="sidebar-label">জাতীয়তা</span>
                 <span class="sidebar-val">${formData.nationality || "বাংলাদেশী"}</span>
               </div>
-            </div>
+              <div class="sidebar-item">
+                <span class="sidebar-label">এনআইডি/জন্ম নিবন্ধন</span>
+                <span class="sidebar-val">${formData.nidBirth || "-"}</span>
+              </div>
+            </div>           
 
             <!-- PRESENT ADDRESS -->
             <div class="sidebar-address-box">
@@ -449,9 +476,10 @@ export const generatePDFFromData = async (
               <div class="addr-text">${permanentAddressStr}</div>
             </div>
 
+            <!-- UPDATED: Highlighted documents must be submitted to office -->
             <!-- DOCUMENTS -->
-            <div class="sidebar-address-box">
-              <div class="addr-title">জমাকৃত ডকুমেন্টস</div>
+            <div class="sidebar-address-box" style="border: 1.5px solid #f59e0b; background: #fffbeb;">
+              <div class="addr-title" style="color: #b45309; font-size: 11px;">⚠ প্রদত্ত ডকুমেন্টসমূহ অবশ্যই অফিসে জমাদান করতে হবে</div>
               <div class="doc-list">
                 <div class="doc-item">
                   <div class="check-box"></div>
@@ -496,6 +524,8 @@ export const generatePDFFromData = async (
               </div>
             </div>
 
+            <div class="content-grow">
+
             <!-- ===== STUDENT INFO ===== -->
             <div class="section">
               <div class="section-title">শিক্ষার্থীর তথ্য</div>
@@ -514,7 +544,7 @@ export const generatePDFFromData = async (
                   <span class="label">জন্ম তারিখ</span>
                   <div class="value">${
                     formData.dateOfBirth
-                      ? new Date(formData.dateOfBirth).toLocaleDateString("bn-BD")
+                      ? (() => { const d = new Date(formData.dateOfBirth); return `${String(d.getDate()).padStart(2,"0")}-${String(d.getMonth()+1).padStart(2,"0")}-${d.getFullYear()}` })()
                       : "-"
                   }</div>
                 </div>
@@ -527,20 +557,7 @@ export const generatePDFFromData = async (
                   <div class="value">${getBengaliValue("gender", formData.gender)}</div>
                 </div>
               </div>
-              <div class="grid-3">
-                <div class="field">
-                  <span class="label">এনআইডি/জন্ম নিবন্ধন</span>
-                  <div class="value">${formData.nidBirth || "-"}</div>
-                </div>
-                <div class="field">
-                  <span class="label">শ্রেণি</span>
-                  <div class="value">${formData.Class || "-"}</div>
-                </div>
-                <div class="field">
-                  <span class="label">বিভাগ</span>
-                  <div class="value">${getDepartmentDisplay()}</div>
-                </div>
-              </div>
+              
             </div>
 
             <!-- ===== PARENT INFO ===== -->
@@ -555,6 +572,7 @@ export const generatePDFFromData = async (
                       ${getProfessionDisplay(formData.FatherJob, "father")}
                     </div>
                   </div>
+                   <div class="grid-2">
                   <div class="field">
                     <span class="label">মোবাইল</span>
                     <div class="value" style="border:none; min-height:auto;">
@@ -572,6 +590,7 @@ export const generatePDFFromData = async (
                     </div>`
                       : ""
                   }
+                  </div>
                 </div>
                 <div class="info-card">
                   <strong>মাতা: ${formData.MotherNameBangla || "-"}</strong>
@@ -581,6 +600,8 @@ export const generatePDFFromData = async (
                       ${getProfessionDisplay(formData.MotherJob, "mother")}
                     </div>
                   </div>
+
+                   <div class="grid-2">
                   <div class="field">
                     <span class="label">মোবাইল</span>
                     <div class="value" style="border:none; min-height:auto;">
@@ -598,31 +619,30 @@ export const generatePDFFromData = async (
                     </div>`
                       : ""
                   }
+                  </div>
                 </div>
               </div>
-              ${
-                formData.guardianNameBangla || formData.guardianName
-                  ? `
+              <!-- UPDATED: Guardian always show (not optional) + added whatsapp + handle both flat and nested data -->
               <div class="info-card mt-1">
-                <strong>অভিভাবক: ${formData.guardianNameBangla || formData.guardianName || "-"}</strong>
+                <strong>অভিভাবক: ${formData.guardianNameBangla || formData.guardianName || formData.parentInfo?.guardian?.nameBangla || formData.parentInfo?.guardian?.nameEnglish || "-"}</strong>
                 <div class="flex-between mt-1">
-                  <span style="font-size:10px;">সম্পর্ক: ${formData.guardianRelation || "-"}</span>
-                  <span style="font-size:10px;">মোবাইল: ${formData.guardianMobile || "-"}</span>
+                  <span style="font-size:10px;">সম্পর্ক: ${formData.guardianRelation || formData.parentInfo?.guardian?.relation || "-"}</span>
+                  <span style="font-size:10px;">মোবাইল: ${formData.guardianMobile || formData.parentInfo?.guardian?.mobile || "-"}</span>
+                  <span style="font-size:10px;">হোয়াটসঅ্যাপ: ${formData.guardianWhatsapp || formData.parentInfo?.guardian?.whatsapp || "-"}</span>
                 </div>
-                ${
-                  formData.guardianAddress
-                    ? `<div class="mt-1"><span style="font-size:10px;">ঠিকানা: ${formData.guardianAddress}</span></div>`
-                    : ""
-                }
-              </div>`
-                  : ""
-              }
+                <div class="mt-1"><span style="font-size:10px;">ঠিকানা: ${formData.guardianAddress || formData.parentInfo?.guardian?.address || "-"}</span></div>
+              </div>
             </div>
 
+            <!-- UPDATED: Added category from centralized STUDENT_CATEGORIES (Residential etc.) -->
             <!-- ===== ACADEMIC INFO ===== -->
             <div class="section">
               <div class="section-title">পূর্ববর্তী একাডেমিক তথ্য</div>
-              <div class="grid-3">
+              <div class="grid-4">
+                <div class="field">
+                  <span class="label">একাডেমিক ক্যাটাগরি</span>
+                  <div class="value">${formData.category || formData.Category || "-"}</div>
+                </div>
                 <div class="field">
                   <span class="label">পূর্ববর্তী প্রতিষ্ঠান</span>
                   <div class="value">${formData.PrevSchool || "-"}</div>
@@ -727,7 +747,9 @@ export const generatePDFFromData = async (
             </div>`
                 : ""
             }
+            </div> <!-- end content-grow -->
 
+            <div class="bottom-pin">
             <!-- ===== SIGNATURES ===== -->
             <div class="footer-signs">
               <div class="sign-line">অভিভাবকের স্বাক্ষর</div>
@@ -739,6 +761,7 @@ export const generatePDFFromData = async (
             <div style="text-align: center; margin-top: 8px; font-size: 8px; color: #94a3b8;">
               এই ফর্মটি কম্পিউটার দ্বারা জেনারেট করা হয়েছে - স্বাক্ষর আবশ্যক
             </div>
+            </div> 
           </div>
         </div>
       </body>
@@ -799,6 +822,7 @@ export const generatePDFFromData = async (
     });
     const imgWidth = 210;
     const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    // UPDATED: Single page only - removed 2nd page loop as requested (always show 1 page)
     pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
     pdf.save(`admission-form-${studentId}.pdf`);
   } catch (error) {

@@ -12,10 +12,12 @@ import {
   Heart,
   Globe,
   Camera,
+  Home
 } from "lucide-react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { academicClasses, hifzClasses } from "@/lib/types";
+import { STUDENT_CATEGORIES } from "@/constant/studentCategory";
 
 interface StudentInfoStepProps {
   formData: Record<string, any>;
@@ -125,9 +127,9 @@ export const StudentInfoStep = ({
         {/* Student Details Grid */}
         <div className="lg:col-span-8">
           <div className="bg-white/80 p-3 md:p-6 rounded-2xl border-2 border-purple-100 shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {/* Name Fields - Full width */}
-              <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-5">
+              {/* <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-5"> */}
                 <InputField
                   label="শিক্ষার্থীর নাম (বাংলা)"
                   name="StudentName"
@@ -147,10 +149,10 @@ export const StudentInfoStep = ({
                   handleInputChange={handleInputChange}
                   validation="english"
                 />
-              </div>
+              {/* </div> */}
 
               
-              <div className="md:col-span-4">
+              {/* <div className="md:col-span-4"> */}
                 <InputField
                   label="জন্ম তারিখ"
                   name="dateOfBirth"
@@ -159,9 +161,9 @@ export const StudentInfoStep = ({
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-              </div>
+              {/* </div> */}
 
-              <div className="md:col-span-4">
+              {/* <div className="md:col-span-4"> */}
                 <InputField
                   label="বয়স"
                   name="Age"
@@ -171,9 +173,9 @@ export const StudentInfoStep = ({
                   handleInputChange={handleInputChange}
                   disabled
                 />
-              </div>
+              {/* </div> */}
 
-              <div className="md:col-span-4">
+              {/* <div className="md:col-span-4"> */}
                 <SelectField
                   label="লিঙ্গ"
                   name="gender"
@@ -187,10 +189,10 @@ export const StudentInfoStep = ({
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-              </div>
+              {/* </div> */}
 
               {/* Department and Class */}
-              <div className="md:col-span-6">
+              {/* <div className="md:col-span-6"> */}
                 <SelectField
                   label="বিভাগ"
                   name="studentDepartment"
@@ -201,9 +203,9 @@ export const StudentInfoStep = ({
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-              </div>
+              {/* </div> */}
 
-              <div className="md:col-span-6">
+              {/* <div className="md:col-span-6"> */}
                 <SelectField
                   label="যে শ্রেণিতে ভর্তি হতে আগ্রহী"
                   name="Class"
@@ -218,10 +220,20 @@ export const StudentInfoStep = ({
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-              </div>
+              {/* </div> */}
 
               {/* Session, NID/Birth, Blood Group, Nationality */}
-              <div className="md:col-span-6">
+              {/* <div className="md:col-span-6"> */}
+                <SelectField
+                  // width="md:col-span-3"
+                    label="একাডেমিক ক্যাটাগরি"
+                    name="category"
+                    options={STUDENT_CATEGORIES.map((c) => ({ value: c.value, label: c.label }))}
+                    placeholder="ক্যাটাগরি নির্বাচন করুন"
+                    icon={Home}
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                  />
                 <InputField
                   label="সেশন"
                   name="session"
@@ -230,9 +242,9 @@ export const StudentInfoStep = ({
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-              </div>
+              {/* </div> */}
 
-              <div className="md:col-span-6">
+              {/* <div className="md:col-span-6"> */}
                 <InputField
                   label="জাতীয় পরিচয়পত্র/জন্ম নিবন্ধন নম্বর"
                   name="nidBirth"
@@ -241,9 +253,9 @@ export const StudentInfoStep = ({
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-              </div>
+              {/* </div> */}
 
-              <div className="md:col-span-6">
+              {/* <div className="md:col-span-6"> */}
                 <SelectField
                   label="রক্তের গ্রুপ"
                   name="bloodGroup"
@@ -253,9 +265,9 @@ export const StudentInfoStep = ({
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-              </div>
+              {/* </div> */}
 
-              <div className="md:col-span-6">
+              {/* <div className="md:col-span-6"> */}
                 <InputField
                   label="জাতীয়তা"
                   name="nationality"
@@ -264,7 +276,7 @@ export const StudentInfoStep = ({
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-              </div>
+              {/* </div> */}
             </div>
           </div>
         </div>

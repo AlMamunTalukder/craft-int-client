@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { InputField } from "../InputField";
+import { SelectField } from "../SelectField";
 import { School, BookOpen, Star} from "lucide-react";
+
 
 interface AcademicInfoStepProps {
   formData: Record<string, any>;
@@ -22,12 +24,14 @@ export const AcademicInfoStep = ({
         <div className="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-700">
           <School size={20} />
         </div>
-        পূর্ববর্তী একাডেমিক তথ্য
+        পূর্ববর্তী একাডেমিক তথ্য 
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+
         <InputField
-          width="md:col-span-5"
+          // width="md:col-span-5"
           label="পূর্ববর্তী প্রতিষ্ঠানের নাম"
           name="PrevSchool"
           placeholder="পূর্ববর্তী প্রতিষ্ঠানের নাম"
@@ -37,7 +41,7 @@ export const AcademicInfoStep = ({
         />
 
         <InputField
-          width="md:col-span-4"
+          // width="md:col-span-4"
           label="পূর্ববর্তী অধ্যয়নকৃত শ্রেণি"
           name="PrevClass"
           placeholder="পূর্ববর্তী অধ্যয়নকৃত শ্রেণি"
@@ -47,7 +51,7 @@ export const AcademicInfoStep = ({
         />
 
         <InputField
-          width="md:col-span-3"
+          // width="md:col-span-3"
           label="সর্বশেষ জিপিএ (GPA)"
           name="GPA"
           placeholder="প্রাপ্ত জিপিএ"

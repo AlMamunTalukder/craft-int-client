@@ -51,8 +51,13 @@ export const FinalPreview = ({
             <p className="font-medium">{formData.studentDepartment || "—"}</p>
           </div>
           <div>
-            <p className="text-sm text-gray-500">আগ্রহী শ্রেণি</p>
+            <p className="text-sm text-gray-500">শ্রেণি</p>
             <p className="font-medium">{formData.Class || "—"}</p>
+          </div>
+
+          <div>
+            <p className="text-sm text-gray-500">একাডেমিক ক্যাটাগরি</p>
+            <p className="font-medium">{formData.category || "—"}</p>
           </div>
           <div>
             <p className="text-sm text-gray-500">সেশন</p>
@@ -79,6 +84,7 @@ export const FinalPreview = ({
           <CardTitle className="text-indigo-700">পূর্ববর্তী একাডেমিক তথ্য</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+          
           <div>
             <p className="text-sm text-gray-500">পূর্ববর্তী প্রতিষ্ঠান</p>
             <p className="font-medium">{formData.PrevSchool || "—"}</p>
@@ -160,42 +166,40 @@ export const FinalPreview = ({
             </div>
           </div>
 
-          {/* Guardian Information (if provided) */}
-          {(formData.guardianNameBangla || formData.guardianName) && (
-            <div className="border-b pb-3">
-              <h4 className="font-bold text-amber-700 mb-2">অভিভাবক (পিতা-মাতা ব্যতীত)</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div>
-                  <p className="text-sm text-gray-500">নাম (বাংলা)</p>
-                  <p className="font-medium">{formData.guardianNameBangla || "—"}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Name (English)</p>
-                  <p className="font-medium">{formData.guardianName || "—"}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">সম্পর্ক</p>
-                  <p className="font-medium">{formData.guardianRelation || "—"}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">পেশা</p>
-                  <p className="font-medium">{formData.guardianJob || "—"}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">মোবাইল</p>
-                  <p className="font-medium">{formData.guardianMobile || "—"}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">WhatsApp</p>
-                  <p className="font-medium">{formData.guardianWhatsapp || "—"}</p>
-                </div>
-                <div className="lg:col-span-4">
-                  <p className="text-sm text-gray-500">ঠিকানা</p>
-                  <p className="font-medium">{formData.guardianAddress || "—"}</p>
-                </div>
+          {/* Guardian Information - always show */}
+          <div className="border-b pb-3">
+            <h4 className="font-bold text-amber-700 mb-2">অভিভাবক (পিতা-মাতা ব্যতীত)</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <p className="text-sm text-gray-500">নাম (বাংলা)</p>
+                <p className="font-medium">{formData.guardianNameBangla || "—"}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Name (English)</p>
+                <p className="font-medium">{formData.guardianName || "—"}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">সম্পর্ক</p>
+                <p className="font-medium">{formData.guardianRelation || "—"}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">পেশা</p>
+                <p className="font-medium">{formData.guardianJob || "—"}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">মোবাইল</p>
+                <p className="font-medium">{formData.guardianMobile || "—"}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">WhatsApp</p>
+                <p className="font-medium">{formData.guardianWhatsapp || "—"}</p>
+              </div>
+              <div className="lg:col-span-4">
+                <p className="text-sm text-gray-500">ঠিকানা</p>
+                <p className="font-medium">{formData.guardianAddress || "—"}</p>
               </div>
             </div>
-          )}
+          </div>
         </CardContent>
       </Card>
 
@@ -440,23 +444,20 @@ export const FinalPreview = ({
           </div>
 
           <div className="border-t pt-4">
-            <h4 className="font-bold text-gray-700 mb-2">প্রদত্ত ডকুমেন্টসমূহ</h4>
-            <div className="flex flex-wrap gap-2">
-              {formData.photographs && (
-                <Badge className="bg-green-100 text-green-700">ছবি</Badge>
-              )}
-              {formData.birthCertificate && (
-                <Badge className="bg-green-100 text-green-700">জন্ম নিবন্ধন</Badge>
-              )}
-              {formData.markSheet && (
-                <Badge className="bg-green-100 text-green-700">মার্কশিট</Badge>
-              )}
-              {formData.transferCertificate && (
-                <Badge className="bg-green-100 text-green-700">ট্রান্সফার সার্টিফিকেট</Badge>
-              )}
-              {formData.characterCertificate && (
-                <Badge className="bg-green-100 text-green-700">চরিত্র সনদপত্র</Badge>
-              )}
+            <div className="bg-amber-50 border-2 border-amber-400 rounded-xl p-4">
+              <h4 className="font-bold text-amber-800 mb-2 flex items-center gap-2">
+                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                প্রদত্ত ডকুমেন্টসমূহ অবশ্যই অফিসে জমাদান করতে হবে
+              </h4>
+              <div className="flex flex-wrap gap-2 mt-3">
+                <Badge className="bg-white border border-amber-300 text-amber-700 px-3 py-1">ছবি (৪ কপি)</Badge>
+                <Badge className="bg-white border border-amber-300 text-amber-700 px-3 py-1">জন্ম নিবন্ধন সনদ</Badge>
+                <Badge className="bg-white border border-amber-300 text-amber-700 px-3 py-1">মার্কশিট</Badge>
+                <Badge className="bg-white border border-amber-300 text-amber-700 px-3 py-1">ট্রান্সফার সার্টিফিকেট</Badge>
+                <Badge className="bg-white border border-amber-300 text-amber-700 px-3 py-1">চরিত্র সনদপত্র</Badge>
+                <Badge className="bg-white border border-amber-300 text-amber-700 px-3 py-1">পিতা-মাতার এনআইডি</Badge>
+              </div>
+              <p className="text-xs text-amber-700 mt-2">* উল্লেখিত সকল ডকুমেন্টস ভর্তির সময় অফিসে জমা দিতে হবে</p>
             </div>
           </div>
 
