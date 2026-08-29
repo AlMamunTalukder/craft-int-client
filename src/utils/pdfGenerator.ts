@@ -377,7 +377,7 @@ export const generatePDFFromData = async (
             color: #1e1b4b;
           }
 
-          /* UPDATED: signatures line margin as requested */
+      
           /* ===== SIGNATURES (with more space) ===== */
           .footer-signs {            
             display: flex;
