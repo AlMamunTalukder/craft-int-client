@@ -639,10 +639,7 @@ export const generatePDFFromData = async (
             <div class="section">
               <div class="section-title">পূর্ববর্তী একাডেমিক তথ্য</div>
               <div class="grid-4">
-                <div class="field">
-                  <span class="label">একাডেমিক ক্যাটাগরি</span>
-                  <div class="value">${formData.category || formData.Category || "-"}</div>
-                </div>
+               
                 <div class="field">
                   <span class="label">পূর্ববর্তী প্রতিষ্ঠান</span>
                   <div class="value">${formData.PrevSchool || "-"}</div>
