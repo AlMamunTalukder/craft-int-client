@@ -319,8 +319,10 @@ export const generatePDFFromData = async (
             margin-bottom: 4px;
           }
 
+          /* UPDATED: Fix white text invisible - added dark color */
           .info-card strong {
             font-size: 11px;
+            color: #1e1b4b;
           }
 
           .info-card .value {
@@ -626,11 +628,11 @@ export const generatePDFFromData = async (
               <div class="info-card mt-1">
                 <strong>অভিভাবক: ${formData.guardianNameBangla || formData.guardianName || formData.parentInfo?.guardian?.nameBangla || formData.parentInfo?.guardian?.nameEnglish || "-"}</strong>
                 <div class="flex-between mt-1">
-                  <span style="font-size:10px;">সম্পর্ক: ${formData.guardianRelation || formData.parentInfo?.guardian?.relation || "-"}</span>
-                  <span style="font-size:10px;">মোবাইল: ${formData.guardianMobile || formData.parentInfo?.guardian?.mobile || "-"}</span>
-                  <span style="font-size:10px;">হোয়াটসঅ্যাপ: ${formData.guardianWhatsapp || formData.parentInfo?.guardian?.whatsapp || "-"}</span>
+                  <span style="font-size:10px; color:#1e1b4b;">সম্পর্ক: ${formData.guardianRelation || formData.parentInfo?.guardian?.relation || "-"}</span>
+                  <span style="font-size:10px; color:#1e1b4b;">মোবাইল: ${formData.guardianMobile || formData.parentInfo?.guardian?.mobile || "-"}</span>
+                  <span style="font-size:10px; color:#1e1b4b;">হোয়াটসঅ্যাপ: ${formData.guardianWhatsapp || formData.parentInfo?.guardian?.whatsapp || "-"}</span>
                 </div>
-                <div class="mt-1"><span style="font-size:10px;">ঠিকানা: ${formData.guardianAddress || formData.parentInfo?.guardian?.address || "-"}</span></div>
+                <div class="mt-1"><span style="font-size:10px; color:#1e1b4b;">ঠিকানা: ${formData.guardianAddress || formData.parentInfo?.guardian?.address || "-"}</span></div>
               </div>
             </div>
 
